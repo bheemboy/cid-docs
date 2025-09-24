@@ -1,0 +1,15 @@
+FROM node:18-alpine
+
+# Install system dependencies
+RUN apk add --no-cache git bash
+
+# Install Docusaurus CLI globally
+RUN npm install -g @docusaurus/core@latest
+
+# Create workspace directory
+WORKDIR /workspace
+
+# Switch to node user
+USER node
+
+EXPOSE 3000

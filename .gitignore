@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# Docusaurus / build artifacts
+.docusaurus/
+build/
+
+# Environment / secrets
+.env
+.env.*.local
+
+# Editor / OS files
+.vscode/
+.DS_Store
+
+# Logs
+npm-debug.log
+yarn-error.log
+*.log
+
+# Test / coverage / caches
+coverage/
+.cache/
+dist/

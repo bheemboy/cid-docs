@@ -1,0 +1,18 @@
+{
+  "name": "CID-Docs Dev Container",
+  "dockerFile": "Dockerfile",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-json",
+        "ms-vscode.vscode-eslint"
+      ]
+    }
+  },
+  "forwardPorts": [3000],
+  "postCreateCommand": "bash -c 'echo \"Installing dependencies...\" && npm install && echo \"Updating scripts...\" && npm pkg set scripts.start=\"docusaurus start --host 0.0.0.0\" && npm pkg set scripts.serve=\"docusaurus serve --host 0.0.0.0\" && echo \"Setup complete! Run: npm start\"'",
+  "remoteUser": "node"
+}
