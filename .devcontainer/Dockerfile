@@ -1,7 +1,7 @@
 FROM node:18-alpine
 
 # Install system dependencies
-RUN apk add --no-cache git bash
+RUN apk add --no-cache git bash ca-certificates && update-ca-certificates
 
 # Install Docusaurus CLI globally
 RUN npm install -g @docusaurus/core@latest
