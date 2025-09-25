@@ -1,0 +1,11 @@
+{
+  "label": "User Guide",
+  "position": 2,
+  "collapsed": false,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "title": "CID User Guide",
+    "description": "Overview of how to use CIDs"
+  }
+}

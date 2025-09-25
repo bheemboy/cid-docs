@@ -50,6 +50,10 @@ const config: Config = {
         docs: {
           routeBasePath: '/', // Serve docs at the site's root          
           sidebarPath: './sidebars.ts',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/bheemboy/cid-docs/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
