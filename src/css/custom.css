@@ -6,6 +6,8 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --cid-navbar-bg: #384350;
+  --cid-navbar-text: #ffffff;
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -27,4 +29,46 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Force navbar background for all themes */
+.navbar,
+.navbar__inner,
+.navbar--fixed,
+.navbar--mobile {
+  background-color: var(--cid-navbar-bg) !important;
+  box-shadow: none;
+}
+
+/* Brand/title */
+.navbar__brand,
+.navbar__title,
+.navbar__brand a,
+.navbar__title a {
+  color: var(--cid-navbar-text) !important;
+}
+
+/* Links / items */
+.navbar__item,
+.navbar__link,
+.navbar__item a,
+.navbar__link a {
+  color: var(--cid-navbar-text) !important;
+}
+
+/* Hover / active states */
+.navbar__link:hover,
+.navbar__item:hover,
+.navbar__link:focus,
+.navbar__item:focus {
+  color: var(--cid-navbar-text) !important;
+  opacity: 0.9;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .navbar,
+  .navbar__inner {
+    background-color: var(--cid-navbar-bg) !important;
+  }
 }

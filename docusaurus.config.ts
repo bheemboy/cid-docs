@@ -62,15 +62,17 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'CID',
+      title: 'CID Hub',
       logo: {
         alt: 'CID Logo',
-        src: 'img/logo.svg',
+        src: 'img/cid-hub-logo-white.svg',
+        width: 40,
+        height: 40,
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'documentationSidebar',
           position: 'left',
           label: 'Documentation',
         },
@@ -80,28 +82,24 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Community',
+          title: 'Agilent',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'OpenLab CDS',
+              href: 'https://www.agilent.com/en/product/software-informatics/analytical-software-suite/chromatography-data-systems/openlab-cds',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Connected Instrument Device',
+              href: 'https://www.agilent.com/en/product/software-informatics/analytical-software-suite/chromatography-data-systems/openlab-cds/connected-instrument-device',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Support',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/bheemboy/cid-docs',
+              label: 'Contact CID Support',
+              href: 'https://hub.cid.agilent.com/assets/agilent-support-contact-information.pdf',
             },
           ],
         },

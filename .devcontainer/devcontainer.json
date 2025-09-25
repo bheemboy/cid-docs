@@ -13,6 +13,6 @@
     }
   },
   "forwardPorts": [3000],
-  "postCreateCommand": "bash -c 'echo \"Installing dependencies...\" && npm install && echo \"Updating scripts...\" && npm pkg set scripts.start=\"docusaurus start --host 0.0.0.0\" && npm pkg set scripts.serve=\"docusaurus serve --host 0.0.0.0\" && echo \"Setup complete! Run: npm start\"'",
+  "postCreateCommand": "bash -c 'npm config set strict-ssl true && npm config set registry https://registry.npmjs.org/ && echo \"Installing dependencies...\" && npm install && echo \"Updating scripts...\" && npm pkg set scripts.start=\"docusaurus start --host 0.0.0.0\" && npm pkg set scripts.serve=\"docusaurus serve --host 0.0.0.0\" && echo \"Setup complete! Run: npm start\"'",
   "remoteUser": "node"
 }
