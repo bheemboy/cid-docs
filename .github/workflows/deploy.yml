@@ -24,6 +24,8 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # This line grants write permission    
     if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v4
