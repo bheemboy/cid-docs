@@ -1,4 +1,4 @@
-﻿name: Deploy CID-Docs
+name: Deploy CID-Docs
 
 on:
   push:
