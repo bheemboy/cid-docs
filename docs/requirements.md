@@ -17,10 +17,10 @@ The 12-character MAC address for the “House” NIC and a 8-character PIN is pr
 | Component	| CID Networking |
 | - | - |
 | **House (corporate) NIC** | |
-| - *Internet outbound* |	See “[Internet Requirements](#Internet-Requirements)” section below |
+| - *Internet outbound* |	See “[Internet Requirements](#internet-requirements)” section below |
 |	- *Internet inbound* | No inbound communication from internet required |
-|	- *Intranet outbound*	| <UL><LI>DHCP, </LI><LI>DNS, </LI><LI>HTTPS, </LI><LI>ICMP: OLSS, OpenLab server, </LI><LI>HTTP/HTTPS: ECM 3.x, </LI><LI>SMB (optional)</LI></UL>
-| - *Intranet inbound* | <UL><LI>ICMP, </LI><LI>HTTPS: for Acquisition server, diagnostics, remote work area, QualA, sample scheduler, Cockpit, noVNC/Websockify, </LI><LI>SSH: CID SSH service (needed when troubleshooting)</LI></UL> |
+| - *Intranet outbound*	| <UL> <LI>DHCP, </LI> <LI>DNS, </LI> <LI>HTTPS, </LI> <LI>ICMP: OLSS, OpenLab server, </LI> <LI>HTTP/HTTPS: ECM 3.x, </LI> <LI>SMB (optional)</LI> </UL> |
+| - *Intranet inbound* | <UL> <LI>ICMP, </LI> <LI>HTTPS: for Acquisition server, diagnostics, remote work area, QualA, sample scheduler, Cockpit, noVNC/Websockify, </LI> <LI>SSH: CID SSH service (needed when troubleshooting)</LI> </UL> |
 | **Instrument NIC** | |
 | - *Internet outbound* | No outbound communication to internet required |
 | - *Internet inbound* | No inbound communication from internet required |
@@ -98,9 +98,9 @@ The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenov
 | Memory                   | 16 GB DDR4 3200 SoDIMM                    |
 | Graphics                 | Integrated graphics                       |
 | Instrument Configuration | 1:1                                       |
-| Physical Interfaces      | <UL><LI>Dual Gigabit LAN ports (RJ45 1 GB/second)</LI><LI>USB ports x 4</LI><LI>DisplayPort (video out)</LI><LI>HDMI (video out)</LI><LI>Mic IN</LI><LI>Audio OUT</LI><LI>Serial port (DB9) x 2 |
 | Operating                | Temperature 0 to 50 °C                    |
 | Power                    | 65 W (adapter included)                   |
+| Physical Interfaces      | <UL> <LI>Dual Gigabit LAN ports (RJ45 1 GB/second)</LI> <LI>USB ports x 4</LI> <LI>DisplayPort (video out)</LI> <LI>HDMI (video out)</LI> <LI>Mic IN</LI> <LI>Audio OUT</LI> <LI>Serial port (DB9) x 2 </LI> </UL> |
 
 ## Software Compatibility
 The CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and above. The CID solution requires the deployment of the bundled IoT hardware as configured within the CID Hub. 
