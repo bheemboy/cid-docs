@@ -1,5 +1,3 @@
-﻿version: '3.8'
-
 services:
   cid-docs:
     build: .
@@ -21,3 +19,6 @@ services:
     command: npm start
     profiles:
       - dev
+
+# BUILD USING: docker-compose build cid-docs
+# RUN USING: docker-compose up -d cid-docs

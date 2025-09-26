@@ -1,6 +1,15 @@
 {
   "name": "CID-Docs Dev Container",
   "dockerFile": "Dockerfile",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": true,
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -8,11 +17,14 @@
         "bradlc.vscode-tailwindcss",
         "esbenp.prettier-vscode",
         "ms-vscode.vscode-json",
-        "ms-vscode.vscode-eslint"
+        "ms-vscode.vscode-eslint",
+        "ms-vscode.vscode-docker"
       ]
     }
   },
   "forwardPorts": [3000],
   "postCreateCommand": "bash -c 'npm config set strict-ssl true && npm config set registry https://registry.npmjs.org/ && echo \"Installing dependencies...\" && npm install && echo \"Updating scripts...\" && npm pkg set scripts.start=\"docusaurus start --host 0.0.0.0\" && npm pkg set scripts.serve=\"docusaurus serve --host 0.0.0.0\" && echo \"Setup complete! Run: npm start\"'",
-  "remoteUser": "node"
+  "postStartCommand": "sudo chown node:node /var/run/docker.sock 2>/dev/null || sudo chmod 666 /var/run/docker.sock 2>/dev/null || true",
+  "remoteUser": "node",
+  "containerUser": "node"
 }
