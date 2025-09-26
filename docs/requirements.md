@@ -7,7 +7,7 @@ sidebar_position: 3
 ![CID NICs](./img/cid-nics.jpg)
 
 Each CID is equipped with two network interfaces:
-- **House (Corporate) NIC** – Connects to the corporate LAN and accessed to OpenLab Server and the internet.
+- **House NIC** – Connects to the corporate LAN and accessed to OpenLab Server and the internet.
 - **Instrument NIC** – Connects to analytical instruments – directly or via instrument dedicated LAN/VLAN.
 
 The 12-character MAC address for the “House” NIC and a 8-character PIN is printed on QR code sticker attached to the device. The PIN is used to link the physical CID with the CID Hub.
@@ -16,12 +16,12 @@ The 12-character MAC address for the “House” NIC and a 8-character PIN is pr
 
 | Component	| CID Networking |
 | - | - |
-| **House (corporate) NIC** | |
+| **House NIC** | **Connects to corporate LAN and internet** |
 | - *Internet outbound* |	See “[Internet Requirements](#internet-requirements)” section below |
 |	- *Internet inbound* | No inbound communication from internet required |
 | - *Intranet outbound*	| <ul> <li>DHCP, </li> <li>DNS, </li> <li>HTTPS, </li> <li>ICMP: OLSS, OpenLab server, </li> <li>HTTP/HTTPS: ECM 3.x, </li> <li>SMB (optional)</li> </ul> |
 | - *Intranet inbound* | <ul> <li>ICMP, </li> <li>HTTPS: for Acquisition server, diagnostics, remote work area, QualA, sample scheduler, Cockpit, noVNC/Websockify, </li> <li>SSH: CID SSH service (needed when troubleshooting)</li> </ul> |
-| **Instrument NIC** | |
+| **Instrument NIC** | **Connects to Instrument** |
 | - *Internet outbound* | No outbound communication to internet required |
 | - *Internet inbound* | No inbound communication from internet required |
 | - *Intranet outbound* | Acquisition Server to Instrument communication (instrument specific port requirements), isolated & unrestricted communication recommended |
