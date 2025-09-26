@@ -61,6 +61,8 @@ As the CID boots up, it connects to the CID Hub. If the connection attempt fails
 - Beep (2): Cannot contact CID Hub registration API (*.agilent.com). Possible firewall issue, incorrect NIC wiring, or internet outage.
 - Beep (3): No linked CID in CID Hub (CID record not yet added).
 - Beep (4): Activated CID cannot connect to registration API on bootup. If CDS is already installed and registered, CID beeps 4 times and continues boot; otherwise, beeps 4 times every 30 seconds. 
+:::
+
 
 ## DHCP and DNS Requirements
 -  On first connection, CIDs use DHCP to acquire IP, DNS servers, and DNS search strings.
@@ -70,6 +72,14 @@ As the CID boots up, it connects to the CID Hub. If the connection attempt fails
 -  Otherwise, the desired CID hostnames must be explicitly registered using the device MAC address (printed on the QR code label) in DHCP and DNS.
 -  During activation, CID validates name resolution using nslookup 'hostname'.
 -  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
+
+## Optional Network Share
+The CIDs optionally support using an SMB (Server Message Block) share accessible over the local LAN. In environments with large number of CIDs, this helps optimize performance and reduce internet bandwidth requirements.
+This SMB share should be reachable from the device with at least read permissions to fetch required files. When write access is also granted, the device can automatically copy downloaded files back into the share, making them available for other devices and preventing repeated downloads from the internet.
+- CIDs can access a shared SMB folder over the LAN.
+- Write access (recommended): Save (cache) downloaded CDS VM images for reuse by other CIDs.
+- Read access: copy cached CDS VM images from network share instead of downloading it from CID Hub.
+- Configurable during OpenLab Server registration or later via CID Hub.
 
 ## Supported Topologies
 
