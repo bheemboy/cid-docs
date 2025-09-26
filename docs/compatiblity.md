@@ -54,9 +54,12 @@ New versions of supported instrument drivers are typically available in the CID 
 :::
 
 ## Add-on Software (for AIC/CID)
+
 The following add-on software are currently available on the CID Hub.
 - Sample Scheduler
 - OpenLab Library Manager DA Add-on (pre-installed in CDS v2.8 FP2)
+
+
 The following are not yet available for CIDs
 - GPC DA Add-on
 - 2D-LC Software
