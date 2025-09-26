@@ -67,7 +67,7 @@ The following are not yet available for CIDs
 This list may not be complete. Contact the product manager for details on other add-on software.
 :::
 
-## 3rd party drivers
+## 3rd Party Drivers
 Non-Agilent and 3rd party instrument drivers are not currently available for CIDs.
 
 ## NIST Library Search
