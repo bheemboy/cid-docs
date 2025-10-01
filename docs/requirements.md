@@ -35,7 +35,7 @@ CIDs make connections to the internet during activation as well as while getting
     1. *.agilent.com (https)
     2. *.s3.amazonaws.com (https)
     3. *.s3.us-east-1.amazonaws.com (https)
-    4. *.s3.us-west-2.amazonaws.com (http, https)
+    4. *.s3.us-west-2.amazonaws.com (https)
     5. *.iot.us-east-1.amazonaws.com (https)
 2. Microsoft Windows Updates:
     1. *.cloudfront.net (https)
