@@ -1,11 +1,11 @@
 {
-  "label": "Managing CIDs",
+  "label": "CID",
   "position": 2,
   "collapsed": true,
   "collapsible": true,
   "link": {
     "type": "generated-index",
-    "title": "Managing CIDs",
+    "title": "CID",
     "description": "Overview of setting up and using CIDs"
   }
 }

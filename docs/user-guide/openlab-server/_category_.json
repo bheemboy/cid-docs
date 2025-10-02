@@ -1,11 +1,11 @@
 {
-  "label": "Managing OpenLab Servers",
+  "label": "OpenLab Server",
   "position": 1,
   "collapsed": true,
   "collapsible": true,
   "link": {
     "type": "generated-index",
-    "title": "Managing OpenLab Servers",
+    "title": "OpenLab Server",
     "description": "Overview of registering and using OpenLab Servers"
   }
 }
