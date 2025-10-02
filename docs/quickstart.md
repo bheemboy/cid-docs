@@ -27,9 +27,7 @@ Add details of your existing OpenLab Server in the CID Hub.
 - Click on “Register Server”
 - Provide details about your server in the pop-up dialog and hit save.
 
-:::note
-The selection for “Connect to” must match exactly with the format that is used when installing CDS Client system and is displayed in “Connect to” when logging in to CDS.
-:::
+See "[Registering OpenLab Server](user-guide/server/registration)" for details.
 
 ## 5. Specify Software Configuration
 Select software configuration to apply on the CIDs.
@@ -39,7 +37,7 @@ Select software configuration to apply on the CIDs.
 - Select the latest Windows and Linux updates.
 - Select driver versions that you want on the CIDs.
 
-:::note
+:::info Important
 CDS and Driver versions that you select for CIDs must match what is installed on CDS clients.
 :::
 
@@ -57,6 +55,6 @@ Add a record for you CID in the CID Hub.
 ## 7. Configure Instrument in OpenLab Control Panel
 - Follow instructions in the “OpenLab CDS - Client AIC Guide” to "[add an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FAddInstrument.htm)" and "[configure](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FConfigure_instrument.htm)" it.
 
-:::note
+:::info
 Using multiple instruments on a CID is not supported.
 :::

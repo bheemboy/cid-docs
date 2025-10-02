@@ -66,7 +66,7 @@ The following are not yet available for CIDs
 - ADF Export
 - Relay Service (Lab Advisor)
 
-:::caution 
+:::info
 This list may not be complete. Contact the product manager for details on other add-on software.
 :::
 
