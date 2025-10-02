@@ -6,6 +6,7 @@
   "link": {
     "type": "generated-index",
     "title": "CID",
-    "description": "Overview of setting up and using CIDs"
+    "description": "Overview of setting up and using CIDs",
+    "slug": "/user-guide/cid"
   }
 }

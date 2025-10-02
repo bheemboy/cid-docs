@@ -6,6 +6,7 @@
   "link": {
     "type": "generated-index",
     "title": "OpenLab Server",
-    "description": "Overview of registering and using OpenLab Servers"
+    "description": "Overview of registering and using OpenLab Servers",
+    "slug": "/user-guide/server"
   }
 }

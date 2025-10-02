@@ -57,10 +57,10 @@ Internet access is not required for CDS functionality. It is used only for admin
 
 :::tip[Troubleshooting Tip]
 As the CID boots up, it connects to the CID Hub. If the connection attempt fails, it will make a series of beeping sounds every 30 seconds.
-- Beep (1): No network connection (check cables/NIC connections).
-- Beep (2): Cannot contact CID Hub registration API (*.agilent.com). Possible firewall issue, incorrect NIC wiring, or internet outage.
-- Beep (3): No linked CID in CID Hub (CID record not yet added).
-- Beep (4): Activated CID cannot connect to registration API on bootup. If CDS is already installed and registered, CID beeps 4 times and continues boot; otherwise, beeps 4 times every 30 seconds. 
+- 1 Beep: No network connection (check cables/NIC connections).
+- 2 Beeps: Cannot contact CID Hub registration API (*.agilent.com). Possible firewall issue, incorrect NIC wiring, or internet outage.
+- 3 Beeps: No linked CID in CID Hub (CID record not yet added).
+- 4 Beeps: Activated CID cannot connect to registration API on bootup. If CDS is already installed and registered, CID beeps 4 times and continues boot; otherwise, beeps 4 times every 30 seconds. 
 :::
 
 
