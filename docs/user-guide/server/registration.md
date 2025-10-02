@@ -1,6 +1,68 @@
 ---
 sidebar_position: 1
-title: Registeration
+title: Registration
 ---
 
-# Register OpenLab Server
+# OpenLab Server Registries in CID Hub
+
+## Overview
+
+![Register Server](./img/register-server.jpg)
+
+You need to save information about your OpenLab Server(s) in CID Hub. When CID devices start up, they use this stored information to automatically register with the OpenLab Server.
+
+You can add server details to CID Hub as soon as they are known. The OpenLab Server does not need to be running or available at the time you register its information.
+
+:::info
+CID Hub does not use, verify, or connect to the server information itself. It only stores the information for your CID devices to retrieve.
+:::
+
+## Registering Your OpenLab Server in CID Hub
+
+Click **Register Server** to add a new OpenLab Server.  
+
+### Field Descriptions  
+
+- **Server Name (FQDN)**  
+  Enter the fully qualified domain name of the OpenLab Server (e.g., `olserver.prod.example.com`).  
+  For better compatibility with some DNS systems, it is recommended to use **lowercase letters** when entering the FQDN.  
+
+- **Connect to**  
+  Specify how CIDs should connect to the server: by hostname or by FQDN.  
+  ⚠️ It is important to use the same format consistently across all CDS Clients, AICs, and CIDs to avoid functionality issues.  
+
+- **Username / Password**  
+  Used by CIDs during their initial registration as instrument controllers with OLSS.  
+  - These credentials are not needed after registration.  
+  - However, some drivers require registration with OLSS after their installation or upgrade, so keep this information current and available.
+
+- **CID Network Share** *(Optional but recommended)*  
+  Provides a shared path for CIDs to access downloaded CDS versions. This improves performance and reduces internet bandwidth usage.  
+  - When a CID downloads a CDS version (~25 GB) from the CID Hub, it stores a copy in the `downloads` subfolder of this share.  
+  - Other CIDs can then retrieve the files from the network share instead of downloading them again from the internet.  
+  - You can also pre-download CDS files from the CID Hub Software Library and place them in this share.  
+
+- **Network Share Username / Password**  
+  Required if anonymous access is not allowed. Depending on your setup, the username format can be:  
+  - `user`  
+  - `domain\user`  
+  - `user@domain.com`
+
+## Editing Existing Registries
+
+OpenLab Server Registries can be edited by clicking on the pencil icon under the action column. 
+![Edit Server](./img/server-edit.jpg)
+
+If the server FQDN is updated then the CID need to be registered. This can be done by clicking the **Register CID** button in the CID Administration page. 
+
+Updates to other information takes affect when the CIDs are restarted. CIDs can be restarted by clicking the **Reboot System** button in the CID Administration page.
+
+
+## Deleting Existing Registries
+
+OpenLab Server Registries can be removed by clicking on the trashcan icon under the action column. 
+![Remove Server](./img/server-remove.jpg)
+
+:::info 
+Only unused Server Registries can be removed from the CID Hub. Servers cannot be removed when there are one or more CIDs associated with it.
+:::
