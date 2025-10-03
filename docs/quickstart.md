@@ -26,8 +26,8 @@ Connect CID to the instrument and your corporate network and power it on. See "[
 
 ---
 
-## 4. Register OpenLab Server in CID Hub
-Add details of your existing OpenLab Server in the CID Hub.
+## 4. Register OpenLab Server
+Register OpenLab Server information in CID Hub.
 - Login to https://hub.cid.agilent.com/ (CID Hub)
 - Click on “OpenLab Servers” from the navigation bar.
 - Click on “Register Server”
@@ -37,13 +37,15 @@ See "[Registering OpenLab Server](user-guide/server/registration)" for details.
 
 ---
 
-## 5. Specify Software Configuration
-Select software configuration to apply on the CIDs.
+## 5. Define Software Requirements
+Define software configuration to apply on the CIDs.
 - Click on your server’s entry in the list of OpenLab Servers.
 - Click on “CID Software” tab on the left side.
 - Select the CDS version that you want to use.
-- Select the latest Windows and Linux updates.
-- Select driver versions that you want on the CIDs.
+- Select specific driver and add-on versions that you want on the CIDs.
+
+See "[Define Software Requirements](user-guide/server/software)" for details.
+
 
 :::info Important
 CDS and Driver versions that you select for CIDs must match what is installed on CDS clients.

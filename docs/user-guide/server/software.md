@@ -1,15 +1,15 @@
 ---
 sidebar_position: 2
-title: Configuring Software Template
+title: Define Software Template
 ---
 
-# Configuring CID Software Template
+# Define CID Software Template
 
 ## Overview
 As part of the server configuration, you need to define the software versions that will be used in your CDS client–server environment.  
 This setup acts as the **default software configuration template** that gets applied to all CIDs connected to the server.
 
-When the template is updated, connected CIDs automatically download the required software packages. Installation must then be manually triggered by an administrator.
+When this template is updated for the server, connected CIDs automatically download the required software packages. Installation must then be manually triggered by an administrator.
 
 ---
 
