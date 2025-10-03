@@ -43,6 +43,6 @@ These are automatically preselected, but you can change them by clicking **Chang
 ![Select Drivers](./img/select-drivers.jpg)
 
 :::caution
-If you change the CDS version, driver and add-on selections will reset to their default values.  
-You may need to reselect the required versions.
+When you change the CDS version, all driver and add-on selections are reset to their defaults for that version.  
+If your setup requires specific driver or add-on versions, make sure to reselect them after changing the CDS version.
 :::
