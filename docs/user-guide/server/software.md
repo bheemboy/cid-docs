@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Software Configuration
+title: Configuring Software
 ---
 
 # Manage Software Configuration

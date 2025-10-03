@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Registration
+title: Registering a Server
 ---
 
 # OpenLab Server Registries in CID Hub
