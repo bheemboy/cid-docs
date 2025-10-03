@@ -7,8 +7,12 @@ sidebar_position: 1.5
 ## 1. Verify DNS/DHCP Requirements
 If your DHCP server/s do not support dynamic DNS registration (RFC 2136) of Linux clients, then use the MAC address printed on the CID QR code to explicitly register CID hostnames in DNS and reserve IPs in DHCP. See "[DHCP and DNS requirements](requirements#dhcp-and-dns-requirements)" for details.
 
+---
+
 ## 2. Verify Internet Requirements
 Make sure that Firewall allows CIDs to connect to web sites hosted by Agilent as well as Microsoft web sites during activation and for downloading updates. See "[Internet requirements](requirements#internet-requirements)" for details.
+
+---
 
 ## 3. Connect the CID
 Connect CID to the instrument and your corporate network and power it on. See "[Supported Topologies](requirements#supported-topologies)" for details on making these connections.
@@ -20,6 +24,8 @@ Connect CID to the instrument and your corporate network and power it on. See "[
 
 ![CID layout](./img/layout-1.jpg)
 
+---
+
 ## 4. Register OpenLab Server in CID Hub
 Add details of your existing OpenLab Server in the CID Hub.
 - Login to https://hub.cid.agilent.com/ (CID Hub)
@@ -28,6 +34,8 @@ Add details of your existing OpenLab Server in the CID Hub.
 - Provide details about your server in the pop-up dialog and hit save.
 
 See "[Registering OpenLab Server](user-guide/server/registration)" for details.
+
+---
 
 ## 5. Specify Software Configuration
 Select software configuration to apply on the CIDs.
@@ -41,6 +49,8 @@ Select software configuration to apply on the CIDs.
 CDS and Driver versions that you select for CIDs must match what is installed on CDS clients.
 :::
 
+---
+
 ## 6. Add CID to the CID Hub
 Add a record for you CID in the CID Hub.
 - Click on the “CIDs” tab on the navigation bar on the top.
@@ -51,6 +61,8 @@ Add a record for you CID in the CID Hub.
 - Shortly after adding the CID, the CID will recognize that a linked record is present in the CID Hub and stop beeping. Then it will start activation process. 
   - “Recent Activity” section of the CID’s summary tab will show logs of events occuring on the CID.
 -	When the activation is complete, its status will be “Ready” in the CID’s list.
+
+---
 
 ## 7. Configure Instrument in OpenLab Control Panel
 - Follow instructions in the “OpenLab CDS - Client AIC Guide” to "[add an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FAddInstrument.htm)" and "[configure](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FConfigure_instrument.htm)" it.

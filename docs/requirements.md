@@ -28,6 +28,8 @@ The 12-character MAC address for the “House” NIC and a 8-character PIN is pr
 | - *Intranet outbound* | Acquisition Server to Instrument communication (instrument specific port requirements), isolated & unrestricted communication recommended |
 | - *Intranet inbound* | Instrument to Acquisition Server communication (instrument specific port requirements), isolated & unrestricted communication is recommended |
 
+---
+
 ## Internet Requirements
 
 CIDs make connections to the internet during activation as well as while getting security updates and performing other maintenance activities. It is also required for monitoring the CIDs. Resources in the following domains are accessed by the CIDs.
@@ -65,6 +67,8 @@ As the CID boots up, it connects to the CID Hub. If the connection attempt fails
 :::
 
 
+---
+
 ## DHCP and DNS Requirements
 -  On first connection, CIDs use DHCP to acquire IP, DNS servers, and DNS search strings.
 -  After activation, static configuration is possible.
@@ -74,6 +78,8 @@ As the CID boots up, it connects to the CID Hub. If the connection attempt fails
 -  During activation, CID validates name resolution using nslookup 'hostname'.
 -  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
 
+---
+
 ## Optional Network Share
 The CIDs optionally support using an SMB (Server Message Block) share accessible over the local LAN. In environments with large number of CIDs, this helps optimize performance and reduce internet bandwidth requirements.
 This SMB share should be reachable from the device with at least read permissions to fetch required files. When write access is also granted, the device can automatically copy downloaded files back into the share, making them available for other devices and preventing repeated downloads from the internet.
@@ -81,6 +87,8 @@ This SMB share should be reachable from the device with at least read permission
 - Full access (recommended): Save (cache) downloaded CDS VM images for reuse by other CIDs.
 - Read access: copy cached CDS VM images from network share instead of downloading it from CID Hub.
 - Configurable during OpenLab Server registration or later via CID Hub.
+
+---
 
 ## Supported Topologies
 
@@ -98,6 +106,8 @@ This SMB share should be reachable from the device with at least read permission
 
 ![Instrument LAN/VLAN Connection](./img/instrument-lan-connection.jpg)
 
+---
+
 ## Hardware Specification
 The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and above.
 
@@ -113,6 +123,8 @@ The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenov
 | Power                    | 65 W (adapter included)                   |
 | Physical Interfaces      | <ul> <li>Dual Gigabit LAN ports (RJ45 1 GB/second)</li> <li>USB ports x 4</li> <li>DisplayPort (video out)</li> <li>HDMI (video out)</li> <li>Mic IN</li> <li>Audio OUT</li> <li>Serial port (DB9) x 2 </li> </ul> |
 
+---
+
 ## Software Compatibility
 The CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and above. The CID solution requires the deployment of the bundled IoT hardware as configured within the CID Hub. 
 Reference: [Software Compatibility](./compatiblity.md)
@@ -121,6 +133,8 @@ Reference: [Software Compatibility](./compatiblity.md)
 
 **Virtualization**: Virtualization of CIDs is not supported.
 
+---
+
 ## Licensing
 The CID Bundle for OpenLab CDS includes the following licensing:
 - OpenLab CDS Software (2.7 and above)
@@ -128,6 +142,8 @@ The CID Bundle for OpenLab CDS includes the following licensing:
   - Agilent physical instrument (LC or GC), or
   - Agilent 3D UV/DAD instrument, or
   - Agilent LC/MS or GC/MS
+
+---
 
 ## Summary
 The Agilent CID provides a standardized, secure, and resilient solution for OpenLab CDS client/server systems. With dual NICs for clear separation of corporate and instrument networks, centralized software configuration via CID Hub, and tested hardware/software bundles, it simplifies deployment while ensuring compliance with enterprise IT and laboratory requirements.

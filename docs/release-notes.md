@@ -35,6 +35,8 @@ sidebar_position: 5
   - 1225185 - DNS suffix comparison is case-sensitive, resulting in duplicate subdomains being added to the DNS search list
   - 1245281 - Hub portal and CID's Recent Activity logs inaccessible if CID contains huge number of log records
 
+---
+
 ## CID Hub release 1.1 (Dec 2024)
 
 - Support for CDS 2.8

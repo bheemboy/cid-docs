@@ -4,15 +4,21 @@ sidebar_position: 4
 
 # Compatibility
 
+---
+
 ## Operating System
 - Oracle Linux v8.7: Used as the bootup OS for CIDs.
 - Windows 10 IoT Ent LTSC: Used by virtual machine templates corresponding to CDS version 2.8 Update 07 with FP1 and prior releases.
 - Windows 11 IoT Ent LTSC: Used by virtual machine templates up to CDS version 2.8 Update 08 with FP2 and above.
 
+---
+
 ## OpenLab Servers
 CIDs work with the following server software.
 - OpenLab ECM (3.6 and above)
 - OpenLab Server / OpenLab ECM XT (2.7 and above)
+
+---
 
 ## OpenLab CDS
 CID Hub offers pre-built virtual machines for the following versions of
@@ -34,6 +40,8 @@ OpenLab CDS AIC software.
 Updates for OpenLab CDS v2.8 are typically made available in the CID Hub within 2 weeks of general release. Currently, updates for OpenLab CDS v2.7 are made available on demand.
 ::: 
 
+---
+
 ## Instrument Drivers
 The following Agilent instrument drivers are available in the CID Hub. Users can choose specific versions to install and use on their CIDs.
 - Agilent 35900 A/D
@@ -53,6 +61,8 @@ The following Agilent instrument drivers are available in the CID Hub. Users can
 New versions of supported instrument drivers are typically available in the CID Hub within 4 weeks of general release on SubscribeNet.
 :::
 
+---
+
 ## Add-on Software (for AIC/CID)
 
 The following add-on software are currently available on the CID Hub.
@@ -70,8 +80,12 @@ The following add-on software are currently available on the CID Hub.
 This list may not be complete. Contact the product manager for details on other add-on software.
 ::: -->
 
+---
+
 ## 3rd Party Drivers
 Non-Agilent and 3rd party instrument drivers are not currently available for CIDs.
+
+---
 
 ## NIST Library Search
 Automatic NIST library searches during unattended processing are not supported on the CID. However, interactive searches can be performed in OpenLab CDS Data Analysis by installing the NIST Library on client machines. When automatic searches during unattended processing are needed, an AIC is required.

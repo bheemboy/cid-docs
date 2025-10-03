@@ -17,6 +17,8 @@ You can add server details to CID Hub as soon as they are known. The OpenLab Ser
 CID Hub does not verify, or use this information to connect to the server. It only stores the information so that CID devices can retrieve and use it.
 :::
 
+---
+
 ## Registering Your OpenLab Server in CID Hub
 
 Click **Register Server** to add a new OpenLab Server.  
@@ -50,6 +52,8 @@ Click **Register Server** to add a new OpenLab Server.
   - `domain\user`  
   - `user@domain.com`
 
+---
+
 ## Editing Existing Registries
 
 OpenLab Server Registries can be edited by clicking on the pencil icon under the action column. 
@@ -60,6 +64,8 @@ If the server FQDN is updated, then all the CIDs connected to that server need t
 
 Updates to other information takes affect when the CIDs are restarted. CIDs can be restarted by clicking the **Reboot System** button in the CID Administration page.
 
+
+---
 
 ## Deleting Existing Registries
 
