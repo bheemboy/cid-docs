@@ -5,22 +5,22 @@ sidebar_position: 1.5
 # Quick Start
 
 ## 1. Verify DNS/DHCP Requirements
-If your DHCP server/s do not support dynamic DNS registration (RFC 2136) of Linux clients, then use the MAC address printed on the CID QR code to explicitly register CID hostnames in DNS and reserve IPs in DHCP. See "[DHCP and DNS requirements](requirements#dhcp-and-dns-requirements)" for details.
+If your DHCP server/s do not support dynamic DNS registration (RFC 2136) of Linux clients, then use the MAC address printed on the CID QR code to explicitly register CID hostnames in DNS and reserve IPs in DHCP. See "[DHCP and DNS requirements](system-requirements#dhcp-and-dns-requirements)" for details.
 
 ---
 
 ## 2. Verify Internet Requirements
-Make sure that Firewall allows CIDs to connect to web sites hosted by Agilent as well as Microsoft web sites during activation and for downloading updates. See "[Internet requirements](requirements#internet-requirements)" for details.
+Make sure that Firewall allows CIDs to connect to web sites hosted by Agilent as well as Microsoft web sites during activation and for downloading updates. See "[Internet requirements](system-requirements#internet-requirements)" for details.
 
 ---
 
 ## 3. Connect the CID
-Connect CID to the instrument and your corporate network and power it on. See "[Supported Topologies](requirements#supported-topologies)" for details on making these connections.
+Connect CID to the instrument and your corporate network and power it on. See "[Supported Topologies](system-requirements#supported-topologies)" for details on making these connections.
 
 - Connect the port labeled “Home” to the corporate network which connects the CID to the OpenLab Server and the internet.
 - Connect the network port labeled “Instrument” directly to the instrument or to an instrument only network (LAN/VLAN).
 -	Connect the power cable and turn on the CID.
--	On bootup the CID will connect via internet to the CID Hub and if successful, it will make 3 beeps every 30 seconds until the CID is [added to the Hub](#6-add-cid-to-the-cid-hub). See Troubleshooting tips at the end of "[Internet requirements](requirements#internet-requirements)" for other beep codes.
+-	On bootup the CID will connect via internet to the CID Hub and if successful, it will make 3 beeps every 30 seconds until the CID is [added to the Hub](#6-add-cid-to-the-cid-hub). See Troubleshooting tips at the end of "[Internet requirements](system-requirements#internet-requirements)" for other beep codes.
 
 ![CID layout](./img/layout-1.jpg)
 
@@ -33,7 +33,7 @@ Register OpenLab Server information in CID Hub.
 - Click on “Register Server”
 - Provide details about your server in the pop-up dialog and hit save.
 
-See "[Registering OpenLab Server](user-guide/server/registration)" for details.
+See "[Registering OpenLab Server](user-guide/registering-a-server)" for details.
 
 ---
 
@@ -44,7 +44,7 @@ Define software configuration to apply on the CIDs.
 - Select the CDS version that you want to use.
 - Select specific driver and add-on versions that you want on the CIDs.
 
-See "[Defining Software Template](user-guide/server/software)" for details.
+See "[Defining Software Template](user-guide/defining-software-template)" for details.
 
 
 :::info Important
