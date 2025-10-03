@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-title: Define Software Template
+title: Defining Software Template
 ---
 
-# Define CID Software Template
+# Defining Software Template for CIDs
 
 ## Overview
 As part of the server configuration, you need to define the software versions that will be used in your CDS client–server environment.  

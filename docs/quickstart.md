@@ -44,7 +44,7 @@ Define software configuration to apply on the CIDs.
 - Select the CDS version that you want to use.
 - Select specific driver and add-on versions that you want on the CIDs.
 
-See "[Define Software Requirements](user-guide/server/software)" for details.
+See "[Defining Software Template](user-guide/server/software)" for details.
 
 
 :::info Important
