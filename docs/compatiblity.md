@@ -60,7 +60,7 @@ The following add-on software are currently available on the CID Hub.
 - OpenLab Library Manager DA Add-on (pre-installed in CDS v2.8 FP2)
 
 
-The following are not yet available for CIDs
+<!-- The following are not yet available for CIDs
 - GPC DA Add-on
 - 2D-LC Software
 - ADF Export
@@ -68,7 +68,7 @@ The following are not yet available for CIDs
 
 :::info
 This list may not be complete. Contact the product manager for details on other add-on software.
-:::
+::: -->
 
 ## 3rd Party Drivers
 Non-Agilent and 3rd party instrument drivers are not currently available for CIDs.
@@ -76,7 +76,7 @@ Non-Agilent and 3rd party instrument drivers are not currently available for CID
 ## NIST Library Search
 Automatic NIST library searches during unattended processing are not supported on the CID. However, interactive searches can be performed in OpenLab CDS Data Analysis by installing the NIST Library on client machines. When automatic searches during unattended processing are needed, an AIC is required.
 
-## Network Assessment Tool (NAT)
+<!-- ## Network Assessment Tool (NAT)
 The current version of NAT cannot be executed on the CID. However, CIDs have a separate connectivity tester tool that should be used in case of connectivity issues. CIDs test and report connection and compatibility to server as they are activated.
 
 ## Status Board for OpenLab
@@ -92,4 +92,4 @@ Lab Assist Hub is a tablet-style user interface for InfinityLab LCs that allow u
 This is currently not supported by CIDs.
 
 ## Dissolution
-This is currently not supported by CIDs.
+This is currently not supported by CIDs. -->
