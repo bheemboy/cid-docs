@@ -1,20 +1,20 @@
 ---
 sidebar_position: 2
-title: Defining Software Template
+title: Define Software Template
 ---
 
-# Defining Software Template for CIDs
+# Define Software Template for CIDs
 
 ## Overview
 As part of the server configuration, you need to define the software versions that will be used in your CDS client–server environment.  
-This setup acts as the **default software configuration template** that gets applied to all CIDs connected to the server.
+This setup acts as the **default software configuration template** that gets applied to all CIDs connected to the server. To override these defaults on one or more CIDs refer to TODO.
 
-When this template is updated for the server, connected CIDs automatically download the required software packages. Installation must then be manually triggered by an administrator.
+When this template is updated for the server, CIDs connected to this server will automatically download the required software packages. Installation must then be manually triggered by an administrator.
 
 ---
 
-## Selecting CDS Version
-By default, new servers are configured with the latest CDS version available on the CDS Hub.  
+## Select CDS Version
+By default, new servers are automaticallyu configured with the latest CDS version available.
 Click **Change** to select a different version.
 
 ![Select CDS](./img/select-cds.jpg)

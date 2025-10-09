@@ -33,7 +33,7 @@ Register OpenLab Server information in CID Hub.
 - Click on “Register Server”
 - Provide details about your server in the pop-up dialog and hit save.
 
-See "[Registering OpenLab Server](user-guide/registering-a-server)" for details.
+See "[Register OpenLab Server](howto/register-a-server)" for details.
 
 ---
 
@@ -44,7 +44,7 @@ Define software configuration to apply on the CIDs.
 - Select the CDS version that you want to use.
 - Select specific driver and add-on versions that you want on the CIDs.
 
-See "[Defining Software Template](user-guide/defining-software-template)" for details.
+See "[Define Software Template](howto/define-software-template)" for details.
 
 
 :::info Important

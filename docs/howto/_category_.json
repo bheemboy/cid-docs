@@ -1,9 +1,9 @@
 {
-  "label": "User Guide",
+  "label": "How to...",
   "position": 4,
   "collapsed": true,
   "collapsible": true,
   "link": {
-    "slug": "/user-guide"
+    "slug": "/howto"
   }
 }

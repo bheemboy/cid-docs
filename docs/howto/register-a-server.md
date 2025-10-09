@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Registering a Server
+title: Register a Server
 ---
 
 # OpenLab Server Registries in CID Hub
@@ -19,11 +19,11 @@ CID Hub does not verify, or use this information to connect to the server. It on
 
 ---
 
-## Registering Your OpenLab Server in CID Hub
+## Register your OpenLab Server in CID Hub
 
 Click **Register Server** to add a new OpenLab Server.  
 
-### Field Descriptions  
+#### Field Descriptions  
 
 - **Server Name (FQDN)**  
   Enter the fully qualified domain name of the OpenLab Server (e.g., `olserver.prod.example.com`).  
@@ -54,7 +54,7 @@ Click **Register Server** to add a new OpenLab Server.
 
 ---
 
-## Editing Existing Registries
+## Edit Existing Registries
 
 OpenLab Server Registries can be edited by clicking on the pencil icon under the action column. 
 
@@ -67,7 +67,7 @@ Updates to other information takes affect when the CIDs are restarted. CIDs can 
 
 ---
 
-## Deleting Existing Registries
+## Delete Existing Registries
 
 OpenLab Server Registries can be removed by clicking on the trashcan icon under the action column. 
 
