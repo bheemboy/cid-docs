@@ -80,6 +80,14 @@ As the CID boots up, it connects to the CID Hub. If the connection attempt fails
 
 ---
 
+## SSL Certificate Requirements
+-  If applying SSL certificates for using ECM 3.x over HTTPS, you must use publicly trusted certificates. Using certificates based on internal, corporate, or self-generated certificate authority (CA) is not recognized by  CIDs.
+:::note
+Certificates based on internal, corporate, or self-generated certificate authority (CA) as well as publicly trusted certificates are supported when applied on ECM XT servers.
+:::
+
+---
+
 ## Optional Network Share
 The CIDs optionally support using an SMB (Server Message Block) share accessible over the local LAN. In environments with large number of CIDs, this helps optimize performance and reduce internet bandwidth requirements.
 This SMB share should be reachable from the device with at least read permissions to fetch required files. When write access is also granted, the device can automatically copy downloaded files back into the share, making them available for other devices and preventing repeated downloads from the internet.
