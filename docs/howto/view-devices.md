@@ -1,9 +1,9 @@
 ---
 sidebar_position: 12
-title: "Software Library"
+title: "View Devices"
 ---
 
-# Software Library 
+# View Devices
 
 ![Under Construction](./../img/under-construction.jpg)
 

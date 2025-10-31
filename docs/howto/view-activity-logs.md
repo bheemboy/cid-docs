@@ -1,9 +1,9 @@
 ---
 sidebar_position: 8
-title: "Viewing Activity Logs"
+title: "View Activity Logs"
 ---
 
-# Viewing Activity Logs
+# View Activity Logs
 
 ![Under Construction](./../img/under-construction.jpg)
 

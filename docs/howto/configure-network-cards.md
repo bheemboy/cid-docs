@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
-title: "Configuring Network Cards"
+title: "Configure Network Cards"
 ---
 
-# Configuring Network Cards
+# Configure Network Cards
 
 ![Under Construction](./../img/under-construction.jpg)
 

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 9
-title: Performing CDS Failover
+title: Perform CDS Failover
 ---
 
-# Performing CDS Failover
+# Perform CDS Failover
 
 
 ![Under Construction](./../img/under-construction.jpg)

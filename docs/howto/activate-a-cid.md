@@ -20,7 +20,7 @@ Before activating a CID, you must "[register an OpenLab Server](register-a-serve
 
 Clicking on the Add button launches the add CID dialog.
 
-New CIDs are constantly checking for CID record in the HUB with a matching PIN code. As soon as the CID finds this record, it will gather information from the HUB and start setting itself up accordingly.
+New CIDs are constantly checking for a corresponding CID record in the Hub with a matching PIN code. As soon as the CID finds such a record, it starts activating itself using information specified in the record.
 
 ![Add CID Dialog](./img/add-cid-dlg.jpg)
 
@@ -47,24 +47,22 @@ The CID activation process consists of the following steps:
 - Verify network connection on house NIC
 - Connect to the CID Hub
 - Get OpenLab Server information
-- Change hostname (only if needed)
-- Confirm that DNS can resolve CID's hostname and that it resolves to its IP address
+- Change hostname (if needed) to what is specified in the CID record in the Hub
+- Confirm that DNS can resolve CID's hostname and that it resolves to the IP address assigned to it
 - Confirm that CID can connect to AWS IoT services
 - Confirm connection to OLSS Server
-- Install Linux Updates, including latest antivirus definitions
+- Install latest Linux Update and antivirus definitions
 - Download, install, and start CDS Virtual Machine
-- If needed, install ECM 3.x APIs
-- Configure and Register CDS with the OLSS Server
-- Install Windows Updates
+- If needed, install ECM 3.x APIs in the CDS Virtual Machine
+- Configure and Register the CDS Virtual Machine as an AIC with the OLSS Server
+- Install Windows Updates on the CDS Virtual Machine
 - Install selected drivers and add-ons
 - Setup scheduled antivirus scans
-- Update passwords for the CID Linux subsystem as well as for the CDS virtual machine
+- Update passwords for the CID Linux subsystem and for the CDS virtual machine
 
 ### Recent Activities
 
-The activities that the CID is performing are displayed in the "*Recent Activity*" section at the bottom of the Summary page of the CID. You can monitor this section to see what step the CID is performing. It also shows any issues that the CID encounters along the way.  
+The activities that the CID performs are displayed in the "*Recent Activity*" section at the bottom of the Summary page of the CID. You can monitor this section to see what step the CID is performing. It also shows any issues that the CID encounters along the way.
 
 ![Recent Acitivity](./img/recent-activity.jpg)
-
-
 

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 7
-title: "Configuring Instrument"
+title: "Configure Instrument"
 ---
 
-# Configuring Instrument
+# Configure Instrument
 
 ![Under Construction](./../img/under-construction.jpg)
 

@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
-title: "Configuring Software Exceptions"
+title: "Configure Software Exceptions"
 ---
 
-# Configuring Software Exceptions
+# Configure Software Exceptions
 
 ![Under Construction](./../img/under-construction.jpg)
 
