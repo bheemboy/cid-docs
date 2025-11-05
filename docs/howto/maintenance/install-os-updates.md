@@ -17,6 +17,7 @@ Windows and Oracle Linux security updates are published to the CID Hub shortly a
 
 ![Linux update](img/linux-update.jpg)
 
+---
 ## Automatic Update Selection
 When new OS updates are released in the CID Hub, they are **automatically selected** in the software pages for all servers and CIDs.  
 You do not need to manually select these updates. 
