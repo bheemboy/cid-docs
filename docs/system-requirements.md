@@ -80,9 +80,14 @@ As the CID boots up, it connects to the CID Hub. If the connection attempt fails
 
 ---
 
-## SSL Certificate Requirements
--  **ECM 3.x**: **Publicly trusted SSL certificates** must be used when configuring ECM 3.x for HTTPS. Certificates issued by internal, corporate, or self-signed certificate authorities (CAs) are not recognized by CIDs and will not work in this setup.
--  **ECM XT / OpenLab Server**:  Both publicly trusted and internally issued or self-signed certificates are supported when used on ECM XT servers.
+## SSL Certificate Requirements for HTTPS
+
+### ECM 3.x
+To successfully run an ECM 3.x server over HTTPS in an environment with CIDs, you must use a **publicly trusted SSL certificate**.
+Certificates issued by internal, corporate, or self-signed certificate authorities (CAs) are not recognized by CIDs.
+
+### **ECM XT / OpenLab Server**
+Certificates issued by internal, corporate, or self-signed certificate authorities (CAs) as well as publicly trusted certificates may be used for running an ECM XT / OpenLab Servers over https in an environment with CIDs.
 
 
 ---

@@ -1,0 +1,9 @@
+{
+  "label": "CID Maintenance",
+  "position": 5,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "slug": "/howto"
+  }
+}
