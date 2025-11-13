@@ -302,7 +302,7 @@ The parties to this Agreement have agreed that all correspondence and related do
 
 ## 13. OPEN SOURCE AND OTHER THIRD PARTY SOFTWARE
 
-The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are available at `https://hub.cid.agilent.com/third_party_licenses`.
+The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are available at https://hub.cid.agilent.com/third_party_licenses.
 
 You agree to comply with all applicable terms. In addition to the warranty disclaimers contained in the terms associated with the Third Party Components, Agilent makes the following disclaimers regarding the Third Party Components on behalf of itself, and the copyright holders, contributors, and licensors of the Third Party Components:
 * To the maximum extent permitted by applicable law, the Third Party Components are provided by the copyright holders, contributors, licensors, and Agilent "**as is**".
