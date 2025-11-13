@@ -13,18 +13,32 @@ These CID Hub Terms of Use ("**Terms of Use**") and the Agilent Technologies Sof
 ## 1. DEFINITIONS
 
 a. "**Acceptable Use Policy**" refers to and means the Acceptable Use Policy attached as Exhibit A to these Terms of Use.
+
 b. "**Aggregated Data**" means statistical data derived from the operations of the Services and/or Software which does not identify Customer nor any User.
+
 c. "**Authorized Users**" means Customer's employees and contractors who are authorized by Customer to use the Software and made known to Agilent and are the only users who may log in to the Software.
-d. "**Confidential Information**" means non-public information that (i) if disclosed in writing is marked "**confidential**" or "**proprietary**" at the time of such disclosure; or (ii) if disclosed orally or by visual presentation, is identified as "**confidential**" or "**proprietary**" at the time of such disclosure, and is summarized in a writing sent by the disclosing party to the receiving party within thirty (30) days after any such disclosure. Notwithstanding the foregoing, Confidential Information includes, but is not limited to Customer Data, Software, Services and Agilent's business policies, and practices.
+
+d. "**Confidential Information**" means non-public information that (i) if disclosed in writing is marked "**confidential**" or "**proprietary**" at the time of such disclosure; or (ii) if disclosed orally or by visual presentation, is identified as "**confidential**" or "**proprietary**" at the time of such disclosure, and is summarized in 
+a writing sent by the disclosing party to the receiving party within thirty (30) days after any such disclosure. Notwithstanding the foregoing, Confidential Information includes, but is not limited to Customer Data, Software, Services and Agilent's business policies, and practices.
+
 e. "**Customer**" means the legal entity you represent and to which Agilent will provide the Services and Software. If you are agreeing to this Agreement on behalf of a company, organization or other entity, you represent and warrant that you have the authority to enter into this Agreement on its behalf.
+
 f. "**Customer Data**" means Personal Data and information, data, results, plans, texts, files, links, images, photos, videos, samples, audio files, notes or other materials inputted into the Software by an Authorized User and the information resulting from the use of the Software.
+
 g. "**Documentation**" means manual, user guide, instructions for use, help release notes and any other documentation provided for use with the Software.
+
 h. "**Permitted Use**" means internal use in accordance with the Acceptance Use Policy and Documentation.
+
 j. "**Personal Data**" means any information owned or provided by or on behalf of Customer, in any form (including paper, electronic and other media), that Agilent Processes in connection with the performance of Agilent's rights and obligations under these Terms of Use that either directly or indirectly relates to an identified or identifiable natural person, such as Customer's employees, customers, subcontractors, partners or any other third party (including third parties' employees).
+
 k. "**Process**" or "**Processing**" any operation or set of operations which is performed on Personal Data or on sets of Personal Data, whether or not by automated means, such as collection, recording, organization, structuring, storage, adaptation or alteration, retrieval, consultation, use, dis-closure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction.
+
 l. "**Services**" means the CID Hub Software developed and owned by Agilent, made available through a URL in a hosted environment, together with any associated products and services. The Services are licensed, not sold. These Terms of Use grant the Customer limited rights to use the Software. The Services are provided to Customer's Authorized Users only.
+
 m. The "**SMA Contract**" means the Agilent Technologies Software Support and Maintenance Terms and Conditions for the CID Hub.
+
 n. "**Software**" means the software that Customer is granted access to via the Services.
+
 o. "**Third Party Components**" means any third-party software or database that is integrated with but not included in the Software. Third Party Components may be subject to a separate agreement.
 
 ---
@@ -288,7 +302,7 @@ The parties to this Agreement have agreed that all correspondence and related do
 
 ## 13. OPEN SOURCE AND OTHER THIRD PARTY SOFTWARE
 
-The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are available in the Documentation, the Third Party License Terms below, the accompanying comprehensive-license-disclosure.txt file, the installation directory, the user guide, help documentation, and/or the release notes for the Software together.
+The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are available at `https://hub.cid.agilent.com/third_party_licenses`.
 
 You agree to comply with all applicable terms. In addition to the warranty disclaimers contained in the terms associated with the Third Party Components, Agilent makes the following disclaimers regarding the Third Party Components on behalf of itself, and the copyright holders, contributors, and licensors of the Third Party Components:
 * To the maximum extent permitted by applicable law, the Third Party Components are provided by the copyright holders, contributors, licensors, and Agilent "**as is**".
