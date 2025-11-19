@@ -5,16 +5,18 @@ title: "Update Drivers & Add-ons"
 
 # Update Drivers & Add-ons
 
-As and when new drivers and add-ons are released, they are made available on the CID Hub. You can see which versions of drivers and add-ons are available on the CID Hub, by navigating to "Software Library" tab and then to the "Instrument Drivers" or the "Add-ons" sub section.
+New drivers or add-ons are are published to the CID Hub when they are released.  
+To view the available versions, go to the **Software Library** tab, then open the **Instrument Drivers** or **Add-ons** sections.
 
 ![CDS Drivers](./img/software-library-drivers.jpg)
 
+You can choose which driver or add-on versions to install on your CIDs from the **Software** tab on either your [server](/howto/define-software-template) or an individual [CID](/howto/configure-software-exceptions).
 
-You can select the specific driver and add-on versions you want installed on your CIDs by choosing on the [software tab](/howto/define-software-template) of you server or on the [software tab](/howto/configure-software-exceptions) of your CID.
+On the Software page, the **Update Available** label appears for any driver that has a newer version.  
+Select **Change** to view available versions and read their release notes.
 
-On the software page you will see the label "Update Available" against drivers for which newer version are available. You can click on change to see which newer versions are available and also view the release notes.
 ![CDS Drivers](./img/driver-update-available.jpg)
 
-After making your selection changes you can [apply the changes](apply-updates) to your CID/s.
+After updating your selections, you can [**apply the changes**](apply-updates) to your CID(s).
 
 ---
