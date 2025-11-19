@@ -100,6 +100,12 @@ This SMB share should be reachable from the device with at least read permission
 - Read access: copy cached CDS VM images from network share instead of downloading it from CID Hub.
 - Configurable during OpenLab Server registration or later via CID Hub.
 
+:::note[NOTES]
+1. After making changes to server settings, CIDs need to be rebooted for them to recognize the changes.
+2. The User Principal Name (UPN) format for userids is recommended (e.g., username@domain.com).
+:::
+
+
 ---
 
 ## Supported Topologies

@@ -51,10 +51,13 @@ Click **Register Server** to add a new OpenLab Server.
   - It is also possible to manually download CDS files from the CID Hub's Software Library and cache them in this share path.
 
 - **Network Share Username / Password**  
-  Required if anonymous access is not allowed. Depending on your setup, the username format can be:  
+  Required if anonymous access is not allowed. Depending on your share setup, the username format can be:  
+  - `user@domain.com`, or
   - `user`  
-  - `domain\user`  
-  - `user@domain.com`
+
+:::note
+The legacy `DOMAIN\username` format may cause authentication failures on Linux-based devices
+:::
 
 ---
 
