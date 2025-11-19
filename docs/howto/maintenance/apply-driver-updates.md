@@ -9,27 +9,12 @@ As and when new drivers and add-ons are released, they are made available on the
 
 ![CDS Drivers](./img/software-library-drivers.jpg)
 
+
 You can select the specific driver and add-on versions you want installed on your CIDs by choosing on the [software tab](/howto/define-software-template) of you server or on the [software tab](/howto/configure-software-exceptions) of your CID.
 
-The software tab shows "Update Available" 
+On the software page you will see the label "Update Available" against drivers for which newer version are available. You can click on change to see which newer versions are available and also view the release notes.
+![CDS Drivers](./img/driver-update-available.jpg)
 
-
-
-are selected and On the software page of your OpenLab Server or, for  on the 
-
----
-
-
-
-
-
+After making your selection changes you can [apply the changes](apply-updates) to your CID/s.
 
 ---
-
-![Under Construction](./../../img/under-construction.jpg)
-
-- udpating CDS
-- updating drivers and add-ons
-- installing OS updates
-- ready ready (idle ready), etc...
-
