@@ -58,7 +58,7 @@ Firewall must be configured to allow communications from the CIDs to the sites l
 
 Internet access is not required for CDS functionality. It is used only for administration, monitoring, and software configuration management.
 
-:::tip[Troubleshooting Tip]
+:::tip
 As the CID boots up, it connects to the CID Hub. If the connection attempt fails, it will make a series of beeping sounds every 30 seconds.
 - 1 Beep: No network connection (check cables/NIC connections).
 - 2 Beeps: Cannot contact CID Hub registration API (*.agilent.com). Possible firewall issue, incorrect NIC wiring, or internet outage.
@@ -100,7 +100,7 @@ This SMB share should be reachable from the device with at least read permission
 - Read access: copy cached CDS VM images from network share instead of downloading it from CID Hub.
 - Configurable during OpenLab Server registration or later via CID Hub.
 
-:::note[NOTES]
+:::info
 1. After making changes to server settings, CIDs need to be rebooted for them to recognize the changes.
 2. The User Principal Name (UPN) format for userids is recommended (e.g., username@domain.com).
 :::

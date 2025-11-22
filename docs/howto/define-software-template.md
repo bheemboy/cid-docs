@@ -20,8 +20,8 @@ Click **Change** to select a different version.
 ![Select CDS](./img/select-cds.jpg)
 
 When a new minor version is released, the system displays **Update Available** next to the **Change** button.  
-:::caution
-When upgrading, ensure that all Clients, AICs, and CIDs connected to the server are updated to the **same version** of CDS.
+:::info[Important]
+When upgrading CDS version, ensure that all Clients, AICs, and CIDs connected to the server are updated to the **same version** of CDS.
 :::
 
 ---
@@ -42,7 +42,7 @@ These are automatically preselected, but you can change them by clicking **Chang
 
 ![Select Drivers](./img/select-drivers.jpg)
 
-:::caution
+:::warning
 When you change the CDS version, all driver and add-on selections are reset to their defaults for that version.  
 If your setup requires specific driver or add-on versions, make sure to reselect them after changing the CDS version.
 :::

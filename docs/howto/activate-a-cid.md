@@ -8,7 +8,7 @@ title: Activate a CID
 ## Overview
 Each physical CID must have a corresponding record in the CID Hub before it can be used. These online records define the configuration that the CID would assume. These records are also required for accessing the CID and performing actions on them.
 
-:::note
+:::info
 Before activating a CID, you must "[register an OpenLab Server](register-a-server)" and "[define a software template](define-software-template)" for it.
 :::
 

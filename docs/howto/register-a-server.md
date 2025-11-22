@@ -55,7 +55,7 @@ Click **Register Server** to add a new OpenLab Server.
   - `user@domain.com`, or
   - `user`  
 
-:::note
+:::info
 The legacy `DOMAIN\username` format may cause authentication failures on Linux-based devices
 :::
 

@@ -36,7 +36,7 @@ OpenLab CDS AIC software.
   - 2.8.0.1515 Update 7 with Feature Pack 1
   - 2.8.0.1515 Update 8 with Feature Pack 2
 
-:::note
+:::info
 Updates for OpenLab CDS v2.8 are typically made available in the CID Hub within 2 weeks of general release. Currently, updates for OpenLab CDS v2.7 are made available on demand.
 ::: 
 
@@ -57,7 +57,7 @@ The following Agilent instrument drivers are available in the CID Hub. Users can
 - Agilent PAL3 Sampler
 - Agilent ELSD
 
-:::note
+:::info
 New versions of supported instrument drivers are typically available in the CID Hub within 4 weeks of general release on SubscribeNet.
 :::
 
