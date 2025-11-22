@@ -1,9 +1,10 @@
 ---
-sidebar_position: 4
-title: "Apply Updates on CIDs"
+sidebar_position: 5.4
+title: "Apply Software Updates"
+toc_max_heading_level: 2
 ---
 
-# Apply Updates on CIDs
+# Apply Software Updates
 
 ## Overview
 

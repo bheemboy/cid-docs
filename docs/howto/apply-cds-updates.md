@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 5.3
 title: "Update/Upgrade CDS"
 ---
 
@@ -23,6 +23,6 @@ On the Software page, the **Update Available** label appears for *updates* withi
 
 Select **Change** to view available versions, review release notes, and choose the version you want to install.
 
-![CDS Updates](../img/select-cds.jpg)
+![CDS Updates](img/select-cds.jpg)
 
 After selecting the version, [**apply the changes**](apply-updates) to your CID(s) to install the update or upgrade.
