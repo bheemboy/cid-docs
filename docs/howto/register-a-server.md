@@ -7,7 +7,7 @@ title: Register a Server
 
 ## Overview
 
-![Register Server](./img/register-server.jpg)
+![Register Server](./../img/register-server.jpg)
 
 You must store information about your OpenLab Server(s) in the CID Hub.  
 When CID devices start up, they use this stored information to automatically register with the OpenLab Server.
@@ -65,7 +65,7 @@ The legacy `DOMAIN\username` format may cause authentication failures on Linux-b
 
 To edit a registered OpenLab Server, click the 'pencil' icon under the 'Action' column.
 
-![Edit Server](./img/server-edit.jpg)
+![Edit Server](./../img/server-edit.jpg)
 
 If the server FQDN is updated, then all the CIDs connected to that server need to be re-registered. This can be done by clicking the **Register CID** button in the CID Administration page.
 
@@ -77,7 +77,7 @@ Updates to other information takes affect when the CIDs are restarted. CIDs can 
 
 OpenLab Server Registries can be removed by clicking on the 'trashcan' icon under the 'Action' column. 
 
-![Remove Server](./img/server-remove.jpg)
+![Remove Server](./../img/server-remove.jpg)
 
 :::info 
 Only unused Server Registries can be removed from the CID Hub. Servers cannot be removed when there are one or more CIDs associated with it.

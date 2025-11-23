@@ -17,7 +17,7 @@ When this template is updated for the server, CIDs connected to this server will
 By default, new servers are automaticallyu configured with the latest CDS version available.
 Click **Change** to select a different version.
 
-![Select CDS](./img/select-cds.jpg)
+![Select CDS](./../img/select-cds.jpg)
 
 When a new minor version is released, the system displays **Update Available** next to the **Change** button.  
 :::info[Important]
@@ -40,7 +40,7 @@ This ensures that all connected CIDs remain secure and up to date.
 The selected CDS version determines the minimum compatible versions of drivers and add-ons.  
 These are automatically preselected, but you can change them by clicking **Change** next to the relevant driver or add-on.
 
-![Select Drivers](./img/select-drivers.jpg)
+![Select Drivers](./../img/select-drivers.jpg)
 
 :::warning
 When you change the CDS version, all driver and add-on selections are reset to their defaults for that version.  

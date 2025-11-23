@@ -15,7 +15,7 @@ Windows and Oracle Linux security updates are published to the CID Hub shortly a
 - **Windows updates**: The corresponding KB article/s are shown in the **Software Library** section of the CID Hub.
 - **Linux updates**: Release notes for Linux updates show the contents included in each update.  
 
-![Linux update](img/linux-update.jpg)
+![Linux update](./../img/linux-update.jpg)
 
 ---
 ## Automatic Update Selection

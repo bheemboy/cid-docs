@@ -35,7 +35,7 @@ Use this method to efficiently update several CIDs at once from the main list.
 2. Select the checkboxes for CIDs that have **Status = Ready** and **Updates = Ready**.  
 3. Click the **Apply Updates** (gear icon) button in the toolbar.
 
-![OS Updates](img/apply-all-cids-list-page.jpg)
+![OS Updates](./../img/apply-all-cids-list-page.jpg)
 
 ### Status
 
