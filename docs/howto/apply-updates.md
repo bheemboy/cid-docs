@@ -63,7 +63,7 @@ Use this method to apply all available updates for one specific CID.
 2. Navigate to the **Software** tab.  
 3. Click **Apply All Updates** to install all pending updates for that CID.
 
-![Apply All on a CID](img/cid-software-page-apply-all.jpg)
+![Apply All on a CID](./../img/cid-software-page-apply-all.jpg)
 
 ---
 
@@ -75,4 +75,4 @@ Use this method to apply a single update, for example during troubleshooting or 
 2. Locate the update you want to install in the list. The progress bar shows its current status (for example, *Downloading* or *Ready to Install*).  
 3. Click **Install** for that specific update.
 
-![Install one on a CID](img/cid-software-page-apply-one.jpg)
+![Install one on a CID](./../img/cid-software-page-apply-one.jpg)
