@@ -51,25 +51,25 @@ The CID architecture consists of a Linux Host system running a Windows Virtual M
 
 | Action | Target | When to use |
 | :--- | :--- | :--- |
-| **Restart CID Agent** | CID Software Agent | Use when the agent is behaving erratically. <br/>*(Note: This restart does not fix cloud connectivity issues, as the device must be online to receive the command.)* |
-| **Restart CDS Desktop** | Windows VM | The OpenLab software is frozen, but the Linux system is responsive. |
-| **Reboot System** | Linux Host | The entire device is sluggish, unresponsive, or requires a clean boot. |
+| **Restart CID Agent** | CID Software Agent | - To sync OLSS page changes from CID Hub. <br/> - CID not receiving commands/instructions from CID Hub even if its connected to Hub. <br/> - Use when the agent is not healthy or behaving erratically. <br/>*(Note: This restart does not fix cloud connectivity issues, as the device must be online to receive the command.)* |
+| **Restart CDS Desktop** | Windows VM | - Any CDS functionality related issues which require a CDS desktop restart. <br/> - The OpenLab software is frozen, but the Linux system is responsive. |
+| **Reboot System** | Linux Host | - IP or DNS changes not propagated to CID <br/> - The entire device is sluggish, unresponsive, or requires a clean boot. |
 
 ### Level 2: Reset OpenLab CDS (VM Re-image)
-*Use this if the instrument software is corrupted.*
+*Use this to reset the Windows Virtual Machine.*
 
 Clicking **Reset OpenLab CDS** on the Administration tab will:
 1.  **Drop** the existing Windows Virtual Machine.
 2.  **Recreate** the VM from the original image.
 
 :::warning
-This action wipes the virtual machine state. Any local configurations inside the Windows environment not saved to the server will be lost.
+This action wipes the virtual machine state. Any local configurations inside the Windows environment such as ip configuration, any driver/add-on changes, etc. will also be lost and need to re-applied.
 :::
 
 ### Level 3: Factory Reset (Linux Environment Reset)
-*Use this for deep system recovery, to decommission a device, or to rename a CID.*
+*Use this to rename, to reset to default settings or to decommission a CID.*
 
-A Factory Reset wipes the underlying Linux operating system and triggers a fresh re-provisioning of the device.
+A Factory Reset resets the configuration in the underlying Linux operating system and triggers a fresh re-configuration of the device.
 
 **Prerequisites:**
 * **Close Connections:** Ensure all instrument connections are closed.
