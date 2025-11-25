@@ -4,6 +4,8 @@ sidebar_position: 7
 
 # Release Notes
 
+## CID Hub release 1.3 (Jan 2026)
+
 ## CID Hub release 1.2 (Sep 2025)
 
 - Added an add-on section in Software Library in CID Hub
