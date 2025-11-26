@@ -25,36 +25,25 @@ The devices list can be sorted by clicking on a column header to cycle through a
 
 ## Column Descriptions
 
-The devices list displays the following information for each registered device:
+- **Status**: Indicates the current state of the device's registration and connection:
+    -   `Linked`: A record for the CID has been created in the Hub using the unique PIN code from the device's QR code sticker, but the physical device has not yet connected.
+    -   `Active`: The physical CID has successfully booted, connected to the CID Hub, and recognized its corresponding record.
 
-### Status
-Indicates the current state of the device's registration and connection:
--   **Linked**: A record for the CID has been created in the Hub using the unique PIN code from the device's QR code sticker, but the physical device has not yet connected.
--   **Active**: The physical CID has successfully booted, connected to the CID Hub, and recognized its corresponding record.
+- **MAC**: The MAC address for the CID's **House/Corporate NIC**.
 
-### MAC
-The MAC address for the CID's **House/Corporate NIC**.
+- **Code**: The unique PIN code printed on the QR code sticker attached to the physical device. This code is used to link the hardware to its record in the CID Hub.
 
-### Code
-The unique PIN code printed on the QR code sticker attached to the physical device. This code is used to link the hardware to its record in the CID Hub.
+- **CID**: The name assigned to the CID. Clicking the name navigates to the CID's summary page.
 
-### CID
-The name assigned to the CID. Clicking the name navigates to the CID's summary page.
+- **Serial #**: The serial number of the physical hardware.
 
-### Serial #
-The serial number of the physical hardware.
+- **Model #**: The model of the IoT hardware (e.g., Lenovo i3).
 
-### Model #
-The model of the IoT hardware (e.g., Lenovo i3).
+- **Last Connected**: The timestamp of the last communication from the device to the CID Hub.
+    -   For a device that has not yet activated, this timestamp is updated every 5 minutes while the device is powered on and attempting to connect.
+    -   Once a device becomes **Active** by completing the activation process, this timestamp is no longer updated.
 
-### Last Connected
-The timestamp of the last communication from the device to the CID Hub.
--   For a device that has not yet activated, this timestamp is updated every 5 minutes while the device is powered on and attempting to connect.
--   Once a device becomes **Active** by completing the activation process, this timestamp is no longer updated.
+- **Created by / Date Created**: Shows which user created the device record and when.
 
-### Created by / Date Created
-Shows which user created the device record and when.
-
-### Modified by / Date Modified
-Shows which user last modified the device record and when.
+- **Modified by / Date Modified**: Shows which user last modified the device record and when.
 

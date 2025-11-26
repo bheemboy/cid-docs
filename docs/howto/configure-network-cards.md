@@ -60,19 +60,14 @@ Required fields:
 - **IP Address**  
 - **Subnet Mask**  
 - **Gateway Address**  
-- **DNS Address**  
+- **DNS Address**
 - **Reason/description for this change** (mandatory for auditing)
 
-### ⚠ Important Warning: Possible Loss of Access
-Incorrect manual configuration of the Corporate NIC can cause the CID to become unreachable.  
-Examples include:
-
-- Entering an incorrect gateway or subnet  
-- Using an IP address already in use  
-- Selecting a subnet that isolates the CID from the OpenLab Server  
-- Assigning DNS settings that prevent name resolution  
+:::warning[Possible Loss of Access]
+Incorrect manual configuration of the Corporate NIC can cause the CID to become unreachable. Examples include entering an incorrect gateway, using an IP address already in use, or assigning DNS settings that prevent name resolution.
 
 Although the system attempts to revert changes when connectivity fails, some errors cannot be automatically detected.
+:::
 
 **Instrument NIC changes do not carry this risk**, because they do not affect the corporate network route.
 
@@ -142,4 +137,4 @@ The automatic revert mechanism applies here as well, but failure is extremely lo
 - Prefer **DHCP** for the Corporate NIC unless static IPs are explicitly required.  
 - For the Instrument NIC, avoid setting a gateway and DNS unless instructed by an instrument vendor.  
 - Coordinate Corporate NIC changes with your IT department to prevent IP or routing conflicts.  
-- Ensure **Allow Changes** is enabled before making modifications.  
+- Ensure **Allow Changes** is enabled before making modifications.

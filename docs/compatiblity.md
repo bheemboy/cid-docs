@@ -8,13 +8,13 @@ sidebar_position: 6
 
 ## Operating System
 - Oracle Linux v8.7: Used as the bootup OS for CIDs.
-- Windows 10 IoT Ent LTSC: Used by virtual machine templates corresponding to CDS version 2.8 Update 07 with FP1 and prior releases.
-- Windows 11 IoT Ent LTSC: Used by virtual machine templates up to CDS version 2.8 Update 08 with FP2 and above.
+- Windows 10 IoT Ent LTSC: Used by virtual machine templates corresponding to CDS version 2.8 Update 08 with FP2 and prior releases.
+- Windows 11 IoT Ent LTSC: Used by virtual machine templates for CDS version 2.8 Update 09 and above.
 
 ---
 
 ## OpenLab Servers
-CIDs work with the following server software.
+CIDs work with the following server software:
 - OpenLab ECM (3.6 and above)
 - OpenLab Server / OpenLab ECM XT (2.7 and above)
 
@@ -43,7 +43,7 @@ Updates for OpenLab CDS v2.8 are typically made available in the CID Hub within 
 ---
 
 ## Instrument Drivers
-The following Agilent instrument drivers are available in the CID Hub. Users can choose specific versions to install and use on their CIDs.
+The following Agilent instrument drivers are available in the CID Hub. Users can choose specific versions to install and use on their CIDs:
 - Agilent 35900 A/D
 - Agilent Data Player
 - Agilent GC
@@ -57,15 +57,15 @@ The following Agilent instrument drivers are available in the CID Hub. Users can
 - Agilent PAL3 Sampler
 - Agilent ELSD
 
-:::info
-New versions of supported instrument drivers are typically available in the CID Hub within 4 weeks of general release on SubscribeNet.
+:::info[Note]
+New versions of supported instrument drivers are typically available in the CID Hub within four weeks of their general release on SubscribeNet.
 :::
 
 ---
 
-## Add-on Software (for AIC/CID)
+## Add-On Software (for AIC/CID)
 
-The following add-on software are currently available on the CID Hub.
+The following add-on software is currently available on the CID Hub:
 - Sample Scheduler
 - OpenLab Library Manager DA Add-on (pre-installed in CDS v2.8 FP2)
 
@@ -83,7 +83,7 @@ This list may not be complete. Contact the product manager for details on other 
 ---
 
 ## 3rd Party Drivers
-Non-Agilent and 3rd party instrument drivers are not currently available for CIDs.
+Non-Agilent and third-party instrument drivers are not currently available for CIDs.
 
 ---
 
