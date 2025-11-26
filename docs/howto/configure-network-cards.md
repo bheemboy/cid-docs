@@ -43,7 +43,7 @@ This protection reduces the risk of misconfiguration, but it **cannot prevent al
 
 ## Corporate NIC (Home NIC)
 
-The Corporate NIC is the primary communication path between the CID, the CID Hub, and the OpenLab Server. Because it affects all external connectivity, modifying it must be done carefully.
+The Corporate NIC is the primary communication path between the CID, the CID Hub, and the OpenLab Server. Because it affects all external connectivity, it must be modified carefully.
 
 ### Configuration Methods
 

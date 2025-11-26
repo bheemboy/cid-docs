@@ -3,13 +3,13 @@ sidebar_position: 3.5
 title: "View CIDs"
 ---
 
-# View the List of CIDs
+# View the list of CIDs
 
-The CIDs list page is the "Home" page of the CID Hub and is shown after you log in. You can also open it by clicking the "CIDs" tab in the top navigation bar.
+The CIDs list page is the default "Home" page of the CID Hub after you log in. You can also access it by clicking the "CIDs" tab in the top navigation bar.
 
 By default, the list is sorted by CID name in descending order. Click a column header to change the sort to ascending, descending, or unsorted.
 
-You can filter one or more columns by clicking the chevron to the right of a column header to open a filter popup.
+You can filter one or more columns by clicking the chevron to the right of a column header to open a filter pop-up.
 
 ![CIDs List Filter](./../img/cids-list-filter.jpg)
 
@@ -35,9 +35,9 @@ You can filter one or more columns by clicking the chevron to the right of a col
 
 - **Inherit**: Indicates whether the CID inherits its software settings from the [server template](/howto/define-software-template) or has individual [CID-level exceptions](/howto/configure-software-exceptions).
 
-- **Allow Updates**: Shows whether the CID is locked against changes. When updates are disallowed, no changes can be applied. After making required changes, you can lock a CID to prevent accidental modifications. Changes can only be applied after an administrator unlocks the CID.
+- **Allow Updates**: Shows whether the CID is locked against changes. When updates are disallowed, no changes can be applied. After making required changes, you can lock a CID to prevent accidental modifications. Changes can be applied only after an administrator unlocks the CID.
 
-- **Server Name (FQDN)**: The fully qualified domain name of the server the CID is connected to. In multi-server environments, you can filter CIDs by server to act on a specific set.
+- **Server Name (FQDN)**: The fully qualified domain name of the server the CID is connected to. In multi-server environments, you can filter CIDs by server to manage a specific set.
 
 - **Date Created**: The date and time when the CID record was originally added to the CID Hub.
 

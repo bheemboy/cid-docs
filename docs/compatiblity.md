@@ -7,9 +7,9 @@ sidebar_position: 6
 ---
 
 ## Operating System
-- Oracle Linux v8.7: Used as the bootup OS for CIDs.
-- Windows 10 IoT Ent LTSC: Used by virtual machine templates corresponding to CDS version 2.8 Update 08 with FP2 and prior releases.
-- Windows 11 IoT Ent LTSC: Used by virtual machine templates for CDS version 2.8 Update 09 and above.
+- Oracle Linux v8.7: Used as the boot OS for CIDs.
+- Windows 10 IoT Ent LTSC: Used for virtual machine templates corresponding to CDS version 2.8 Update 08 with FP2 and earlier.
+- Windows 11 IoT Ent LTSC: Used for virtual machine templates for CDS version 2.8 Update 09 and later.
 
 ---
 

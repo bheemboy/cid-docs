@@ -51,9 +51,9 @@ The CID architecture consists of a Linux Host system running a Windows Virtual M
 
 | Action | Target | When to use |
 | :--- | :--- | :--- |
-| **Restart CID Agent** | CID Software Agent | - To sync OLSS page changes from CID Hub. <br/> - CID not receiving commands/instructions from CID Hub even if its connected to Hub. <br/> - Use when the agent is not healthy or behaving erratically. <br/>*(Note: This restart does not fix cloud connectivity issues, as the device must be online to receive the command.)* |
-| **Restart CDS Desktop** | Windows VM | - Any CDS functionality related issues which require a CDS desktop restart. <br/> - The OpenLab software is frozen, but the Linux system is responsive. |
-| **Reboot System** | Linux Host | - IP or DNS changes not propagated to CID <br/> - The entire device is sluggish, unresponsive, or requires a clean boot. |
+| **Restart CID Agent** | CID Software Agent | - To synchronize OLSS page changes from the CID Hub. <br/> - When the CID is not receiving commands from the CID Hub despite being connected. <br/> - When the agent is unhealthy or behaving erratically. <br/>*(Note: A device must be online to receive the command, so this action cannot fix cloud connectivity issues.)* |
+| **Restart CDS Desktop** | Windows VM | - When CDS functionality issues require a desktop restart. <br/> - The OpenLab software is frozen, but the Linux system is responsive. |
+| **Reboot System** | Linux Host | - When IP or DNS changes have not propagated to the CID. <br/> - The entire device is sluggish, unresponsive, or requires a clean boot. |
 
 ### Level 2: Reset OpenLab CDS (VM Re-image)
 *Use this to reset the Windows Virtual Machine.*
@@ -67,7 +67,7 @@ This action wipes the virtual machine state. Any local configurations inside the
 :::
 
 ### Level 3: Factory Reset (Linux Environment Reset)
-*Use this to rename, to reset to default settings or to decommission a CID.*
+*Use this to rename a CID, reset it to default settings, or decommission it.*
 
 A Factory Reset resets the configuration in the underlying Linux operating system and triggers a fresh re-configuration of the device.
 

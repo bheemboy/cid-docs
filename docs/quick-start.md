@@ -28,7 +28,7 @@ Connect the CID to the instrument and your corporate network, then power it on. 
 
 ## 4. Register OpenLab Server
 Register your OpenLab Server information in the CID Hub.
-- Login to the CID Hub at https://hub.cid.agilent.com/.
+- Log in to the CID Hub at https://hub.cid.agilent.com/.
 - Click on “OpenLab Servers” in the navigation bar.
 - Click on “Register Server”.
 - Provide details about your server in the pop-up dialog and click **Save**.
@@ -48,7 +48,7 @@ See "[Define a Software Template](howto/define-software-template)" for details.
 
 
 :::info[Important]
-The CDS and Driver versions you select for CIDs must match what is installed on the CDS clients.
+The CDS and Driver versions you select for CIDs must match those installed on the CDS clients.
 :::
 
 ---
@@ -58,11 +58,11 @@ Add a record for your CID in the CID Hub.
 - Click on the “CIDs” tab in the top navigation bar.
 - Click on “Add”.
 - Provide information about your CID in the pop-up dialog and click **Save**.
-  - It is recommended to use 15 or fewer lowercase alphanumeric characters to name your CIDs (e.g., `cid-gc35`).
-  - The PIN code is the 8-character alphanumeric code on the QR code sticker on the CID. Enter it without the dash (`-`).
+  - We recommend using 15 or fewer lowercase alphanumeric characters to name your CIDs (e.g., `cid-gc35`).
+  - The PIN code is the 8-character alphanumeric code on the QR code sticker on the CID. Enter it without the hyphen (`-`).
 - Shortly after the CID is added, it will recognize that a linked record exists in the CID Hub, stop beeping, and begin the activation process.
-  - The “Recent Activity” section of the CID’s summary tab will show logs of events occurring on the CID.
--	When activation is complete, its status will show as “Ready” in the CIDs list.
+  - The “Recent Activity” section of the CID’s summary tab shows logs of events occurring on the CID.
+- When activation is complete, its status will be "Ready" in the CIDs list.
 
 ---
 

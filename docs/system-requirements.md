@@ -33,9 +33,9 @@ The 12-character MAC address for the “House” NIC and an 8-character PIN are 
 
 ## Internet Requirements
 
-CIDs connect to the internet during activation, for security updates, and for other maintenance activities. Internet access is also required for monitoring. Resources in the following domains are accessed by CIDs.
+CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. CIDs access resources in the following domains:
 
-1. CID Hub and associated services:
+1.  CID Hub and associated services:
     1. *.agilent.com (https)
     2. *.s3.amazonaws.com (https)
     3. *.s3.us-east-1.amazonaws.com (https)
@@ -60,7 +60,7 @@ Your firewall must be configured to allow outbound communication from CIDs to th
 Internet access is not required for CDS functionality. It is used only for administration, monitoring, and software configuration management.
 
 :::info[Troubleshooting Beep Codes]
-As the CID boots up, it attempts to connect to the CID Hub. If the connection fails, it will make a series of beeping sounds every 30 seconds.
+As the CID boots up, it attempts to connect to the CID Hub. If the connection fails, it will beep every 30 seconds.
 - **1 Beep**: No network connection (check cables/NIC connections).
 - **2 Beeps**: Cannot contact the CID Hub registration API (*.agilent.com). This could be a firewall issue, incorrect NIC wiring, or an internet outage.
 - **3 Beeps**: No linked CID record found in the CID Hub.
@@ -94,11 +94,11 @@ Certificates issued by internal, corporate, or self-signed certificate authoriti
 ---
 
 ## Optional Network Share
-CIDs optionally support using an SMB (Server Message Block) share accessible over the local LAN. In environments with a large number of CIDs, this helps optimize performance and reduce internet bandwidth requirements.
+CIDs optionally support using an SMB (Server Message Block) share accessible over the local LAN. In environments with many CIDs, this helps optimize performance and reduce internet bandwidth requirements.
 This SMB share must be reachable from the device with at least read permissions to fetch required files. When write access is also granted, the device can automatically copy downloaded files into the share, making them available for other devices and preventing repeated downloads.
 - CIDs can access a shared SMB folder over the LAN.
-- **Full access (recommended)**: Save (cache) downloaded CDS VM images for reuse by other CIDs.
-- **Read access**: Copy cached CDS VM images from the network share instead of downloading them from the CID Hub.
+- **Full access (recommended)**: Cache downloaded CDS VM images for other CIDs to use.
+- **Read access**: Use cached CDS VM images from the network share instead of downloading them from the CID Hub.
 - This is configurable during OpenLab Server registration or later via the CID Hub.
 
 :::info[Note]
@@ -112,14 +112,14 @@ This SMB share must be reachable from the device with at least read permissions 
 ## Supported Topologies
 
 ### 1. Direct Instrument Connection
-- The House NIC connects to the corporate LAN.
+- The Corporate NIC connects to the corporate LAN.
 - The Instrument NIC connects directly to the instrument.
-- Example: Instrument is set to a static IP of `192.168.1.2`, and the CID Instrument NIC is set to `192.168.1.3`.
+- Example: The instrument is set to a static IP of `192.168.1.2`, and the CID Instrument NIC is set to `192.168.1.3`.
 
 ![Direct instrument connection](./img/direct-instrument-connection.jpg)
 
 ### 2. Instrument LAN/VLAN Connection
-- The House NIC connects to the corporate LAN.
+- The Corporate NIC connects to the corporate LAN.
 - Instruments and the CID are placed on a dedicated LAN or VLAN.
 - Instrument IP assignment may be DHCP or static.
 
