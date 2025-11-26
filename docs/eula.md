@@ -2,6 +2,7 @@
 sidebar_position: 8
 title: "EULA"
 toc_max_heading_level: 2
+draft: true
 ---
 
 # CID Hub TERMS OF USE
@@ -327,7 +328,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 | Service Level Name | Calculation | Annual Minimum Service Level | Service Credit |
 | :--- | :--- | :--- | :--- |
-| **System Availability** | Annual System Availability equals Unscheduled Downtime divided by Scheduled Service Uptime for that year. Example: In a 365 day year Scheduled Service Uptime may be 525,600 minutes, if there were 1,000 minutes of Unscheduled Downtime then the System Availability for that year would be 99.809% (calculated as follows: $\frac{524,600}{525,600}=99.809\%$). | The service level for annual System Availability is **99%**. | If System Availability for a year is less than 99%, Customer shall be entitled to a Service Credit equivalent to the amount of unscheduled service downtime in excess of 0.1%, divided by the amount of Scheduled Service Uptime for that year, and multiplied by the portion of the total recurring fee for that year for the affected Services payable by Customer. The maximum cumulative credit for any and all applicable Service Credits in a year is **100%** of the portion of the total recurring fee for that year for the affected Services payable by Customer. |
+| **System Availability** | Annual System Availability equals Unscheduled Downtime divided by Scheduled Service Uptime for that year. Example: In a 365 day year Scheduled Service Uptime may be 525,600 minutes, if there were 1,000 minutes of Unscheduled Downtime then the System Availability for that year would be 99.809% (calculated as follows: $\frac{524,600}{525,600}=99.809\%$). | The service level for annual System Availability is **99%**. | If System Availability for a year is less than 99%, Customer shall be entitled to a Service Credit equivalent to the amount of unscheduled service downtime in excess of 0.1%, divided by the amount of Scheduled Service Uptime for that year, and multiplied by the portion of the total recurring fee for that year for the affected Services payable by Customer. The maximum cumulative credit for any and all applicable Service Credits in a year is **100%** of the portion of the total recurring fee for that year for the affected Services payable by Customer.|
 
 ---
 
