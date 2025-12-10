@@ -20,7 +20,7 @@ To do this, you must configure the specific CIDs to stop inheriting from the ser
 
 Once inheritance is disabled, you can manage that CID's drivers and add-ons independently.
 
-:::warning
+:::warning [caution]
 A CID that is not inheriting will **no longer receive software updates** from the server template.
 Any changes made to the server's software template **will be ignored** by this CID. You are now responsible for managing this CID's software individually. 
 :::
