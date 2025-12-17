@@ -71,13 +71,15 @@ As the CID boots up, it attempts to connect to the CID Hub. If the connection fa
 ---
 
 ## DHCP and DNS Requirements
--  On their first connection, CIDs use DHCP to acquire an IP address, DNS servers, and DNS search strings.
--  After activation, a static configuration can be applied.
--  Upon activation, the CID updates its hostname from the factory default (`agilent-cid`) to the name specified in the CID Hub, then reboots.
--  If your DHCP servers support dynamic DNS registration (RFC 2136) for Linux systems, they will register the CID hostname automatically.
--  Otherwise, the desired CID hostnames must be explicitly registered in DHCP and DNS using the device's MAC address (printed on the QR code label).
--  During activation, the CID validates name resolution using `nslookup 'hostname'`.
--  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
+-  **House Network**
+    -  When first connected, CID's **house** network uses DHCP to acquire an IP address, DNS servers, and DNS search strings. After activation, a static configuration can be applied to house network.
+    -  Upon activation, the CID updates its hostname from the factory default (`agilent-cid`) to the name specified in the CID Hub, then reboots.
+    -  If your DHCP servers support dynamic DNS registration (RFC 2136) for Linux systems, DHCP server will register the CID hostname automatically with the DNS server.
+    -  Otherwise, the desired CID hostnames must be explicitly registered in DHCP and DNS using the device's "house" MAC address (printed on the QR code label).
+    -  During activation, the CID validates name resolution using `nslookup 'hostname'`.
+    -  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
+-  **Instrument Network**
+    -  By default instrument network are also configured to use DHCP. After activation, a static configuration can be applied to the instrument network.
 
 ---
 
