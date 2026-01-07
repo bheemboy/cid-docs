@@ -42,14 +42,13 @@ CIDs require an internet connection for activation, security updates, monitoring
     4. *.s3.us-west-2.amazonaws.com (https)
     5. *.iot.us-east-1.amazonaws.com (https)
 2. Microsoft Windows Updates:
-    1. *.cloudfront.net (https)
-    2. *.azureedge.net (https)
+    1. *.microsoft.com (https)
+    2. *.cloudfront.net (https)
     3. *.oneget.org (https)
     4. *.trafficmanager.net (https)
     5. *.blob.core.windows.net (https)
     6. *.azurefd.net (https)
-    7. *.microsoft.com (https)
-    8. *.powershellgallery.com (https)
+    7. *.powershellgallery.com (https)
 3. NTP Server
     1. *.pool.ntp.org (ntp)
 
@@ -71,13 +70,15 @@ As the CID boots up, it attempts to connect to the CID Hub. If the connection fa
 ---
 
 ## DHCP and DNS Requirements
--  On their first connection, CIDs use DHCP to acquire an IP address, DNS servers, and DNS search strings.
--  After activation, a static configuration can be applied.
--  Upon activation, the CID updates its hostname from the factory default (`agilent-cid`) to the name specified in the CID Hub, then reboots.
--  If your DHCP servers support dynamic DNS registration (RFC 2136) for Linux systems, they will register the CID hostname automatically.
--  Otherwise, the desired CID hostnames must be explicitly registered in DHCP and DNS using the device's MAC address (printed on the QR code label).
--  During activation, the CID validates name resolution using `nslookup 'hostname'`.
--  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
+-  **House Network**
+    -  When first connected, CID's **house** network uses DHCP to acquire an IP address, DNS servers, and DNS search strings. After activation, a static configuration can be applied to house network.
+    -  Upon activation, the CID updates its hostname from the factory default (`agilent-cid`) to the name specified in the CID Hub, then reboots.
+    -  If your DHCP servers support dynamic DNS registration (RFC 2136) for Linux systems, DHCP server will register the CID hostname automatically with the DNS server.
+    -  Otherwise, the desired CID hostnames must be explicitly registered in DHCP and DNS using the device's "house" MAC address (printed on the QR code label).
+    -  During activation, the CID validates name resolution using `nslookup 'hostname'`.
+    -  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
+-  **Instrument Network**
+    -  By default instrument network are also configured to use DHCP. After activation, a static configuration can be applied to the instrument network.
 
 ---
 
