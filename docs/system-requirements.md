@@ -42,14 +42,13 @@ CIDs require an internet connection for activation, security updates, monitoring
     4. *.s3.us-west-2.amazonaws.com (https)
     5. *.iot.us-east-1.amazonaws.com (https)
 2. Microsoft Windows Updates:
-    1. *.cloudfront.net (https)
-    2. *.azureedge.net (https)
+    1. *.microsoft.com (https)
+    2. *.cloudfront.net (https)
     3. *.oneget.org (https)
     4. *.trafficmanager.net (https)
     5. *.blob.core.windows.net (https)
     6. *.azurefd.net (https)
-    7. *.microsoft.com (https)
-    8. *.powershellgallery.com (https)
+    7. *.powershellgallery.com (https)
 3. NTP Server
     1. *.pool.ntp.org (ntp)
 
