@@ -91,6 +91,12 @@ Certificates issued by internal, corporate, or self-signed certificate authoriti
 ### ECM XT / OpenLab Server
 Certificates issued by internal, corporate, or self-signed certificate authorities (CAs), as well as publicly trusted certificates, may be used for running ECM XT / OpenLab Servers over HTTPS in an environment with CIDs.
 
+Self-generated certificates (internal/corporate CAs and self-signed) must include the Authority Information Access (AIA) extension with URLs that provide access to the root and any intermediate certificates. Self-generated certificates without proper AIA configuration may not function correctly.
+
+:::info[Note]
+1. Enterprise PKI infrastructure such as Microsoft AD CS, commercial PKI management platforms (e.g., Venafi, DigiCert), or cloud-based solutions (e.g., AWS ACM Private CA) can be configured to include AIA extensions automatically.
+2. Publicly trusted certificates do not require AIA as their roots are pre-installed in CID’s trust stores.
+:::
 
 ---
 
