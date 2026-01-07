@@ -33,7 +33,7 @@ New CIDs are constantly checking for a corresponding CID record in the Hub with 
   When the CID activates, it confirms that its hostname can be resolved by the DNS server to the IP that DHCP has assigned to it. In rare situations when hostname resolution does not work, entering the fully qualified domain name (FQDN) causes the CID to resolve the FQDN with DNS instead.
   
 - **OpenLab Server**  
-  This informas the CIDs which server they must register with. This selection also provides the default software configuration template for the the CID.
+  This informs the CIDs which server they must register with. This selection also provides the default software configuration template for the the CID.
 
 - **PIN Code**  
   Pin code printed on the QR code attached to the physical device links it with the CID Hub record. The PIN code is used by the CID to legitimately identify itself with the CID Hub. Without it the activation cannot proceed. 

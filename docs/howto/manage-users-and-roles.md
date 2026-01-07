@@ -17,7 +17,7 @@ To manage users for your account:
 1.  Click the **Settings** (gear) icon in the top-right corner of the navigation bar.
 2.  From the dropdown menu, select **Users**.
 
-This will take you to the Users list page, where you can view, add, edit, or remove users.
+This will take you to the **Users** list page, where you can view, add, edit, or remove users.
 
 ![Users List](./../img/view-users.jpg)
 

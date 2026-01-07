@@ -28,28 +28,33 @@ Click **Register Server** to add a new OpenLab Server.
 ### Field Descriptions
 
 - **Server Name (FQDN)**
+
   Enter the fully qualified domain name of the OpenLab Server (e.g., `olserver.prod.example.com`).
   For best compatibility with DNS systems, use **lowercase letters** when entering the FQDN.
 
 - **Connect to**
+
   Specify how CIDs should connect to the server: by hostname or by FQDN.
-  :::warning[Important]
+  :::warning[Caution]
   You must use the same naming convention (hostname or FQDN) consistently across all CDS Clients, AICs, and CIDs to avoid functional issues.
   :::
 
 - **Username / Password**
+
   Credentials used by CIDs during initial registration with the OpenLab Shared Services (OLSS).
   Keep this information up to date and accessible because:
   - Certain drivers use these credentials during installation or upgrade to register with OLSS.
   - They are also required for administrative functions such as **Register CID** and **Reset OpenLab CDS**.
 
 - **CID Network Share** *(Optional but recommended)*
+
   A shared network path that allows CIDs to cache downloaded CDS versions, improving performance and reducing internet bandwidth usage.
   - When a CID downloads a CDS version (~25 GB) from the CID Hub, it caches a copy in a `downloads` subfolder on this share.
   - Other CIDs can then retrieve the cached files from the network share instead of downloading them again from the internet.
   - You can also manually download CDS files from the CID Hub's Software Library and place them in this share path.
 
-- **Network Share Username / Password**  
+- **Network Share Username / Password** 
+ 
   Required if anonymous access is not allowed. Depending on your share setup, the username format can be:  
   - `user@domain.com`, or
   - `user`

@@ -128,7 +128,7 @@ This SMB share must be reachable from the device with at least read permissions 
 ---
 
 ## Hardware Specification
-The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and above.
+The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and later.
 
 | Component                | CID IoT Hardware for Agilent OpenLab CDS  |
 |--------------------------|-------------------------------------------|
@@ -145,7 +145,7 @@ The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenov
 ---
 
 ## Software Compatibility
-The CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and above. The CID solution requires the deployment of the bundled IoT hardware as configured within the CID Hub. 
+The CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and later. The CID solution requires the deployment of the bundled IoT hardware as configured within the CID Hub. 
 Reference: [Software Compatibility](./compatiblity.md)
 
 **Delivery**: CID Hub only (manual installation not supported).
@@ -156,7 +156,7 @@ Reference: [Software Compatibility](./compatiblity.md)
 
 ## Licensing
 The CID Bundle for OpenLab CDS includes the following licensing:
-- OpenLab CDS Software (2.7 and above)
+- OpenLab CDS Software (2.7 and later)
 - Instrument connection licenses (2)
   - Agilent physical instrument (LC or GC), or
   - Agilent 3D UV/DAD instrument, or
