@@ -56,7 +56,7 @@ CIDs require an internet connection for activation, security updates, monitoring
 Your firewall must be configured to allow outbound communication from CIDs to the sites listed above.
 :::
 
-Internet access is not required for CDS functionality. It is used only for administration, monitoring, and software configuration management.
+OpenLab CDS does not require internet access for core function of acquiring and processing data from instruments.
 
 :::info[Troubleshooting Beep Codes]
 As the CID boots up, it attempts to connect to the CID Hub. If the connection fails, it will beep every 30 seconds.
@@ -78,7 +78,7 @@ As the CID boots up, it attempts to connect to the CID Hub. If the connection fa
     -  During activation, the CID validates name resolution using `nslookup 'hostname'`.
     -  CDS clients **must** resolve CID hostnames to their IP addresses for proper operation.
 -  **Instrument Network**
-    -  By default instrument network are also configured to use DHCP. After activation, a static configuration can be applied to the instrument network.
+    -  By default instrument networks are also configured to use DHCP. After activation, a static configuration can be applied to the instrument network.
 
 ---
 
@@ -101,7 +101,8 @@ Certificates issued by internal, corporate, or self-signed certificate authoriti
 
 ## Optional Network Share
 CIDs optionally support using an SMB (Server Message Block) share accessible over the local LAN. In environments with many CIDs, this helps optimize performance and reduce internet bandwidth requirements.
-This SMB share must be reachable from the device with at least read permissions to fetch required files. When write access is also granted, the device can automatically copy downloaded files into the share, making them available for other devices and preventing repeated downloads.
+This SMB share must be reachable from the device with at least read permissions to fetch required files. 
+If write access is granted as well, the device can automatically copy downloaded files into the share, making them available for other devices, thus helping to avoid repeated downloads.
 - CIDs can access a shared SMB folder over the LAN.
 - **Full access (recommended)**: Cache downloaded CDS VM images for other CIDs to use.
 - **Read access**: Use cached CDS VM images from the network share instead of downloading them from the CID Hub.

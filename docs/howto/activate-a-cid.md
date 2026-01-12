@@ -18,7 +18,7 @@ Before activating a CID, you must "[register an OpenLab Server](register-a-serve
 
 ![Add CID Button](./../img/add-cid-btn.jpg)
 
-Clicking on the Add button launches the add CID dialog.
+Clicking on the **Add** button launches the add CID dialog.
 
 New CIDs are constantly checking for a corresponding CID record in the Hub with a matching PIN code. As soon as the CID finds such a record, it starts activating itself using information specified in the record.
 
@@ -62,7 +62,7 @@ The CID activation process consists of the following steps:
 
 ### Recent Activities
 
-The activities that the CID performs are displayed in the "*Recent Activity*" section at the bottom of the Summary page of the CID. You can monitor this section to see what step the CID is performing. It also shows any issues that the CID encounters along the way.
+The CID activities are recorded and displayed in the "*Recent Activity*" section at the bottom of the **Summary** page of the CID. You can monitor this section to see what step the CID has performed. It also shows any issues that the CID encounters along the way.
 
 ![Recent Acitivity](./../img/recent-activity.jpg)
 
