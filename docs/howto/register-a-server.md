@@ -67,7 +67,7 @@ The legacy `DOMAIN\username` format may cause authentication failures on Linux-b
 
 ## How to Edit an Existing Server
 
-To edit a registered OpenLab Server, click the 'pencil' icon in the 'Action' column.
+To edit a registered OpenLab Server, click the 'pencil' icon in the 'Actions' column.
 
 ![Edit Server](./../img/server-edit.jpg)
 
@@ -79,7 +79,7 @@ Updates to other information take effect when the CIDs are restarted. CIDs can b
 
 ## How to Delete an Existing Server
 
-Server registries can be removed by clicking on the 'trashcan' icon in the 'Action' column.
+Server registries can be removed by clicking on the 'trashcan' icon in the 'Actions' column.
 
 ![Remove Server](./../img/server-remove.jpg)
 
