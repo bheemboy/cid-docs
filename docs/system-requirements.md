@@ -56,7 +56,7 @@ CIDs require an internet connection for activation, security updates, monitoring
 Your firewall must be configured to allow outbound communication from CIDs to the sites listed above.
 :::
 
-Internet access is not required for CDS functionality. It is used only for administration, monitoring, and software configuration management.
+OpenLab CDS does not require internet access for core function of acquiring and processing data from instruments.
 
 :::info[Troubleshooting Beep Codes]
 As the CID boots up, it attempts to connect to the CID Hub. If the connection fails, it will beep every 30 seconds.
