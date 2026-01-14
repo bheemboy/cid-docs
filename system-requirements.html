@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">System Requirements | CID Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://bheemboy.github.io/cid-docs/img/cid-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://bheemboy.github.io/cid-docs/img/cid-social-card.jpg"><meta data-rh="true" property="og:url" content="https://bheemboy.github.io/cid-docs/system-requirements"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="System Requirements | CID Documentation"><meta data-rh="true" name="description" content="Networking Requirements"><meta data-rh="true" property="og:description" content="Networking Requirements"><link data-rh="true" rel="icon" href="/cid-docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://bheemboy.github.io/cid-docs/system-requirements"><link data-rh="true" rel="alternate" href="https://bheemboy.github.io/cid-docs/system-requirements" hreflang="en"><link data-rh="true" rel="alternate" href="https://bheemboy.github.io/cid-docs/system-requirements" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"System Requirements","item":"https://bheemboy.github.io/cid-docs/system-requirements"}]}</script><link rel="stylesheet" href="/cid-docs/assets/css/styles.a798ae3d.css">
-<script src="/cid-docs/assets/js/runtime~main.1509c8c4.js" defer="defer"></script>
+<script src="/cid-docs/assets/js/runtime~main.12f55297.js" defer="defer"></script>
 <script src="/cid-docs/assets/js/main.4065ac35.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -24,7 +24,8 @@
 <table><thead><tr><th>Component</th><th>CID Networking</th></tr></thead><tbody><tr><td><strong>House NIC</strong></td><td><strong>Connects to corporate LAN and internet</strong></td></tr><tr><td>- <em>Internet outbound</em></td><td>See “<a href="#internet-requirements" class="">Internet Requirements</a>” section below.</td></tr><tr><td>- <em>Internet inbound</em></td><td>No inbound communication from the internet is required.</td></tr><tr><td>- <em>Intranet outbound</em></td><td>DHCP, DNS, HTTPS, ICMP (to OLSS, OpenLab Server), HTTP/HTTPS (to ECM 3.x), and SMB (optional).</td></tr><tr><td>- <em>Intranet inbound</em></td><td>ICMP, HTTPS (for various services like Acquisition Server and diagnostics), and SSH (for troubleshooting).</td></tr><tr><td><strong>Instrument NIC</strong></td><td><strong>Connects to Instrument</strong></td></tr><tr><td>- <em>Internet outbound</em></td><td>No outbound communication to the internet is required.</td></tr><tr><td>- <em>Internet inbound</em></td><td>No inbound communication from the internet is required.</td></tr><tr><td>- <em>Intranet outbound</em></td><td>Acquisition Server to Instrument communication (instrument-specific port requirements); isolated and unrestricted communication is recommended.</td></tr><tr><td>- <em>Intranet inbound</em></td><td>Instrument to Acquisition Server communication (instrument-specific port requirements); isolated and unrestricted communication is recommended.</td></tr></tbody></table>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="internet-requirements">Internet Requirements<a href="#internet-requirements" class="hash-link" aria-label="Direct link to Internet Requirements" title="Direct link to Internet Requirements" translate="no">​</a></h2>
-<p>CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. CIDs access resources in the following domains:</p>
+<p>CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must <strong>ensure that internet is connected</strong> at least once a month for applying security updates, time syncing, and other maintenance of the system.</p>
+<p>CIDs access resources in the following domains:</p>
 <ol>
 <li class="">CID Hub and associated services:<!-- -->
 <ol>
@@ -46,7 +47,7 @@
 <li class="">*.powershellgallery.com (https)</li>
 </ol>
 </li>
-<li class="">NTP Server<!-- -->
+<li class="">NTP Server (cluster of worldwide timeservers)<!-- -->
 <ol>
 <li class="">*.pool.ntp.org (ntp)</li>
 </ol>
