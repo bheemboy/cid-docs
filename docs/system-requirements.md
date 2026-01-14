@@ -33,7 +33,9 @@ The 12-character MAC address for the “House” NIC and an 8-character PIN are 
 
 ## Internet Requirements
 
-CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. CIDs access resources in the following domains:
+CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must **ensure that internet is connected** at least once a month for applying security updates, time syncing, and other maintenance of the system.
+
+CIDs access resources in the following domains:
 
 1.  CID Hub and associated services:
     1. *.agilent.com (https)
@@ -49,7 +51,7 @@ CIDs require an internet connection for activation, security updates, monitoring
     5. *.blob.core.windows.net (https)
     6. *.azurefd.net (https)
     7. *.powershellgallery.com (https)
-3. NTP Server
+3. NTP Server (cluster of worldwide timeservers)
     1. *.pool.ntp.org (ntp)
 
 :::info[Firewall Configuration]
