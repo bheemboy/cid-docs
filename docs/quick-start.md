@@ -35,6 +35,10 @@ Register your OpenLab Server information in the CID Hub.
 
 See "[Register an OpenLab Server](howto/register-a-server)" for details.
 
+:::info[Note]
+Before you can register a server or add a CID, you must have an active CID Hub account. Your organization's account and the first set of administrator users are created by Agilent personnel upon purchase. Look for an invitation email from **CID Hub** \<no-reply@hub.cid.agilent.com\> to begin.
+:::
+
 ---
 
 ## 5. Define Software Requirements

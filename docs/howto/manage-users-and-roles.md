@@ -7,7 +7,9 @@ title: "Manage Users and Roles"
 
 ## Overview
 
-CID Hub allows administrators to manage user access by inviting new users and assigning them specific roles. This ensures that users only have permissions appropriate for their responsibilities.
+CID Hub allows administrators to manage user access by inviting new users and assigning them specific roles. This ensures that users only have permissions appropriate for their responsibilities. 
+
+While customer administrators can invite additional users to the Hub, the initial organization account and primary customer administrators are established by Agilent administrators. If you are the first person in your organization to access the Hub, ensure your IT filters allow emails from **CID Hub** \<no-reply@hub.cid.agilent.com\>.
 
 ---
 
