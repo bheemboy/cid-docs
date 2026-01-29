@@ -33,7 +33,7 @@ The 12-character MAC address for the “House” NIC and an 8-character PIN are 
 
 ## Internet Requirements
 
-CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must **ensure that internet is connected** at least once a month for applying security updates, time syncing, and other maintenance of the system.
+CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must **ensure that internet remains connected** for applying security updates, time syncing, syncing SSL certificate authorities, and other maintenance of the system.
 
 CIDs access resources in the following domains:
 
@@ -68,6 +68,7 @@ As the CID boots up, it attempts to connect to the CID Hub. If the connection fa
 - **4 Beeps**: An activated CID cannot connect to the registration API on bootup. If CDS is already installed, the CID beeps four times and continues to boot; otherwise, it will beep four times every 30 seconds.
 :::
 
+See "[Verify CID Internet Connectivity](howto/connectivity-app)" for troubleshooting and testing connections from CIDs.
 
 ---
 

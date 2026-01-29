@@ -1,12 +1,12 @@
 ---
 sidebar_position: 15
 title: Connectivity App 
-sidebar_label: Verify CID's Internet Connectivity
+sidebar_label: Verify CID Internet Connectivity
 description: Guide for checking internet connectivity from a CID.
 toc_max_heading_level: 2
 ---
 
-# Connectivity Tester Overview
+# Verify CID Internet Connectivity
 
 The Connectivity Tester is a diagnostic application within the Linux Cockpit interface of the Connected Instrument Device (CID). It enables administrators to troubleshoot communication issues by testing the device's ability to reach essential external services required for activation, monitoring, and software management.
 
