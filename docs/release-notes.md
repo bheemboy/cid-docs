@@ -4,7 +4,28 @@ sidebar_position: 7
 
 # Release Notes
 
-## CID Hub release 1.3 (Jan 2026)
+## CID Hub release 1.3 (Apr 2026)
+
+- Integrated Online Help
+- Added support for GPC add-on v1.7
+  - GPC v1.7 package is available in the add-on section of the software library.
+  - Administators can install GPC v1.7 on compatible CDS versions (CDS 2.8 FP2 and earlier, excluding CDS 2.8 FP1).
+- Automatic selection of latest Operating System updates:
+  - Latest Windows Update and Linux OS are automatically selected by the system and CIDs download it automatically.
+  - Administators have to initiate the installation when CIDs are not in use.
+- Improved loading performance for the CIDs list page.
+- CDS, drivers, and add-ons are hosted in AWS Cloudfront. Improves worldwide download performance.
+- Defect fixes
+  - 1336029 - CDS Registration fails when renaming NICs failed
+  - 1336030 - Checksum validation did not fail on a failed download
+  - 1260513 - CID Registration fails when ECM 3.6 uses corporate (self-generated) SSL certificates
+  - 1344684 - CID network share doesn't work if sharepath and/or password contain special characters or spaces
+  - 1259034 - On re-adding a CID after a factory reset, it did not append CID's subdomain to DNS list
+  - 1311421 - Components Software installation failing on CID due to AWS IOT json document limit
+  - 1319277 - CID summary page incorrectly shows disconnected
+  - 1215600 - "CDS Uptime" in hub is not updated if CID is powercycled
+  - 1299011 - Download progress bar is not moving even though the driver is downloaded in CID software page
+
 
 ## CID Hub release 1.2 (Sep 2025)
 
