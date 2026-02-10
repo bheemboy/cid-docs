@@ -67,18 +67,14 @@ New versions of supported instrument drivers are typically available in the CID 
 
 The following add-on software is currently available on the CID Hub:
 - Sample Scheduler for OpenLab
-- OpenLab Library Manager for OpenLab CDS (DA Add-on, pre-installed in CDS v2.8 FP2)
+- OpenLab Library Manager for OpenLab CDS (DA Add-on, pre-installed in CDS v2.8 FP2 and above)
+- GPC DA Add-on (for CDS 2.8)
 
 
-<!-- The following are not yet available for CIDs
-- GPC DA Add-on
+The following add-ons are not yet available for CIDs
 - 2D-LC Software
 - ADF Export
 - Relay Service (Lab Advisor)
-
-:::info
-This list may not be complete. Contact the product manager for details on other add-on software.
-::: -->
 
 ---
 
@@ -90,20 +86,32 @@ Non-Agilent and third-party instrument drivers are not currently available for C
 ## NIST Library Search
 Automatic NIST library searches during unattended processing are not supported on the CID. However, interactive searches can be performed in OpenLab CDS Data Analysis by installing the NIST Library on client machines. When automatic searches during unattended processing are needed, an AIC is required.
 
-<!-- ## Network Assessment Tool (NAT)
+---
+
+## Network Assessment Tool (NAT)
 The current version of NAT cannot be executed on the CID. However, CIDs have a separate connectivity tester tool that should be used in case of connectivity issues. CIDs test and report connection and compatibility to server as they are activated.
+
+---
 
 ## Status Board for OpenLab
 It is possible to have "Status Board" for OpenLab alongside CIDs. However, CIDs cannot be monitored or managed using the Status Board. CID software management, maintenance, and administration are performed from the CID Hub (https://hub.cid.agilent.com/).
 
+---
+
 ## Advanced Sample Linking (ASL)
 ASL is a server-side application that does not require any installation on CIDs. ASL can be used in installations that have CIDs.
+
+---
 
 ## Lab Assist Hub
 Lab Assist Hub is a tablet-style user interface for InfinityLab LCs that allow users to control, visually inspect, and perform maintenance. It does not require any installation or configuration on the CIDs. Lab Assist Hub can be used in installations that have CIDs.
 
+---
+
 ## Online LC Monitoring
 This is currently not supported by CIDs.
 
+---
+
 ## Dissolution
-This is currently not supported by CIDs. -->
+This is currently not supported by CIDs.
