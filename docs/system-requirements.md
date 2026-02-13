@@ -12,7 +12,7 @@ Each CID is equipped with two network interfaces:
 - **House NIC** – Connects to the corporate LAN and provides access to the OpenLab Server and the internet.
 - **Instrument NIC** – Connects to analytical instruments, either directly or via a dedicated instrument LAN/VLAN.
 
-The 12-character MAC address for the “House” NIC and an 8-character PIN are printed on a QR code sticker attached to the device. The PIN is used to link the physical CID with its record in the CID Hub.
+The 12-character MAC address for the "House" NIC and the 8-character PIN are printed on a QR code sticker attached to the device. The PIN is used to link the physical CID with its record in the CID Hub.
 
 ![QR code sticker](./img/qr-code.jpg)
 
@@ -25,7 +25,7 @@ The 12-character MAC address for the “House” NIC and an 8-character PIN are 
 | - *Intranet inbound* | ICMP, HTTPS (for various services like Acquisition Server and diagnostics), and SSH (for troubleshooting). |
 | **Instrument NIC** | **Connects to Instrument** |
 | - *Internet outbound* | No outbound communication to the internet is required. |
-| - *Internet inbound* | No inbound communication from the internet is required.
+| - *Internet inbound* | No inbound communication from the internet is required. |
 | - *Intranet outbound* | Acquisition Server to Instrument communication (instrument-specific port requirements); isolated and unrestricted communication is recommended. |
 | - *Intranet inbound* | Instrument to Acquisition Server communication (instrument-specific port requirements); isolated and unrestricted communication is recommended. |
 
@@ -33,7 +33,7 @@ The 12-character MAC address for the “House” NIC and an 8-character PIN are 
 
 ## Internet Requirements
 
-CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must **ensure that internet remains connected** for applying security updates, time syncing, syncing SSL certificate authorities, and other maintenance of the system.
+CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must **ensure that the internet remains connected** for applying security updates, time syncing, syncing SSL certificate authorities, and other system maintenance.
 
 CIDs access resources in the following domains:
 
