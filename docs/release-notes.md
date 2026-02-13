@@ -9,10 +9,10 @@ sidebar_position: 7
 - Integrated Online Help
 - Added support for GPC add-on v1.7
   - GPC v1.7 package is available in the add-on section of the software library.
-  - Administators can install GPC v1.7 on compatible CDS versions (CDS 2.8 FP2 and earlier, excluding CDS 2.8 FP1).
+  - Administrators can install GPC v1.7 on compatible CDS versions (CDS 2.8 FP2 and earlier, excluding CDS 2.8 FP1).
 - Automatic selection of latest Operating System updates:
   - Latest Windows Update and Linux OS are automatically selected by the system and CIDs download it automatically.
-  - Administators have to initiate the installation when CIDs are not in use.
+  - Administrators have to initiate the installation when CIDs are not in use.
 - Improved loading performance for the CIDs list page.
 - CDS, drivers, and add-ons are hosted in AWS Cloudfront. Improves worldwide download performance.
 - Defect fixes

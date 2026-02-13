@@ -64,5 +64,5 @@ The CID activation process consists of the following steps:
 
 The CID activities are recorded and displayed in the "*Recent Activity*" section at the bottom of the **Summary** page of the CID. You can monitor this section to see what step the CID has performed. It also shows any issues that the CID encounters along the way.
 
-![Recent Acitivity](./../img/recent-activity.jpg)
+![Recent Activity](./../img/recent-activity.jpg)
 

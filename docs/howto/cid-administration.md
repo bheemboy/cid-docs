@@ -63,7 +63,7 @@ Clicking **Reset OpenLab CDS** on the Administration tab will:
 2.  **Recreate** the VM from the original image.
 
 :::warning
-This action wipes the virtual machine state. Any local configurations inside the Windows environment such as ip configuration, any driver/add-on changes, etc. will also be lost and need to re-applied.
+This action wipes the virtual machine state. Any local configurations inside the Windows environment such as IP configuration, any driver/add-on changes, etc. will also be lost and need to reapplied.
 :::
 
 ### Level 3: Factory Reset (Linux Environment Reset)
