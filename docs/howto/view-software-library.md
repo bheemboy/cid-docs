@@ -26,7 +26,7 @@ Use the menu on the left to browse through the different software categories. A 
 This section lists all available base versions, updates, and feature packs for OpenLab CDS.
 
 - **Release Notes**: Provides a link to the release notes for that specific version.
-- **Actions**: Clicking the download icon reveals the KVM image file (`.qcow2`) and its checksum (`.sha256`) which can be downloaded into a [CID Network Share](./register-a-server#cid-network-share-optional-but-recommended). This step is optional but highly recommended when managing numerous CIDs to conserve internet bandwidth. To pre-populate the share, download both files and place them into a `downloads` subfolder on the share.
+- **Actions**: Clicking the download icon reveals the KVM image file (`.qcow2`) and its checksum (`.sha256`) which can be downloaded into a [CID Network Share](./register-a-server#field-descriptions). This step is optional but highly recommended when managing numerous CIDs to conserve internet bandwidth. To pre-populate the share, download both files and place them into a `downloads` subfolder on the share.
 
 ![Software Library CDS List](../img/software-library-cds.jpg)
 

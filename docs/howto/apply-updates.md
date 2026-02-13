@@ -38,7 +38,7 @@ Use this method to efficiently update several CIDs at once from the main list.
 ![Apply Updates to Multiple CIDs](./../img/apply-all-cids-list-page.jpg)
 
 :::info Important
-Pay attention to the values for [**Status**](/howto/view-cids#status) and [**Updates**](/howto/view-cids#status) columns. Agilent recommends to only apply updates for CIDs for which both columns show `Ready`.
+Pay attention to the values for [**Status**](/howto/view-cids#column-descriptions) and [**Updates**](/howto/view-cids#column-descriptions) columns. Agilent recommends to only apply updates for CIDs for which both columns show `Ready`.
 :::
 
 ---
