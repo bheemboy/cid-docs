@@ -140,7 +140,7 @@ If write access is granted as well, the device can automatically copy downloaded
 ## Shared Responsibility for Data Security
 At Agilent, we view data security as a shared responsibility between the vendor and the customer. As your vendor, we ensure that our applications securely protect your data during transmission, processing, and storage within the application infrastructure. Overall security and compliance are the responsibility of the customer organization.  This includes securing and managing the environment where applications are used.
 
-As part of configuration and operational control, the customer organization is responsible for configuring, managing, and enforcing operating system policies, including but not limited to preventing web browsers from saving or caching user passwords. Additional responsibilities:  enforcing screen-lock timeouts, securing the system clock to ensure accurate time, timely OS patching, and anti-malware protection fall to the customer . These controls must be implemented and maintained by the customer organization through its own IT and security policies.
+As part of configuration and operational control, the customer organization is responsible for configuring, managing, and enforcing operating system policies, including but not limited to preventing web browsers from saving or caching user passwords. Additional responsibilities: enforcing screen-lock timeouts, securing the system clock to ensure accurate time, timely OS patching, and anti-malware protection fall to the customer. These controls must be implemented and maintained by the customer organization through its own IT and security policies.
 
 ---
 
