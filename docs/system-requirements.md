@@ -163,7 +163,7 @@ The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenov
 
 ## Software Compatibility
 The CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and later. The CID solution requires the deployment of the bundled IoT hardware as configured within the CID Hub. 
-Reference: [Software Compatibility](./compatiblity.md)
+Reference: [Software Compatibility](./compatibility.md)
 
 **Delivery**: CID Hub only (manual installation not supported).
 
