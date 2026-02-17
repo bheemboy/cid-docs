@@ -13,6 +13,7 @@ sidebar_position: 7
 - Automatic selection of latest Operating System updates:
   - Latest Windows Update and Linux OS are automatically selected by the system and CIDs download it automatically.
   - Administrators have to initiate the installation when CIDs are not in use.
+- OpenLab Server connectivity check enhanced to use TCP/HTTPS (port 443) check. PS: This requires new Linux Update to be installed.
 - Improved loading performance for the CIDs list page.
 - CDS, drivers, and add-ons are hosted in AWS Cloudfront. Improves worldwide download performance.
 - Defect fixes
