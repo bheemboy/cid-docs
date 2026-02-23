@@ -20,12 +20,13 @@ sidebar_position: 7
   - 1336029 - CDS Registration fails when renaming NICs failed
   - 1336030 - Checksum validation did not fail on a failed download
   - 1260513 - CID Registration fails when ECM 3.6 uses corporate (self-generated) SSL certificates
-  - 1344684 - CID network share doesn't work if sharepath and/or password contain special characters or spaces
+  - 1330232 - CID network share doesn't work if sharepath and/or password contain special characters or spaces
   - 1259034 - On re-adding a CID after a factory reset, it did not append CID's subdomain to DNS list
   - 1311421 - Components Software installation failing on CID due to AWS IOT json document limit
   - 1319277 - CID summary page incorrectly shows disconnected
   - 1215600 - "CDS Uptime" in hub is not updated if CID is powercycled
   - 1299011 - Download progress bar is not moving even though the driver is downloaded in CID software page
+  - 1362844 - User cannot remove network share and password info from the openlab server page
 
 
 ## CID Hub release 1.2 (Sep 2025)
@@ -76,4 +77,5 @@ sidebar_position: 7
   - 1057510 - Login to Linux cockpit fails using tunnel
   - 1084227 - Mobile Devices- CIDs name overlaps with three horizontal lines
   - 1138503 - CID status changing from "connected" to "not installed"
+
 
