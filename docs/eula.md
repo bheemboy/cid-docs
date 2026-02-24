@@ -2,7 +2,6 @@
 sidebar_position: 8
 title: "EULA"
 toc_max_heading_level: 2
-draft: true
 ---
 
 # CID Hub TERMS OF USE
@@ -230,9 +229,9 @@ Customer warrants that, in view of the use of the Customer Data and Personal Dat
 ## 10. LIMITATION OF LIABILITY
 
 * a. IN NO EVENT WILL AGILENT, ITS SUBCONTRACTORS OR SUPPLIERS BE LIABLE FOR ANY **DIRECT, SPECIAL, INCIDENTAL, INDIRECT, EXEMPLARY, PUNITIVE OR CONSEQUENTIAL DAMAGES** (INCLUDING, BUT NOT LIMITED TO LOST PROFITS OR LOST REVENUE, THE COST OF PROCURING SUBSTITUTE SERVICES REGARDLESS OF WHETHER SUCH CLAIMS ARE BASED ON CONTRACT, TORT, WARRANTY OR ANY OTHER LEGAL THEORY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. In addition, AGILENT WILL NOT BE LIABLE FOR DAMAGES OF ANY KIND ARISING FROM:
-    * (I) CUSTOMER'S INABILITY TO ACCESS OR USE THE SERVICES, IN CASE OF TERMINATION OR SUSPENSION OF THIS AGREEMENT OR CUSTOMER'S ACCESS TO THE SERVICES OR DISCONTINUATION OF THE SERVICES, or
-    * (II) ANY UNAUTHORIZED ACCESS, ALTERATION OF, DELETION, CORRUPTION OR LOSS OF CUSTOMER'S DATA, or
-    * (III) ANY FAILURE TO TRANSMIT OR RECEIVE ANY DATA.
+    * (I) CUSTOMER'S INABILITY TO ACCESS OR USE THE SERVICES, IN CASE OF TERMINATION OR SUSPENSION OF THIS AGREEMENT OR CUSTOMER'S ACCESS TO THE SERVICES OR DISCONTINUATION OF THE SERVICES, or
+    * (II) ANY UNAUTHORIZED ACCESS, ALTERATION OF, DELETION, CORRUPTION OR LOSS OF CUSTOMER'S DATA, or
+    * (III) ANY FAILURE TO TRANSMIT OR RECEIVE ANY DATA.
 
 * If Customer has not paid individually any amounts in the 12 months preceding your claim, Agilent's sole and exclusive liability shall be no more than **\$100**.
 
@@ -255,7 +254,7 @@ Customer will defend, indemnify and hold Agilent and Agilent's officers, directo
 The Agreement constitutes the **entire understanding and agreement** between Customer and Agilent. The Agreement replaces all prior negotiations and dealings between Customer and Agilent pertaining to the Software and Services. The Agreement cannot be modified unless by an instrument in writing signed by Customer and Agilent.
 
 Unless otherwise stated, in the event of a conflict precedence will be given to the respective parts in the following descending order:
-1. The **SMA Contract** 2. The **Terms of Use** 3. The **Acceptable Use Policy** ### b. Severability
+1. The **SMA Contract** 2. The **Terms of Use** 3. The **Acceptable Use Policy** b. Severability
 
 If any provision of the Agreement shall be held by a court of competent jurisdiction to be illegal, invalid or unenforceable, the remaining provisions shall remain in full force and effect.
 
@@ -303,7 +302,7 @@ The parties to this Agreement have agreed that all correspondence and related do
 
 ## 13. OPEN SOURCE AND OTHER THIRD PARTY SOFTWARE
 
-The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are listed below.
+The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are listed in the table below.
 
 You agree to comply with all applicable terms. In addition to the warranty disclaimers contained in the terms associated with the Third Party Components, Agilent makes the following disclaimers regarding the Third Party Components on behalf of itself, and the copyright holders, contributors, and licensors of the Third Party Components:
 * To the maximum extent permitted by applicable law, the Third Party Components are provided by the copyright holders, contributors, licensors, and Agilent "**as is**".
@@ -312,15 +311,122 @@ You agree to comply with all applicable terms. In addition to the warranty discl
 
 For source code conveyance requests, please contact `Legal@Agilent.com`.
 
-### Example open source software
-Copyright (c) 2007 James Newton-King
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
-
+| 3rd-party component/application (incl. version) | Reason | License |
+|---|---|---|
+| Oracle Linux 8.7 | Free version of Red Hat Enterprise Linux | [Oracle Linux Licensing Policy (GPLv2)](https://www.oracle.com/downloads/licenses/oracle-linux-license.html) |
+| chrony (Oracle Linux package) 4.2.1 | Clock synchronization | [GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) |
+| Cockpit (Oracle Linux package) 276.1 | Web based Linux console | [Cockpit license (LGPL 2.1)](https://github.com/cockpit-project/cockpit/blob/master/COPYING) |
+| Cockpit-machines (Oracle Linux package) 276.1 | Cockpit module for managing VMs | [Cockpit-machines license (LGPL 2.1)](https://github.com/cockpit-project/cockpit-machines/blob/main/LICENSE) |
+| Cockpit-podman (Oracle Linux package) 53.1 | Cockpit module for managing containers | [Cockpit-podman license (LGPL 2.1)](https://github.com/cockpit-project/cockpit-podman/blob/master/LICENSE) |
+| curl (Oracle Linux package) 7.68.0 | Command line utility to fetch web pages | [curl license (MIT-ish)](https://github.com/curl/curl/blob/master/COPYING) |
+| jq (Oracle Linux package) 1.6 | Command-line JSON processor | [jq license (MIT)](https://github.com/stedolan/jq/blob/master/COPYING) |
+| KVM/libvirt (Oracle Linux package) 8.0.0 | API for managing KVM | [libvirt license (GPL V2)](https://gitlab.com/libvirt/libvirt/-/blob/master/COPYING) |
+| bind-utils (Oracle Linux package) 32.9.11 | Utility for retrieving information from DNS nameservers | [bind-utils License (GPL)](https://github.com/tigeli/bind-utils/blob/master/contrib/zkt-1.1.3/LICENSE) |
+| KVM/virt-install (Oracle Linux package) 3.2.0 | Command line tool to create a VM | [virt-manager license (GPL V2)](https://github.com/virt-manager/virt-manager/blob/master/COPYING) |
+| localproxy 2.1.0 | Local proxy for the AWS secure tunneling service | [localproxy license (Apache 2.0)](https://github.com/aws-samples/aws-iot-securetunneling-localproxy/blob/master/LICENSE) |
+| Phoronix | Performance test tool | [Phoronix license (GPL v3)](https://github.com/phoronix-test-suite/phoronix-test-suite/blob/master/COPYING) |
+| pipenv latest | Python dependency manager | [pipenv license (MIT)](https://github.com/pypa/pipenv/blob/master/LICENSE) |
+| podman 4.2 | Lightweight OCI (Docker) container manager | [podman license (Apache 2.0)](https://github.com/containers/podman/blob/master/LICENSE) |
+| PowerShell 7.0.0 | Windows PowerShell utility | [PowerShell license (MIT)](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt) |
+| PSWindowsUpdate 2.2.0.2 | PowerShell utility for programmatic Windows updates | [MIT (from powershellgallery terms of use)](https://www.powershellgallery.com/policies/Terms) |
+| pyarmor 6.7.0 | Python obfuscation utility | [pyarmor license (commercial license)](https://github.com/dashingsoft/pyarmor/blob/master/LICENSE) |
+| python 3.11 | Programming language | [python license](https://docs.python.org/3/license.html#psf-license) |
+| nmap 7.92 | Check connectivity to internet/intranet endpoints on port 443 | [nmap license](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) |
+| cifs-utils 7.0 | Enables mounting and managing SMB/CIFS shares (network file systems) | [GNU V2](https://github.com/droboports/cifs-utils/blob/master/LICENSE) |
+| clamav 1.0.5 | Antivirus engine designed to detect trojans, viruses, malware, and other threats | [clamav license](https://github.com/bcgov/clamav/blob/master/LICENSE) |
+| beep 1.4.12 | Generating CID speaker beeps for connectivity scenarios | [GNU V2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) |
+| tini 0.19.0 | init process for containers | [tini license (MIT)](https://github.com/krallin/tini/blob/master/LICENSE) |
+| wget (Oracle Linux package) 1.19.5 | Command line utility to fetch web pages | [wget license (GPL V3)](https://gitlab.com/gnuwget/wget2/-/blob/master/COPYING) |
+| Oracle Linux 8.7 | Base image for container | [Oracle Linux Licensing Policy (GPLv2)](https://www.oracle.com/downloads/licenses/oracle-linux-license.html) |
+| AWS IoT SDK-Python 1.3.1 | Device side SDK for AWS IoT | [AWS SDK IoT-Python license (Apache 2.0)](https://github.com/aws/aws-iot-device-sdk-python/blob/master/LICENSE.txt) |
+| curl (Oracle Linux package) 7.68.0 | Command line utility to fetch web pages | [curl license (MIT-ish)](https://github.com/curl/curl/blob/master/COPYING) |
+| dictdiffer (python) 0.8.1 | Python module for dictionary handling | [dictdiffer license (MIT)](https://github.com/inveniosoftware/dictdiffer/blob/master/LICENSE) |
+| flatten-dict (python) 0.3.0 | Python module for flattening dictionaries | [flatten-dict license (MIT)](https://github.com/ianlini/flatten-dict/blob/master/LICENSE) |
+| getmac (python) 0.8.2 | Python module for getting mac address | [getmac license (MIT)](https://github.com/GhostofGoes/getmac/blob/master/LICENSE) |
+| localproxy 2.1.0 | Local proxy for the AWS secure tunneling service | [localproxy license (Apache 2.0)](https://github.com/aws-samples/aws-iot-securetunneling-localproxy/blob/master/LICENSE) |
+| nano (Oracle Linux package) 4.8 | Text editor | [nano license (GPL V3)](https://git.savannah.gnu.org/cgit/nano.git/tree/COPYING) |
+| nginx (Oracle Linux package) 1.18.0 | Reverse proxy | [nginx license (BSD 2-clause)](https://nginx.org/LICENSE) |
+| noVNC 1.2.0 | Browser based VNC client | [noVNC license (MPL 2.0 and others)](https://github.com/novnc/noVNC/blob/master/LICENSE.txt) |
+| pipenv latest | Python dependency manager | [pipenv license (MIT)](https://github.com/pypa/pipenv/blob/master/LICENSE) |
+| podman 4.3 | Lightweight OCI (Docker) container manager | [podman license (Apache 2.0)](https://github.com/containers/podman/blob/master/LICENSE) |
+| PowerShell 7.0.0 | Windows PowerShell utility | [PowerShell license (MIT)](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt) |
+| pyarmor 6.7.0 | Python obfuscation utility | [pyarmor license (commercial license)](https://github.com/dashingsoft/pyarmor/blob/master/LICENSE) |
+| python (Oracle Linux package) 3.11 | Programming language | [python license](https://docs.python.org/3/license.html#psf-license) |
+| python pip (Ubuntu package) 20.0.2 | Python package installer | [pip license (MIT)](https://github.com/pypa/pip/blob/main/LICENSE.txt) |
+| requests (python) 2.24.0 | Python http module | [requests license (Apache 2.0)](https://github.com/psf/requests/blob/master/LICENSE) |
+| ssh (from Ubuntu) 18.2p1 | Secure shell utility | [openssh license (BSD or more free)](https://github.com/openssh/openssh-portable/blob/master/LICENCE) |
+| websockify (from Ubuntu) 0.9.0 | Websocket tunnel service | [websockify license (LGPL 3.0)](https://github.com/novnc/websockify/blob/master/COPYING) |
+| wget (CentOS package) 1.19.5 | Command line utility to fetch web pages | [wget license (GPL V3)](https://gitlab.com/gnuwget/wget2/-/blob/master/COPYING) |
+| microdnf 3.8 | Lightweight C implementation of DNF, designed to be used for doing simple packaging actions | [GPL V2](https://github.com/rpm-software-management/microdnf?tab=GPL-2.0-1-ov-file) |
+| OpenSSH (included with Windows) 8.1.0 | Secure shell utility | [OpenSSH license](https://github.com/PowerShell/openssh-portable/blob/latestw_all/LICENCE) |
+| PowerShell 7.0.0 | Windows PowerShell utility | [PowerShell license (MIT)](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt) |
+| Agilent Web Framework 3 | Agilent Angular component library | |
+| Amazon-Cognito-Auth-JS 1.3.2 | JS SDK for logging into Cognito | [Amazon-Cognito-Auth-JS license (Apache 2.0)](https://github.com/amazon-archives/amazon-cognito-auth-js/blob/master/LICENSE) |
+| Angular 8.2.6 | Programming language | [Angular license (MIT)](https://angular.io/license) |
+| bootstrap 4.3.1 | JS, HTML, CSS framework | [bootstrap license (MIT)](https://github.com/twbs/bootstrap/blob/v4.0.0/LICENSE) |
+| core.js 2.5.4 | Standard JS library | [core.js license (MIT)](https://github.com/zloirock/core-js/blob/master/LICENSE) |
+| css-vars 2.2.0 | CSS mixin | [css-vars license (MIT)](https://github.com/malyw/css-vars/blob/master/LICENSE) |
+| jwt-decode 3.0.0 | JS library for decoding JSON Web Tokens | [jwt-decode license (MIT)](https://github.com/auth0/jwt-decode/blob/master/LICENSE) |
+| metismenujs 1.1.0 | JS menu plugin | [metismenujs license (MIT)](https://github.com/onokumus/metismenujs/blob/master/LICENSE) |
+| momentjs 2.26.0 | JS date/time formatter | [momentjs license (MIT)](https://github.com/moment/momentjs.com/blob/master/LICENSE) |
+| ng-bootstrap 5.1.1 | Bootstrap widgets for Angular | [ng-bootstrap license (MIT)](https://github.com/ng-bootstrap/ng-bootstrap/blob/master/LICENSE) |
+| ngx-json-viewer 2.4.0 | JSON formatter for Angular | [ngx-json-viewer license (MIT)](https://github.com/hivivo/ngx-json-viewer/blob/main/LICENSE) |
+| ngx-toastr 10.0.4 | Toast component for Angular | [ngx-toastr license (MIT)](https://github.com/scttcper/ngx-toastr/blob/master/LICENSE) |
+| ngx-translate 10.0.0 | Internationalization library for Angular | [ngx-translate license (MIT)](https://github.com/ngx-translate/core/blob/master/LICENSE) |
+| Okta Angular 2.2.0 | Okta Angular API | [Okta Angular license (Apache 2.0)](https://github.com/okta/okta-angular/blob/master/LICENSE) |
+| rxjs 6.2.2 | Reactive extensions | [rxjs license (Apache 2.0)](https://github.com/ReactiveX/rxjs/blob/master/LICENSE.txt) |
+| rxjs-compat 6.5.1 | Reactive extensions | [Apache 2.0](https://github.com/ReactiveX/rxjs/blob/6.5.1/compat/package.json) |
+| semver 7.3.5 | Semantic versioning library | [semver license (ISC)](https://github.com/npm/node-semver/blob/master/LICENSE) |
+| zone.js 0.9.1 | Implements Zones for Javascript | [zone.js license (MIT)](https://github.com/angular/zone.js/blob/master/LICENSE) |
+| alembic 1.11 | Database migration tool | [alembic license (MIT-ish)](https://github.com/alembic/alembic/blob/master/LICENSE.txt) |
+| AWS: API Gateway latest | API Gateway service | commercial |
+| AWS: CloudFront latest | AWS Content Delivery Service | commercial |
+| AWS: CloudWatch latest | AWS logging and performance monitoring service | commercial |
+| AWS: IoT latest | AWS IoT service | commercial |
+| AWS: Lambda latest | Serverless API service | commercial |
+| AWS: RDS latest | Managed database service | commercial |
+| AWS: RDS: PostgreSQL latest | Database | [PostgreSQL license](https://opensource.org/licenses/postgresql) |
+| AWS: S3 latest | AWS storage service | commercial |
+| Boto3 1.17.33 | AWS SDK for Python | [Boto license (Apache 2.0)](https://github.com/boto/boto3/blob/develop/LICENSE) |
+| Flask 1.1.2 | Python web application framework | [Flask license (MIT-like)](https://flask.palletsprojects.com/en/1.1.x/license/) |
+| Flask-CORS 3.09 | Flask extension for handling Cross Origin Resource Sharing | [Flask-CORS license (MIT)](https://github.com/corydolphin/flask-cors/blob/master/LICENSE) |
+| Jinja | Python templating language | [Jinja license (BSD 3-clause)](https://github.com/pallets/jinja/blob/master/LICENSE.rst) |
+| pipenv | Python dependency manager | [pipenv license (MIT)](https://github.com/pypa/pipenv/blob/master/LICENSE) |
+| python 3.11 | Programming language | [python license](https://docs.python.org/3/license.html#psf-license) |
+| Marshmallow (python) 3.11 | Serialization utility | [marshmallow license (MIT)](https://github.com/marshmallow-code/marshmallow/blob/dev/LICENSE) |
+| okta_jwt (python) 1.3.5 | Okta JWT Access Token verifier | [okta_jwt license (MIT)](https://github.com/adithyasampatoor/okta_jwt/blob/master/LICENSE) |
+| packaging (python) 20.9 | [Reusable core utilities for various Python Packaging interoperability specifications](https://packaging.python.org/specifications/) | [packaging license (Apache 2.0 or 2-clause BSD)](https://github.com/pypa/packaging/blob/main/LICENSE) |
+| pg8000 (python) 1.16.5 | Python interface to PostgreSQL | [pg8000 license (BSD 3-clause)](https://github.com/tlocke/pg8000/blob/master/LICENSE) |
+| pyjwt (python) 1.7.1 | JSON Web Token implementation in Python | [pyjwt license (MIT)](https://github.com/jpadilla/pyjwt/blob/master/LICENSE) |
+| requests (python) 2.24.0 | Python http module | [requests license (Apache 2.0)](https://github.com/psf/requests/blob/master/LICENSE) |
+| SQLAlchemy 1.3.19 | Python SQL Toolkit and Object Relational Mapper | [SQLAlchemy license (MIT)](https://www.sqlalchemy.org/download.html#license) |
+| Zappa 0.52.0 | Installation utility for serverless AWS Python apps | [zappa license (MIT)](https://github.com/Miserlou/Zappa/blob/master/LICENSE) |
+| Oracle Linux 8.7 | Free version of Red Hat Enterprise Linux | [Oracle Linux Licensing Policy (GPLv2)](https://www.oracle.com/downloads/licenses/oracle-linux-license.html) |
+| jq (Oracle Linux package) 1.5 | Command-line JSON processor | [jq license (MIT)](https://github.com/stedolan/jq/blob/master/COPYING) |
+| podman 2.0.5 | Lightweight OCI (Docker) container manager | [podman license (Apache 2.0)](https://github.com/containers/podman/blob/master/LICENSE) |
+| Oracle Linux 8.7 | Base image for container | [Oracle Linux Licensing Policy (GPLv2)](https://www.oracle.com/downloads/licenses/oracle-linux-license.html) |
+| AWS: API Gateway latest | API Gateway service | commercial |
+| AWS: Secure tunnel latest | AWS IoT secure tunnel service | commercial |
+| Boto3 1.17.33 | AWS SDK for Python | [Boto license (Apache 2.0)](https://github.com/boto/boto3/blob/develop/LICENSE) |
+| curl (Oracle Linux package) 7.68.0 | Command line utility to fetch web pages | [curl license (MIT-ish)](https://github.com/curl/curl/blob/master/COPYING) |
+| Flask 1.1.2 | Python web application framework | [Flask license (MIT-like)](https://flask.palletsprojects.com/en/1.1.x/license/) |
+| Gunicorn 20.0.4 | WSGI HTTP server | [Gunicorn license (MIT)](https://github.com/benoitc/gunicorn/blob/master/LICENSE) |
+| Jinja | Python templating language | [Jinja license (BSD 3-clause)](https://github.com/pallets/jinja/blob/master/LICENSE.rst) |
+| localproxy | Local proxy for the AWS secure tunneling service | [localproxy license (Apache 2.0)](https://github.com/aws-samples/aws-iot-securetunneling-localproxy/blob/master/LICENSE) |
+| nano (Oracle Linux package) 4.8 | Text editor | [nano license (GPL V3)](https://git.savannah.gnu.org/cgit/nano.git/tree/COPYING) |
+| nginx (Oracle Linux package) 1.18.0 | Reverse proxy | [nginx license (BSD 2-clause)](https://nginx.org/LICENSE) |
+| noVNC | Browser based VNC client | [noVNC license (MPL 2.0 and others)](https://github.com/novnc/noVNC/blob/master/LICENSE.txt) |
+| pipenv | Python dependency manager | [pipenv license (MIT)](https://github.com/pypa/pipenv/blob/master/LICENSE) |
+| python (From Oracle Linux) 3.11 | Programming language | [python license](https://docs.python.org/3/license.html#psf-license) |
+| python pip (from Oracle Linux) 20.0.2 | Python package installer | [pip license (MIT)](https://github.com/pypa/pip/blob/main/LICENSE.txt) |
+| ssh (from Oracle Linux) 18.2p1 | Secure shell utility | [openssh license (BSD or more free)](https://github.com/openssh/openssh-portable/blob/master/LICENCE) |
+| websockify (from Oracle Linux) 0.9.0 | Websocket tunnel service | [websockify license (LGPL 3.0)](https://github.com/novnc/websockify/blob/master/COPYING) |
+| PostgreSQL 16.0 | Open source object-relational database system | [PostgreSQL MIT license](https://www.postgresql.org/about/licence/) |
+| Alpine Linux | Docker image for [Alpine Linux](https://alpinelinux.org/) | [MIT license](https://github.com/alpinelinux/docker-alpine/blob/master/LICENSE) |
+| python 3.11 | Programming language | [python license](https://docs.python.org/3/license.html#psf-license) |
+| python pip (from Oracle Linux) 20.0.2 | Python package installer | [pip license (MIT)](https://github.com/pypa/pip/blob/main/LICENSE.txt) |
+| ssh (from Oracle Linux) 18.2p1 | Secure shell utility | [openssh license (BSD or more free)](https://github.com/openssh/openssh-portable/blob/master/LICENCE) |
 
 ---
 
