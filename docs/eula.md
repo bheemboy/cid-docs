@@ -4,13 +4,13 @@ title: "EULA"
 toc_max_heading_level: 2
 ---
 
-# CID Hub TERMS OF USE
+# CID Hub Terms of Use
 
 These CID Hub Terms of Use ("**Terms of Use**") and the Agilent Technologies Software Support and Maintenance Terms and Conditions ("**SMA Contract**") are a legal binding agreement (together the "**Agreement**") between **Customer** and the Agilent entity ("**Agilent**") issuing access to the **Connected Instrument Device Hub** ("**CID Hub**"). These Terms of Use shall supersede any other provisions, terms and conditions set forth by Customer, and the rights of the parties shall therefore be governed exclusively by the provisions, terms and conditions set forth herein.
 
 ---
 
-## 1. DEFINITIONS
+## 1. Definitions {#definitions}
 
 a. "**Acceptable Use Policy**" refers to and means the Acceptable Use Policy attached as Exhibit A to these Terms of Use.
 
@@ -43,13 +43,13 @@ o. "**Third Party Components**" means any third-party software or database that 
 
 ---
 
-## 2. SERVICES
+## 2. Services {#services}
 
-### a. Access to and use of the Software
+### a. Access to and use of the Software {#software-access-use}
 
 Subject to the terms and conditions of the Agreement, Agilent grants Customer a non-exclusive and non-transferable license to access and use the Software and Documentation within Customer's Permitted Use.
 
-### b. Authorized Users
+### b. Authorized Users {#authorized-users}
 
 Customer may only allow Authorized Users to access and use the Software and Documentation. An Authorized User may not share its right to use with other users. Customer will not make available, directly or indirectly, by any technical means, the Software or the Documentation accessible to other users than the Authorized Users. The actual number of Authorized Users may never exceed the number of Authorized Users authorized by Agilent. Customer shall ensure that all Authorized Users are made aware of and agree to comply with the terms of this Agreement. Customer is solely responsible for Customer Content and the use of the Services by the Authorized Users.
 
@@ -62,7 +62,7 @@ Customer shall not (and shall not permit Authorized Users to):
 * (a) sell, rent, lease, lend, sublicense, distribute, or otherwise transfer or provide access to the Services to any person, firm, or entity except as expressly authorized herein, access the Services to build a competitive service or product, or copy any feature, function or graphic for competitive purposes;
 * (b) modify, adapt, alter or create derivative works from the Services or to merge the Services or any subpart thereof (including proprietary markings) with other services or software, or remove or modify any proprietary markings or restrictive legends in the Services.
 
-### c. Availability and Interruption
+### c. Availability and Interruption {#availability-interruption}
 
 The following factors may affect the availability of the Software:
 * (i) the suspension or termination of the Agreement;
@@ -70,15 +70,15 @@ The following factors may affect the availability of the Software:
 * (iii) any actions or inactions of Customer, or any other third party;
 * (iv) any problems with the Internet, Customer's infrastructure, Customer's equipment, Customer's software or other technology and/or third party's infrastructure, equipment or software (other than third party's equipment within Agilent's direct control).
 
-### d. Location, Storage and Backup of Data
+### d. Location, Storage and Backup of Data {#data-storage-backup}
 
 The Software will operate through the Internet in an application service provider (ASP) mode. Every CID Hub device uses APIs to access a shared AWS database. Customers are not allowed to connect to the database. The database is only accessible from within the cloud environment's private network, and it is not publicly accessible from the internet. The database uses the available automatic backup option of AWS to store encrypted backups.
 
-### e. Support and Maintenance
+### e. Support and Maintenance {#support-maintenance}
 
 Throughout the term, Agilent shall provide the Customer with access updates and software fixes that are developed and generally incorporated into the standard release of the Service available to its customers against no charge. Agilent retains sole discretion in defining what functionality constitutes an improvement versus an upgrade constituting new module or version (offered at additional cost).
 
-### f. Scheduled Maintenance
+### f. Scheduled Maintenance {#scheduled-maintenance}
 
 **Scheduled Maintenance** typically occurs during the periods of low anticipated system usage, currently between 12:00am and 8:00am Eastern U.S. Time. During Scheduled Maintenance, certain components of the CID Hub may be offline, or may be operating in less redundant modes, or may be operating at reduced capacity levels, while maintenance is performed. Agilent will use commercially reasonable efforts to notify Customer via website postings of Scheduled Maintenance at least **24 hours** in advance.
 
@@ -90,13 +90,13 @@ Agilent may release updated versions of CID Hub multiple times per year, with ea
 
 This category allows customers to bring potential additions to the functionality of the CID Hub to Agilent's attention. The composition and timing of the CID Hub feature roadmap remains at all times the sole responsibility of Agilent, and no guarantee is given that suggested new features will be included in the product.
 
-### i. System Availability
+### i. System Availability {#system-availability}
 
-Agilent shall use commercially reasonable efforts to provide at least **99% System Availability** in any given year (with unavailability excluding those periods in which Agilent is performing Scheduled Maintenance, or in which there is a Service Credit Exclusion (as defined in Service Credit Exclusions)).
+Agilent shall use commercially reasonable efforts to provide at least **99% System Availability** in any given year (with unavailability excluding those periods in which Agilent is performing Scheduled Maintenance, or in which there is a Service Credit Exclusion (as defined in [Service Credit Exclusions](#service-credit-exclusions))).
 
-### j. Service Credits
+### j. Service Credits {#service-credits-subsection}
 
-In the event that Agilent does not meet the System Availability Customer shall be entitled to service credits, in accordance with Table 1 at the end of these Terms of Use. The Service Credits will be applied as a deduction to the Customer from Agilent on the next payment due. Service Credits may not be transferred or applied to any other Agilent account. Customer's sole and exclusive remedy for any unavailability or nonperformance of Services is a Service Credit (if eligible). The maximum cumulative amount for all applicable Service Credits in a year is **100%** of the portion of that year's total contract fee for the affected Services paid by the Customer.
+In the event that Agilent does not meet the System Availability Customer shall be entitled to service credits, in accordance with [Service Credits](#service-credits) table at the end of these Terms of Use. The Service Credits will be applied as a deduction to the Customer from Agilent on the next payment due. Service Credits may not be transferred or applied to any other Agilent account. Customer's sole and exclusive remedy for any unavailability or nonperformance of Services is a Service Credit (if eligible). The maximum cumulative amount for all applicable Service Credits in a year is **100%** of the portion of that year's total contract fee for the affected Services paid by the Customer.
 
 ### k. System Availability Monitoring
 
@@ -106,7 +106,7 @@ System Availability is validated at least every **5 minutes**. If the system is 
 
 Agilent shall use commercially reasonable efforts to monitor System Availability to determine, on an annual basis, if Customer is entitled to Service Credits. If Customer believes that it is entitled to Service Credits, Customer may submit a credit request by sending an e-mail to Agilent. If Agilent determines that Customer is entitled to Service Credits, then Agilent will issue Service Credits to Customer on the next payment due.
 
-### m. Service Credit Exclusions
+### m. Service Credit Exclusions {#service-credit-exclusions}
 
 The System Availability service level does not apply to, and no Service Credits are available to Customer as a result of any unavailability, suspension, or termination of a Service (each, a **Service Credit Exclusion**) caused by:
 * (i) factors outside Agilent's reasonable control, including any Force Majeure event,
@@ -117,9 +117,9 @@ The System Availability service level does not apply to, and no Service Credits 
 
 ---
 
-## 3. CUSTOMER OBLIGATIONS
+## 3. Customer Obligations {#customer-obligations}
 
-### a. Use
+### a. Use {#customer-use}
 
 Except as otherwise expressly provided for in the Agreement, Customer agrees to use the Services in accordance with the **Acceptable Use Policy** found herein Exhibit A to these Terms of Use.
 
@@ -129,7 +129,7 @@ Customer will use Software in accordance with its **intended use**. Customer is 
 
 ---
 
-## 4. DISCLAIMER & WARRANTY
+## 4. Disclaimer & Warranty {#disclaimer-warranty}
 
 To the maximum extent permitted by applicable law:
 * i. the Services and the Software are provided "**as-is**".
@@ -141,7 +141,7 @@ To the maximum extent permitted by applicable law:
 
 ---
 
-## 5. CONFIDENTIALITY
+## 5. Confidentiality {#confidentiality}
 
 Each party agrees to keep confidential the **Confidential Information** received from the other party and to protect the confidentiality thereof in the same manner as it would protect the confidentiality of its own Confidential Information. Each party shall exercise at least a **reasonable degree of care** in the protection of Confidential Information.
 
@@ -154,29 +154,29 @@ Information shall cease to qualify as Confidential Information which is:
 
 ---
 
-## 6. FEES AND PAYMENT
+## 6. Fees and Payment {#fees-payment}
 
 Prices exclude any applicable sales, value added or similar tax payable by Customer. Payment terms are per the quotation or order acknowledgement and are subject to change if Customer's financial condition or payment records so warrants. Agilent may stop performance if Customer fails to pay any sum due, or fails to perform under this or any other Agilent agreement if, after **ten (10) days written notice**, the failure has not been cured.
 
 ---
 
-## 7. INTELLECTUAL PROPERTY RIGHTS
+## 7. Intellectual Property Rights {#intellectual-property}
 
-### a. Ownership
+### a. Ownership {#ip-ownership}
 
 Subject to the limited rights expressly granted herein, all right, title and interest in and to the Services and Software, including all rights in and to patents, copyrights, trademarks, and all other **intellectual property rights** in the Services and Software will remain with Agilent or its third party suppliers. No rights are granted to Customer hereunder other than as expressly set forth herein.
 
-### b. Feedback
+### b. Feedback {#feedback}
 
 Customer acknowledges and agrees that Agilent will own all right, title and interest in and to any suggestions, recommendations or feedback ("**Feedback**") provided by Customer to incorporate into or improve the Services. Agilent will be entitled to use the Feedback without restriction or compensation to Customer. Customer hereby irrevocably assigns to Agilent all right, title, and interest in and to the Feedback.
 
-### c. Third Party Data
+### c. Third Party Data {#third-party-data}
 
 To the extent that Customer uploads third party data from external sources such as public or private databases, Customer warrants that it has all appropriate rights and licenses from such external sources to access, copy, up-load, and use such data.
 
 ---
 
-## 8. TERMINATION
+## 8. Termination {#termination}
 
 ### a. Term
 
@@ -186,47 +186,47 @@ The term of the Agreement is as specified in the **SMA Contract**.
 
 Upon termination Customer will no longer have access to the Services.
 
-### c. Data Retention
+### c. Data Retention {#data-retention}
 
-During the **thirty (30) days** following termination or the expiration of the Agreement, Agilent will maintain Customer's Data as described above. After the thirty (30) day period, Agilent will have no obligation to retain Customer's Data. Agilent may retain copies of the data in accordance with its legal and regulatory obligations.
+During the **thirty (30) days** following termination or the expiration of the Agreement, Agilent will maintain Customer's Data [as described above](#data-storage-backup). After the thirty (30) day period, Agilent will have no obligation to retain Customer's Data. Agilent may retain copies of the data in accordance with its legal and regulatory obligations.
 
-### d. Suspension of Service
+### d. Suspension of Service {#suspension-of-service}
 
 Agilent may monitor the Services for a violation of these Terms of Use, applicable law and third party rights and may, in its sole discretion, **suspend access** to the Services for the duration of any such violation and remove applicable Customer Data. Customer agrees that Agilent will not be liable to Customer or any Authorized User if Agilent exercises its suspension rights as permitted by this Section. Agilent shall use reasonable efforts to re-establish the Services after the issue triggering the suspension has been resolved.
 
 ---
 
-## 9. OWNERSHIP, USE, AND PROCESSING OF DATA INCLUDING PERSONAL DATA
+## 9. Ownership, Use, and Processing of Data Including Personal Data {#ownership-use-processing-data}
 
-### a. Limited License to Customer Data
+### a. Limited License to Customer Data {#customer-data-license}
 
 As between Customer and Agilent, and subject to the limited rights granted by Customer herein, Customer owns all right, title and interest in and to all **Customer's Data**. Customer grants to Agilent during the term of this Agreement a non-exclusive, royalty-free, fully-paid, transferable license to host, cache, record, copy, transmit, store and display Customer's Data in order to provide and improve the Services and any other products and services provided by Agilent and respond to technical problems, comply with the law or an order of a government or regulatory body or at Customers' request.
 
-### b. Aggregated Data
+### b. Aggregated Data {#aggregated-data}
 
 Agilent owns the **Aggregated Data** derived from the operations of the Services, including, without limitation, the number of records in the Services, the number and types of transactions, configurations, and reports processed in the Services, and the performance results for the Services. Nothing herein shall be construed as prohibiting Agilent from utilizing the Aggregated Data, provided that such use will not reveal the identity, whether directly or indirectly, of Customer or any Authorized User.
 
-### c. Personal Data
+### c. Personal Data {#personal-data}
 
 Customer acknowledges and agrees to each of the following:
 * i. Agilent may **Process** non-sensitive Personal Data such as contact details relating to Customer and its employees, agents, and contractors to enable Customer to order products or services, make requests, register for customized communications programs and enhance Customer's experience on Agilent's websites in accordance with Agilent's privacy policy at `https://www.agilent.com/home/privacy-policy`. Customer shall ensure that Agilent's privacy policy is provided or made available to its employees, agents, and subcontractors.
 * ii. In the event that any Customer Data input in the Software contains Personal Data, Agilent shall Process such Data on behalf of Customer, pursuant to Customer utilizing the Software and the Services. Agilent will Process Customer Personal Data in accordance with the terms of the **Standard Terms for Personal Data Processing** attached hereto as Schedule 1, which includes, where applicable, the EU Standard Contractual Clauses (controller to non-EU processor per Decision 2010/87/EU).
 * iii. At Customer's request, the parties shall negotiate in good faith and execute additional appropriate **data processing agreements** required under applicable law.
 
-### d. Statistical Information
+### d. Statistical Information {#statistical-information}
 
 Agilent may anonymously compile statistical information related to the performance of the Software and/or Services for purposes of improving the Software and/or the Services, provided that such information does not identify **Customer Data** or include **Personal Data**.
 
-### e. Customer Warranties on Data
+### e. Customer Warranties on Data {#customer-warranties-data}
 
-Customer warrants that, in view of the use of the Customer Data and Personal Data referred to in this Section 9:
+Customer warrants that, in view of the use of the Customer Data and Personal Data referred to in [Section 9](#ownership-use-processing-data):
 * i. Customer is legally entitled to transfer all Customer Data and Personal Data to Agilent, and
 * ii. any and all transfers and processing of Customer Data and Personal Data comply fully with all laws, statutory rules and codes of practice, to which Customer is subject; and
 * iii. Customer has obtained all appropriate permits, certifications and consents (including but not limited to, from the relevant data subjects/patients, institutional review board (IRB) legal and ethical approval, for submitting Customer Data, whether submitted by Customer through the automated submission features in the Software, or submitted at the request of Customer.
 
 ---
 
-## 10. LIMITATION OF LIABILITY
+## 10. Limitation of Liability {#limitation-of-liability}
 
 * a. IN NO EVENT WILL AGILENT, ITS SUBCONTRACTORS OR SUPPLIERS BE LIABLE FOR ANY **DIRECT, SPECIAL, INCIDENTAL, INDIRECT, EXEMPLARY, PUNITIVE OR CONSEQUENTIAL DAMAGES** (INCLUDING, BUT NOT LIMITED TO LOST PROFITS OR LOST REVENUE, THE COST OF PROCURING SUBSTITUTE SERVICES REGARDLESS OF WHETHER SUCH CLAIMS ARE BASED ON CONTRACT, TORT, WARRANTY OR ANY OTHER LEGAL THEORY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. In addition, AGILENT WILL NOT BE LIABLE FOR DAMAGES OF ANY KIND ARISING FROM:
     * (I) CUSTOMER'S INABILITY TO ACCESS OR USE THE SERVICES, IN CASE OF TERMINATION OR SUSPENSION OF THIS AGREEMENT OR CUSTOMER'S ACCESS TO THE SERVICES OR DISCONTINUATION OF THE SERVICES, or
@@ -235,72 +235,76 @@ Customer warrants that, in view of the use of the Customer Data and Personal Dat
 
 * If Customer has not paid individually any amounts in the 12 months preceding your claim, Agilent's sole and exclusive liability shall be no more than **\$100**.
 
-* b. The exclusions and limitations in Clause 10a shall apply to the fullest extent permissible at law but Agilent does not exclude and/or limit liability for **death or bodily injury** caused by the **gross negligence** of Agilent, its officers, employees, contractors or agents.
+* b. The exclusions and limitations in [Section 10a](#limitation-of-liability) shall apply to the fullest extent permissible at law but Agilent does not exclude and/or limit liability for **death or bodily injury** caused by the **gross negligence** of Agilent, its officers, employees, contractors or agents.
 
 * c. THE REMEDIES IN THIS AGREEMENT ARE CUSTOMER'S **SOLE AND EXCLUSIVE REMEDIES**.
 
 ---
 
-## 11. INDEMNIFICATION BY CUSTOMER
+## 11. Indemnification by Customer {#indemnification}
 
 Customer will defend, indemnify and hold Agilent and Agilent's officers, directors, employees, consultants, agents, and suppliers harmless against any loss, damage or costs (including reasonable attorneys' fees) incurred in connection with any suit, action or claims (a "**Claim**") made or brought against Agilent by a third party arising out of or related to Customer's Data, or Customer's use of the Services in violation of this Agreement. This is provided Agilent promptly notifies Customer in writing and provides control of the defense or settlement, and reasonable assistance to Customer. If Customer does not diligently pursue resolution of the Claim nor provide Agilent with reasonable assurances that Customer will diligently pursue resolution, then Agilent, without in any way waiving or limiting its other rights and remedies, may defend the Claim.
 
 ---
 
-## 12. MISCELLANEOUS
+## 12. Miscellaneous {#miscellaneous}
 
 ### a. Entire Agreement - Modifications
 
 The Agreement constitutes the **entire understanding and agreement** between Customer and Agilent. The Agreement replaces all prior negotiations and dealings between Customer and Agilent pertaining to the Software and Services. The Agreement cannot be modified unless by an instrument in writing signed by Customer and Agilent.
 
 Unless otherwise stated, in the event of a conflict precedence will be given to the respective parts in the following descending order:
-1. The **SMA Contract** 2. The **Terms of Use** 3. The **Acceptable Use Policy** b. Severability
+1. The **SMA Contract** 
+2. The **Terms of Use** 
+3. The **Acceptable Use Policy** 
+
+### b. Severability {#severability}
 
 If any provision of the Agreement shall be held by a court of competent jurisdiction to be illegal, invalid or unenforceable, the remaining provisions shall remain in full force and effect.
 
-### c. Law Compliance
+### c. Law Compliance {#law-compliance}
 
 The parties agree to comply with applicable laws and regulations (including all applicable export control and data privacy and security laws and regulations) with respect to its activities under these Terms of Use. Agilent may suspend performance if Customer is in violation of applicable laws or regulations.
 
-### d. Audit
+### d. Audit {#audit}
 
 Agilent may audit Customer's use of the services against the terms of the Agreement upon **thirty (30 days) prior written notice** and limited to **once every year**. Agilent agrees not to unreasonably interfere with Customer's business operations and Customer agrees to reasonably cooperate with Agilent in order to complete the audit.
 
-### e. Governing Law and Jurisdiction
+### e. Governing Law and Jurisdiction {#governing-law}
 
 This Agreement shall be governed by the laws of the **State of California, USA**. Customer hereby consents to the jurisdiction and venue of in the State or Federal courts located in the **County of Santa Clara, California**. The Uniform Laws of the United Nations Convention of Contracts for the International Sale of Goods shall not apply. This is without prejudice to Agilent's right to initiate legal proceedings against Customer for the recovery of unpaid invoices under Customer's local laws before the competent courts of Customer's domicile.
 
-### f. Assignment
+### f. Assignment {#assignment}
 
 Customer may not assign or transfer this Agreement without Agilent's **prior written consent**. Agilent may assign or transfer any of its rights or obligations under this Agreement upon notice in connection with a merger, reorganization, transfer, sale of assets or product lines, demerger or spin-off transaction or change of control or ownership of Agilent, or its permitted successive assignees or transferees. Any assignment in violation of this Clause will be null and void.
 
-### g. Independent Contractors
+### g. Independent Contractors {#independent-contractors}
 
 Agilent and Customer are **independent contractors**, and neither party, nor any of their respective affiliates, is an agent of the other for any purpose or has the authority to bind the other.
 
-### h. Export Control
+### h. Export Control {#export-control}
 
 If Customer, including its affiliates, or collaborators, exports, re-exports, transfers products, technology/software/technical data subject to this Agreement, Customer assumes all responsibility for complying with all applicable **U.S., EU and/or all relevant local export controls laws and regulations and embargoes/sanctions regimes**. Customer, including its affiliates, shall obtain all the necessary governmental authorizations prior to an export, re-export and/or transfer. Customer, including its affiliates or collaborators, also expressly agrees not to, unless it has obtained all necessary governmental authorizations, to directly or indirectly sell, authorize, facilitate and/or transfer any products, technology, software or technical data subject to this Agreement and/or allow any access to the Software and/or up/down load any data (including but not limited to Personal Information), and/or to provide or receive Personal Information to or from end-destinations, entities and/or individuals subject to U.S., EU and/or relevant local export controls and embargoes/sanctions regimes. Embargoed end-destinations shall include, but not be limited to **Cuba, Iran, North Korea, Sudan and Syria**. Agilent may, without notice, suspend performance if Customer is in violation of applicable laws.
 
-### i. Delays
+### i. Delays {#delays}
 
 Agilent will not be liable for performance delays or for non-performance, due to causes beyond its reasonable control.
 
-### j. U.S. Federal Government
+### j. U.S. Federal Government {#us-federal-government}
 
 The Services, including related software and technology, are provided to the federal government in accordance with the following: software and technical data rights granted to the federal government include only those rights customarily provided to end user customers. Agilent provides this customary commercial license in software and technical data pursuant to **FAR 12.211** (Technical Data) and **12.212** (Computer Software) and, for the Department of Defense, **DFARS 252.227-7015** (Technical Data Commercial Items) and **DFARS 227.7202-3** (Rights in Commercial Computer Software or Computer Software Documentation).
 
-### k. Waiver
+### k. Waiver {#waiver}
 
 The failure by Agilent to enforce any provision of this Agreement will not constitute a present or future waiver of such provision nor limit Agilent's right to enforce such provision at a later time. All waivers by Agilent must be in writing to be effective.
 
-### l. English
+### l. English {#english}
 
 The parties to this Agreement have agreed that all correspondence and related documentation to this Agreement and associated with the Software shall be rendered in **English**.
 
 ---
 
-## 13. OPEN SOURCE AND OTHER THIRD PARTY SOFTWARE
+## 13. Open Source and Other Third Party Software {#open-source-third-party}
 
 The Software may utilize third party software made available under various open source and third party software licenses ("**Third Party Components**"). The terms associated with the Third Party Components are listed in the table below.
 
@@ -430,7 +434,7 @@ For source code conveyance requests, please contact `Legal@Agilent.com`.
 
 ---
 
-## Table 1. Service Credits
+## 14. Service Credits {#service-credits}
 
 | Service Level Name | Calculation | Annual Minimum Service Level | Service Credit |
 | :--- | :--- | :--- | :--- |
