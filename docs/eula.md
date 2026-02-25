@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 title: "EULA"
 toc_max_heading_level: 2
 ---
@@ -12,7 +12,7 @@ These CID Hub Terms of Use ("**Terms of Use**") and the Agilent Technologies Sof
 
 ## 1. Definitions {#definitions}
 
-(A) "**Acceptable Use Policy**" refers to and means the Acceptable Use Policy attached as Exhibit A to these Terms of Use.
+(A) "**Acceptable Use Policy**" refers to and means the [cceptable Use Policy attached as [Exhibit A](acceptable-use-policy) to these Terms of Use.
 
 (B) "**Aggregated Data**" means statistical data derived from the operations of the Services and/or Software which does not identify Customer nor any User.
 
@@ -134,7 +134,7 @@ The System Availability service level does not apply to, and no Service Credits 
 
 ### (A) Use {#customer-use}
 
-Except as otherwise expressly provided for in the Agreement, Customer agrees to use the Services in accordance with the **Acceptable Use Policy** found herein Exhibit A to these Terms of Use.
+Except as otherwise expressly provided for in the Agreement, Customer agrees to use the Services in accordance with the Acceptable Use Policy found herein [Exhibit A](acceptable-use-policy) to these Terms of Use.
 
 ### (B) Intended Use {#intended-use}
 
