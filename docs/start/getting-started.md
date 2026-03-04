@@ -33,7 +33,7 @@ title: "Before Installing CIDs"
 2. Place the CID next to the instrument and ensure the device has proper ventilation during operation. Do not place CIDs one top of the other, in a sealed box or near any heat sources.
 3. Proceed to connect the CID LAN ports: **House (Corporate) NIC** connects to the corporate LAN and provides access to the OpenLab Server and the internet, and **Instrument NIC** connects to analytical instruments – directly or via instrument dedicated LAN/VLAN.
 4. Connect the power cable and turn on the CID.
-5. On bootup, the CID connects to the CID Hub via the internet. If successful, it will beep three times every 30 seconds until the CID is [added to the Hub](quick-start#6-add-the-cid-to-the-cid-hub). See the troubleshooting tips in [Internet Requirements](/docs/system-requirements.md#internet-requirements) for other beep codes.
+5. On bootup, the CID connects to the CID Hub via the internet. If successful, it will beep three times every 30 seconds until the CID is [added to the Hub](register-activate#3-add-the-cid-to-the-cid-hub). See the troubleshooting tips in [Internet Requirements](/docs/system-requirements.md#internet-requirements) for other beep codes.
 
 ![CID layout](../img/layout-1.jpg)
 
@@ -42,7 +42,7 @@ title: "Before Installing CIDs"
 ### Step 4: Register and Activate your CIDs
 
 1. Your lab is now ready for your CID(s)!
-2. Continue to **[Register & Activate your CIDs](quick-start)**.
+2. Continue to **[Register & Activate your CIDs](register-activate)**.
 3. For further reference, see the CID Requirements Guide and Site Preparation Checklist documents. 
 
 :::info[NOTE]

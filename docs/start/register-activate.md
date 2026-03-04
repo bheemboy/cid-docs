@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: "Register & Activate CIDs"
 ---
 
 # Register & Activate CIDs
@@ -20,7 +21,7 @@ Look for an invitation email from **CID Hub** \<no-reply@hub.cid.agilent.com\> t
 4. Click on “Register Server”.
 5. Provide details about your server in the pop-up dialog and click **Save**.
 
-See "[Register an OpenLab Server](howto/register-a-server)" for details.
+See "[Register an OpenLab Server](../howto/register-a-server)" for details.
 
 ---
 
@@ -32,7 +33,7 @@ See "[Register an OpenLab Server](howto/register-a-server)" for details.
 4. Select the CDS version you want to use.
 5. Select the specific driver and add-on versions you want on the CIDs.
 
-See "[Define a Software Template](howto/define-software-template)" for details.
+See "[Define a Software Template](../howto/define-software-template)" for details.
 
 
 :::info[Important]
