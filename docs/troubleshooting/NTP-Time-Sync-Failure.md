@@ -1,4 +1,9 @@
-# CID-NET-04: NTP Time Synchronization Failure
+---
+sidebar_position: 4
+title: NTP Time Synchronization Failure
+---
+
+# NTP Time Synchronization Failure
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/Network Administrators
