@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: TLS Handshake Failure
+slug: /cid-net-02
 ---
 
 # CID-NET-02: TLS Handshake Failure

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: DNS-Resolution-Failure
+slug: /cid-net-05
 ---
 
 # CID-NET-05: DNS Resolution Failure

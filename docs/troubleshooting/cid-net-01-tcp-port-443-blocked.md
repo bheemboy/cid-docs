@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: TCP Port 443 Blocked
+slug: /cid-net-01
 ---
 
 # CID-NET-01: TCP Port 443 Blocked

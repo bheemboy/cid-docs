@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: SSL-Inspection
+slug: /cid-net-03
 ---
 
 # CID-NET-03: SSL Inspection / Certificate Substitution

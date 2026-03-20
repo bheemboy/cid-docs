@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: NTP-Time-Sync-Failure
+slug: /cid-net-04
 ---
 
 # CID-NET-04: NTP Time Synchronization Failure
