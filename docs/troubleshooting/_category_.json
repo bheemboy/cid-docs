@@ -1,1 +1,9 @@
-
+{
+  "label": "Troubleshooting",
+  "position": 9,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "slug": "/troubleshooting"
+  }
+}
