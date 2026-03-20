@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: TLS Handshake Failure
+---
+
 # CID-NET-02: TLS Handshake Failure
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
