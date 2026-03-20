@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: SSL-Inspection
+---
+
 # CID-NET-03: SSL Inspection / Certificate Substitution
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
