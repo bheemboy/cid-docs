@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 8
 title: "Acceptable Use Policy"
 toc_max_heading_level: 2
 ---
