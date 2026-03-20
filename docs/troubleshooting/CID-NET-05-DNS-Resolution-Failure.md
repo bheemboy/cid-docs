@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+title: DNS-Resolution-Failure
+---
+
 # CID-NET-05: DNS Resolution Failure
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
