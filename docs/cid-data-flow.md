@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Data Flow and Privacy Overview
 
 The information below describes the data flows between the CID device and the CID Management Hub, with a focus on data privacy, data types exchanged, and security controls applied during transmission.
@@ -26,4 +30,3 @@ The information below describes the data flows between the CID device and the CI
 | Activity Logs | CID → Hub | No | HTTPS / TLS | Yes (Portal) |
 | Configuration Data | Bidirectional | Partial (IP addresses, hostnames) | HTTPS / MQTT / TLS | Yes (Portal) |
 | User Actions | Portal → Hub | No | HTTPS / TLS | Yes (Portal) |
-``
