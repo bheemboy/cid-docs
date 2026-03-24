@@ -1,7 +1,7 @@
 {
   "label": "Getting Started...",
-  "position": 1.5,
-  "collapsed": false,
+  "position": 4,
+  "collapsed": true,
   "collapsible": true,
   "link": {
     "slug": "/start"
