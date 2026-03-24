@@ -8,6 +8,10 @@ toc_max_heading_level: 2
 
 # CID Connectivity Tester
 
+:::warning For IT Administrators Only
+This section is intended for IT administrators familiar with Linux commands. Incorrect use of the tools and commands described here can misconfigure your CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
+:::
+
 The Connectivity Tester is a diagnostic application within the Linux Cockpit interface of the CID. It tests the device's ability to reach the external services required for activation, monitoring, and software management. Crucially, it works on unactivated CIDs — making it the first tool to reach for when a new device is failing to connect.
 
 ![CID Connectivity Tester](../img/connectivity-app.jpg)
