@@ -32,28 +32,13 @@ nc -zv <hostname> 443
 | Result | Next Step |
 |---|---|
 | `Connection refused` or request times out | This is the correct document. Continue below. |
-| `Connection succeeded` | TCP port 443 is reachable. The failure is at the TLS layer. Refer to **CID-NET-02: TLS Handshake Failure** instead. |
+| `Connection succeeded` | TCP port 443 is reachable. The failure is at the TLS layer. Refer to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02) instead. |
 
 ---
 
 ## Affected Services
 
-Port 443 blocking can affect any CID service that communicates over HTTPS. The following domains require outbound TCP access on port 443:
-
-| Domain | Purpose |
-|---|---|
-| `*.agilent.com` | CID Hub registration, activation, and management |
-| `*.s3.amazonaws.com` | AWS S3 file transfers (general) |
-| `*.s3.us-east-1.amazonaws.com` | AWS S3 file transfers (US East 1) |
-| `*.s3.us-west-2.amazonaws.com` | AWS S3 file transfers (US West 2) |
-| `*.iot.us-east-1.amazonaws.com` | AWS IoT Core — device telemetry and management |
-| `*.microsoft.com` | Windows Update and Microsoft services |
-| `*.cloudfront.net` | Microsoft CDN for update delivery |
-| `*.oneget.org` | Package management |
-| `*.trafficmanager.net` | Microsoft Azure traffic management |
-| `*.blob.core.windows.net` | Microsoft Azure Blob Storage |
-| `*.azurefd.net` | Microsoft Azure Front Door CDN |
-| `*.powershellgallery.com` | PowerShell module repository |
+Port 443 blocking can affect any CID service that communicates over HTTPS. For the complete list of domains requiring outbound access, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
 
 ---
 
@@ -77,6 +62,10 @@ Before proceeding, please ensure the following conditions are met:
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable
 
 ---
+
+:::tip[First Step]
+Before running manual diagnostics, use the [CID Connectivity Tester](/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+:::
 
 ## Diagnostic Steps
 
@@ -181,13 +170,11 @@ Provide the diagnostic output from the steps above to your network security team
 | Configure proxy settings on the CID via CID Hub | Step 3 identified a proxy requirement |
 | Review firewall rules for silently filtered traffic | Step 4 returned `filtered` state |
 
-The complete list of domains requiring outbound HTTPS access is provided in the [Affected Services](#affected-services) section above.
-
 ---
 
 ## Related Documents
 
-- **CID-NET-02** — TLS Handshake Failure
-- **CID-NET-03** — SSL Inspection / Certificate Substitution
-- **CID-NET-04** — NTP Time Synchronization Failure
-- **CID-NET-05** — DNS Resolution Failure
+- [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
+- [**CID-NET-03** — SSL Inspection / Certificate Substitution](/cid-net-03)
+- [**CID-NET-04** — NTP Time Synchronization Failure](/cid-net-04)
+- [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)

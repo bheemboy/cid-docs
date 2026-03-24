@@ -35,7 +35,7 @@ chronyc tracking
 | Result | Next Step |
 |---|---|
 | `System time` offset is large (seconds or greater), or `Reference ID` shows `7F7F0101` (unsynchronized) | This is the correct document. Continue below. |
-| Clock is synchronized with low offset (milliseconds) | NTP is functioning correctly. If HTTPS failures persist, refer to **CID-NET-01**, **CID-NET-02**, or **CID-NET-03**. |
+| Clock is synchronized with low offset (milliseconds) | NTP is functioning correctly. If HTTPS failures persist, refer to [**CID-NET-01**](/cid-net-01), [**CID-NET-02**](/cid-net-02), or [**CID-NET-03**](/cid-net-03). |
 
 ---
 
@@ -60,6 +60,10 @@ Before proceeding, please ensure the following conditions are met:
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable
 
 ---
+
+:::tip[First Step]
+Before running manual diagnostics, use the [CID Connectivity Tester](/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+:::
 
 ## Diagnostic Steps
 
@@ -137,7 +141,7 @@ Confirms that the CID can resolve NTP pool hostnames. DNS resolution failure can
 nslookup pool.ntp.org
 ```
 
-If this fails, refer to **CID-NET-05: DNS Resolution Failure** before proceeding further.
+If this fails, refer to [**CID-NET-05: DNS Resolution Failure**](/cid-net-05) before proceeding further.
 
 ---
 
@@ -157,7 +161,7 @@ Provide the diagnostic output from the steps above to your network security team
 
 ## Related Documents
 
-- **CID-NET-01** — TCP Port 443 Blocked
-- **CID-NET-02** — TLS Handshake Failure
-- **CID-NET-03** — SSL Inspection / Certificate Substitution
-- **CID-NET-05** — DNS Resolution Failure
+- [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01)
+- [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
+- [**CID-NET-03** — SSL Inspection / Certificate Substitution](/cid-net-03)
+- [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)

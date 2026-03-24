@@ -39,7 +39,7 @@ nslookup api.agilent.com
 
 | Result | Next Step |
 |---|---|
-| Returns one or more IP addresses | DNS is resolving correctly for this hostname. If connectivity still fails, refer to **CID-NET-01** or **CID-NET-02**. |
+| Returns one or more IP addresses | DNS is resolving correctly for this hostname. If connectivity still fails, refer to [**CID-NET-01**](/cid-net-01) or [**CID-NET-02**](/cid-net-02). |
 | Returns `NXDOMAIN`, `SERVFAIL`, or times out | This is the correct document. Continue below. |
 
 ---
@@ -66,6 +66,10 @@ Before proceeding, please ensure the following conditions are met:
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable
 
 ---
+
+:::tip[First Step]
+Before running manual diagnostics, use the [CID Connectivity Tester](/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+:::
 
 ## Diagnostic Steps
 
@@ -175,7 +179,7 @@ Provide the diagnostic output from the steps above to your network security team
 
 ## Related Documents
 
-- **CID-NET-01** — TCP Port 443 Blocked
-- **CID-NET-02** — TLS Handshake Failure
-- **CID-NET-03** — SSL Inspection / Certificate Substitution
-- **CID-NET-04** — NTP Time Synchronization Failure
+- [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01)
+- [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
+- [**CID-NET-03** — SSL Inspection / Certificate Substitution](/cid-net-03)
+- [**CID-NET-04** — NTP Time Synchronization Failure](/cid-net-04)

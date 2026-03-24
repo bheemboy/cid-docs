@@ -20,7 +20,7 @@ curl: (60) SSL certificate problem: unable to get local issuer certificate
 curl: (60) SSL certificate problem: certificate verify failed
 ```
 
-Alternatively, this condition may be identified as part of investigating a TLS handshake failure (CID-NET-02), where Step 2 of that document reveals a corporate or internal certificate authority is being presented instead of the expected server certificate.
+Alternatively, this condition may be identified as part of investigating a TLS handshake failure ([CID-NET-02](/cid-net-02)), where Step 2 of that document reveals a corporate or internal certificate authority is being presented instead of the expected server certificate.
 
 ---
 
@@ -34,9 +34,9 @@ openssl s_client -connect <hostname>:443 2>/dev/null | openssl x509 -noout -issu
 
 | Result | Next Step |
 |---|---|
-| Issuer shows Amazon, Microsoft, or another recognized public CA | SSL Inspection is not active. Refer to **CID-NET-02: TLS Handshake Failure** if connections are still failing. |
+| Issuer shows Amazon, Microsoft, or another recognized public CA | SSL Inspection is not active. Refer to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02) if connections are still failing. |
 | Issuer shows a corporate, internal, or unrecognized CA | This is the correct document. Continue below. |
-| Command returns no certificate output at all | The connection is being blocked before the handshake completes. Refer to **CID-NET-02: TLS Handshake Failure**. |
+| Command returns no certificate output at all | The connection is being blocked before the handshake completes. Refer to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02). |
 
 ---
 
@@ -56,22 +56,7 @@ This allows the appliance to inspect encrypted traffic for security purposes. Ho
 
 ## Affected Services
 
-SSL Inspection can affect all CID services that communicate over HTTPS:
-
-| Domain | Purpose |
-|---|---|
-| `*.agilent.com` | CID Hub registration, activation, and management |
-| `*.s3.amazonaws.com` | AWS S3 file transfers (general) |
-| `*.s3.us-east-1.amazonaws.com` | AWS S3 file transfers (US East 1) |
-| `*.s3.us-west-2.amazonaws.com` | AWS S3 file transfers (US West 2) |
-| `*.iot.us-east-1.amazonaws.com` | AWS IoT Core — device telemetry and management |
-| `*.microsoft.com` | Windows Update and Microsoft services |
-| `*.cloudfront.net` | Microsoft CDN for update delivery |
-| `*.oneget.org` | Package management |
-| `*.trafficmanager.net` | Microsoft Azure traffic management |
-| `*.blob.core.windows.net` | Microsoft Azure Blob Storage |
-| `*.azurefd.net` | Microsoft Azure Front Door CDN |
-| `*.powershellgallery.com` | PowerShell module repository |
+SSL Inspection can affect all CID services that communicate over HTTPS. For the complete list of required domains, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
 
 ---
 
@@ -84,6 +69,10 @@ Before proceeding, please ensure the following conditions are met:
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable
 
 ---
+
+:::tip[First Step]
+Before running manual diagnostics, use the [CID Connectivity Tester](/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+:::
 
 ## Diagnostic Steps
 
@@ -131,7 +120,7 @@ curl -v --insecure https://<hostname>
 
 **If this succeeds while the normal request fails:** The certificate validation failure is confirmed as the root cause. The corporate CA presented by the SSL Inspection appliance is not trusted by the CID.
 
-**If this also fails:** An additional issue may be present. Review the curl output and consider referring to **CID-NET-02: TLS Handshake Failure**.
+**If this also fails:** An additional issue may be present. Review the curl output and consider referring to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02).
 
 ---
 
@@ -154,7 +143,7 @@ This exemption does not eliminate security coverage for these connections — th
 
 ## Related Documents
 
-- **CID-NET-01** — TCP Port 443 Blocked
-- **CID-NET-02** — TLS Handshake Failure
-- **CID-NET-04** — NTP Time Synchronization Failure
-- **CID-NET-05** — DNS Resolution Failure
+- [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01)
+- [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
+- [**CID-NET-04** — NTP Time Synchronization Failure](/cid-net-04)
+- [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)

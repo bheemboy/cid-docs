@@ -68,7 +68,7 @@ As the CID boots up, it attempts to connect to the CID Hub. If the connection fa
 - **4 Beeps**: An activated CID cannot connect to the registration API on bootup. If CDS is already installed, the CID beeps four times and continues to boot; otherwise, it will beep four times every 30 seconds.
 :::
 
-See "[Verify CID Internet Connectivity](howto/connectivity-app)" for troubleshooting and testing connections from CIDs.
+See "[Verify CID Internet Connectivity](troubleshooting/cid-connectivity-tester)" for troubleshooting and testing connections from CIDs.
 
 ---
 
