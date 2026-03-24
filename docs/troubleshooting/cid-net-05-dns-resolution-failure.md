@@ -68,7 +68,7 @@ Before proceeding, please ensure the following conditions are met:
 ---
 
 :::tip[First Step]
-Before running manual diagnostics, use the [CID Connectivity Tester](/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+Before running manual diagnostics, use the [CID Connectivity Tester](/troubleshooting/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
 :::
 
 ## Diagnostic Steps

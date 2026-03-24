@@ -1,6 +1,5 @@
 ---
 sidebar_position: 0
-slug: /cid-connectivity-tester
 title: CID Connectivity Tester
 sidebar_label: CID Connectivity Tester
 description: Use the built-in Connectivity Tester to diagnose internet connectivity issues on a CID, including on unactivated devices.

@@ -57,7 +57,7 @@ When TCP connectivity is confirmed but HTTPS fails, the most common causes are:
 ---
 
 :::tip[First Step]
-Before running manual diagnostics, use the [CID Connectivity Tester](/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+Before running manual diagnostics, use the [CID Connectivity Tester](/troubleshooting/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
 :::
 
 ## Diagnostic Steps
