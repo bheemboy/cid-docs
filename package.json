@@ -12,7 +12,8 @@
     "serve": "docusaurus serve --host 0.0.0.0",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "rsync-docs": "rsync -a --delete ./docs/ ~/projects/work/DEV/ac_docs/docs/"
   },
   "dependencies": {
     "@docusaurus/core": "^3.9.2",
