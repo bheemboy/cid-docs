@@ -183,3 +183,4 @@ Provide the diagnostic output from the steps above to your network security team
 - [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
 - [**CID-NET-03** — SSL Inspection / Certificate Substitution](/cid-net-03)
 - [**CID-NET-04** — NTP Time Synchronization Failure](/cid-net-04)
+- [**CID-NET-06** — OpenLab Server Unreachable](/cid-net-06)

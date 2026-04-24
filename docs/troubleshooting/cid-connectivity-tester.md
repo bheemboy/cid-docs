@@ -78,6 +78,7 @@ Use the failure type to identify the right next step:
 | Certificate error — corporate CA shown instead of expected issuer | [CID-NET-03: SSL Inspection / Certificate Substitution](/cid-net-03) |
 | NTP-related errors or time sync warnings | [CID-NET-04: NTP Time Synchronization Failure](/cid-net-04) |
 | Hostname cannot be resolved | [CID-NET-05: DNS Resolution Failure](/cid-net-05) |
+| OpenLab server unreachable or not validating | [CID-NET-06: OpenLab Server Unreachable](/cid-net-06) |
 
 ### Cockpit Terminal
 
