@@ -4,7 +4,6 @@ title: Activate a CID
 ---
 
 # Activate a CID
-<!-- What, why, when, how -->
 ## Overview
 Each physical CID must have a corresponding record in the CID Hub before it can be used. These online records define the configuration that the CID would assume. These records are also required for accessing the CID and performing actions on them.
 
