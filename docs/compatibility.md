@@ -33,8 +33,9 @@ OpenLab CDS AIC software.
   - 2.8.0.1515 Update 1
   - 2.8.0.1515 Update 2
   - 2.8.0.1515 Update 5
-  - 2.8.0.1515 Update 7 with Feature Pack 1
-  - 2.8.0.1515 Update 8 with Feature Pack 2
+  - 2.8.0.1515 Update 7 with Feature Pack 01
+  - 2.8.0.1515 Update 8 with Feature Pack 02
+  - 2.8.0.1515 Update 9 with Feature Pack 02 
 
 :::info
 Updates for OpenLab CDS v2.8 are typically made available in the CID Hub within 2 weeks of general release. Currently, updates for OpenLab CDS v2.7 are made available on demand.
