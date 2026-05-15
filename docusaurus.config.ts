@@ -4,6 +4,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const url = process.env.DOCS_URL ?? 'https://bheemboy.github.io';
+const baseUrl = process.env.DOCS_BASE_URL ?? '/cid-docs/';
+
 const config: Config = {
   title: 'CID Documentation',
   tagline: 'CIDs are awesome',
@@ -15,10 +18,10 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://bheemboy.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/cid-docs/',
+  url,
+  // Set the /<baseUrl>/ pathname under which your site is served.
+  // Cloudflare Pages can override this at build time with DOCS_BASE_URL=/.
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

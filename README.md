@@ -24,6 +24,12 @@ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+For alternate hosting targets, you can override the Docusaurus site URL and base path at build time:
+
+```bash
+DOCS_URL=https://example.pages.dev DOCS_BASE_URL=/ npm run build
+```
+
 ## Deployment
 
 Using SSH:
@@ -39,3 +45,12 @@ GIT_USER=<ghp_tokem> npm run deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## Cloudflare Pages
+
+For a Cloudflare Pages project that builds the `security` branch, use:
+
+- Build command: `npm run build`
+- Build output directory: `build`
+- Environment variable: `DOCS_URL=https://<your-project>.pages.dev`
+- Environment variable: `DOCS_BASE_URL=/`
