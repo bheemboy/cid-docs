@@ -1,0 +1,11 @@
+{
+  "label": "Security",
+  "position": 4,
+  "collapsed": false,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/security",
+    "description": "Security-model, architecture, identity, remote-access, and audit-and-compliance posture for the Connected Instrument Device (CID)."
+  }
+}

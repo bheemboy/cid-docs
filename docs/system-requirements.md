@@ -16,6 +16,14 @@ The 12-character MAC address for the "House" NIC and the 8-character PIN are pri
 
 ![QR code sticker](./img/qr-code.jpg)
 
+<mark>The two-NIC topology is the foundation of the CID's network trust model. Three points an IT reviewer should note before reading the detailed table below:</mark>
+
+- <mark>**No inbound from the internet on either NIC.** Neither NIC accepts unsolicited inbound connections *from the internet*. All CID Hub management and AWS connectivity happens over outbound TLS sessions the CID initiates (see [Internet Requirements](#internet-requirements) below). The House NIC does accept inbound connections from the *corporate intranet* — that is how OpenLab CDS clients reach the CID on TCP 443 (HTTPS / WSS) and how administrators reach the diagnostic UI — but no port on the CID is reachable from outside the customer's firewall.</mark>
+- <mark>**The embedded Windows VM is hidden from the corporate LAN.** The OpenLab Instrument Controller software runs in a Windows 11 virtual machine on the CID's Linux host. Corporate clients (OpenLab CDS, browsers) connect to the CID's reverse proxy on TCP 443, which terminates TLS and forwards to the VM internally over the Linux host's KVM bridge. The VM reaches the internet through the Linux host via NAT and is not directly addressable from the House NIC.</mark>
+- <mark>**The Instrument NIC is isolated from the WAN and the corporate LAN.** The Windows VM is bridged onto the Instrument NIC through a separate virtual NIC (V-NIC) on the Linux host, putting the VM directly on the instrument network. Most OpenLab drivers initiate the connection from the VM out to the instrument; **GC instrument drivers are an exception** — the GC initiates the connection back to a driver process listening on the V-NIC inside the Windows VM. In either case the Instrument NIC has no default gateway by design — the CID Hub UI labels the gateway field "Gateway Address (Not Recommended)" — so traffic on the instrument network cannot route to the corporate LAN or to the internet. The instrument network is intended to be either a direct cable to one instrument or a dedicated, isolated LAN/VLAN.</mark>
+
+<mark>For the full trust-boundary diagram and threat model, see [Security model](./security/security-model).</mark>
+
 | Component	| CID Networking |
 | --- | --- |
 | **House NIC** | **Connects to corporate LAN and internet** |
