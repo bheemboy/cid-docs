@@ -2,6 +2,8 @@
 
 A one-pager pinned to every AI prompt and human edit pass for the Phase 2 prose draft. Read this before drafting or revising any page in `_outline-delta.md`.
 
+> **Scope:** project-specific addendum for the security-doc rebuild. The enduring site-wide house style lives in `cid-knowledge/references/doc-style-guide.md` and covers frontmatter, headings (title case), admonitions (`:::info` and `:::warning` only), links, images, code blocks, tables, field-description blocks, UI element formatting, canonical names, numbers/units, sentence/paragraph targets, absent-feature handling, troubleshooting doc IDs, and voice/tone. This brief specializes **within the security rebuild only** — IT-reviewer audience framing (§1), Q&A mapping to the 30 IT questions (§6), the `_source-pack.md` accuracy-flag convention (§10), gap-list handling, and Phase 0.3 typography defaults (§8). Where this brief and the house guide overlap (canonical names, link rules, voice), they are aligned; if a future divergence appears, the house guide wins for published prose.
+
 ---
 
 ## 1. Audience and purpose
