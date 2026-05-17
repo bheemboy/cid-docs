@@ -68,15 +68,10 @@ Your firewall must be configured to allow outbound communication from CIDs to th
 
 **NOTE: OpenLab CDS does not require internet access for core function of acquiring and processing data from instruments.**
 
-:::info[Troubleshooting Beep Codes]
-As the CID boots up, it attempts to connect to the CID Hub. If the connection fails, it will beep every 30 seconds.
-- **1 Beep**: No network connection (check cables/NIC connections).
-- **2 Beeps**: Cannot contact the CID Hub registration API (*.agilent.com). This could be a firewall issue, incorrect NIC wiring, or an internet outage.
-- **3 Beeps**: No linked CID record found in the CID Hub.
-- **4 Beeps**: An activated CID cannot connect to the registration API on bootup. If CDS is already installed, the CID beeps four times and continues to boot; otherwise, it will beep four times every 30 seconds.
-:::
-
-See "[Verify CID Internet Connectivity](troubleshooting/cid-connectivity-tester)" for troubleshooting and testing connections from CIDs.
+<mark>See [**CID-BOOT-01** — Beep Codes on Startup](/cid-boot-01) for the meaning
+of each beep pattern the CID emits when it cannot reach the registration API
+on boot</mark>, and [Verify CID Internet Connectivity](troubleshooting/cid-connectivity-tester)
+for testing connections from CIDs.
 
 ---
 

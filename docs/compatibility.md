@@ -1,50 +1,57 @@
 ---
 sidebar_position: 3
+title: "Compatibility"
 ---
 
 # Compatibility
 
+The following matrices list the OpenLab CDS, server, driver, add-on, and
+integration combinations supported on the CID as of CID Hub release 1.3
+(April 2026).
+
 ---
 
-## Operating System
-- Oracle Linux v8.7: Used as the boot OS for CIDs.
-- Windows 10 IoT Ent LTSC: Used for virtual machine templates corresponding to CDS version 2.8 Update 08 with FP2 and earlier.
-- Windows 11 IoT Ent LTSC: Used for virtual machine templates for CDS version 2.8 Update 09 and later.
+## Operating Systems
+
+| Component | Version | Notes |
+|---|---|---|
+| Host OS (Linux) | Oracle Linux 8.7 | Boot OS for all CIDs |
+| Guest OS (Windows VM) | Windows 10 IoT Enterprise LTSC | Used by VM templates for CDS 2.8 Update 08 with FP2 and earlier |
+| Guest OS (Windows VM) | Windows 11 IoT Enterprise LTSC | Used by VM templates for CDS 2.8 Update 09 and later |
 
 ---
 
 ## OpenLab Servers
-CIDs work with the following server software:
-- OpenLab ECM (3.6 and above)
-- OpenLab Server / OpenLab ECM XT (2.7 and above)
+
+| Server | Supported Versions |
+|---|---|
+| OpenLab ECM | 3.6 and above |
+| OpenLab Server / OpenLab ECM XT | 2.7 and above |
 
 ---
 
 ## OpenLab CDS
-CID Hub offers pre-built virtual machines for the following versions of
-OpenLab CDS AIC software.
-- OpenLab CDS v2.7
-  - 2.7.0.787
-  - 2.7.0.787 Update 1
-  - 2.7.0.787 Update 2
-  - 2.7.0.787 Update 3
-- OpenLab CDS v2.8
-  - 2.8.0.1515
-  - 2.8.0.1515 Update 1
-  - 2.8.0.1515 Update 2
-  - 2.8.0.1515 Update 5
-  - 2.8.0.1515 Update 7 with Feature Pack 01
-  - 2.8.0.1515 Update 8 with Feature Pack 02
-  - 2.8.0.1515 Update 9 with Feature Pack 02 
 
-:::info
-Updates for OpenLab CDS v2.8 are typically made available in the CID Hub within 2 weeks of general release. Currently, updates for OpenLab CDS v2.7 are made available on demand.
-::: 
+The CID Hub provides pre-built virtual-machine templates for the following
+OpenLab CDS releases.
+
+| Release | Available Versions |
+|---|---|
+| OpenLab CDS 2.7 | 2.7.0.787, 2.7.0.787 Update 1, Update 2, Update 3 |
+| OpenLab CDS 2.8 | 2.8.0.1515, Update 1, Update 2, Update 5, Update 7 with FP01, Update 8 with FP02, Update 9 with FP02 |
+
+| Channel | Release Cadence in CID Hub |
+|---|---|
+| OpenLab CDS 2.8 | Within two weeks of general release |
+| OpenLab CDS 2.7 | On demand |
 
 ---
 
 ## Instrument Drivers
-The following Agilent instrument drivers are available in the CID Hub. Users can choose specific versions to install and use on their CIDs:
+
+The following Agilent instrument drivers are available in the CID Hub.
+Specific versions are selectable per CID.
+
 - Agilent 35900 A/D
 - Agilent Data Player
 - Agilent GC
@@ -58,61 +65,41 @@ The following Agilent instrument drivers are available in the CID Hub. Users can
 - Agilent PAL3 Sampler
 - Agilent ELSD
 
-:::info[Note]
-New versions of supported instrument drivers are typically available in the CID Hub within four weeks of their general release on SubscribeNet.
-:::
+| Channel | Release Cadence in CID Hub |
+|---|---|
+| Agilent instrument drivers | Within four weeks of general release on SubscribeNet |
 
 ---
 
-## Add-On Software (for AIC/CID)
+## Add-On Software
 
-The following add-on software is currently available on the CID Hub:
-- Sample Scheduler for OpenLab
-- OpenLab Library Manager for OpenLab CDS (DA Add-on, pre-installed in CDS v2.8 FP2 and above)
-- GPC DA Add-on (for CDS 2.8)
-
-
-The following add-ons are not yet available for CIDs
-- 2D-LC Software
-- ADF Export
-- Relay Service (Lab Advisor)
+| Add-On | Supported | Notes |
+|---|---|---|
+| Sample Scheduler for OpenLab | Yes | — |
+| OpenLab Library Manager (DA Add-on) | Yes | Pre-installed in CDS 2.8 FP2 and above |
+| GPC DA Add-on | Yes | CDS 2.8 only |
+| 2D-LC Software | No | — |
+| ADF Export | No | — |
+| Relay Service (Lab Advisor) | No | — |
 
 ---
 
-## 3rd Party Drivers
-Non-Agilent and third-party instrument drivers are not currently available for CIDs.
+## Third-Party Instrument Drivers
+
+| Driver Class | Supported | Notes |
+|---|---|---|
+| Non-Agilent and third-party drivers | No | — |
 
 ---
 
-## NIST Library Search
-Automatic NIST library searches during unattended processing are not supported on the CID. However, interactive searches can be performed in OpenLab CDS Data Analysis by installing the NIST Library on client machines. When automatic searches during unattended processing are needed, an AIC is required.
+## Other Software and Integrations
 
----
-
-## Network Assessment Tool (NAT)
-The current version of NAT cannot be executed on the CID. However, CIDs have a separate connectivity tester tool that should be used in case of connectivity issues. CIDs test and report connection and compatibility to server as they are activated.
-
----
-
-## Status Board for OpenLab
-It is possible to have "Status Board" for OpenLab alongside CIDs. However, CIDs cannot be monitored or managed using the Status Board. CID software management, maintenance, and administration are performed from the CID Hub (https://hub.cid.agilent.com/).
-
----
-
-## Advanced Sample Linking (ASL)
-ASL is a server-side application that does not require any installation on CIDs. ASL can be used in installations that have CIDs.
-
----
-
-## Lab Assist Hub
-Lab Assist Hub is a tablet-style user interface for InfinityLab LCs that allow users to control, visually inspect, and perform maintenance. It does not require any installation or configuration on the CIDs. Lab Assist Hub can be used in installations that have CIDs.
-
----
-
-## Online LC Monitoring
-This is currently not supported by CIDs.
-
----
-
-## Dissolution
-This is currently not supported by CIDs.
+| Feature | Supported on CID | Notes |
+|---|---|---|
+| NIST Library — automatic searches during unattended processing | No | Interactive searches remain available in OpenLab CDS Data Analysis on client machines. Automatic unattended searches require an AIC. |
+| Network Assessment Tool (NAT) | No | The CID exposes a separate connectivity tester for diagnosing network issues. |
+| Status Board for OpenLab | Coexists, but cannot monitor CIDs | CID monitoring and management is performed in the CID Hub. |
+| Advanced Sample Linking (ASL) | Yes | Server-side application; no CID-side installation required. |
+| Lab Assist Hub | Yes | Operates against InfinityLab LCs directly; no CID-side installation or configuration. |
+| Online LC Monitoring | No | — |
+| Dissolution | No | — |
