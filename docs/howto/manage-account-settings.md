@@ -45,7 +45,7 @@ The Account Summary page displays your organization's key information, including
 3.  You must provide a justification for the changes in the **Reason/description for this change** field.
 4.  Click **Update** to save your changes, or **Cancel** to discard them.
 
-:::info ETT Fields
+:::info[ETT Fields]
 Fields labeled with (ETT) and Purchase/SMA dates are for Agilent's internal use and cannot be edited by customers.
 :::
 

@@ -8,7 +8,7 @@ toc_max_heading_level: 2
 
 # CID Connectivity Tester
 
-:::warning For IT Administrators Only
+:::warning[For IT Administrators Only]
 This section is intended for IT administrators familiar with Linux commands. Incorrect use of the tools and commands described here can misconfigure your CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 

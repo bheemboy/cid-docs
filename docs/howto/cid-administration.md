@@ -38,7 +38,7 @@ The CID uses a secure credential management system to ensure device security. Th
 ### Cockpit User
 * **Purpose:** Allows access to the **Linux Cockpit** tool on the host system.
 
-:::warning Restricted Access
+:::warning[Restricted Access]
 The Cockpit interface requires deep knowledge of the Linux environment. **Do not use this account unless explicitly directed by CID Hub Support.** Incorrect configuration in Cockpit can render the device unusable.
 :::
 
