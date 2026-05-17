@@ -12,8 +12,8 @@ title: "Before Installing CIDs"
 ### Step 1: Enabling CID Connectivity
 
  1. **Ensure CIDs have internet connection** for activation, security updates, monitoring, and other maintenance activities
- 2. Configure the network and firewalls to allow connections from the CIDs to specific internet sites – **see complete list in the [System Requirements](/docs/system-requirements.md#internet-requirements).**
- 3. Review the applicable [SSL Certificate Requirements for HTTPS](/docs/system-requirements.md#ssl-certificate-requirements-for-https) before proceeding.
+ 2. Configure the network and firewalls to allow connections from the CIDs to specific internet sites – **see complete list in the [System Requirements](/system-requirements#internet-requirements).**
+ 3. Review the applicable [SSL Certificate Requirements for HTTPS](/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
 
 ---
 
@@ -23,7 +23,7 @@ title: "Before Installing CIDs"
 2. If your DHCP servers support dynamic DNS registration for Linux systems, the DHCP server will register the CID hostname automatically with the DNS server.
 3. Otherwise, register the desired CID hostnames in DHCP and DNS using the device MAC address (found on QR code label).
 4. CDS clients must resolve CID hostnames to their IP addresses for proper operation.
-5. Refer to [DHCP and DNS Requirements](/docs/system-requirements.md#dhcp-and-dns-requirements) for more detail.
+5. Refer to [DHCP and DNS Requirements](/system-requirements#dhcp-and-dns-requirements) for more detail.
 
 ---
 
@@ -33,7 +33,7 @@ title: "Before Installing CIDs"
 2. Place the CID next to the instrument and ensure the device has proper ventilation during operation. Do not place CIDs one top of the other, in a sealed box or near any heat sources.
 3. Proceed to connect the CID LAN ports: **House (Corporate) NIC** connects to the corporate LAN and provides access to the OpenLab Server and the internet, and **Instrument NIC** connects to analytical instruments – directly or via instrument dedicated LAN/VLAN.
 4. Connect the power cable and turn on the CID.
-5. On bootup, the CID connects to the CID Hub via the internet. If successful, it will beep three times every 30 seconds until the CID is [added to the Hub](register-activate#3-add-the-cid-to-the-cid-hub). See the troubleshooting tips in [Internet Requirements](/docs/system-requirements.md#internet-requirements) for other beep codes.
+5. On bootup, the CID connects to the CID Hub via the internet. If successful, it will beep three times every 30 seconds until the CID is [added to the Hub](register-activate#3-add-the-cid-to-the-cid-hub). See [**CID-BOOT-01** — Beep Codes on Startup](/cid-boot-01) for the meaning of other beep patterns.
 
 ![CID layout](../img/layout-1.jpg)
 

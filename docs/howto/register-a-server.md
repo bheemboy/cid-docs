@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Register a Server
+title: "Register a Server"
 ---
 
 # Register an OpenLab Server
@@ -25,7 +25,7 @@ The CID Hub does not verify or connect to the server. It simply stores this info
 
 Click **Register Server** to add a new OpenLab Server.
 
-### Field Descriptions
+#### Field Descriptions
 
 - **Server Name (FQDN)**
 

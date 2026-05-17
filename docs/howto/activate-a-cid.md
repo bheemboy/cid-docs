@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Activate a CID
+title: "Activate a CID"
 ---
 
 # Activate a CID
