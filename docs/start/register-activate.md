@@ -7,7 +7,7 @@ title: "Register & Activate CIDs"
 
 ---
 
-:::info[IMPORTANT]
+:::info[Important]
 Before you can register a server or add a CID, you must have an active CID Hub account. Your organization's account and the first set of administrator users are created by Agilent personnel upon purchase. 
 
 Look for an invitation email from **CID Hub** \<no-reply@hub.cid.agilent.com\> to begin.
@@ -62,6 +62,6 @@ See "[Define a Software Template](../howto/define-software-template)" for detail
 For more information see the manual “Agilent OpenLab CDS Clients and Instrument Controllers” for your CDS version (e.g. https://www.agilent.com/cs/library/usermanuals/public/CDS_v2.8_ClientAICGuide_en.pdf)
 
 
-:::info[IMPORTANT]
+:::info[Important]
 **Using multiple instruments on a single CID is not supported.**
 :::

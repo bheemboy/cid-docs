@@ -45,7 +45,7 @@ title: "Before Installing CIDs"
 2. Continue to **[Register & Activate your CIDs](register-activate)**.
 3. For further reference, see the CID Requirements Guide and Site Preparation Checklist documents. 
 
-:::info[NOTE]
+:::info[Note]
 Agilent is here to support you - feel free to reach out!
 --
 **[Technical Support | Agilent](https://www.agilent.com/en/support)**
