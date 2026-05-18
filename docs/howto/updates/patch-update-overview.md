@@ -1,5 +1,5 @@
 ---
-sidebar_position: 110
+sidebar_position: 1
 title: "Patch & Update Overview"
 ---
 

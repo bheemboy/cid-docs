@@ -1,5 +1,5 @@
 ---
-sidebar_position: 30
+sidebar_position: 3
 title: "Configure Software Exceptions"
 ---
 
@@ -16,7 +16,7 @@ To set up unique CIDs, as a first step must configure the specific CIDs to stop 
 - Locate the toggle switch labeled "Inherit Software Settings From Server".
 - Switch this toggle to the Off position.
 
-![Break Inheritance](./../img/break-inheritance.jpg)
+![Break Inheritance](../../img/break-inheritance.jpg)
 
 Once inheritance is disabled, you can manage that CID's drivers and add-ons independently.
 

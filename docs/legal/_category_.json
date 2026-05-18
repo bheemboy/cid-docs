@@ -1,0 +1,11 @@
+{
+  "label": "Legal",
+  "position": 7,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/legal",
+    "description": "Terms of use and acceptable-use policy governing your use of CID Hub."
+  }
+}

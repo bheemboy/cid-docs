@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 1
 title: "View CIDs"
 ---
 
@@ -11,7 +11,7 @@ By default, the list is sorted by CID name in descending order. Click a column h
 
 You can filter one or more columns by clicking the chevron to the right of a column header to open a filter pop-up.
 
-![CIDs List Filter](./../img/cids-list-filter.jpg)
+![CIDs List Filter](../../img/cids-list-filter.jpg)
 
 ### Column Descriptions
 
@@ -33,7 +33,7 @@ You can filter one or more columns by clicking the chevron to the right of a col
     - `Ready`: All pending updates have been downloaded and are ready to install.
     - `Updating`: Updates are currently being applied to the CID.
 
-- **Inherit**: Indicates whether the CID inherits its software settings from the [server template](/howto/define-software-template) or has individual [CID-level exceptions](/howto/configure-software-exceptions).
+- **Inherit**: Indicates whether the CID inherits its software settings from the [server template](/howto/setup/define-software-template) or has individual [CID-level exceptions](/howto/setup/configure-software-exceptions).
 
 - **Allow Updates**: Shows whether the CID is locked against changes. When updates are disallowed, no changes can be applied. After making required changes, you can lock a CID to prevent accidental modifications. Changes can be applied only after an administrator unlocks the CID.
 
@@ -47,18 +47,18 @@ You can filter one or more columns by clicking the chevron to the right of a col
 
 - **Toggle "Allow Updates"**: Use the "Turn on 'Allow Updates'" (unlock icon) and "Turn off 'Allow Updates'" (lock icon) buttons above the table to allow or disallow updates for one or more CIDs at once.
 
-  ![Allow Disallow Changes](./../img/allow-disallow-changes.jpg)
+  ![Allow Disallow Changes](../../img/allow-disallow-changes.jpg)
 
 - **Apply Updates**: Use the "Apply Updates" (gear icon) button to initiate updates on one or more selected CIDs.
 
-  ![Apply Updates to Multiple CIDs](./../img/apply-all-cids-list-page.jpg)
+  ![Apply Updates to Multiple CIDs](../../img/apply-all-cids-list-page.jpg)
 
 - **Export CID Data**: Use the "Export CID Data" (cloud download icon) button to download information about the selected CIDs in JSON format.
 
-  ![Export CID Data](./../img/export-cid.jpg)
+  ![Export CID Data](../../img/export-cid.jpg)
 
 - **Print Reports**: Use the "Print Report" (printer icon) button to print information about the selected CIDs.
     - **Software Report**: A summary of the CID including its IP address and installed software versions.
     - **Connectivity Report**: Shows whether the CID is connected to its instrument and the CID Hub IoT services.
 
-  ![Print Report](./../img/print-reports.jpg)
+  ![Print Report](../../img/print-reports.jpg)

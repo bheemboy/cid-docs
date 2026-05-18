@@ -1,0 +1,11 @@
+{
+  "label": "Account",
+  "position": 6,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/account",
+    "description": "Manage CID Hub users, roles, and organization account settings."
+  }
+}

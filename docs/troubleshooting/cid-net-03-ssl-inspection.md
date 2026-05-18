@@ -56,7 +56,7 @@ This allows the appliance to inspect encrypted traffic for security purposes. Ho
 
 ## Affected Services
 
-SSL Inspection can affect all CID services that communicate over HTTPS. For the complete list of required domains, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
+SSL Inspection can affect all CID services that communicate over HTTPS. For the complete list of required domains, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
 
 ---
 

@@ -12,8 +12,8 @@ title: "Before Installing CIDs"
 ### Step 1: Enabling CID Connectivity
 
  1. **Ensure CIDs have internet connection** for activation, security updates, monitoring, and other maintenance activities
- 2. Configure the network and firewalls to allow connections from the CIDs to specific internet sites – **see complete list in the [System Requirements](/system-requirements#internet-requirements).**
- 3. Review the applicable [SSL Certificate Requirements for HTTPS](/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
+ 2. Configure the network and firewalls to allow connections from the CIDs to specific internet sites – **see complete list in the [System Requirements](/reference/system-requirements#internet-requirements).**
+ 3. Review the applicable [SSL Certificate Requirements for HTTPS](/reference/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
 
 ---
 
@@ -23,7 +23,7 @@ title: "Before Installing CIDs"
 2. If your DHCP servers support dynamic DNS registration for Linux systems, the DHCP server will register the CID hostname automatically with the DNS server.
 3. Otherwise, register the desired CID hostnames in DHCP and DNS using the device MAC address (found on QR code label).
 4. CDS clients must resolve CID hostnames to their IP addresses for proper operation.
-5. Refer to [DHCP and DNS Requirements](/system-requirements#dhcp-and-dns-requirements) for more detail.
+5. Refer to [DHCP and DNS Requirements](/reference/system-requirements#dhcp-and-dns-requirements) for more detail.
 
 ---
 

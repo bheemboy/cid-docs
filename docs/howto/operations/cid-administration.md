@@ -1,5 +1,5 @@
 ---
-sidebar_position: 170
+sidebar_position: 2
 title: CID Administration 
 sidebar_label: CID Administration
 description: Guide for CID device access, credential management, and system recovery actions.
@@ -18,7 +18,7 @@ To access the administration controls for a specific device:
 2.  Select the specific CID you wish to manage.
 3.  Click the **Administration** tab in the left sidebar menu.
 
-![CID Administration Page](../img/cid-administration.jpg)
+![CID Administration Page](../../img/cid-administration.jpg)
 
 :::info
 To perform any administrative actions or restarts described below, the **Allow Changes** toggle must be enabled on the interface.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 80
+sidebar_position: 2
 title: "View Devices"
 ---
 
@@ -13,7 +13,7 @@ To access the Devices page:
 1.  Click the **Settings** (gear) icon in the top-right corner of the navigation bar.
 2.  From the dropdown menu, select **Devices**.
 
-![Devices List](./../img/devices-list.jpg)
+![Devices List](../../img/devices-list.jpg)
 
 ---
 

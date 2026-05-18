@@ -38,7 +38,7 @@ nc -zv <hostname> 443
 
 ## Affected Services
 
-Port 443 blocking can affect any CID service that communicates over HTTPS. For the complete list of domains requiring outbound access, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
+Port 443 blocking can affect any CID service that communicates over HTTPS. For the complete list of domains requiring outbound access, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 180
+sidebar_position: 1
 title: "Manage Users and Roles"
 ---
 
@@ -21,7 +21,7 @@ To manage users for your account:
 
 This will take you to the **Users** list page, where you can view, add, edit, or remove users.
 
-![Users List](./../img/view-users.jpg)
+![Users List](../../img/view-users.jpg)
 
 ---
 
@@ -61,7 +61,7 @@ Users **cannot** make software changes, modify network configurations, add/remov
 
 The new user will receive an email invitation to join the CID Hub.
 
-![Create User Dialog](./../img/create-user.jpg)
+![Create User Dialog](../../img/create-user.jpg)
 
 ### Edit a User
 To change a user's name or roles:

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 160
+sidebar_position: 1
 title: Perform CDS Failover
 sidebar_label: Perform CDS Failover
 description: How to access the Windows KVM console to perform failover operations when the OpenLab Server is unavailable.
@@ -21,7 +21,7 @@ Access to the **CID Hub** web interface is required to retrieve the current pass
 
 You must first identify which CID is controlling the instrument you wish to use.
 
-It is a best practice to use similar names for a CID and the Instrument it connects to, making identification easier during an outage. If the CID name does not match the instrument name, you can identify the correct unit using the CID's PIN and cross-referencing it with the "[devices page](view-devices)" in the CID Hub.
+It is a best practice to use similar names for a CID and the Instrument it connects to, making identification easier during an outage. If the CID name does not match the instrument name, you can identify the correct unit using the CID's PIN and cross-referencing it with the "[devices page](../monitoring/view-devices)" in the CID Hub.
 
 Alternatively, you can refer to a printed copy of the "Instrument Controllers Report" from the OpenLab Control Panel.
 

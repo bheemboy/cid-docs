@@ -48,7 +48,7 @@ sequence and cannot be managed from the CID Hub. CDS clients cannot connect
 to acquire data from instruments attached to the CID.
 
 For the complete list of domains the CID requires for activation and
-registration, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
+registration, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
 
 ---
 
@@ -121,7 +121,7 @@ CID has been added to the customer organization in the CID Hub:
 
 | Result | Interpretation |
 |---|---|
-| No matching record | Add the CID following [Activate a CID](/howto/activate-a-cid). |
+| No matching record | Add the CID following [Activate a CID](/howto/onboarding/activate-a-cid). |
 | A record exists with a different MAC | The CID was added under the wrong MAC. Correct the MAC on the existing record, or remove and re-add. |
 | A matching record exists | The Hub-side record is correct but the CID is not seeing it. Reboot the CID; if the 3-beep pattern persists, escalate to Agilent Support. |
 
@@ -166,4 +166,4 @@ nc -zv api.agilent.com 443
 - [**CID-NET-03** — SSL Inspection / Certificate Substitution](/cid-net-03)
 - [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)
 - [**CID Connectivity Tester**](/troubleshooting/cid-connectivity-tester) — GUI tool available on unactivated CIDs
-- [**Activate a CID**](/howto/activate-a-cid) — required when Step 3 finds no Hub record
+- [**Activate a CID**](/howto/onboarding/activate-a-cid) — required when Step 3 finds no Hub record

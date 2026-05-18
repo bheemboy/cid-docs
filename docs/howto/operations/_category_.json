@@ -1,0 +1,11 @@
+{
+  "label": "Operations",
+  "position": 5,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/operations",
+    "description": "Day-of-incident operations: CDS failover, and CID device administration via console access."
+  }
+}

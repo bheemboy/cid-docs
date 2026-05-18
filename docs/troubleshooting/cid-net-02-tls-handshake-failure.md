@@ -40,7 +40,7 @@ nc -zv <hostname> 443
 
 ## Affected Services
 
-This failure can affect any CID service that communicates over HTTPS. For the complete list of required endpoints, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
+This failure can affect any CID service that communicates over HTTPS. For the complete list of required endpoints, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
 
 ---
 

@@ -1,12 +1,12 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: "System Requirements"
 ---
 
 # System Requirements
 
 ## Networking Requirements
-![CID NICs](./img/cid-nics.jpg)
+![CID NICs](../img/cid-nics.jpg)
 
 Each CID is equipped with two network interfaces:
 - **House NIC** – Connects to the corporate LAN and provides access to the OpenLab Server and the internet.
@@ -14,7 +14,7 @@ Each CID is equipped with two network interfaces:
 
 The 12-character MAC address for the "House" NIC and the 8-character PIN are printed on a QR code sticker attached to the device. The PIN is used to link the physical CID with its record in the CID Hub.
 
-![QR code sticker](./img/qr-code.jpg)
+![QR code sticker](../img/qr-code.jpg)
 
 <mark>The two-NIC topology is the foundation of the CID's network trust model. Three points an IT reviewer should note before reading the detailed table below:</mark>
 
@@ -22,7 +22,7 @@ The 12-character MAC address for the "House" NIC and the 8-character PIN are pri
 - <mark>**The embedded Windows VM is hidden from the corporate LAN.** The OpenLab Instrument Controller software runs in a Windows 11 virtual machine on the CID's Linux host. Corporate clients (OpenLab CDS, browsers) connect to the CID's reverse proxy on TCP 443, which terminates TLS and forwards to the VM internally over the Linux host's KVM bridge. The VM reaches the internet through the Linux host via NAT and is not directly addressable from the House NIC.</mark>
 - <mark>**The Instrument NIC is isolated from the WAN and the corporate LAN.** The Windows VM is bridged onto the Instrument NIC through a separate virtual NIC (V-NIC) on the Linux host, putting the VM directly on the instrument network. Most OpenLab drivers initiate the connection from the VM out to the instrument; **GC instrument drivers are an exception** — the GC initiates the connection back to a driver process listening on the V-NIC inside the Windows VM. In either case the Instrument NIC has no default gateway by design — the CID Hub UI labels the gateway field "Gateway Address (Not Recommended)" — so traffic on the instrument network cannot route to the corporate LAN or to the internet. The instrument network is intended to be either a direct cable to one instrument or a dedicated, isolated LAN/VLAN.</mark>
 
-<mark>For the full trust-boundary diagram and threat model, see [Security model](./security/security-model).</mark>
+<mark>For the full trust-boundary diagram and threat model, see [Security model](../security/security-model).</mark>
 
 | Component	| CID Networking |
 | --- | --- |
@@ -70,7 +70,7 @@ Your firewall must be configured to allow outbound communication from CIDs to th
 
 <mark>See [**CID-BOOT-01** — Beep Codes on Startup](/cid-boot-01) for the meaning
 of each beep pattern the CID emits when it cannot reach the registration API
-on boot</mark>, and [Verify CID Internet Connectivity](troubleshooting/cid-connectivity-tester)
+on boot</mark>, and [Verify CID Internet Connectivity](../troubleshooting/cid-connectivity-tester)
 for testing connections from CIDs.
 
 ---
@@ -129,14 +129,14 @@ If write access is granted as well, the device can automatically copy downloaded
 - The Instrument NIC connects directly to the instrument.
 - Example: The instrument is set to a static IP of `192.168.1.2`, and the CID Instrument NIC is set to `192.168.1.3`.
 
-![Direct instrument connection](./img/direct-instrument-connection.jpg)
+![Direct instrument connection](../img/direct-instrument-connection.jpg)
 
 ### 2. Instrument LAN/VLAN Connection
 - The Corporate NIC connects to the corporate LAN.
 - Instruments and the CID are placed on a dedicated LAN or VLAN.
 - Instrument IP assignment may be DHCP or static.
 
-![Instrument LAN/VLAN Connection](./img/instrument-lan-connection.jpg)
+![Instrument LAN/VLAN Connection](../img/instrument-lan-connection.jpg)
 
 ---
 

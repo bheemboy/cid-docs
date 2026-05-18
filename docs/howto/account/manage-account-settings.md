@@ -1,5 +1,5 @@
 ---
-sidebar_position: 190
+sidebar_position: 2
 title: "Manage Account Settings"
 ---
 
@@ -19,7 +19,7 @@ To manage your account settings:
 
 This will take you to the **Account Summary** page.
 
-![Account Summary Page](./../img/account-summary-page.jpg)
+![Account Summary Page](../../img/account-summary-page.jpg)
 
 ---
 
@@ -36,11 +36,11 @@ The Account Summary page displays your organization's key information, including
 
 1.  To update your account information, click the **Edit** (pencil) icon on the Summary page.
 
-    ![Edit Account Icon](./../img/edit-account-icon.jpg)
+    ![Edit Account Icon](../../img/edit-account-icon.jpg)
 
 2.  The **Edit Details** dialog will open. You can update your organization's address, phone number, and contacts here.
 
-    ![Edit Account Dialog](./../img/edit-account-dialog.jpg)
+    ![Edit Account Dialog](../../img/edit-account-dialog.jpg)
 
 3.  You must provide a justification for the changes in the **Reason/description for this change** field.
 4.  Click **Update** to save your changes, or **Cancel** to discard them.

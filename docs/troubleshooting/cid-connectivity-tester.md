@@ -47,7 +47,7 @@ The **CID Connectivity** page is listed in the Cockpit left-hand navigation. Onc
 
 ### Test All Endpoints
 
-Click **Run General Connectivity Tests** to test all endpoints required by the CID in one go. This is the recommended starting point. For the full list of domains tested, see [System Requirements → Internet Requirements](/system-requirements#internet-requirements).
+Click **Run General Connectivity Tests** to test all endpoints required by the CID in one go. This is the recommended starting point. For the full list of domains tested, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
 
 ### Test a Specific Endpoint
 

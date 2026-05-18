@@ -1,5 +1,5 @@
 ---
-sidebar_position: 40
+sidebar_position: 1
 title: "Activate a CID"
 ---
 
@@ -8,20 +8,20 @@ title: "Activate a CID"
 Each physical CID must have a corresponding record in the CID Hub before it can be used. These online records define the configuration that the CID would assume. These records are also required for accessing the CID and performing actions on them.
 
 :::info
-Before activating a CID, you must "[register an OpenLab Server](register-a-server)" and "[define a software template](define-software-template)" for it.
+Before activating a CID, you must "[register an OpenLab Server](../setup/register-a-server)" and "[define a software template](../setup/define-software-template)" for it.
 :::
 
 ---
 
 ## Add a CID record
 
-![Add CID Button](./../img/add-cid-btn.jpg)
+![Add CID Button](../../img/add-cid-btn.jpg)
 
 Clicking on the **Add** button launches the add CID dialog.
 
 New CIDs are constantly checking for a corresponding CID record in the Hub with a matching PIN code. As soon as the CID finds such a record, it starts activating itself using information specified in the record.
 
-![Add CID Dialog](./../img/add-cid-dlg.jpg)
+![Add CID Dialog](../../img/add-cid-dlg.jpg)
 
 #### Field Descriptions  
 
@@ -63,5 +63,5 @@ The CID activation process consists of the following steps:
 
 The CID activities are recorded and displayed in the "*Recent Activity*" section at the bottom of the **Summary** page of the CID. You can monitor this section to see what step the CID has performed. It also shows any issues that the CID encounters along the way.
 
-![Recent Activity](./../img/recent-activity.jpg)
+![Recent Activity](../../img/recent-activity.jpg)
 

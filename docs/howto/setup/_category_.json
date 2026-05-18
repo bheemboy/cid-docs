@@ -1,0 +1,11 @@
+{
+  "label": "Setup",
+  "position": 1,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/setup",
+    "description": "One-time setup tasks: register an OpenLab Server, define the default software template, and configure per-CID software exceptions."
+  }
+}

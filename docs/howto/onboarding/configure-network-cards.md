@@ -1,5 +1,5 @@
 ---
-sidebar_position: 50
+sidebar_position: 2
 title: "Configure Network Cards"
 ---
 
@@ -10,12 +10,12 @@ CIDs include two Network Interface Cards (NICs):
 - **Instrument NIC** – Connects to the instrument and does not require external network access.
 
 See the following topic for prerequisites:
-- [Networking Requirements](../system-requirements#networking-requirements)  
-- [Supported Topologies](../system-requirements#supported-topologies)
+- [Networking Requirements](../../reference/system-requirements#networking-requirements)  
+- [Supported Topologies](../../reference/system-requirements#supported-topologies)
 
 You can access a CID’s networking settings by selecting the **Networking** tab for that CID.
 
-![CID Networking](../img/cid-networking.jpg)
+![CID Networking](../../img/cid-networking.jpg)
 
 ---
 
@@ -47,7 +47,7 @@ The Corporate NIC is the primary communication path between the CID, the CID Hub
 
 ### Configuration Methods
 
-![CID Networking Configuration](../img/cid-networking-configuration.jpg)
+![CID Networking Configuration](../../img/cid-networking-configuration.jpg)
 
 #### Automatic Configuration (DHCP)
 The CID obtains its IP, subnet mask, gateway, and DNS settings from the corporate DHCP server.  
@@ -84,7 +84,7 @@ It does **not** need Internet access, and it typically uses:
 
 ### Configuration Screen
 
-![CID Networking Configuration](../img/cid-networking-intr-configuration.jpg)
+![CID Networking Configuration](../../img/cid-networking-intr-configuration.jpg)
 
 When configuring the Instrument NIC, the dialog includes:
 

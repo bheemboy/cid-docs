@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 1
 title: "EULA"
 toc_max_heading_level: 2
 ---

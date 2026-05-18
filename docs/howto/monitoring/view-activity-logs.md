@@ -1,5 +1,5 @@
 ---
-sidebar_position: 100
+sidebar_position: 4
 title: "View Activity Logs"
 ---
 
@@ -21,7 +21,7 @@ The Global Activity Log displays all events from across your CID Hub account in 
 
 To access the Global Activity Log, click the **Activity Log** tab in the main navigation bar at the top of the page.
 
-![Global Activity Log](./../img/global-activity-log.jpg)
+![Global Activity Log](../../img/global-activity-log.jpg)
 
 ---
 
@@ -33,7 +33,7 @@ If you need to see the history for a particular CID, you can access its dedicate
 2.  Click on the name of the CID you want to inspect.
 3.  Select the **Activity Log** tab from the left-hand navigation menu.
 
-![CID-Specific Activity Log](./../img/cid-activity-log.jpg)
+![CID-Specific Activity Log](../../img/cid-activity-log.jpg)
 
 ---
 
@@ -70,7 +70,7 @@ It is important to understand the difference between the **Activity Log** and th
 
 -   **Activity Log**: This is for **auditing and traceability**. It captures high-level actions performed by users (e.g., "Requested install driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid") and the system (e.g., "Installed driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid").
 
--   **Recent Activity**: This feed, found on a CID's **Summary** page, is for **troubleshooting**. It shows detailed, low-level actions performed by the CID agent software on the device itself (e.g., "Resolving 'hostname' to its IP address..."). It provides a much more granular view of the CID's internal processes. See "[Recent Activities](activate-a-cid#recent-activities)" for more details.
+-   **Recent Activity**: This feed, found on a CID's **Summary** page, is for **troubleshooting**. It shows detailed, low-level actions performed by the CID agent software on the device itself (e.g., "Resolving 'hostname' to its IP address..."). It provides a much more granular view of the CID's internal processes. See "[Recent Activities](../onboarding/activate-a-cid#recent-activities)" for more details.
 
-![Recent Activity Feed on CID Summary Page](./../img/recent-activity.jpg)
+![Recent Activity Feed on CID Summary Page](../../img/recent-activity.jpg)
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 3
 title: "Configure Instrument"
 ---
 

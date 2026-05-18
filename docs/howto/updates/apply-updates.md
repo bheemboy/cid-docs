@@ -1,5 +1,5 @@
 ---
-sidebar_position: 150
+sidebar_position: 5
 title: "Apply Software Updates"
 toc_max_heading_level: 2
 ---
@@ -35,10 +35,10 @@ Use this method to efficiently update several CIDs at once from the main list.
 2. Select the checkboxes for CIDs that have **Status = Ready** and **Updates = Ready**.  
 3. Click the **Apply Updates** (gear icon) button in the toolbar.
 
-![Apply Updates to Multiple CIDs](./../img/apply-all-cids-list-page.jpg)
+![Apply Updates to Multiple CIDs](../../img/apply-all-cids-list-page.jpg)
 
 :::info[Important]
-Pay attention to the values for [**Status**](/howto/view-cids#column-descriptions) and [**Updates**](/howto/view-cids#column-descriptions) columns. Agilent recommends to only apply updates for CIDs for which both columns show `Ready`.
+Pay attention to the values for [**Status**](/howto/monitoring/view-cids#column-descriptions) and [**Updates**](/howto/monitoring/view-cids#column-descriptions) columns. Agilent recommends to only apply updates for CIDs for which both columns show `Ready`.
 :::
 
 ---
@@ -51,7 +51,7 @@ Use this method to apply all available updates for one specific CID.
 2. Navigate to the **Software** tab.  
 3. Click **Apply All Updates** to install all pending updates for that CID.
 
-![Apply All on a CID](./../img/cid-software-page-apply-all.jpg)
+![Apply All on a CID](../../img/cid-software-page-apply-all.jpg)
 
 ---
 
@@ -63,4 +63,4 @@ Use this method to apply a single update, for example during troubleshooting or 
 2. Locate the update you want to install in the list. The progress bar shows its current status (for example, *Downloading* or *Ready to Install*).  
 3. Click **Install** for that specific update.
 
-![Install one on a CID](./../img/cid-software-page-apply-one.jpg)
+![Install one on a CID](../../img/cid-software-page-apply-one.jpg)

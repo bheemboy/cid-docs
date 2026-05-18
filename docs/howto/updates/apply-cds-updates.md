@@ -1,5 +1,5 @@
 ---
-sidebar_position: 140
+sidebar_position: 4
 title: "Update/Upgrade CDS"
 ---
 
@@ -9,9 +9,9 @@ New CDS updates and upgrades are published to the **CID Hub** as they become ava
 
 To view all available versions, open the **Software Library** tab and then select **OpenLab CDS**.
 
-![CDS](./../img/software-library-cds.jpg)
+![CDS](../../img/software-library-cds.jpg)
 
-You can choose which version of CDS to install on your CIDs from the **Software** tab on either your [**server**](/howto/define-software-template) or an individual [**CID**](/howto/configure-software-exceptions).
+You can choose which version of CDS to install on your CIDs from the **Software** tab on either your [**server**](/howto/setup/define-software-template) or an individual [**CID**](/howto/setup/configure-software-exceptions).
 
 :::tip[Important]
 - Changing the CDS version resets all driver and add-on selections to their defaults for that version. If your deployment requires specific versions, make sure to reselect them after changing the CDS version.
@@ -23,6 +23,6 @@ On the Software page, the **Update Available** label appears for *updates* withi
 
 Select **Change** to view available versions, review release notes, and choose the version you want to install.
 
-![CDS Updates](./../img/select-cds.jpg)
+![CDS Updates](../../img/select-cds.jpg)
 
 After selecting the version, [**apply the changes**](apply-updates) to your CID(s) to install the update or upgrade.
