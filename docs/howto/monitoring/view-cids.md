@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3.5
+sidebar_position: 70
 title: "View CIDs"
 ---
 

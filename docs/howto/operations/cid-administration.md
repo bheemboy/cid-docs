@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 170
 title: CID Administration 
 sidebar_label: CID Administration
 description: Guide for CID device access, credential management, and system recovery actions.

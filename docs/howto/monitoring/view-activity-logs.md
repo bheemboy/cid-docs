@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 100
 title: "View Activity Logs"
 ---
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 160
 title: Perform CDS Failover
 sidebar_label: Perform CDS Failover
 description: How to access the Windows KVM console to perform failover operations when the OpenLab Server is unavailable.

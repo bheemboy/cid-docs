@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5.1
+sidebar_position: 120
 title: "Install OS Updates"
 ---
 

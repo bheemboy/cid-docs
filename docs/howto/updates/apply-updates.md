@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5.4
+sidebar_position: 150
 title: "Apply Software Updates"
 toc_max_heading_level: 2
 ---
