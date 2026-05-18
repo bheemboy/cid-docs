@@ -120,7 +120,7 @@ const config: Config = {
         },
         {
           href: 'https://hub.cid.agilent.com/assets/agilent-support-contact-information.pdf',
-          position: 'right',
+          position: 'left',
           label: 'Support',
         },
       ],
