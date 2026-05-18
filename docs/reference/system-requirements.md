@@ -39,39 +39,60 @@ The 12-character MAC address for the "House" NIC and the 8-character PIN are pri
 
 ---
 
-## Internet Requirements
+## <mark>Internet Requirements</mark>
+
+:::info[Firewall Configuration]
+Your firewall must be configured to allow outbound communication from CIDs to the domains listed below.
+:::
 
 CIDs require an internet connection for activation, security updates, monitoring, and other maintenance activities. Even after initial activation, you must **ensure that the internet remains connected** for applying security updates, time syncing, syncing SSL certificate authorities, and other system maintenance.
 
-CIDs access resources in the following domains:
+**All internet traffic is outbound and CID-initiated.** Every domain listed below is contacted by the CID over an outbound TLS session that the CID opens; no port on the CID is reachable from the internet. (See the [Networking Requirements](#networking-requirements) section above for the full trust-boundary framing.)
 
-1.  CID Hub and associated services:
-    1. *.agilent.com (https)
-    2. *.s3.amazonaws.com (https)
-    3. *.s3.us-east-1.amazonaws.com (https)
-    4. *.s3.us-west-2.amazonaws.com (https)
-    5. *.iot.us-east-1.amazonaws.com (https)
-2. Microsoft Windows Updates:
-    1. *.microsoft.com (https)
-    2. *.cloudfront.net (https)
-    3. *.oneget.org (https)
-    4. *.trafficmanager.net (https)
-    5. *.blob.core.windows.net (https)
-    6. *.azurefd.net (https)
-    7. *.powershellgallery.com (https)
-3. NTP Server (cluster of worldwide timeservers)
-    1. *.pool.ntp.org (ntp)
+### CID Hub and AWS services
 
-:::info[Firewall Configuration]
-Your firewall must be configured to allow outbound communication from CIDs to the sites listed above.
-:::
+| Domain | Direction | Port / Protocol | Purpose |
+|---|---|---|---|
+| `*.agilent.com` | Outbound | 443 / HTTPS, WSS | CID Hub frontend (`hub.cid.agilent.com`), the Health-page tool, the registration API, and the CloudFront distribution that serves CID images, driver packages, CDS installers, and release notes (`files.cid.agilent.com`). |
+| `*.iot.us-east-1.amazonaws.com` | Outbound | 443 / HTTPS, WSS (MQTT-over-WSS) | AWS IoT Core endpoint — device shadow, command/job channel, and telemetry between the CID and the CID Hub. The specific host the CID connects to is `a3cb4mwmdz2oep-ats.iot.us-east-1.amazonaws.com`; customers who prefer a tighter allow-list can substitute that hostname for the wildcard. |
+| `data.tunneling.iot.us-east-1.amazonaws.com` | Outbound | 443 / WSS | AWS Secure Tunneling data plane for on-demand remote access (Windows Console and Linux Cockpit), opened only when an authorized CID Hub user initiates a session and closed when that user leaves the CID page. See [Remote Access](../security/remote-access). |
+| `agilent-aws-prd-51-ac-images.s3.amazonaws.com` | Outbound | 443 / HTTPS | Direct S3 access to the production image bucket. Required for CIDs running a Linux Update older than **2026.01.12**, which fetch images directly from S3 instead of through the CloudFront distribution served under `*.agilent.com`. |
+| `*.s3.us-west-2.amazonaws.com` | Outbound | 443 / HTTPS | Linux package mirror used by the CID's Oracle Linux host (Agilent-hosted ClamAV antivirus definitions and the OL8 third-party RPM repository at `agilent-aws-sbx-51-yum-rpm-repo.s3.us-west-2.amazonaws.com`). |
+
+**Single production region.** The CID Hub runs in **AWS `us-east-1`**, giving every CID and every CID Hub user a single, predictable region to reason about — one location for IoT Core, one location for Secure Tunneling, and a well-defined data-residency posture. The only outbound traffic that leaves `us-east-1` is the Linux package mirror in `us-west-2` (Agilent-hosted antivirus definitions and OL8 packages, listed separately above).
+
+**Image delivery transitioned to CloudFront.** Linux Update **2026.01.12** introduced CloudFront-based image delivery: CIDs on this update or newer fetch CID images, drivers, CDS installers, and release notes through `files.cid.agilent.com` (covered by `*.agilent.com`). CIDs on an older Linux Update continue to fetch directly from the S3 bucket, which is why `agilent-aws-prd-51-ac-images.s3.amazonaws.com` is still listed and must remain reachable until every CID in the fleet is on 2026.01.12 or newer.
+
+### Microsoft Windows Update
+
+| Domain | Direction | Port / Protocol | Purpose |
+|---|---|---|---|
+| `*.microsoft.com` | Outbound | 443 / HTTPS | Windows Update service. |
+| `*.cloudfront.net`, `*.trafficmanager.net`, `*.azurefd.net`, `*.blob.core.windows.net` | Outbound | 443 / HTTPS | CDN, traffic-management, and binary-blob endpoints used by Windows Update and the PowerShell Gallery. |
+| `*.oneget.org`, `*.powershellgallery.com` | Outbound | 443 / HTTPS | PowerShell package sources used by the embedded Windows VM. |
+
+The Windows VM reaches these endpoints through the Linux host via NAT on the House NIC; the VM has no separate egress path.
+
+### Time synchronization
+
+| Domain | Direction | Port / Protocol | Purpose |
+|---|---|---|---|
+| `*.pool.ntp.org` | Outbound | 123 / UDP (NTP) | Public NTP pool used by the CID's chrony service. Accurate time is required for TLS certificate validation, AWS IoT Core authentication, and audit-log timestamps. |
+
+**Behavior when an endpoint is blocked.** The CID does not fail silently; the symptom depends on which endpoint is unreachable.
+
+- **`*.agilent.com` unreachable at boot:** the CID emits boot-time beep codes — 2 beeps when the registration API cannot be reached, 4 beeps for an activated CID that cannot reach the API on bootup. See [**CID-BOOT-01** — Beep Codes on Startup](/cid-boot-01).
+- **AWS IoT Core unreachable:** the CID Hub shows the device as **disconnected**. Hub-initiated commands and configuration changes cannot reach the CID until connectivity is restored. Local CDS data acquisition and processing continue unaffected.
+- **AWS Secure Tunneling unreachable:** **Windows Console** and **Linux Cockpit** sessions initiated from the CID Hub cannot be opened (or fail mid-session). The device itself stays connected to IoT Core, and local CDS operation is unaffected.
+- **S3 or CloudFront unreachable:** image, driver, and CDS package downloads fail with a network error surfaced in the Hub's job/activity log. The CID continues to run with the software it already has.
+- **Microsoft Update endpoints blocked:** Windows Update fails inside the VM; the CID continues to run but stops receiving Windows security patches.
+- **NTP blocked:** time drift accumulates; eventually TLS handshakes and IoT Core authentication start failing. See [`CID-NET-04` — NTP time-sync failure](/cid-net-04).
+
+The full per-failure troubleshooting set lives under [Troubleshooting](../troubleshooting/cid-connectivity-tester) (`CID-NET-01..06`).
 
 **NOTE: OpenLab CDS does not require internet access for core function of acquiring and processing data from instruments.**
 
-<mark>See [**CID-BOOT-01** — Beep Codes on Startup](/cid-boot-01) for the meaning
-of each beep pattern the CID emits when it cannot reach the registration API
-on boot</mark>, and [Verify CID Internet Connectivity](../troubleshooting/cid-connectivity-tester)
-for testing connections from CIDs.
+See [Verify CID Internet Connectivity](../troubleshooting/cid-connectivity-tester) for testing connections from CIDs.
 
 ---
 

@@ -138,6 +138,17 @@ Rules:
 
 This rule exists because PDF/code snippets carry false confidence — they look canonical, and silent edits to them lose the provenance that lets the next drafter trust the source pack at all.
 
+## 10a. Review-highlight convention (`<mark>`)
+
+`<mark>` is the universal review marker for content awaiting SME review. Two granularities, mutually exclusive:
+
+- **Inline marks** — wrap individual sentences, paragraphs, table blocks, or bullets when the surrounding section is otherwise unchanged. The reviewer sees exactly what is new or revised against an otherwise-stable page.
+- **Section-title mark** — wrap the section heading itself (e.g. `## <mark>Internet Requirements</mark>`) when changes inside the section are extensive — for example, a restructured table, a new sub-section, or multiple paragraphs added or rewritten. This signals "review the whole section, not specific edits."
+
+**Do not combine the two.** When a section title is marked, the individual paragraphs, tables, and bullets *inside* that section must **not** also be inline-marked. The title mark already tells the reviewer the whole section is in scope; inner marks add noise and imply that anything unmarked inside is somehow excluded, which is the opposite of the intent.
+
+Choose the granularity per section, not per page: one page may have one section with a marked title and another section with several inline-marked paragraphs. Once SMEs sign off on a section, remove the `<mark>` wrappers in a separate cleanup pass.
+
 ## 11. How this brief is used
 
 - Pinned to every AI prompt that drafts or revises a page. Paste it (or link to it) as system context.
