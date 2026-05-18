@@ -150,7 +150,9 @@ This rule exists because PDF/code snippets carry false confidence — they look 
 
 In short: a marked title is mandatory whenever the section is touched; inline marks are an optional, additive aid for small edits only. Once SMEs sign off on a section, remove the `<mark>` wrappers (title and any inline) in a separate cleanup pass.
 
-This convention applies to section titles (H2 and below). A page's H1 / page-title `frontmatter` is not marked — the sidebar entry already tells the reviewer which page is being changed.
+This convention applies to section titles (H2 and below) on **existing pages**. A page's H1 / page-title `frontmatter` is not marked when only some sections changed — the sidebar entry plus the marked H2s already tell the reviewer where to look.
+
+**Brand-new pages are the exception:** mark only the page H1 (e.g. `# <mark>Page Title</mark>`) and leave H2/H3 titles inside the page unmarked. The whole page is new, so a single mark on the page title signals "review and approve the whole page"; marking every section inside would highlight everything and direct nothing.
 
 ## 11. How this brief is used
 

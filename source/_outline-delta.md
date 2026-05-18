@@ -22,7 +22,7 @@ This replaces the `~/projects/personal/cid-docs/docs/cid-security/` folder layou
 | `reference/system-requirements.md` §SSL Certificates | ECM/OpenLab Server cert rules for CIDs to trust | No change. Already correctly framed. | — |
 | `reference/system-requirements.md` §Shared Responsibility | Vendor/customer split | Expand: explicit list of what Agilent owns (Hub, patches, drivers, CID OS) vs customer (firewall, AD, screen locks, anti-malware for CDS clients). | 7, 8, 9 |
 | `reference/system-requirements.md` §Hardware Specification | Form factor, CPU, RAM, ports | Add: BIOS/Secure Boot posture, disk encryption posture, hardware certifications (CE/FCC/RoHS), supply-chain provenance (Lenovo-sourced, Agilent-imaged). **Gap: confirm with hardware owner.** | implicit |
-| `cid-data-flow.md` (draft, 33 lines) | Data privacy stance, data-type table | Promote out of draft. Open with the customer-facing Q&A "What is the high-level data flow between a CID device and the CID Management Hub?" — answer states **no PHI**, **no PII beyond admin user names/emails**, **no laboratory data/results**, then renders the Data Types Summary Table (9 categories, see `_source-pack.md` §3f-i and `data-types-summary-table.png`). Add: telemetry inventory (what fields per direction), retention per category, AWS region per data category, link to audit-log page. | 15, 21, 22, 28 |
+| `security/data-flow-and-privacy.md` ✅ Done | Data privacy stance, data-type table | Promoted out of draft. Opens with the customer Q&A; data-privacy stance clarifies admin emails live in Cognito (Hub-side), not on CID. Renders the 9-category Data Types Summary Table. Adds: telemetry inventory by direction (CID→Hub, Hub→CID, Portal→Hub), region/residency section (us-east-1 with us-west-2 yum-repo exception), retention summary (audit logs ≥7y, shadow latest-state only, registration for device lifetime, image artifacts version-tagged), and "what does not transit the Hub" closing block. Links to audit-and-compliance + view-activity-logs. | 15, 21, 22, 28 |
 | `start/register-activate.md` | First-boot activation workflow | Add: X.509 cert generation moment, where the cert is stored on device, cert rotation policy. **Gap: rotation interval not documented.** | implicit |
 | `howto/onboarding/activate-a-cid.md` | UI flow for activation | No structural change; cross-link to security-model. | — |
 | `howto/account/manage-users-and-roles.md` | Roles, invites | Add: IdP integration status (Cognito-only today), MFA status, offboarding flow, what happens to active sessions on user removal. **Gap: MFA + SSO posture is the #1 IT blocker.** | 23, 24, 26 |
@@ -40,7 +40,7 @@ This replaces the `~/projects/personal/cid-docs/docs/cid-security/` folder layou
 |---|---|---|
 | `security-model.md` | No existing page describes trust boundaries, threat model, or why the V-NIC + Windows-VM-no-WAN-IP + reverse-proxy stack is the security story. This is the centerpiece of the rebuild. | 7, 8, 14, 17, 18 |
 | `cid-vs-aic.md` | The PDF's Figure 1 + "functionally equivalent to AIC" framing has no home today. Needed as the decision aid for IT reviewers choosing deployment model. | 1, 2, 3, 4, 5, 6, 11 |
-| `cid-hub-architecture.md` | Tenant isolation, AWS service inventory, Cognito posture, region/residency — no current page covers Hub-side architecture. (Companion to `cid-data-flow.md`.) | 11, 20, 22 |
+| `cid-hub-architecture.md` | Tenant isolation, AWS service inventory, Cognito posture, region/residency — no current page covers Hub-side architecture. (Companion to `security/data-flow-and-privacy.md`.) | 11, 20, 22 |
 | `remote-access.md` | Windows Console + Linux Cockpit + Secure Tunnel + Agilent support approval flow — currently scattered across howto/. A consolidated "what remote access looks like, who can do it, how it's audited" page is needed. | 19, 25 |
 | `audit-and-compliance.md` | Audit-log model, retention, tamper-evidence, SIEM export, vulnerability disclosure intake, patch SLA, Part 11/Annex 11/SOC 2/ISO posture (mostly pointers to companion FAQ, but the pointers need a home). | 27, 28, 29, 30 |
 
@@ -107,7 +107,7 @@ Troubleshooting
 └── (unchanged — cid-boot-01, cid-connectivity-tester, cid-net-01..06)
 ```
 
-`cid-data-flow.md` currently lives at the top level (`docs/cid-data-flow.md`) as a draft. To-do during Phase 2.2: promote out of draft and decide its final home (likely under Security as "Data Flow & Privacy", or under Reference as a pure-reference data-types page per Diátaxis).
+`security/data-flow-and-privacy.md` was moved from `docs/cid-data-flow.md` into the Security category on 2026-05-18. Diátaxis classification: explanation (helps an IT reviewer understand what does and does not cross the CID ⇄ Hub boundary; the 9-category table is evidence inside the explanation, not a standalone reference lookup). Security sidebar order is: 1) Security Model, 2) CID vs AIC, 3) CID Hub Architecture, 4) Data Flow & Privacy, 5) Remote Access, 6) Audit & Compliance.
 
 The Security category gives IT reviewers a single landing point. Each page in it is the canonical home for that topic; other pages link in rather than duplicate.
 
@@ -116,7 +116,7 @@ The Security category gives IT reviewers a single landing point. Each page in it
 ## The PDF deliverable
 
 After site changes are complete and reviewed (Phase 5), the PDF is generated by:
-1. Selecting a curated subset of pages: `introduction`, `reference/system-requirements`, `security/security-model`, `security/cid-vs-aic`, `security/cid-hub-architecture`, `cid-data-flow`, `security/remote-access`, `security/audit-and-compliance`, `howto/updates/patch-update-overview`.
+1. Selecting a curated subset of pages: `introduction`, `reference/system-requirements`, `security/security-model`, `security/cid-vs-aic`, `security/cid-hub-architecture`, `security/data-flow-and-privacy`, `security/remote-access`, `security/audit-and-compliance`, `howto/updates/patch-update-overview`.
 2. Running them through a Docusaurus → PDF pipeline (decision deferred to Phase 4 per just-in-time toolchain rule).
 3. The PDF is a snapshot artifact; the site remains the source of truth.
 
@@ -140,16 +140,16 @@ This replaces the previous Phase 4 plan of typesetting standalone Markdown files
 | 10 | Internet required? | `reference/system-requirements` §Internet (aug.) | `security-model` |
 | 11 | On-premise / air-gapped Hub? | `cid-vs-aic` | `cid-hub-architecture` |
 | 12 | URL whitelist + narrowing | `reference/system-requirements` §Internet (aug.) | — |
-| 13 | Ports/protocols per path | `reference/system-requirements` §Networking (aug.) | `cid-data-flow` |
+| 13 | Ports/protocols per path | `reference/system-requirements` §Networking (aug.) | `security/data-flow-and-privacy` |
 | 14 | Connection direction | `reference/system-requirements` §Networking (aug.) | `security-model` |
-| 15 | Data transit through Hub? | `cid-data-flow` | — |
+| 15 | Data transit through Hub? | `security/data-flow-and-privacy` | — |
 | 16 | Firewall blocks one URL? | `troubleshooting/cid-net-*` | `reference/system-requirements` §Internet |
 | 17 | Instrument LAN isolated? | `reference/system-requirements` §Networking (aug.) | `security-model` |
 | 18 | Attack surface | `security-model` | — |
 | 19 | Tunnel persistent/on-demand? | `remote-access` (NEW) | `security-model` |
 | 20 | AWS shared vs dedicated? | `cid-hub-architecture` (NEW) | — |
-| 21 | Telemetry collection? | `cid-data-flow` (aug.) | — |
-| 22 | Data residency? | `cid-hub-architecture` (NEW) | `cid-data-flow` |
+| 21 | Telemetry collection? | `security/data-flow-and-privacy` (aug.) | — |
+| 22 | Data residency? | `cid-hub-architecture` (NEW) | `security/data-flow-and-privacy` |
 | 23 | IdP / SSO / SAML / OIDC | `howto/account/manage-users-and-roles` (aug.) | `cid-hub-architecture` |
 | 24 | MFA | `howto/account/manage-users-and-roles` (aug.) | — |
 | 25 | Agilent support access | `remote-access` (NEW) | `howto/operations/cid-administration` |

@@ -4,6 +4,8 @@
   "collapsed": true,
   "collapsible": true,
   "link": {
-    "slug": "/howto"
+    "type": "generated-index",
+    "slug": "/howto",
+    "description": "Task-oriented procedures for setting up, activating, administering, monitoring, and updating CIDs and their users."
   }
 }

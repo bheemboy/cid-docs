@@ -103,6 +103,26 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
+        {
+          to: '/start',
+          position: 'left',
+          label: 'Get started',
+        },
+        {
+          to: '/security',
+          position: 'left',
+          label: 'Security',
+        },
+        {
+          to: '/reference/release-notes',
+          position: 'left',
+          label: 'Release notes',
+        },
+        {
+          href: 'https://hub.cid.agilent.com/assets/agilent-support-contact-information.pdf',
+          position: 'right',
+          label: 'Support',
+        },
       ],
     },
     footer: {
