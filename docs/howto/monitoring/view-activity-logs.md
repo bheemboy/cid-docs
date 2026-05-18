@@ -74,3 +74,9 @@ It is important to understand the difference between the **Activity Log** and th
 
 ![Recent Activity Feed on CID Summary Page](../../img/recent-activity.jpg)
 
+---
+
+## <mark>See also</mark>
+
+- [Audit & Compliance](../../security/audit-and-compliance) — what is captured in the Activity Log, retention period, tamper protection, and options for forwarding records to an external SIEM.
+
