@@ -292,6 +292,7 @@ Data-privacy stance:
 - **No PHI (Protected Health Information)** is transmitted between the CID and the Hub.
 - **No PII (Personally Identifiable Information)** is transmitted beyond the names and email addresses of the internal users a customer chooses to invite to administer their tenant.
 - **No laboratory data, sample data, chromatograms, or analytical results** are transmitted to the Hub. Those remain on the customer's local network, handled by OpenLab CDS.
+- ⚠️ **Accuracy update (2026-05-18, confirmed via `ac_client/datastore.py:55-105`):** the admin user names and email addresses described above live in **Cognito on the Hub side**, not on the CID. The CID's persisted state (`data.json`) holds only: `agent` slot info, `aic` OLSS server/username, `registration` (cert paths, MQTT endpoint, Hub URL, thing name), `windows_vm` slot info, and `worker` command. There is no admin email field on the CID. Customer-facing prose must not claim admin emails are stored on the device — that is a Hub-side fact, not a CID-side fact.
 
 The categories that *do* flow between CID and Hub are summarized in the **Data Types Summary Table** (see `data-types-summary-table.png`):
 
@@ -522,6 +523,10 @@ This table is the authoritative inventory of what crosses the boundary and is wh
 ### 8d. Disk / storage
 - `notes/device-base-system-hardware.md:608-613` (DEV-BR-026) — CID VMs require min 256 GB total disk; downloads require 50 GB free.
 - **Disk encryption at rest** (answered via Phase 1.3 G-19): Neither the Linux host nor the embedded Windows VM is encrypted at rest. There is no LUKS on the Linux host and no BitLocker on the Windows VM. This is an explicit posture, not a gap.
+- ⚠️ **Accuracy update (2026-05-18, confirmed via engineering):** there are two reasons full-disk encryption is not applied on the CID, and customer-facing prose must lead with the first:
+  1. **Primary — the CID is not a long-term record store.** Sample data is staged transiently to local disk during acquisition and then persisted to the OpenLab CDS Server, which is the canonical record store and the appropriate point for at-rest protection of laboratory records.
+  2. **Secondary — performance.** On the CID's fanless Atom-class hardware profile, full-disk encryption was evaluated and not adopted because the encryption overhead would compete with real-time instrument-acquisition throughput.
+  Customer-facing prose must NOT claim "the device holds no data at rest" — the CID *does* stage sample data transiently. The accurate framing is "not a long-term record store" + the performance trade-off as a secondary supporting reason.
 
 ---
 

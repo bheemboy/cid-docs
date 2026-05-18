@@ -140,14 +140,17 @@ This rule exists because PDF/code snippets carry false confidence — they look 
 
 ## 10a. Review-highlight convention (`<mark>`)
 
-`<mark>` is the universal review marker for content awaiting SME review. Two granularities, mutually exclusive:
+`<mark>` is the universal review marker for content awaiting SME review. Apply it at two levels — the section title is always marked when anything inside the section changes, and inline marks are added only when the changes are small enough that pointing at each one helps the reviewer.
 
-- **Inline marks** — wrap individual sentences, paragraphs, table blocks, or bullets when the surrounding section is otherwise unchanged. The reviewer sees exactly what is new or revised against an otherwise-stable page.
-- **Section-title mark** — wrap the section heading itself (e.g. `## <mark>Internet Requirements</mark>`) when changes inside the section are extensive — for example, a restructured table, a new sub-section, or multiple paragraphs added or rewritten. This signals "review the whole section, not specific edits."
+**Rules:**
 
-**Do not combine the two.** When a section title is marked, the individual paragraphs, tables, and bullets *inside* that section must **not** also be inline-marked. The title mark already tells the reviewer the whole section is in scope; inner marks add noise and imply that anything unmarked inside is somehow excluded, which is the opposite of the intent.
+1. **Always mark the section title when anything inside the section is added, removed, or revised.** Use the format `## <mark>Section Title</mark>` (any heading level from `##` downward). This lets a reviewer scan the page and immediately see which sections need attention; an unmarked section title means "no changes since the last sign-off."
+2. **Add inline marks only when the changes are small and localized** — a sentence, a paragraph, a single table row, one or two bullets — within a section that is otherwise unchanged. Inline marks tell the reviewer exactly which words to look at.
+3. **Do not add inline marks when the section has been heavily revised** — multiple paragraphs added, a table restructured, a new sub-section, or a rewrite of most of the content. In that case the title mark alone tells the reviewer "review and approve the whole section." Adding inline marks on top would highlight almost everything inside the section and obscure rather than direct attention.
 
-Choose the granularity per section, not per page: one page may have one section with a marked title and another section with several inline-marked paragraphs. Once SMEs sign off on a section, remove the `<mark>` wrappers in a separate cleanup pass.
+In short: a marked title is mandatory whenever the section is touched; inline marks are an optional, additive aid for small edits only. Once SMEs sign off on a section, remove the `<mark>` wrappers (title and any inline) in a separate cleanup pass.
+
+This convention applies to section titles (H2 and below). A page's H1 / page-title `frontmatter` is not marked — the sidebar entry already tells the reviewer which page is being changed.
 
 ## 11. How this brief is used
 

@@ -5,7 +5,7 @@ title: "System Requirements"
 
 # System Requirements
 
-## Networking Requirements
+## <mark>Networking Requirements</mark>
 ![CID NICs](../img/cid-nics.jpg)
 
 Each CID is equipped with two network interfaces:
@@ -161,15 +161,29 @@ If write access is granted as well, the device can automatically copy downloaded
 
 ---
 
-## Shared Responsibility for Data Security
-At Agilent, we view data security as a shared responsibility between the vendor and the customer. As your vendor, we ensure that our applications securely protect your data during transmission, processing, and storage within the application infrastructure. Overall security and compliance are the responsibility of the customer organization.  This includes securing and managing the environment where applications are used.
+## <mark>Shared Responsibility for Data Security</mark>
 
-As part of configuration and operational control, the customer organization is responsible for configuring, managing, and enforcing operating system policies, including but not limited to preventing web browsers from saving or caching user passwords. Additional responsibilities: enforcing screen-lock timeouts, securing the system clock to ensure accurate time, timely OS patching, and anti-malware protection fall to the customer. These controls must be implemented and maintained by the customer organization through its own IT and security policies.
+Security is a shared responsibility between Agilent (the vendor) and the customer organization that operates the CID. Agilent secures the CID's software, firmware, network posture, and the CID Hub infrastructure. The customer secures the network in which CIDs and CDS clients operate, the identities used to access them, and the policies and tooling that protect non-CID systems on that network.
+
+| Area | Agilent owns | Customer owns |
+|---|---|---|
+| **CID host OS, Windows VM, drivers** | OS hardening, image baseline, security patches (Linux Updates and Windows Updates), and driver delivery — all delivered centrally through CID Hub. | Authorizing when updates are applied and reviewing the activity log to confirm they landed. |
+| **CID Hub (SaaS) infrastructure** | AWS infrastructure, infrastructure patching, TLS termination, infrastructure monitoring, encryption at rest and in transit, and multi-tenant isolation. | — |
+| **Antivirus on the CID** | ClamAV pre-installed, signatures refreshed through the Linux Updates channel, weekly scheduled scans, and detections surfaced in the activity log. | — |
+| **CID device identity** | X.509 certificate provisioned at activation, rotated on the Agilent-managed cadence, and revocable through the Hub. | — |
+| **CID Hub user identity** | Amazon Cognito user pool per organization; password policy and account-lockout enforced by Cognito; audit logging of admin actions. | Inviting and removing users, assigning roles, and offboarding users when they leave the organization. |
+| **Network firewall and segmentation** | — | Configuring the corporate firewall to permit the outbound domains under [Internet Requirements](#internet-requirements), and isolating the Instrument NIC's LAN/VLAN from the corporate WAN and the internet. |
+| **Active Directory / corporate identity** | — | All AD or IdP configuration for CDS clients and customer-managed Windows PCs. The CID's embedded Windows VM does not join AD. |
+| **CDS client PCs and traditional AICs** | — | OS patching, anti-malware, screen-lock policy, password-cache policy, accurate system clock, and physical access. CID Hub does not manage these systems. |
+| **Sample data and lab records** | The CID stages sample data on local disk during acquisition; this copy is transient by design. | The canonical copy of sample data lives on the **OpenLab CDS Server**, which is customer-operated and customer-backed-up. Agilent does not back up CID-local CDS data. |
+| **Vulnerability response and updates** | Triaging vulnerabilities affecting CID-delivered components and distributing fixes through Linux Updates, Windows Updates, and driver updates. | Applying delivered updates within the customer's own change-management window. |
+| **Audit logs** | Generating and retaining audit records of Hub-side and CID-side actions; surfacing them through the activity-log UI. | Reviewing audit logs as part of the customer's own monitoring or SIEM workflow. |
 
 ---
 
-## Hardware Specification
-The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenovo that has been fully tested and qualified to run OpenLab CDS 2.7 and later.
+## <mark>Hardware Specification</mark>
+
+The Agilent CID Bundle for OpenLab CDS includes IoT hardware that has been fully tested and qualified to run OpenLab CDS 2.7 and later.
 
 | Component                | CID IoT Hardware for Agilent OpenLab CDS  |
 |--------------------------|-------------------------------------------|
@@ -178,10 +192,18 @@ The Agilent provided CID Bundle for OpenLab CDS includes IoT hardware from Lenov
 | Hard Disk                | 1 TB SSD                                  |
 | Memory                   | 16 GB DDR4 3200 SoDIMM                    |
 | Graphics                 | Integrated graphics                       |
-| Instrument Configuration | 1:1                                       |
-| Operating                | Temperature 0 to 50 °C                    |
+| Instrument Configuration | 1:1 (one instrument per CID)              |
+| Operating Temperature    | 0 to 50 °C                                |
 | Power                    | 65 W (adapter included)                   |
 | Physical Interfaces      | Dual Gigabit LAN ports (RJ45), 4x USB ports, DisplayPort, HDMI, Mic In, Audio Out, 2x Serial ports (DB9) |
+
+**Manufacturing and provenance.** The CID hardware is currently manufactured by **Lenovo**, with additional qualified hardware suppliers possible over time as Agilent expands the CID program. Agilent builds and tests the gold disk image (Oracle Linux 8 host, the KVM-hosted Windows VM, OpenLab CDS, drivers, and the management agent), then transfers it securely to the manufacturing supplier, which applies the image and delivers the finished CID through Agilent's distribution channel. Customers do not install operating systems or boot media on the CID.
+
+**Device security posture:**
+
+- **Boot integrity is anchored by the Agilent-controlled gold image and the centralized Linux Update channel** rather than by the UEFI Secure Boot chain. The CID is a sealed appliance: the only paths to install or change software on the device are the Agilent-signed update bundles delivered through CID Hub, which gives every CID in the fleet a single, auditable provenance for what is running. UEFI Secure Boot itself is not enabled on the device.
+- **Full-disk encryption is not applied on the CID.** The CID is not used as a long-term record store — sample data is staged transiently during acquisition and persisted to the **OpenLab CDS Server** (customer-operated, customer-backed-up), which remains the canonical store and the appropriate point for at-rest protection of laboratory records. On the CID's fanless Atom-class hardware profile, full-disk encryption was also evaluated and not adopted because the encryption overhead would compete with real-time instrument-acquisition throughput. Data-at-rest protection on the CID itself relies on physical security of the device and on the customer's network and access controls; neither the Oracle Linux 8 host nor the embedded Windows VM uses LUKS or BitLocker. See [Shared Responsibility for Data Security](#shared-responsibility-for-data-security).
+- **The CID is delivered exclusively as the bundled IoT hardware** configured through CID Hub. Running the CID software on customer-supplied hardware or in a customer-managed hypervisor is not a supported configuration; the qualification, patching, and support model assumes the Agilent-supplied device.
 
 ---
 
