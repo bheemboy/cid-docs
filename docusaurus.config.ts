@@ -34,6 +34,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
   markdown: {
     format: 'detect',
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
@@ -49,6 +50,7 @@ const config: Config = {
         highlightSearchTermsOnTargetPage: true,
       },
     ],
+    '@docusaurus/theme-mermaid',
   ],
 
   stylesheets: [
