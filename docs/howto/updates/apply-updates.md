@@ -21,8 +21,6 @@ These updates are covered by dedicated procedures in this section:
 - [Install OS Updates](./install-os-updates) — Linux host and Windows VM patches.
 - [Update Drivers & Add-ons](./apply-driver-updates) — instrument driver and add-on updates.
 
-For the rationale behind the single-channel model — what Agilent tests before publishing, and why it lowers the chance of an update breaking a working CID — see [CID Hub Architecture → Software delivery from the Hub](../../security/cid-hub-architecture#software-delivery-from-the-hub). The audit-log surface for installs and rollbacks is described in [Audit & Compliance → Patch and update audit](../../security/audit-and-compliance#patch-and-update-audit).
-
 ---
 
 ## Installation Methods
