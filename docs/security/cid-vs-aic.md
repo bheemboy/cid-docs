@@ -93,7 +93,7 @@ In practice, the only thing that changes for an Agilent provided CID when deploy
 
 The same property carries forward through the CID's life. Because the CID's hardware-plus-software stack is well-known and largely immutable across the installed base, each update Agilent publishes is tested against the same target the customer is running — narrowing the surface that a customer would otherwise re-qualify against an open universe of custom PC configurations.
 
-An **AIC** gives the customer full control of the OS image, driver versions, and update timing. That control is useful in regulated environments where the customer's own qualification process is the source of truth and changes must be deferred until validation completes; it also means the customer carries the qualification effort for the host stack.
+An **AIC** gives the customer full control of the OS image, driver versions, and update timing — useful when the customer prefers to own those decisions on the controller itself, at the cost of carrying the corresponding effort for the host stack.
 
 Compliance scope for both deployments is shared with OpenLab CDS itself; the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11 is covered in [Audit & Compliance](./audit-and-compliance).
 
