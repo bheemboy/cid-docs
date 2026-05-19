@@ -7,10 +7,16 @@ slug: /
 
 ![CID image](./img/cid.jpg)
 
-The **Agilent Connected Instrument Device (CID)** for **OpenLab CDS** is a pre-configured IoT solution that includes the OpenLab Instrument Controller software, drivers, and add-ons. OpenLab CDS client systems connect to the CID over the corporate network (intranet) to operate the attached instruments. Software configuration and management for the CID are centralized through a web application called **CID Hub**.
-
-The **CID Hub** is an invitation-only web application. When an organization <mark>purchases</mark> CIDs, Agilent administrators create the organization's account and register the initial customer-side administrators. These initial admins will receive an email invitation from **CID Hub** \<no-reply@hub.cid.agilent.com\> to activate their accounts and set their initial passwords.
-
-<mark>The CID is one of two deployment options for OpenLab CDS, alongside the traditional **Agilent Instrument Controller (AIC)** — OpenLab CDS instrument-controller software installed on a customer-managed Windows PC. The CID alternative replaces that PC with Agilent-supplied IoT hardware managed centrally through CID Hub; it is not mandatory, and CID and AIC deployments can coexist within the same OpenLab CDS environment. See [CID vs AIC](./security/cid-vs-aic) for a side-by-side comparison and the [Security](./security/security-model) category for the CID's trust model, network exposure, and identity posture.</mark>
+The **Agilent Connected Instrument Device (CID)** is a pre-configured instrument controller for **OpenLab CDS**. Each CID ships ready to configure for your lab; the OpenLab Instrument Controller, instrument drivers, and add-ons for your specific instrument are deployed through **CID Hub**. Your CDS clients connect to the CID over the corporate network to operate the attached instrument, and you manage every CID centrally from CID Hub.
 
 ![CID layout](./img/layout-1.jpg)
+
+The **CID Hub** is an invitation-only web application. When your organization purchases CIDs, Agilent creates your account and registers the initial administrators. Those administrators receive an email invitation from **CID Hub** \<no-reply@hub.cid.agilent.com\> to activate their accounts and set their passwords; from there they can invite additional administrators and users who need access.
+
+## <mark>Deployment and lifecycle</mark>
+
+Each CID arrives as a tested, ready-to-configure bundle. The hardware, the base operating system, and the CID agent are supplied and pre-installed by Agilent. You then configure the CID for your lab through CID Hub by selecting from provisioned options in a software template — the OpenLab Instrument Controller version, the instrument drivers, and the add-ons for your specific instrument. There is no PC hardware to purchase, no OS to install, and no CDS, driver, or add-on installation to perform on the device — **only configuration**.
+
+In practice, the only thing that changes for a CID from when it is built and tested in the factory to when it is deployed is the **environment around it** — the network connections from the CDS clients to the CID, from the CID to the OpenLab Server, and from the CID outbound to the Hub. You only need to confirm those connections plus the CDS workflows you actually run; the base CID and the software it loads from the Hub are tested by Agilent as a unit, so the software inside the CID does not need re-checking.
+
+This property carries forward through the CID's life. Each update Agilent publishes is tested against the same target you are running, so the verification you have to repeat when the CID's OS, drivers, or CDS version changes is correspondingly limited.
