@@ -6,7 +6,7 @@ toc_max_heading_level: 2
 
 # Apply Software Updates
 
-## <mark>Overview</mark>
+## Overview
 
 All software on a CID — the Linux host, the embedded Windows VM, the instrument drivers and add-ons, and OpenLab CDS — is updated through the CID Hub.
 
