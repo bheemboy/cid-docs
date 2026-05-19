@@ -15,7 +15,7 @@ The CID and the Agilent Instrument Controller (AIC) are two ways to deploy the s
 | **Host OS** | Customer-managed Windows | Linux host (Oracle Linux 8) + embedded Windows 11 IoT Enterprise LTSC VM |
 | **Domain join (host running AIC software)** | Supported | Not supported on the embedded VM |
 | **Patch management** | Customer IT | Agilent CID Hub (Linux host, embedded Windows VM, drivers, CDS) |
-| **Remote management** | Customer's tooling | CID Hub (SaaS) with AWS IoT and AWS Secure Tunneling |
+| **Remote management** | Customer's tooling | CID Hub (SaaS) with AWS IoT Core and AWS IoT Secure Tunneling |
 | **Internet requirement** | Optional | Required for activation and maintenance; **not** required for CDS data acquisition |
 | **Inbound from the internet** | Customer responsibility | None — outbound TLS only |
 | **Hub deployment** | N/A | SaaS only; no on-premise or air-gapped Hub |
@@ -72,13 +72,13 @@ For an **AIC**, identity is whatever the customer's PC stack provides — typica
 For a **CID**, there are two distinct identity planes:
 
 - **CDS-workflow identity** (logging into OpenLab CDS to run samples) — unchanged from AIC; provided by OpenLab Server and can be AD-backed.
-- **CID-management identity** (logging into the CID Hub to add a CID, change a network, approve a support session) — provided by **AWS Cognito**, per-tenant, with no SAML / OIDC federation against a customer IdP and no MFA. Details in [Security Model → User identity and authentication](./security-model#user-identity-and-authentication).
+- **CID-management identity** (logging into the CID Hub to add a CID, change a network, approve a support session) — provided by **AWS Cognito**, per-tenant. Details in [Security Model → User identity and authentication](./security-model#user-identity-and-authentication).
 
-## Hub deployment options
+## Hub deployment
 
-The CID Hub is delivered as **SaaS only**. There is no on-premise CID Hub, no air-gapped CID Hub, and no customer-tenant data plane that lives in a customer-controlled cloud account.
+The CID Hub is delivered as a **SaaS service operated by Agilent on AWS**. The CID model is designed around the SaaS Hub for activation, patching, identity, and remote management.
 
-If a customer's policy requires an air-gapped or fully on-premise instrument-controller fleet, the **AIC route is the appropriate choice** — the CID model fundamentally depends on the SaaS Hub for activation, patching, identity, and remote management.
+If a customer's policy requires an air-gapped or fully on-premise instrument-controller fleet, the **AIC route is the appropriate choice**.
 
 For tenant isolation, region, and residency posture on the SaaS Hub side, see [CID Hub Architecture](./cid-hub-architecture).
 

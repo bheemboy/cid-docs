@@ -5,11 +5,11 @@ title: "Data Flow & Privacy"
 
 # <mark>Data Flow & Privacy</mark>
 
-This page describes what data flows between a CID device and the CID Management Hub, what does **not** flow, where the Hub stores it, and how long it is retained. It is the canonical answer for IT-review questions on data transit, telemetry inventory, residency, and privacy stance.
+This page describes what data flows between a CID device and the CID Hub, what does **not** flow, where the Hub stores it, and how long it is retained. It is the canonical answer for IT-review questions on data transit, telemetry inventory, residency, and privacy stance.
 
-## What flows between the CID and the CID Management Hub
+## What flows between the CID and the CID Hub
 
-The CID exchanges only **operational metadata, configuration, and credentials** with the CID Management Hub. **Customer laboratory data never traverses the Hub.**
+The CID exchanges only **operational metadata, configuration, and credentials** with the CID Hub. **Customer laboratory data never traverses the Hub.**
 
 - **No PHI (Protected Health Information)** is transmitted between the CID and the Hub.
 - **No PII** is transmitted beyond the names and email addresses of the internal users a customer chooses to invite to administer their tenant. Those identifiers are stored in **AWS Cognito on the Hub side**; they are not stored on the CID device itself.

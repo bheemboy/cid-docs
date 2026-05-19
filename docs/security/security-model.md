@@ -18,19 +18,19 @@ The CID is a Linux appliance that hosts an embedded Windows 11 IoT Enterprise LT
 - **Corporate LAN ⇄ Linux host.** The Linux host is the only thing exposed to the corporate LAN. A network scan of the CID's House-NIC IP shows TCP 443 open (HTTPS / WSS for CDS clients and admin UIs) and, on non-productive systems only, TCP 22. All other ports are closed. No inbound connection from the public internet is required or accepted on either NIC.
 - **Linux host ⇄ Windows VM.** The Windows VM has no IP address on the corporate LAN. It sits behind the CID's nginx **reverse proxy**, which terminates TLS on the House-NIC and forwards selected paths inward over the Linux host's KVM bridge (`192.168.122.11`). Anything not explicitly routed by the proxy — RDP, SMB, WinRM, file shares — is not reachable from the corporate LAN.
 - **Windows VM ⇄ Instrument LAN.** A second virtual NIC (V-NIC) bridges the Windows VM directly onto the Instrument LAN through the Linux host's `instrument-br0` bridge. The Instrument NIC has **no default gateway by design** — the Hub UI labels the gateway field "Gateway Address (Not Recommended)" — so instrument-network traffic cannot route to the corporate LAN or the internet.
-- **CID ⇄ CID Management Hub.** All Hub traffic is **CID-initiated outbound** over TLS to AWS endpoints in `us-east-1` (HTTPS for REST/file transfer, MQTT-over-TLS for the IoT control plane, AWS IoT Secure Tunneling for support sessions). The Hub never opens a connection back to a CID; remote-management commands ride the MQTT channel the CID already holds open.
+- **CID ⇄ CID Hub.** All Hub traffic is **CID-initiated outbound** over TLS to AWS endpoints in `us-east-1` (HTTPS for REST/file transfer, MQTT-over-TLS for the IoT control plane, AWS IoT Secure Tunneling for support sessions). The Hub never opens a connection back to a CID; remote-management commands ride the MQTT channel the CID already holds open.
 
 See [System Requirements §Networking](../reference/system-requirements#networking-requirements) for the canonical inbound/outbound table, and [Data Flow & Privacy](./data-flow-and-privacy) for the inventory of what crosses each boundary.
 
 ## Attack surface
 
 :::note[Diagram placeholder — `reverse-proxy-listeners.svg`]
-Show the CID nginx reverse proxy as the only thing listening on the House-NIC IP at TCP 443, with internal-only upstreams: `/` → Windows VM at `192.168.122.11:443`, `/aic-windows-desktop/` → console manager on `127.0.0.1:5000` (websockify on `5800`), `/ac-cockpit` → cockpit on `127.0.0.1:9090`, `/ac-console/` → gotty on `127.0.0.1:9091`. Make clear that none of those upstreams are bound to the House-NIC interface.
+Show the CID nginx reverse proxy as the only thing listening on the House-NIC IP at TCP 443, with internal-only upstreams: `/` → Windows VM at `192.168.122.11:443`, `/aic-windows-desktop/` → console manager on `127.0.0.1:5000` (websockify on `5800`), `/ac-cockpit/` → cockpit on `127.0.0.1:9090`, `/ac-console/` → gotty on `127.0.0.1:9091`. Make clear that none of those upstreams are bound to the House-NIC interface.
 :::
 
 From an attacker on the corporate LAN, the CID presents:
 
-- **A single Linux IP, with TCP 443 open.** The reverse proxy serves the CDS-client traffic (`/` → Windows VM on `192.168.122.11:443`), the browser-based Windows console (`/aic-windows-desktop/` → an internal console manager with websockify), and the Linux Cockpit admin UI (`/ac-cockpit` → `cockpit` on `9090`). All upstream services are bound to `127.0.0.1` or to the internal KVM bridge IP; the proxy is the only thing actually listening on the corporate-facing interface.
+- **A single Linux IP, with TCP 443 open.** The reverse proxy serves the CDS-client traffic (`/` → Windows VM on `192.168.122.11:443`), the browser-based Windows console (`/aic-windows-desktop/` → an internal console manager with websockify), and the Linux Cockpit admin UI (`/ac-cockpit/` → `cockpit` on `9090`). All upstream services are bound to `127.0.0.1` or to the internal KVM bridge IP; the proxy is the only thing actually listening on the corporate-facing interface.
 - **An OpenLab-issued TLS certificate.** At runtime the CID replaces nginx's default self-signed certificate with the OpenLab certificate copied from the embedded Windows VM, so corporate clients see the OpenLab-issued certificate rather than a bare device cert.
 - **No public internet exposure.** The CID is not addressable from the public internet on either NIC. The Hub-side IoT and tunnel endpoints are reached *outbound* from the CID; nothing inbound is ever required.
 
@@ -49,7 +49,7 @@ The CID is functionally equivalent to an Agilent Instrument Controller (AIC) run
 - **Centrally-managed patching.** Linux host updates, Windows VM updates, driver updates, and CDS-version updates are delivered through the Hub. The Hub is the audit-trail source of truth for what was installed, when, and by whom. See [Audit & Compliance](./audit-and-compliance) for the patch policy, SLA, and rollback posture.
 - **Unique per-CID credentials.** Each CID has its own SSH keypair, root password, and rotated `agilentac` operator account; a compromise of one CID's credentials does not expose any other CID.
 - **Daily-rotated administrative credentials.** The Cockpit and Windows-console passwords are recycled every 24 hours, so a credential that leaks today is invalid tomorrow without any customer action.
-- **Bundled anti-malware.** The CID runs ClamAV on a weekly schedule; signature updates ride the Linux Update channel. Detections are quarantined to `clamav-quarantine` on the device and surfaced in the activity log.
+- **Bundled anti-malware.** The CID runs ClamAV on a weekly schedule; signature updates ride the Linux Update channel. Detections are quarantined to `clamav-quarantine` on the device and surfaced in the Hub Activity Log.
 
 ### What a domain-controlled PC gives you that the CID does not
 
@@ -89,7 +89,7 @@ The procedure side of this flow lives in [Activate a CID](../howto/onboarding/ac
 - **Lifetime.** Device certificates are AWS IoT Core–issued and carry the AWS default validity of approximately 50 years (≈ 18,262 days). This is the AWS-issued maximum and is not customer-configurable.
 - **Renewal check.** The CID agent checks the certificate synchronously at startup and on a 7-day cadence thereafter. If the certificate is expiring within the renewal window, has expired, or has been deleted, the agent triggers a rotation; failed checks retry every 5 minutes.
 - **Rotation.** The Hub creates a new keypair and certificate, attaches it to the existing IoT Thing and policy, hands it to the CID, and only then detaches and deletes the old certificate. The CID swaps to the new credential **without service interruption**. If the rotation fails partway through, the Hub re-attaches the old certificate so the CID can retry on the next cycle.
-- **Customer-managed CAs are not supported.** The CID does not consume a customer-issued device certificate; the device certificate is always AWS IoT Core–issued.
+- **AWS IoT Core is the certificate authority.** Each CID's device certificate is issued and managed by AWS IoT Core; the activation and rotation flows above operate entirely within that authority.
 
 ### Decommissioning and revocation
 
@@ -120,22 +120,21 @@ flowchart TD
     U[Customer admin / user] -->|Browser, HTTPS| H[hub.cid.agilent.com]
     H --> C[AWS Cognito user pool<br/>supported_identity_providers = COGNITO]
     C --> T[Tokens issued<br/>access / ID: 15 min<br/>refresh: 8 h]
-    T --> M[Backend authorization monitor<br/>~1 min cycle]
-    M -.->|Deleted / deactivated user| R[Refresh tokens revoked<br/>next API call rejected]
+    T --> M[Backend authentication monitor<br/>60 s cycle]
+    M -.->|User idle &gt; 16 min| R[Refresh token revoked<br/>logout activity-log entry recorded]
 ```
 
-User access to the CID Management Hub web UI is mediated by **AWS Cognito**. Identity is per-tenant: each customer organization gets its own user directory on the Hub side. The CID device itself does not hold customer user accounts — the only on-device credentials are the rotated administrative accounts described under [Attack surface](#attack-surface).
+User access to the CID Hub Web UI is mediated by **AWS Cognito**. Identity is per-tenant: each customer organization gets its own user directory on the Hub side. The CID device itself does not hold customer user accounts — the only on-device credentials are the rotated administrative accounts described under [Attack surface](#attack-surface).
 
 ### Identity providers
 
-- **Customer users authenticate against AWS Cognito.** The production Cognito user pool client lists `supported_identity_providers = ["COGNITO"]`. Customers use IDs created in the CID Hub, not in the customer's own directory.
-- **SAML and external OIDC federation are not offered.** No SAML, OIDC, Azure AD, or Active Directory federation against a customer IdP is configured. (An Agilent-internal Okta-OIDC trust exists for Agilent support personnel only and is not exposed to customers.)
-- **Self-signup is disabled.** New users can only be created by an existing administrator (Cognito `allow_admin_create_user_only = true`); the new user receives an email invitation from `CID Hub <no-reply@hub.cid.agilent.com>` with a temporary password.
-- **Password reset is via verified email.** Cognito account recovery is configured for email-only verification.
+- **AWS Cognito is the identity provider.** All customer users authenticate against the Hub's AWS Cognito user pool using credentials issued in the Hub itself.
+- **Invitation-only account creation.** New users are created by an existing administrator and receive an email invitation from `CID Hub <no-reply@hub.cid.agilent.com>` with a temporary password.
+- **Email-verified password reset.** Cognito account recovery is performed via verified email.
 
-### Multi-factor authentication
+### Authentication
 
-**MFA is not offered.** Users authenticate to the Hub with username and password only.
+Users authenticate to the Hub with their Cognito-issued username and password. Sessions are governed by the Cognito token lifetimes and the backend authorization monitor described under [Sessions and session revocation](#sessions-and-session-revocation).
 
 ### Roles
 
@@ -143,10 +142,10 @@ Two customer roles are defined: **Administrator** (full control — CID lifecycl
 
 ### Sessions and session revocation
 
-Cognito access tokens and ID tokens are valid for 15 minutes; refresh tokens are valid for 8 hours. A backend authorization monitor invalidates refresh tokens for deleted or deactivated users on its next cycle (about one minute). The practical effect:
+Cognito access tokens and ID tokens are valid for 15 minutes; refresh tokens are valid for 8 hours. A backend authentication monitor runs every 60 seconds and revokes the refresh token for any user who has not made an authenticated API request in the last 16 minutes (the 15-minute access-token life plus a 1-minute buffer); a "User logged out due to session expiry" entry is recorded in the Activity Log. The practical effects:
 
-- When an administrator deletes a user, the user is removed from the directory **immediately** and can no longer obtain new tokens.
-- An active access token the deleted user already holds remains technically valid until it expires — up to 15 minutes — because Cognito access tokens cannot be individually revoked once issued. Any request that requires a refresh, or any request that hits an endpoint protected by the backend authorization monitor, is rejected within about a minute of the deletion.
+- **Idle sessions are bounded.** A user who walks away from the Hub UI is logged out within about a minute of their last token expiring; resuming work requires re-authentication.
+- **User deletion.** When an administrator deletes a user, the user is removed from the Cognito directory **immediately** and can no longer obtain new tokens. An access token the user already holds remains technically valid until it expires — up to 15 minutes — because Cognito access tokens cannot be individually revoked once issued; the next refresh attempt fails.
 
 The deletion procedure lives in [Manage Users and Roles → Delete a User](../howto/account/manage-users-and-roles#delete-a-user).
 
@@ -155,6 +154,6 @@ The deletion procedure lives in [Manage Users and Roles → Delete a User](../ho
 - [CID vs AIC](./cid-vs-aic) — side-by-side comparison with the traditional Agilent Instrument Controller for IT reviewers choosing a deployment model.
 - [CID Hub Architecture](./cid-hub-architecture) — Hub-side AWS service inventory, tenant isolation, region and data-residency posture.
 - [Data Flow & Privacy](./data-flow-and-privacy) — the nine-category inventory of what crosses the CID ⇄ Hub boundary, plus PHI/PII stance and retention.
-- [Remote Access](./remote-access) — Windows console, Linux Cockpit, AWS Secure Tunneling, and the Agilent support-access approval flow.
+- [Remote Access](./remote-access) — Windows console, Linux Cockpit, AWS IoT Secure Tunneling, and the Agilent support-access approval flow.
 - [Audit & Compliance](./audit-and-compliance) — audit-log model, retention, tamper protection, patch SLA, and the CID's relationship to 21 CFR Part 11, SOC 2, and ISO 27001.
 - [System Requirements](../reference/system-requirements) — authoritative networking, internet-requirements, hardware, and shared-responsibility tables.
