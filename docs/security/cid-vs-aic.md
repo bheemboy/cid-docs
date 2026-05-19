@@ -46,14 +46,14 @@ An AIC, by contrast, sits on a Windows PC that the customer can domain-join, app
 
 On an **AIC**, OS patching, antivirus, Windows Update, driver updates, and CDS-version upgrades are the customer's responsibility, using whatever WSUS / SCCM / Intune / endpoint-management tooling the customer already operates.
 
-On a **CID**, all four channels are delivered through the CID Hub:
+On a **CID**, all four channels are **made available** through the CID Hub. Nothing is auto-applied or scheduled by Agilent — updates are downloaded onto the CID so the install itself is fast and low-bandwidth, but they are held until an authorized customer user initiates the install from the Hub:
 
 - **Linux host updates** — Agilent-published Linux package channel.
-- **Windows VM updates** — Microsoft KB articles applied to the embedded Windows 11 VM, scheduled or pushed through the Hub.
-- **Driver updates** — Agilent instrument drivers, version-controlled per CID via software templates.
-- **CDS upgrades** — bundled and pushed centrally.
+- **Windows VM updates** — Microsoft KB articles for the embedded Windows 11 VM are downloaded to the CID and held for the customer to apply.
+- **Driver updates** — Agilent instrument drivers are published per CID via software templates and applied when the customer selects them.
+- **CDS upgrades** — released CDS bundles are made available in the Hub for the customer to select and apply.
 
-The Hub is the audit-trail source of truth for what was applied, when, and by whom. Patch policy, vulnerability-response cadence, and rollback posture are documented in [Audit & Compliance](./audit-and-compliance). The customer-facing procedures live under [How-to → Updates](../howto/updates/).
+Because every install is customer-initiated through the Hub, the Hub is the audit-trail source of truth for what was applied, when, and by whom. And because every update is tested by Agilent against the CID's well-known and largely immutable hardware-plus-software stack — rather than against the open universe of custom PC configurations an AIC has to tolerate — the chance of an update breaking a working CID is reduced. Patch policy and rollback posture are documented in [Audit & Compliance](./audit-and-compliance). The customer-facing procedures live under [How-to → Updates](../howto/updates/).
 
 ## Network exposure and internet dependency
 
@@ -76,23 +76,30 @@ For a **CID**, there are two distinct identity planes:
 
 ## Hub deployment
 
-The CID Hub is delivered as a **SaaS service operated by Agilent on AWS**. The CID model is designed around the SaaS Hub for activation, patching, identity, and remote management.
+The CID Hub is delivered as a **SaaS service operated by Agilent on AWS**. The CID model is designed around the SaaS Hub for activation, software delivery, identity, and remote management.
 
-If a customer's policy requires an air-gapped or fully on-premise instrument-controller fleet, the **AIC route is the appropriate choice**.
+What that SaaS posture delivers, in addition to the management surface itself:
 
-For tenant isolation, region, and residency posture on the SaaS Hub side, see [CID Hub Architecture](./cid-hub-architecture).
+- **Tested Linux and Windows OS updates.** Microsoft and Linux security updates are vetted by Agilent against the CID stack before being published to customer environments.
+- **Tested CDS releases.** New OpenLab CDS releases are published through the Hub after testing against the CID hardware and Windows VM image.
+- **Tested instrument drivers and add-ons.** Drivers and CDS add-ons are version-controlled in software templates and published after compatibility testing.
+
+The internet-connectivity implications of this SaaS posture (egress to a documented allow-list; no inbound from the public internet; CDS data acquisition keeps working through a Hub outage) are covered separately in [Network exposure and internet dependency](#network-exposure-and-internet-dependency). For tenant isolation, region, and residency posture, see [CID Hub Architecture](./cid-hub-architecture).
 
 ## Validation and lifecycle
 
-A **CID** ships as a single qualified bundle: Agilent has selected the hardware, hardened the Linux host, built the Windows VM image, installed and version-pinned OpenLab CDS, installed instrument drivers, and run the bundle through Agilent's qualification process. The customer's incoming-qualification surface is smaller — there is no customer-side OS install or driver install to qualify, and the per-device configuration is constrained by software templates managed in the Hub.
+A **CID** ships as a single Agilent-tested bundle: Agilent has selected the hardware, hardened the Linux host, built the Windows VM image, installed and version-pinned OpenLab CDS, installed instrument drivers, and run the bundle through Agilent's internal release-acceptance process. The customer's incoming-qualification surface is correspondingly smaller — there is no customer-side OS install or driver install to verify, and the per-device configuration is constrained by software templates managed in the Hub.
+In practice, the only thing that changes for an Agilent provided CID when deployed in a lab is the **environment around it** — the network connections from the CDS clients to the CID, from the CID to the OpenLab Server, and from the CID outbound to the Hub. Customer-side qualification can be scoped to those connections plus the CDS workflows the lab actually performs; there is no need to re-verify that the right software is installed inside the CID, or that it is installed correctly, because the bundle ships and is maintained as a unit.
+
+The same property carries forward through the CID's life. Because the CID's hardware-plus-software stack is well-known and largely immutable across the installed base, each update Agilent publishes is tested against the same target the customer is running — narrowing the surface that a customer would otherwise re-qualify against an open universe of custom PC configurations.
 
 An **AIC** gives the customer full control of the OS image, driver versions, and update timing. That control is useful in regulated environments where the customer's own qualification process is the source of truth and changes must be deferred until validation completes; it also means the customer carries the qualification effort for the host stack.
 
-Compliance scope for both deployments is shared with OpenLab CDS itself; the CID's relationship to 21 CFR Part 11, EU GMP Annex 11, SOC 2, and ISO 27001 is covered in [Audit & Compliance](./audit-and-compliance).
+Compliance scope for both deployments is shared with OpenLab CDS itself; the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11 is covered in [Audit & Compliance](./audit-and-compliance).
 
 ## When CID is the right choice
 
-- The lab wants Agilent to own the hardware, OS, patching, and remote-management surface.
+- The lab wants Agilent to provision the hardware and provide a tested, centrally managed software stack — potentially shifting day-to-day controller administration from customer IT to the lab manager rather than to a domain-management team.
 - Internet egress to the CID Hub is available (or can be opened to the documented allow-list).
 - The instrument controller does not need to be on the customer's Active Directory domain.
 - The customer is comfortable with a SaaS management plane (AWS, `us-east-1`).
@@ -102,7 +109,6 @@ Compliance scope for both deployments is shared with OpenLab CDS itself; the CID
 - Policy requires an on-premise or air-gapped instrument-controller fleet.
 - The instrument controller must be domain-joined and managed by the customer's endpoint-management tooling.
 - The customer prefers to own OS patching, antivirus, and validation cadence on the controller itself.
-- Use cases that pre-date CID hardware availability and where re-qualification cost outweighs the operational savings.
 
 The two models can coexist in a single lab: customers commonly run a mix of CIDs (for newer instruments) and AICs (for existing controllers) against the same OpenLab Server.
 

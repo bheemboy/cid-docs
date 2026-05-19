@@ -67,5 +67,5 @@ The Hub services above are **Agilent-operated**. Customers do not deploy, patch,
 - [CID vs AIC](./cid-vs-aic) — why CID is SaaS-only and when an AIC deployment is the appropriate alternative.
 - [Data Flow & Privacy](./data-flow-and-privacy) — nine-category inventory of what crosses the CID ⇄ Hub boundary, retention, and what does not transit the Hub.
 - [Remote Access](./remote-access) — Windows console, Linux Cockpit, and the Agilent-support tunnel flow that uses AWS IoT Secure Tunneling.
-- [Audit & Compliance](./audit-and-compliance) — activity-log retention, tamper protection, and the CID's relationship to 21 CFR Part 11, SOC 2, and ISO 27001.
+- [Audit & Compliance](./audit-and-compliance) — Activity Log retention, integrity, and the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11.
 - [System Requirements](../reference/system-requirements) — the customer-facing firewall allow-list and the shared-responsibility table.

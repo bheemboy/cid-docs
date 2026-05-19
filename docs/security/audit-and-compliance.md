@@ -5,7 +5,7 @@ title: "Audit & Compliance"
 
 # <mark>Audit & Compliance</mark>
 
-This page describes how the CID Hub records administrative and operational events, how long those records are retained, what tamper-protection and export options exist, the patch and update audit surface, and the CID's relationship to the laboratory-records compliance frameworks that IT teams typically need to map (21 CFR Part 11, EU GMP Annex 11) and the security-management frameworks that procurement typically asks about (SOC 2, ISO 27001).
+This page describes how the CID Hub records administrative and operational events, how long those records are retained, what tamper-protection and export options exist, the patch and update audit surface, and the CID's relationship to the laboratory-records compliance frameworks that IT teams typically need to map (21 CFR Part 11, EU GMP Annex 11).
 
 A scoping point up front: the **CID is a deployment model for OpenLab CDS, not a record store for laboratory data**. Sample data is staged transiently on the CID during acquisition and persisted to the **OpenLab CDS Server**, which is the canonical record store. The Part 11 / Annex 11 audit trails, e-signatures, and record retention that those frameworks require are properties of **OpenLab CDS**, not of the CID. The audit surface this page describes is the **Hub's administrative audit** — who activated, configured, patched, accessed, or decommissioned which CID — and is separate from CDS-layer record audit.
 
