@@ -27,6 +27,16 @@ The Hub is composed of the following AWS services. All are managed by Agilent; c
 
 The corresponding firewall allow-list for CIDs is in [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements).
 
+## Software delivery from the Hub
+
+Beyond identity, control, and audit, the Hub is the channel through which Agilent delivers a tested software stack to every CID in the field. Updates are produced and validated centrally and then made available to customers through the Hub:
+
+- **Linux and Windows OS updates.** Microsoft KB articles for the embedded Windows 11 VM, and Linux package updates for the Oracle Linux host, are vetted by Agilent against the CID stack and published to customer environments through the Hub.
+- **OpenLab CDS releases.** New CDS releases are published through the Hub after testing against the CID hardware and Windows VM image.
+- **Instrument drivers and add-ons.** Drivers and CDS add-ons are version-controlled in software templates and published after compatibility testing.
+
+Because each update is tested against a well-known, largely immutable hardware-plus-software target — the same target the customer is running — customers benefit from a software-delivery channel where every payload has already been exercised on the device stack it will land on. The customer-initiated install flow, audit trail, and rollback posture are described in [CID vs AIC → Patch management](./cid-vs-aic#patch-management) and [Audit & Compliance](./audit-and-compliance).
+
 ## Multi-tenancy and isolation
 
 The Hub is a **multi-tenant SaaS**. Each customer organization is a separate **customer account** (tenant) on a shared set of AWS services, with isolation enforced at the application layer:

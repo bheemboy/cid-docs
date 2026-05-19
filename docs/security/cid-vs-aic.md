@@ -76,15 +76,7 @@ For a **CID**, there are two distinct identity planes:
 
 ## Hub deployment
 
-The CID Hub is delivered as a **SaaS service operated by Agilent on AWS**. The CID model is designed around the SaaS Hub for activation, software delivery, identity, and remote management.
-
-What that SaaS posture delivers, in addition to the management surface itself:
-
-- **Tested Linux and Windows OS updates.** Microsoft and Linux security updates are vetted by Agilent against the CID stack before being published to customer environments.
-- **Tested CDS releases.** New OpenLab CDS releases are published through the Hub after testing against the CID hardware and Windows VM image.
-- **Tested instrument drivers and add-ons.** Drivers and CDS add-ons are version-controlled in software templates and published after compatibility testing.
-
-The internet-connectivity implications of this SaaS posture (egress to a documented allow-list; no inbound from the public internet; CDS data acquisition keeps working through a Hub outage) are covered separately in [Network exposure and internet dependency](#network-exposure-and-internet-dependency). For tenant isolation, region, and residency posture, see [CID Hub Architecture](./cid-hub-architecture).
+The CID Hub is delivered as a **SaaS service operated by Agilent on AWS**. The CID model is designed around the SaaS Hub for activation, software delivery, identity, and remote management. The Hub's AWS service inventory, tenant-isolation model, and the centrally tested software-delivery channel that flows through it are described in [CID Hub Architecture](./cid-hub-architecture).
 
 ## Validation and lifecycle
 
