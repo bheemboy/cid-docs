@@ -32,7 +32,7 @@ From an attacker on the corporate LAN, the CID presents:
 
 - **A single Linux IP, with TCP 443 open.** The reverse proxy serves the CDS-client traffic (`/` → Windows VM on `192.168.122.11:443`), the browser-based Windows console (`/aic-windows-desktop/` → an internal console manager with websockify), and the Linux Cockpit admin UI (`/ac-cockpit/` → `cockpit` on `9090`). All upstream services are bound to `127.0.0.1` or to the internal KVM bridge IP; the proxy is the only thing actually listening on the corporate-facing interface.
 - **An OpenLab-issued TLS certificate.** At runtime the CID replaces nginx's default self-signed certificate with the OpenLab certificate copied from the embedded Windows VM, so corporate clients see the OpenLab-issued certificate rather than a bare device cert.
-- **No public internet exposure.** The CID is not addressable from the public internet on either NIC. The Hub-side IoT and tunnel endpoints are reached *outbound* from the CID; nothing inbound is ever required.
+- **No public internet exposure.** The CID is not addressable from the public internet on either NIC. The Hub-side IoT and tunnel endpoints are reached *outbound* from the CID; nothing inbound is ever required. Outbound traffic is limited to a known set of AWS and Agilent endpoints listed in [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements). Internet connectivity is required for activation, security updates, and remote management; **CDS data acquisition itself runs entirely on the customer's local network and continues if the internet path is interrupted** — only Hub-mediated functions (updates, support tunnels, status reporting) become unavailable.
 
 :::info[TLS protocol versions]
 The CID's reverse proxy currently accepts TLS 1.0, 1.1, and 1.2. Customer vulnerability scanners that flag the legacy protocols are responding to this configuration.
@@ -53,7 +53,10 @@ The CID is functionally equivalent to an Agilent Instrument Controller (AIC) run
 
 ### What a domain-controlled PC gives you that the CID does not
 
-- **No Active Directory or domain join.** The embedded Windows VM is not domain-joined and does not authenticate against the customer's Active Directory. AD-driven policy, AD-backed login, AD-driven screen lock, and AD-driven password complexity rules do not apply on the CID itself. CDS-client authentication against OpenLab Server (running on customer infrastructure) is unchanged.
+- **No Active Directory or domain join.** The embedded Windows VM is not domain-joined and does not authenticate against the customer's Active Directory. AD-driven policy, Group Policy, AD-backed login, AD-driven screen lock, and AD-driven password complexity rules do not apply on the CID itself; the VM is an appliance OS, not a productivity desktop, and its administrative credentials are rotated daily by the CID agent. The scope of this is the embedded VM only — it does **not** affect:
+    - Other (non-CID) instrument controllers a customer chooses to deploy alongside CIDs, which remain on the customer's standard endpoint-management stack.
+    - CDS-client machines, which remain customer-owned and can be domain-joined.
+    - OpenLab CDS user authentication at the CDS layer — OpenLab Server can still authenticate CDS users against the customer's Active Directory.
 - **No customer-managed anti-malware product.** Agilent ships ClamAV on the CID; customers cannot install a third-party agent (CrowdStrike, Defender ATP, SentinelOne, etc.) on either the Linux host or the embedded Windows VM. Endpoint-management products run on the CDS *client* machines, which the customer continues to own.
 - **No customer-driven local-account management on the VM.** User accounts on the embedded Windows VM are local; only the rotated `agilentac`-style administrative credentials are exposed through Hub-managed UIs. Custom local accounts cannot be provisioned by the customer.
 
@@ -114,6 +117,11 @@ Deleting a CID record marks the device deleted in the Hub but does **not** autom
 :::
 
 ## User identity and authentication
+
+A CID deployment has **two distinct identity planes**, and it is important not to conflate them:
+
+- **CDS-workflow identity** — the identity a scientist uses to log into OpenLab CDS to run samples, sign records, and read results. This is provided by **OpenLab Server** on the customer's infrastructure and can be backed by the customer's **Active Directory** at the CDS layer. The CID does not change this plane.
+- **CID-management identity** — the identity a user (administrator or operator) uses to log into the **CID Hub** to register a CID, change its network configuration, apply updates, or approve a support session. This is provided by **AWS Cognito**, per-tenant, and is the subject of the rest of this section.
 
 ```mermaid
 flowchart TD

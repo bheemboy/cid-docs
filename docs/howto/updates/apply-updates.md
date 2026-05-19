@@ -1,19 +1,27 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 title: "Apply Software Updates"
 toc_max_heading_level: 2
 ---
 
 # Apply Software Updates
 
-## Overview
+## <mark>Overview</mark>
 
-Software updates for CIDs are a two-step process: **Download** and **Installation**.
+All software on a CID — the Linux host, the embedded Windows VM, the instrument drivers and add-ons, and OpenLab CDS — is updated through the CID Hub.
 
-1. **Download:** When updates are assigned to a CID, they download automatically in the background.  
-2. **Installation:** Updates are **not installed automatically**. A CID administrator must manually apply them from the CID Hub.
+Updates are delivered in a two-step process: **Download** and **Installation**.
 
-This manual control allows you to schedule installations at convenient times (for example, outside of production hours) to avoid interrupting any ongoing work.
+1. **Download:** When updates are assigned to a CID, they download automatically in the background, so the install itself is fast and low-bandwidth.
+2. **Installation:** Updates are **not installed automatically**. A CID administrator must initiate the installation from the CID Hub, which lets you perform installations at convenient times (for example, outside of production hours) to avoid interrupting any ongoing work.
+
+These updates are covered by dedicated procedures in this section:
+
+- [Update/Upgrade CDS](./apply-cds-updates) — OpenLab CDS version upgrades.
+- [Install OS Updates](./install-os-updates) — Linux host and Windows VM patches.
+- [Update Drivers & Add-ons](./apply-driver-updates) — instrument driver and add-on updates.
+
+For the rationale behind the single-channel model — what Agilent tests before publishing, and why it lowers the chance of an update breaking a working CID — see [CID Hub Architecture → Software delivery from the Hub](../../security/cid-hub-architecture#software-delivery-from-the-hub). The audit-log surface for installs and rollbacks is described in [Audit & Compliance → Patch and update audit](../../security/audit-and-compliance#patch-and-update-audit).
 
 ---
 
