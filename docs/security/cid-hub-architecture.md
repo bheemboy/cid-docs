@@ -69,7 +69,7 @@ The CID's network reach is constrained to these endpoints by the firewall allow-
 
 ## Operational boundary
 
-The Hub services above are **Agilent-operated**. Customers do not deploy, patch, scale, or back up the Hub; AWS account ownership, IAM, networking, OS patching of EC2 (Tunnel Server), and database administration are inside Agilent's operational boundary. The customer-side responsibilities — corporate-firewall egress, CDS clients, OpenLab Server, instrument LAN — are summarized in [System Requirements → Shared Responsibility for Data Security](../reference/system-requirements#shared-responsibility-for-data-security).
+The Hub services above are **Agilent-operated**. Customers do not deploy, patch, scale, or back up the Hub; AWS account ownership, IAM, networking, OS patching of EC2 (Tunnel Server), and database administration are inside Agilent's operational boundary. The customer-side responsibilities — corporate-firewall egress, CDS clients, OpenLab Server, instrument LAN — are summarized in [Security Model → Shared Responsibility](./security-model#shared-responsibility).
 
 ## See also
 

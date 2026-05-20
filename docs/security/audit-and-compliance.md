@@ -109,4 +109,4 @@ Hub-side data is encrypted at rest on AWS (RDS, S3, Cognito-managed credential m
 - [CID Hub Architecture](./cid-hub-architecture) — where the Activity Log lives, encryption posture, region.
 - [Data Flow & Privacy](./data-flow-and-privacy) — what crosses the CID ⇄ Hub boundary, including the audit-event stream.
 - [Remote Access](./remote-access) — Agilent support session approval, termination, and audit-trail surface.
-- [System Requirements → Shared Responsibility for Data Security](../reference/system-requirements#shared-responsibility-for-data-security) — what stays a customer responsibility (CDS-side records, OpenLab Server, instrument LAN).
+- [Security Model → Shared Responsibility](./security-model#shared-responsibility) — what stays a customer responsibility (CDS-side records, OpenLab Server, instrument LAN).

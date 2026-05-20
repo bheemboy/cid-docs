@@ -38,6 +38,20 @@ From an attacker on the corporate LAN, the CID presents:
 The CID's reverse proxy currently accepts TLS 1.0, 1.1, and 1.2. Customer vulnerability scanners that flag the legacy protocols are responding to this configuration.
 :::
 
+### Two-NIC trust topology
+
+The two-NIC design — a **House NIC** on the corporate LAN and a separate **Instrument NIC** on the lab network — is the foundation of the CID's network trust model. The two-NIC requirements themselves are listed in [System Requirements → Networking](../reference/system-requirements#networking-requirements); what the topology buys you from a security standpoint:
+
+- **No inbound from the internet on either NIC.** Neither NIC accepts unsolicited inbound connections *from the internet*. All CID Hub management and AWS connectivity happens over outbound TLS sessions the CID initiates (see [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements)). The House NIC does accept inbound connections from the *corporate intranet* — that is how OpenLab CDS clients reach the CID on TCP 443 (HTTPS / WSS) and how administrators reach the diagnostic UI — but no port on the CID is reachable from outside the customer's firewall.
+- **The embedded Windows VM is hidden from the corporate LAN.** The OpenLab Instrument Controller software runs in a Windows 11 virtual machine on the CID's Linux host. Corporate clients (OpenLab CDS, browsers) connect to the CID's reverse proxy on TCP 443, which terminates TLS and forwards to the VM internally over the Linux host's KVM bridge. The VM reaches the internet through the Linux host via NAT and is not directly addressable from the House NIC.
+- **The Instrument NIC is isolated from the WAN and the corporate LAN.** The Windows VM is bridged onto the Instrument NIC through a separate virtual NIC (V-NIC) on the Linux host, putting the VM directly on the instrument network. Most OpenLab drivers initiate the connection from the VM out to the instrument; **GC instrument drivers are an exception** — the GC initiates the connection back to a driver process listening on the V-NIC inside the Windows VM. In either case the Instrument NIC has no default gateway by design, so traffic on the instrument network cannot route to the corporate LAN or to the internet. The instrument network is intended to be either a direct cable to one instrument or a dedicated, isolated LAN/VLAN.
+
+### Boot integrity, at-rest data, and appliance model
+
+- **Boot integrity is anchored by the Agilent-controlled gold image and the centralized Linux Update channel** rather than by the UEFI Secure Boot chain. The CID is a sealed appliance: the only paths to install or change software on the device are the Agilent-signed update bundles delivered through CID Hub, which gives every CID in the fleet a single, auditable provenance for what is running. UEFI Secure Boot itself is not enabled on the device.
+- **Full-disk encryption is not applied on the CID.** The CID is not used as a long-term record store — sample data is staged transiently during acquisition and persisted to the **OpenLab CDS Server** (customer-operated, customer-backed-up), which remains the true record store and the appropriate point for at-rest protection of laboratory records. On the CID's fanless Atom-class hardware profile, full-disk encryption was also evaluated and not adopted because the encryption overhead would compete with real-time instrument-acquisition throughput. Data-at-rest protection on the CID itself relies on physical security of the device and on the customer's network and access controls; neither the Oracle Linux 8 host nor the embedded Windows VM uses LUKS or BitLocker. See [Shared Responsibility](#shared-responsibility) for the customer-side controls this implies.
+- **The CID is delivered exclusively as the bundled IoT hardware** configured through CID Hub. Running the CID software on customer-supplied hardware or in a customer-managed hypervisor is not a supported configuration; the qualification, patching, and support model assumes the Agilent-supplied device. See [Hardware and Bundle → Delivery and Virtualization](../reference/hardware-and-bundle#delivery-and-virtualization).
+
 ## Posture vs a domain-controlled lab PC
 
 The CID's security model is materially different from a customer-managed Windows PC running an instrument-controller workload. Agilent owns the OS image, patching cadence, anti-malware, and remote-access posture on the CID itself; the customer remains in control of the corporate network it sits on and of the identities used to access the Hub.
@@ -60,7 +74,7 @@ The CID's security model is materially different from a customer-managed Windows
 - **No customer-managed anti-malware product.** Agilent ships ClamAV on the CID; customers cannot install a third-party agent (CrowdStrike, Defender ATP, SentinelOne, etc.) on either the Linux host or the embedded Windows VM. Endpoint-management products run on the CDS *client* machines, which the customer continues to own.
 - **No customer-driven local-account management on the VM.** User accounts on the embedded Windows VM are local; only the rotated `agilentac`-style administrative credentials are exposed through Hub-managed UIs. Custom local accounts cannot be provisioned by the customer.
 
-The shared-responsibility split for these items is enumerated in [System Requirements §Shared Responsibility](../reference/system-requirements#shared-responsibility-for-data-security).
+The full split — what Agilent owns versus what the customer owns across all CID surfaces — is enumerated in [Shared Responsibility](#shared-responsibility) below.
 
 ## Device identity
 
@@ -156,6 +170,28 @@ Cognito access tokens and ID tokens are valid for 15 minutes; refresh tokens are
 - **User deletion.** When an administrator deletes a user, the user is removed from the Cognito directory **immediately** and can no longer obtain new tokens. An access token the user already holds remains technically valid until it expires — up to 15 minutes — because Cognito access tokens cannot be individually revoked once issued; the next refresh attempt fails.
 
 The deletion procedure lives in [Manage Users and Roles → Delete a User](../howto/account/manage-users-and-roles#delete-a-user).
+
+## Shared Responsibility
+
+Security on a CID deployment is split between Agilent and the customer organization that operates the CID. The split is not arbitrary: Agilent controls everything that lives on or inside the device — the OS image, the embedded Windows VM, the patching channel, the device identity, the on-device anti-malware, and the Hub-side SaaS infrastructure — because the CID is a sealed appliance with a single, auditable software provenance. The customer controls everything that lives around the device — the corporate network it sits on, the identities that reach the Hub, and the CDS clients, traditional AICs, and OpenLab Server that the CID interoperates with — because those systems are part of the customer's wider IT estate and the customer is the only party positioned to manage them.
+
+The reference list of customer obligations lives in [System Requirements → Security Requirements](../reference/system-requirements#security-requirements). The table below shows both sides of the split together, so an IT reviewer can see at a glance which surfaces are Agilent's responsibility and which are the customer's.
+
+| Area | Agilent owns | Customer owns |
+|---|---|---|
+| **Network firewall and segmentation** | — | Configuring the corporate firewall to permit the outbound domains under [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements), and isolating the Instrument NIC's LAN/VLAN from the corporate WAN and the internet. |
+| **Physical security of the CID** | — | Restricting physical access to the device. Full-disk encryption is not applied on the CID, so physical and network controls are the primary at-rest protection on the device itself. |
+| **CID device identity** | X.509 client certificate provisioned at activation, rotated on the Agilent-managed cadence, and revocable through the Hub. | — |
+| **CID Hub user identity** | Per-tenant Amazon Cognito user pool, Cognito-enforced password policy and account lockout, invitation-only account creation, and audit logging of admin actions. | Inviting and removing users, assigning roles, and offboarding users when they leave the organization. |
+| **Active Directory / corporate identity** | — | All AD or IdP configuration for CDS clients and other customer-managed Windows PCs. The CID's embedded Windows VM is not domain-joined. |
+| **CID host OS, Windows VM, drivers** | OS hardening, image baseline, security patches (Linux Updates and Windows Updates), and driver delivery — all distributed centrally through CID Hub. | Authorizing when updates are applied within the change-management window, and confirming via the activity log that they landed. |
+| **Vulnerability response and updates** | Triaging vulnerabilities affecting CID-delivered components and distributing fixes through Linux Updates, Windows Updates, and driver updates. | Applying delivered updates within the customer's own change-management window. |
+| **Antivirus on the CID** | ClamAV pre-installed, signatures refreshed through the Linux Updates channel, weekly scheduled scans, and detections surfaced in the activity log. | — |
+| **CID Hub (SaaS) infrastructure** | AWS infrastructure, infrastructure patching, TLS termination, infrastructure monitoring, encryption in transit and at rest on the Hub side, and multi-tenant isolation. | — |
+| **CDS client PCs and traditional AICs** | — | OS patching, anti-malware, screen-lock policy, password-cache policy, accurate system clock, and physical access. CID Hub does not manage these systems. |
+| **Sample data and lab records** | The CID stages sample data on local disk during acquisition; this copy is transient by design. | The true record of sample data lives on the **OpenLab CDS Server**, which is customer-operated and customer-backed-up. Agilent does not back up CID-local CDS data. |
+| **Audit logs** | Generating and retaining audit records of Hub-side and CID-side actions; surfacing them through the activity-log UI. | Incorporating the activity log into the customer's own monitoring, review, or SIEM workflow. |
+| **Agilent support access** | Issuing the support-access request and providing the per-session tunnel infrastructure (AWS IoT Secure Tunneling); session start, end, and audit-log entries. | Reviewing and approving or declining each support request at the device, and closing the session when work is complete. See [Approve or Revoke Agilent Support Access](../howto/operations/cid-administration#approve-or-revoke-agilent-support-access). |
 
 ## See also
 
