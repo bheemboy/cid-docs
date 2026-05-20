@@ -5,7 +5,7 @@ title: "System requirements"
 
 # <mark>System requirements</mark>
 
-This page lists the network, internet, DNS, certificate, and security requirements you need to satisfy for a CID deployment. Each CID controls one instrument; the requirements below apply per device. Sections are ordered to match the deployment flow: rack and cable, identify the device, address it on the network, choose a topology, configure optional services, then open the firewall and review your security obligations.
+This page lists the network, internet, DNS, certificate, and security requirements you need to satisfy for a CID deployment. Each CID controls one instrument; the requirements below apply per device. Sections are ordered to match the deployment flow: rack and cable, identify the device, address it on the network, choose a topology. Optional services and firewall rules follow, with the customer's security obligations summarized at the end.
 
 ## Networking requirements
 
@@ -18,14 +18,14 @@ Each CID is equipped with two network interfaces:
 
 The traffic each NIC must carry is summarized below; the firewall rules behind the outbound internet entries are detailed under [Internet requirements](#internet-requirements). In the tables below, *outbound* and *inbound* are from the CID's perspective.
 
-#### House NIC: corporate LAN and internet
+### House NIC: corporate LAN and internet
 
 | Direction | Intranet (corporate LAN) | Internet |
 | --- | --- | --- |
-| Outbound | DHCP, DNS; HTTPS 443 (OLSS, OpenLab Server REST APIs, Sample Scheduler, Data Collection); TCP 6570 (OpenLab Licensing API); HTTP/HTTPS to ECM 3.x; SMB (optional network share). | See [Internet requirements](#internet-requirements) below. |
+| Outbound | DHCP, DNS; HTTPS 443 (OpenLab Shared Services (OLSS), OpenLab Server REST APIs, Sample Scheduler, Data Collection); TCP 6570 (OpenLab Licensing API); HTTP/HTTPS to ECM 3.x; SMB (optional network share). | See [Internet requirements](#internet-requirements) below. |
 | Inbound | HTTPS (Acquisition Server, diagnostics); SSH and ICMP (troubleshooting, optional). | None required. |
 
-#### Instrument NIC: instrument network
+### Instrument NIC: instrument network
 
 | Direction | Intranet (instrument LAN/VLAN) | Internet |
 | --- | --- | --- |
