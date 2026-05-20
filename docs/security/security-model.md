@@ -40,7 +40,7 @@ The CID's reverse proxy currently accepts TLS 1.0, 1.1, and 1.2. Customer vulner
 
 ## Posture vs a domain-controlled lab PC
 
-The CID is functionally equivalent to an Agilent Instrument Controller (AIC) running on a customer-supplied Windows PC, but the security model is materially different. See [CID vs AIC](./cid-vs-aic) for the side-by-side decision aid.
+The CID's security model is materially different from a customer-managed Windows PC running an instrument-controller workload. Agilent owns the OS image, patching cadence, anti-malware, and remote-access posture on the CID itself; the customer remains in control of the corporate network it sits on and of the identities used to access the Hub.
 
 ### What the CID gives you that a domain-controlled PC does not
 
@@ -159,9 +159,8 @@ The deletion procedure lives in [Manage Users and Roles → Delete a User](../ho
 
 ## See also
 
-- [CID vs AIC](./cid-vs-aic) — side-by-side comparison with the traditional Agilent Instrument Controller for IT reviewers choosing a deployment model.
 - [CID Hub Architecture](./cid-hub-architecture) — Hub-side AWS service inventory, tenant isolation, region and data-residency posture.
 - [Data Flow & Privacy](./data-flow-and-privacy) — the nine-category inventory of what crosses the CID ⇄ Hub boundary, plus PHI/PII stance and retention.
 - [Remote Access](./remote-access) — Windows console, Linux Cockpit, AWS IoT Secure Tunneling, and the Agilent support-access approval flow.
-- [Audit & Compliance](./audit-and-compliance) — audit-log model, retention, tamper protection, patch SLA, and the CID's relationship to 21 CFR Part 11, SOC 2, and ISO 27001.
+- [Audit & Compliance](./audit-and-compliance) — audit-log model, retention, tamper protection, patch SLA, and the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11.
 - [System Requirements](../reference/system-requirements) — authoritative networking, internet-requirements, hardware, and shared-responsibility tables.

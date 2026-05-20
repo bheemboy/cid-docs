@@ -35,7 +35,7 @@ Beyond identity, control, and audit, the Hub is the channel through which Agilen
 - **OpenLab CDS releases.** New CDS releases are published through the Hub after testing against the CID hardware and Windows VM image.
 - **Instrument drivers and add-ons.** Drivers and CDS add-ons are version-controlled in software templates and published after compatibility testing.
 
-Because each update is tested against a well-known, largely immutable hardware-plus-software target — the same target the customer is running — customers benefit from a software-delivery channel where every payload has already been exercised on the device stack it will land on. The customer-initiated install flow, audit trail, and rollback posture are described in [CID vs AIC → Patch management](./cid-vs-aic#patch-management) and [Audit & Compliance](./audit-and-compliance).
+Because each update is tested against a well-known, largely immutable hardware-plus-software target — the same target the customer is running — customers benefit from a software-delivery channel where every payload has already been exercised on the device stack it will land on. The customer-initiated install flow is described in [How-to → Apply Software Updates](../howto/updates/apply-updates); the audit trail and rollback posture are described in [Audit & Compliance](./audit-and-compliance).
 
 ## Multi-tenancy and isolation
 
@@ -74,7 +74,6 @@ The Hub services above are **Agilent-operated**. Customers do not deploy, patch,
 ## See also
 
 - [Security Model](./security-model) — trust boundaries between corporate LAN, CID, and Hub; device identity (X.509) and user identity (Cognito).
-- [CID vs AIC](./cid-vs-aic) — why CID is SaaS-only and when an AIC deployment is the appropriate alternative.
 - [Data Flow & Privacy](./data-flow-and-privacy) — nine-category inventory of what crosses the CID ⇄ Hub boundary, retention, and what does not transit the Hub.
 - [Remote Access](./remote-access) — Windows console, Linux Cockpit, and the Agilent-support tunnel flow that uses AWS IoT Secure Tunneling.
 - [Audit & Compliance](./audit-and-compliance) — Activity Log retention, integrity, and the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11.
