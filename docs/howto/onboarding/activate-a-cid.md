@@ -64,11 +64,3 @@ The CID activation process consists of the following steps:
 The CID activities are recorded and displayed in the "*Recent Activity*" section at the bottom of the **Summary** page of the CID. You can monitor this section to see what step the CID has performed. It also shows any issues that the CID encounters along the way.
 
 ![Recent Activity](../../img/recent-activity.jpg)
-
----
-
-## <mark>See also</mark>
-
-- [Security Model](../../security/security-model) — how the PIN code is exchanged for a long-lived X.509 device certificate, where that certificate is stored, and how the CID's identity is maintained after activation.
-- [Data Flow & Privacy](../../security/data-flow-and-privacy) — what flows between the CID and the CID Management Hub during and after activation.
-

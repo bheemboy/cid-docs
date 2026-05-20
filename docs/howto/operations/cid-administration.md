@@ -85,14 +85,20 @@ Upon reboot, the CID will detect it has been removed from the Hub and will autom
 
 ## <mark>Approve or Revoke Agilent Support Access</mark>
 
-Agilent support cannot connect to a CID without explicit, time-bound approval from a Hub user at the customer site. To approve or revoke a support session:
+Agilent support cannot connect to a CID without explicit approval from a Hub user at the customer site. Approval and revocation are surfaced as banners at the top of the CID's detail page, visible from any sub-tab.
 
-1.  Open the CID's **Administration** tab.
-2.  In the **Support Access** section, review the pending request (requester, reason, and requested duration).
-3.  Click **Approve** to open the session for the requested duration, or **Deny** to reject the request.
-4.  To end an active session early, click **Revoke** in the same section. The tunnel is closed immediately.
+**To approve or decline a pending request:**
 
-Both approval and revocation are recorded in the CID's activity log.
+1.  Open the CID's detail page (click the CID name on the **CIDs** list).
+2.  A red banner at the top of the page identifies the Agilent requester by name and email — for example, *"Jane Doe (jane.doe@agilent.com) is requesting access to this CID."*
+3.  Click **Accept** to grant the session, or **Decline** to reject the request.
+
+**To end an active support session:**
+
+1.  Open the CID's detail page. While a session is in progress, a banner at the top reads *"Remote session in progress. Accessed by: \<requester email\>."*
+2.  Click **Close Session**. The tunnel is closed immediately.
+
+All accept, decline, and session-close actions are recorded in the CID's activity log.
 
 ## <mark>See also</mark>
 

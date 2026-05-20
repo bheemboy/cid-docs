@@ -75,9 +75,9 @@ Specific versions are selectable per CID.
 
 | Add-On | Supported | Notes |
 |---|---|---|
-| Sample Scheduler for OpenLab | Yes | — |
+| Sample Scheduler for OpenLab | Yes | Default version pre-installed on CDS VM templates; can be updated to newer compatible versions. |
 | OpenLab Library Manager (DA Add-on) | Yes | Pre-installed in CDS 2.8 FP2 and above |
-| GPC DA Add-on | Yes | CDS 2.8 only |
+| GPC DA Add-on | Yes | CDS 2.8 only; not compatible with CDS 2.8 Update 7 with FP01. |
 | 2D-LC Software | No | — |
 | ADF Export | No | — |
 | Relay Service (Lab Advisor) | No | — |
