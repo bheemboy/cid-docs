@@ -83,7 +83,7 @@ A Factory Reset resets the configuration in the underlying Linux operating syste
 
 Upon reboot, the CID will detect it has been removed from the Hub and will automatically initiate the factory reset sequence.
 
-## <mark>Approve or Revoke Agilent Support Access</mark>
+## Approve or Revoke Agilent Support Access
 
 Agilent support cannot connect to a CID without explicit approval from a Hub user at the customer site. Approval and revocation are surfaced as banners at the top of the CID's detail page, visible from any sub-tab.
 
@@ -100,6 +100,6 @@ Agilent support cannot connect to a CID without explicit approval from a Hub use
 
 All accept, decline, and session-close actions are recorded in the CID's activity log.
 
-## <mark>See also</mark>
+## See also<
 
 - [Remote Access & Support Tunnels](../../security/remote-access) — trust model for the support tunnel, who can approve, what the session can do, audit-trail surface, and session-termination behavior.

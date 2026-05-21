@@ -75,7 +75,7 @@ If a user forgets their password:
 2.  Click the **Reset Password** (key) icon in the 'Actions' column.
 3.  This will trigger a password reset process for the user, typically by sending them an email with instructions.
 
-### <mark>Delete a User</mark>
+### Delete a User
 To remove a user's access to the CID Hub:
 1.  Find the user in the list.
 2.  Click the **Delete** (trash can) icon in the 'Actions' column.
@@ -83,7 +83,7 @@ To remove a user's access to the CID Hub:
 
 ---
 
-## <mark>See also</mark>
+## See also
 
 - [Security Model](../../security/security-model) — identity provider (Cognito), supported authentication methods (no SAML/OIDC, no MFA today), and the session-revocation model for deleted users.
 

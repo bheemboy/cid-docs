@@ -76,7 +76,7 @@ It is important to understand the difference between the **Activity Log** and th
 
 ---
 
-## <mark>See also</mark>
+## See also
 
 - [Audit & Compliance](../../security/audit-and-compliance) — what is captured in the Activity Log, retention period, tamper protection, and options for forwarding records to an external SIEM.
 
