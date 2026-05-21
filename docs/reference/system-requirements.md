@@ -5,7 +5,7 @@ title: "System requirements"
 
 # <mark>System requirements</mark>
 
-This page lists the network, internet, DNS, certificate, and security requirements you need to satisfy for a CID deployment. Each CID controls one instrument; the requirements below apply per device. Sections are ordered to match the deployment flow: rack and cable, identify the device, address it on the network, choose a topology. Optional services and firewall rules follow, with the customer's security obligations summarized at the end.
+This page lists the network, internet, DNS, certificate, and security requirements for a CID deployment. Each CID controls one instrument; the requirements below apply per device. Sections follow the deployment flow: rack and cable, identify the device, address it on the network, choose a topology. Optional services and firewall rules follow, with customer security obligations summarized at the end.
 
 ## Networking requirements
 
@@ -130,7 +130,7 @@ Publicly trusted certificates do not require AIA, because their roots are pre-in
 Your firewall must be configured to allow outbound communication from CIDs to the domains listed below.
 :::
 
-CIDs require a continuously available internet connection, not only at activation but for the life of the deployment, so the CID can apply security updates, sync time, refresh trusted certificate authorities, report status to CID Hub, and accept on-demand support sessions. OpenLab CDS does not require internet access for its core function of acquiring and processing data from instruments; if the internet path is interrupted, local CDS acquisition and processing continue, and only Hub-mediated functions become unavailable.
+CIDs require a continuously available internet connection, not only at activation but for the life of the deployment. The CID uses it to apply security updates, sync time, refresh trusted certificate authorities, report status to CID Hub, and accept on-demand support sessions. OpenLab CDS does not require internet access for its core function of acquiring and processing data from instruments. If the internet path is interrupted, local CDS acquisition and processing continue, and only Hub-mediated functions become unavailable.
 
 All internet traffic is outbound and CID-initiated. Every domain listed below is contacted by the CID over an outbound TLS session that the CID opens; no inbound internet connection is required for the CID to function.
 
@@ -139,14 +139,14 @@ All internet traffic is outbound and CID-initiated. Every domain listed below is
 | Domain | Direction | Port (Protocol) | Purpose |
 |---|---|---|---|
 | `*.agilent.com` | Outbound | 443 (HTTPS, WSS) | Registration API contacted by the CID at activation, and the CloudFront distribution at `files.cid.agilent.com` from which the CID fetches CID images, driver packages, and CDS installers. |
-| `*.iot.us-east-1.amazonaws.com` | Outbound | 443 (HTTPS, WSS / MQTT-over-WSS) | AWS IoT Core endpoint (device shadow, command/job channel, and telemetry between the CID and CID Hub). The CID currently connects to `a3cb4mwmdz2oep-ats.iot.us-east-1.amazonaws.com`; because this specific hostname can change over time, Agilent recommends allow-listing the `*.iot.us-east-1.amazonaws.com` wildcard for a stable, long-lived rule. |
+| `*.iot.us-east-1.amazonaws.com` | Outbound | 443 (HTTPS, WSS / MQTT-over-WSS) | AWS IoT Core endpoint (device shadow, command/job channel, and telemetry between the CID and CID Hub). The CID currently connects to `a3cb4mwmdz2oep-ats.iot.us-east-1.amazonaws.com`. Because this hostname can change, Agilent recommends allow-listing the wildcard for a stable, long-lived rule. |
 | `data.tunneling.iot.us-east-1.amazonaws.com` | Outbound | 443 (WSS) | AWS IoT Secure Tunneling data plane. The CID joins as the tunnel destination endpoint when a Hub user starts a Windows VM console or Linux Cockpit session, and disconnects when the session ends. See [Remote access](../security/remote-access). |
-| `agilent-aws-prd-51-ac-images.s3.amazonaws.com` | Outbound | 443 (HTTPS) | Legacy image fetch path. CIDs running a Linux Update older than 2026.01.12 download CID images from this S3 bucket. Newer CIDs use the CloudFront distribution under the `*.agilent.com` endpoint. |
-| `*.s3.us-west-2.amazonaws.com` | Outbound | 443 (HTTPS) | Linux package mirror used by the CID's Oracle Linux host (Agilent-hosted ClamAV antivirus definitions and the OL8 third-party RPM repository). The repository currently lives at `agilent-aws-sbx-51-yum-rpm-repo.s3.us-west-2.amazonaws.com`; because this specific hostname can change over time, Agilent recommends allow-listing the `*.s3.us-west-2.amazonaws.com` wildcard for a stable, long-lived rule. |
+| `agilent-aws-prd-51-ac-images.s3.amazonaws.com` | Outbound | 443 (HTTPS) | Legacy image fetch path. CIDs on a Linux Update older than 2026.01.12 download CID images from this S3 bucket. Newer CIDs use the CloudFront distribution under `*.agilent.com`. |
+| `*.s3.us-west-2.amazonaws.com` | Outbound | 443 (HTTPS) | Linux package mirror used by the CID's Oracle Linux host (ClamAV antivirus definitions and the OL8 third-party RPM repository). The CID currently connects to `agilent-aws-sbx-51-yum-rpm-repo.s3.us-west-2.amazonaws.com`. Because this hostname can change, Agilent recommends allow-listing the wildcard for a stable, long-lived rule. |
 
-**Single production region.** CID Hub runs in AWS `us-east-1`, giving every CID and every CID Hub user one predictable region to reason about: one location for AWS IoT Core, one location for AWS IoT Secure Tunneling, and a well-defined data-residency posture. The only outbound traffic that leaves `us-east-1` is the Linux package mirror in `us-west-2` (Agilent-hosted antivirus definitions and OL8 packages, listed separately above).
+**Single production region.** CID Hub runs in AWS `us-east-1`. Every CID and Hub user connects to one predictable region for AWS IoT Core, Secure Tunneling, and data residency. The only outbound traffic that leaves `us-east-1` is the Linux package mirror in `us-west-2` (antivirus definitions and OL8 packages, listed separately above).
 
-**Image delivery transitioned to CloudFront.** Linux Update 2026.01.12 introduced CloudFront-based image delivery: CIDs on this update or newer fetch CID images, drivers, and CDS installers through `files.cid.agilent.com` (covered by `*.agilent.com`). If your fleet includes any CID still on a Linux Update older than 2026.01.12, also keep `agilent-aws-prd-51-ac-images.s3.amazonaws.com` reachable so those CIDs can continue to fetch images.
+**Image delivery transitioned to CloudFront.** Linux Update 2026.01.12 introduced CloudFront-based image delivery. CIDs on this update or newer fetch CID images, drivers, and CDS installers through `files.cid.agilent.com` (covered by `*.agilent.com`). If your fleet includes any CID still on an older Linux Update, also keep `agilent-aws-prd-51-ac-images.s3.amazonaws.com` reachable so those devices can fetch images.
 
 ### Windows Update
 
@@ -162,7 +162,7 @@ The Windows VM reaches these endpoints through the Linux host via NAT on the Hou
 
 | Domain | Direction | Port (Protocol) | Purpose |
 |---|---|---|---|
-| `*.pool.ntp.org` | Outbound | 123 (NTP, UDP) | Public NTP pool used by the CID's chrony service. Accurate time is required for TLS certificate validation, AWS IoT Core authentication, and audit-log timestamps. |
+| `*.pool.ntp.org` | Outbound | 123 (Network Time Protocol (NTP), UDP) | Public NTP pool used by the CID's chrony service. Accurate time is required for TLS certificate validation, AWS IoT Core authentication, and audit-log timestamps. |
 
 ### Behavior when an endpoint is blocked
 
