@@ -1,67 +1,66 @@
 ---
 sidebar_position: 2
-title: "Register & Activate CIDs"
+sidebar_label: "Register and activate CIDs"
+title: "Register and activate CIDs"
 ---
 
-# Register & Activate CIDs
+# Register and activate CIDs
 
----
+This tutorial walks you through registering your OpenLab Server, defining software requirements, adding a CID to the CID Hub, and configuring the instrument. After completing these steps, your CID is online and ready for use.
 
-:::info[Important]
-Before you can register a server or add a CID, you must have an active CID Hub account. Your organization's account and the first set of administrator users are created by Agilent personnel upon purchase. 
+**Prerequisites**
 
-Look for an invitation email from **CID Hub** \<no-reply@hub.cid.agilent.com\> to begin.
+- You have an active CID Hub account. Your organization's account and the first set of administrator users are created by Agilent personnel upon purchase. Look for an invitation email from **CID Hub** \<no-reply@hub.cid.agilent.com\> to begin.
+- You have completed the network and physical setup described in [Before you install](./getting-started).
+
+## Register the OpenLab Server
+
+Register your OpenLab Server information in the CID Hub so that CIDs can be associated with it.
+
+1. Log in to the CID Hub at https://hub.cid.agilent.com/.
+2. Click **OpenLab Servers** in the navigation bar.
+3. Click **Register Server**.
+4. Enter details about your server in the dialog and click **Save**.
+
+See [Register an OpenLab Server](../howto/setup/register-a-server) for details.
+
+## Define software requirements
+
+Define the software configuration that the CID Hub applies to each CID linked to this server.
+
+1. Click your server's entry in the list of OpenLab Servers.
+2. Select the **CID Software** tab.
+3. Select the CDS version you want to use.
+4. Select the specific driver and add-on versions you want on the CIDs.
+
+:::important
+The CDS and driver versions you select for CIDs must match those installed on the CDS clients.
 :::
 
-## 1. Register OpenLab Server
+See [Define a software template](../howto/setup/define-software-template) for details.
 
-1. Register your OpenLab Server information in the CID Hub.
-2. Log in to the CID Hub at https://hub.cid.agilent.com/.
-3. Click on “OpenLab Servers” in the navigation bar.
-4. Click on “Register Server”.
-5. Provide details about your server in the pop-up dialog and click **Save**.
+## Add the CID to the CID Hub
 
-See "[Register an OpenLab Server](../howto/setup/register-a-server)" for details.
+Add a record for your CID so that the CID Hub recognizes the device on its next connection.
 
----
+1. Click the **CIDs** tab in the top navigation bar.
+2. Click **Add**.
+3. Enter information about your CID in the dialog and click **Save**.
+   - Agilent recommends using 15 or fewer lowercase alphanumeric characters to name your CIDs (for example, `cid-gc35`).
+   - The PIN code is the 8-character alphanumeric code on the QR code sticker on the CID. Enter it without the hyphen.
+4. Wait for the CID to recognize the linked record in the CID Hub.
+   Shortly after, the CID stops beeping and begins the activation process. The **Recent Activity** section of the CID summary tab shows event logs.
+5. Confirm that the CID status shows **Ready** in the CIDs list.
 
-## 2. Define Software Requirements
+## Configure the instrument in Control Panel
 
-1. Define the software configuration to apply to the CIDs.
-2. Click on your server’s entry in the list of OpenLab Servers.
-3. Click on “CID Software” tab on the left side.
-4. Select the CDS version you want to use.
-5. Select the specific driver and add-on versions you want on the CIDs.
+With the CID activated, configure it with your instrument in OpenLab Control Panel.
 
-See "[Define a Software Template](../howto/setup/define-software-template)" for details.
+1. Open Control Panel and [add an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FAddInstrument.htm).
+2. [Configure the instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FConfigure_instrument.htm) following the Control Panel help instructions.
 
+For more information, see the *Agilent OpenLab CDS Clients and Instrument Controllers* manual for your CDS version.
 
-:::info[Important]
-**The CDS and Driver versions you select for CIDs must match those installed on the CDS clients.**
-:::
-
----
-
-## 3. Add the CID to the CID Hub
-1. Add a record for your CID in the CID Hub.
-2. Click on the “CIDs” tab in the top navigation bar.
-3. Click on “Add”.
-4. Provide information about your CID in the pop-up dialog and click **Save**.
-  - We recommend using 15 or fewer lowercase alphanumeric characters to name your CIDs (e.g., `cid-gc35`).
-  - The PIN code is the 8-character alphanumeric code on the QR code sticker on the CID. Enter it without the hyphen (`-`).
-- Shortly after the CID is added, it will recognize that a linked record exists in the CID Hub, stop beeping, and begin the activation process.
-  - The “Recent Activity” section of the CID summary tab shows logs of events occurring on the CID.
-5. When activation is complete, its status will be "Ready" in the CIDs list.
-
----
-
-## 4. Configure the Instrument in OpenLab Control Panel
-1. The CID is ready to be congigured with your instruments.
-2. Follow the instructions in the "[Control Panel Help](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FControlPanelBanner.htm) to [add an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FAddInstrument.htm) and [configure an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FConfigure_instrument.htm).
-
-For more information see the manual “Agilent OpenLab CDS Clients and Instrument Controllers” for your CDS version (e.g. https://www.agilent.com/cs/library/usermanuals/public/CDS_v2.8_ClientAICGuide_en.pdf)
-
-
-:::info[Important]
-**Using multiple instruments on a single CID is not supported.**
+:::important
+Using multiple instruments on a single CID is not supported.
 :::

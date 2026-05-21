@@ -1,52 +1,58 @@
 ---
 sidebar_position: 1
-title: "Before Installing CIDs"
+sidebar_label: "Before you install"
+title: "Before you install"
 ---
 
-## Ensuring your CIDs are ready for the lab!
+# Before you install
 
-:::warning[CRITICAL]
-**Network IT Administrators must prepare the network environment before installing CIDs.**
-:::
+This tutorial walks you through preparing your network environment and physically connecting a CID before activation. It is intended for network IT administrators who configure the lab infrastructure.
 
-### Step 1: Enabling CID Connectivity
+**Prerequisites**
 
- 1. **Ensure CIDs have internet connection** for activation, security updates, monitoring, and other maintenance activities
- 2. Configure the network and firewalls to allow connections from the CIDs to specific internet sites – **see complete list in the [System Requirements](/reference/system-requirements#internet-requirements).**
- 3. Review the applicable [SSL Certificate Requirements for HTTPS](/reference/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
+- You have administrative access to your corporate network, firewall, DHCP, and DNS systems.
+- You have the CID hardware and power cables on hand.
+- You have reviewed the [system requirements](../reference/system-requirements).
 
----
+## Enable CID connectivity
 
-### Step 2: Enabling CID Network Readiness
+Before a CID can activate and receive updates, it needs outbound internet access to specific Agilent and cloud service endpoints.
 
-1. When first connected, the CID automatically gets its network settings using DHCP. After activation, a static network configuration can be used.
-2. If your DHCP servers support dynamic DNS registration for Linux systems, the DHCP server will register the CID hostname automatically with the DNS server.
-3. Otherwise, register the desired CID hostnames in DHCP and DNS using the device MAC address (found on QR code label).
-4. CDS clients must resolve CID hostnames to their IP addresses for proper operation.
-5. Refer to [DHCP and DNS Requirements](/reference/system-requirements#dhcp-and-dns-requirements) for more detail.
+1. Make sure that each CID has an internet connection for activation, security updates, monitoring, and other maintenance activities.
+2. Configure the network and firewalls to allow connections from the CIDs to the required internet sites (see the complete list in [system requirements](../reference/system-requirements#internet-requirements)).
+3. Review the applicable [SSL certificate requirements for HTTPS](../reference/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
 
----
+## Prepare CID network readiness
 
-### Step 3: Connecting CID to your Network
+When first connected, the CID automatically obtains its network settings using DHCP. After activation, you can assign a static network configuration. CDS clients must resolve CID hostnames to their IP addresses for proper operation.
 
-1. Ensure the number and location of electrical outlets for your CID(s) and instruments are planned.
-2. Place the CID next to the instrument and ensure the device has proper ventilation during operation. Do not place CIDs one top of the other, in a sealed box or near any heat sources.
-3. Proceed to connect the CID LAN ports: **House (Corporate) NIC** connects to the corporate LAN and provides access to the OpenLab Server and the internet, and **Instrument NIC** connects to analytical instruments – directly or via instrument dedicated LAN/VLAN.
+1. If your DHCP servers support dynamic DNS registration for Linux systems, confirm that the DHCP server registers the CID hostname automatically with the DNS server.
+2. Otherwise, register the desired CID hostnames in DHCP and DNS using the device MAC address (found on the QR code label).
+3. Verify that CDS clients can resolve the CID hostnames.
+
+See [DHCP and DNS requirements](../reference/system-requirements#dhcp-and-dns-requirements) for more detail.
+
+## Connect the CID to your network
+
+With the network configured, you can now physically place and cable the CID.
+
+1. Make sure that the number and location of electrical outlets for your CIDs and instruments are planned.
+2. Place the CID next to the instrument and make sure that the device has proper ventilation during operation. Do not place CIDs on top of one another, in a sealed enclosure, or near any heat sources.
+3. Connect the CID LAN ports:
+   a. **House (Corporate) NIC** connects to the corporate LAN and provides access to the OpenLab Server and the internet.
+   b. **Instrument NIC** connects to the analytical instruments, either directly or through an instrument-dedicated LAN or VLAN.
 4. Connect the power cable and turn on the CID.
-5. On bootup, the CID connects to the CID Hub via the internet. If successful, it will beep three times every 30 seconds until the CID is [added to the Hub](register-activate#3-add-the-cid-to-the-cid-hub). See [**CID-BOOT-01** — Beep Codes on Startup](/cid-boot-01) for the meaning of other beep patterns.
+5. On startup, the CID connects to the CID Hub via the internet.
+   If successful, it beeps three times every 30 seconds until you [add the CID to the Hub](register-activate#3-add-the-cid-to-the-cid-hub). See [CID-BOOT-01 — Beep codes on startup](/cid-boot-01) for the meaning of other beep patterns.
 
-![CID layout](../img/layout-1.jpg)
+![CID deployment layout showing CDS clients on the corporate LAN connecting to the CID, the CID's outbound link to CID Hub, and the CID's Instrument NIC connecting to the attached instrument.](../img/layout-1.jpg)
 
----
+## Register and activate your CIDs
 
-### Step 4: Register and Activate your CIDs
+Your lab is now ready for your CIDs. Continue to [Register and activate your CIDs](register-activate).
 
-1. Your lab is now ready for your CID(s)!
-2. Continue to **[Register & Activate your CIDs](register-activate)**.
-3. For further reference, see the CID Requirements Guide and Site Preparation Checklist documents. 
+For further reference, see the *CID Requirements Guide* and *Site Preparation Checklist* documents.
 
-:::info[Note]
-Agilent is here to support you - feel free to reach out!
---
-**[Technical Support | Agilent](https://www.agilent.com/en/support)**
+:::note
+For technical assistance, contact [Agilent Technical Support](https://www.agilent.com/en/support).
 :::
