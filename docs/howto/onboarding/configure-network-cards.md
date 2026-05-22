@@ -82,7 +82,7 @@ To configure the Instrument NIC:
 3. For **Manual**, enter the network values:
    - **IP Address:** the static IPv4 address, in the same subnet as the connected instruments.
    - **Subnet Mask:** the dotted-quad subnet mask, for example `255.255.255.0`.
-   - **Gateway Address** *(not recommended):* leave blank. The instrument network does not route to the corporate network or the internet.
+   - **Gateway Address** *(not recommended):* leave blank. The instrument network is isolated from the corporate network; setting a gateway here can route instrument traffic onto the corporate network, break the corporate default route, or leak instrument traffic across network boundaries.
    - **DNS Address** *(optional):* leave blank unless your instrument vendor specifies a DNS server.
 
 4. Enter a **Reason / description for this change**.
