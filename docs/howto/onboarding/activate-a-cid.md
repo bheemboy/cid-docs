@@ -12,7 +12,7 @@ Each physical CID must have a matching record in CID Hub before it can be used. 
 - A [registered OpenLab Server](../setup/register-a-server) for the CID to connect to.
 - A [defined software template](../setup/define-software-template) on that server. The template provides the default CDS version, drivers, and OS update levels the CID inherits during activation.
 - The 8-character PIN code printed on the QR sticker attached to the physical CID.
-- The CID powered on and connected to your corporate network through its House NIC.
+- The CID powered on and connected to your corporate network through its Corporate NIC.
 
 ## Add a CID record
 
@@ -49,7 +49,7 @@ After the CID finds its record in CID Hub, it runs through the following steps. 
 
 ![Recent activity section on the CID Summary page showing activation steps in chronological order](../../img/recent-activity.jpg)
 
-1. Verifies network connection on the House NIC.
+1. Verifies network connection on the Corporate NIC.
 2. Connects to CID Hub.
 3. Retrieves the OpenLab Server information from the CID record.
 4. Changes its hostname to **Name** if it differs from the current hostname.
@@ -75,7 +75,7 @@ If the **Recent activity** panel shows an error, the CID beeps repeatedly, or th
 
 - [Register an OpenLab Server](../setup/register-a-server): the prerequisite that supplies the activation target and default software template.
 - [Define a software template](../setup/define-software-template): the software defaults the CID inherits during activation.
-- [Configure network cards](./configure-network-cards): set up the House NIC and Instrument NIC after activation.
+- [Configure network cards](./configure-network-cards): set up the Corporate NIC and Instrument NIC after activation.
 - [View CIDs](../monitoring/view-cids): monitor CID status after activation completes.
 - [View activity logs](../monitoring/view-activity-logs): review activation events for audit and troubleshooting.
 - [CID administration](../operations/cid-administration): reboot, factory reset, and other post-activation operations.

@@ -1,140 +1,104 @@
 ---
 sidebar_position: 2
-title: "Configure Network Cards"
+title: "Configure network cards"
 ---
 
-# Configure Network Cards
+# Configure network cards
 
-CIDs include two Network Interface Cards (NICs):  
-- **Home / Corporate NIC** – Connects the CID to the corporate network, OpenLab Server, and the Internet.  
-- **Instrument NIC** – Connects to the instrument and does not require external network access.
+Each CID has two physical Network Interface Cards (NICs): a **Corporate NIC** for traffic to your lab network, CID Hub, and the OpenLab Server, and an **Instrument NIC** for the isolated instrument network.
 
-See the following topic for prerequisites:
-- [Networking Requirements](../../reference/system-requirements#networking-requirements)  
-- [Supported Topologies](../../reference/system-requirements#supported-topologies)
+This page is for the lab administrator or IT operator who reconfigures a NIC from CID Hub. The Corporate NIC normally runs on DHCP; the Instrument NIC is commonly set to a static IP so that the CID and the directly-connected instruments share a subnet.
 
-You can access a CID’s networking settings by selecting the **Networking** tab for that CID.
+## Prerequisites
 
-![CID Networking](../../img/cid-networking.jpg)
+- The CID is activated and connected to CID Hub. The **Configure** buttons are disabled until the CID reports as connected.
+- The CID is unlocked. If **Allow Changes** is disabled on the CID, unlock it first.
+- For manual configuration of either NIC: the IP address and subnet mask assigned by your network administrator. For the Corporate NIC, also collect the gateway address and one or more DNS server addresses.
 
----
+## Open the Networking page
 
-## Networking Page Overview
+To view and change a CID's NIC configuration:
 
-The Networking page displays the status and configuration of both NICs, including:
+1. In CID Hub, open the CID's detail page and select the **Networking** tab.
 
-- Configuration method (Automatic/DHCP or Manual)
-- Connection state
-- IP address and subnet mask
-- MAC address
-- DNS and gateway information (if applicable)
+   ![Networking tab showing Corporate NIC and Instrument NIC configuration cards with status and IP details](../../img/cid-networking.jpg)
 
-Click **Show Details** to see technical information about the connections in Linux.
+   The page lists each NIC's configuration method (automatic or manual), connection state, IP address, MAC address, gateway, and DNS settings.
 
-Each NIC has a **Configure** button that opens its configuration dialog.
+2. Click **Show Details** on a NIC to expand the underlying Linux interface information (connection name, UUID, device state, domain name).
 
-### Automatic Revert Protection
-When new settings are applied, the system first attempts to activate the configuration.  
-If the CID cannot re-establish connectivity, the settings are automatically reverted to the last known working configuration.
+3. Click **Configure** on a NIC to open its configuration dialog.
 
-This protection reduces the risk of misconfiguration, but it **cannot prevent all types of lockouts**, especially when modifying Corporate NIC parameters.
+## Configure the Corporate NIC
 
----
+The Corporate NIC is the only network path between the CID and CID Hub. An incorrect change here can disconnect the CID from the hub.
 
-## Corporate NIC (Home NIC)
-
-The Corporate NIC is the primary communication path between the CID, the CID Hub, and the OpenLab Server. Because it affects all external connectivity, it must be modified carefully.
-
-### Configuration Methods
-
-![CID Networking Configuration](../../img/cid-networking-configuration.jpg)
-
-#### Automatic Configuration (DHCP)
-The CID obtains its IP, subnet mask, gateway, and DNS settings from the corporate DHCP server.  
-This is the recommended configuration in most environments.
-
-#### Manual Configuration (Static IP)
-Use only when required by your corporate IT policies.  
-Required fields:
-
-- **IP Address**  
-- **Subnet Mask**  
-- **Gateway Address**  
-- **DNS Address**
-- **Reason/description for this change** (mandatory for auditing)
-
-:::warning[Possible Loss of Access]
-Incorrect manual configuration of the Corporate NIC can cause the CID to become unreachable. Examples include entering an incorrect gateway, using an IP address already in use, or assigning DNS settings that prevent name resolution.
-
-Although the system attempts to revert changes when connectivity fails, some errors cannot be automatically detected.
+:::note
+The CID requires DHCP on the Corporate NIC to activate. You can switch to a manual configuration only after the CID has activated and is connected to CID Hub. Make sure DHCP is available on the corporate network during the initial activation, even if you intend to assign a static address afterward.
 :::
 
-**Instrument NIC changes do not carry this risk**, because they do not affect the corporate network route.
+:::caution
+Setting the wrong IP address, gateway, or DNS on the Corporate NIC can make the CID unreachable from CID Hub. CID Hub validates the new configuration after applying it and reverts automatically if it cannot reach the registration API after 5 retries, but the safety net cannot detect every misconfiguration. Coordinate Corporate NIC changes with your IT administrator.
+:::
 
----
+To configure the Corporate NIC:
 
-## Instrument NIC
+1. On the **Networking** tab, click **Configure** under **Corporate NIC**.
 
-The Instrument NIC isolates instrument communication from the corporate network.  
-It does **not** need Internet access, and it typically uses:
+   ![Corporate NIC configuration dialog with Automatic and Manual options and the required IP, subnet mask, gateway, and DNS fields](../../img/cid-networking-configuration.jpg)
 
-- DHCP when supported by the instrument  
-- Auto-IP (169.254.x.x) when no DHCP server is present  
-- A static IP only when required by specific instrument setups  
+2. Choose a configuration method:
+   - **Automatic (DHCP):** the CID obtains its IP address, subnet mask, gateway, and DNS settings from your corporate DHCP server. This is the default and is recommended for most environments.
+   - **Manual:** the CID uses the static values you supply. Use only when required by your IT policies.
 
-### Configuration Screen
+3. For **Manual**, enter the network values:
+   - **IP Address:** the static IPv4 address, for example `192.168.0.75`.
+   - **Subnet Mask:** the dotted-quad subnet mask, for example `255.255.255.0`.
+   - **Gateway Address:** the default gateway on the corporate network.
+   - **DNS Address:** one or more DNS server addresses that can resolve the CID's own hostname and the OpenLab Server FQDN.
 
-![CID Networking Configuration](../../img/cid-networking-intr-configuration.jpg)
+4. Enter a **Reason / description for this change**.
 
-When configuring the Instrument NIC, the dialog includes:
+   This is recorded in the Activity Log for audit purposes.
 
-#### Automatic Configuration
-The CID automatically selects an appropriate IP address for instrument communications (DHCP or Auto-IP).  
-This is recommended unless your instrument requires static addressing.
+5. Click **Apply Changes**.
 
-#### Manual Configuration
-Manual mode allows the instrument network to be explicitly assigned.  
-Fields include:
+   The CID applies the new configuration, then verifies it can still reach CID Hub. If the verification fails after 5 retries, the previous configuration is restored automatically and the failure is recorded in the Activity Log.
 
-- **IP Address**  
-- **Subnet Mask**  
-- **Gateway Address (Not Recommended)**  
-  - The instrument network should remain isolated.  
-  - A gateway is almost never needed and should only be set if specifically instructed by an instrument manufacturer.  
-- **DNS Address (optional)**  
-  - Typically unused because instrument communication does not require name resolution.  
-- **Reason/description for this change** (required)
+## Configure the Instrument NIC
 
-### Why Gateway Is Not Recommended
-The Instrument NIC does not need to reach the Internet, CID Hub, or OpenLab Server.  
-Adding a gateway can:
+The Instrument NIC connects the CID to your instruments. Most lab setups connect instruments directly to this NIC and assign the CID and the instruments static IP addresses in the same subnet so they can communicate. Changes to this NIC do not affect the CID's connection to CID Hub.
 
-- Break instrument isolation  
-- Cause unwanted routing behavior  
-- Allow traffic to leak into corporate networks
+To configure the Instrument NIC:
 
-### No Lockout Risk
-Changes to the Instrument NIC **cannot** lock you out of the CID, as the corporate network path is unaffected.  
-The automatic revert mechanism applies here as well, but failure is extremely low-impact.
+1. On the **Networking** tab, click **Configure** under **Instrument NIC**.
 
----
+   ![Instrument NIC configuration dialog with the gateway field marked as not recommended](../../img/cid-networking-intr-configuration.jpg)
 
-## Applying Changes
+2. Choose a configuration method:
+   - **Manual:** the CID uses the static values you supply. Recommended for most instrument connections so that the CID and the instruments share a known subnet.
+   - **Automatic:** the CID acquires an address from a DHCP server on the instrument network, or uses an Auto-IP address in the `169.254.x.x` range when no DHCP server is present. Use only when your instrument network already provides DHCP.
 
-1. Select **Configure** under the desired NIC.  
-2. Choose **Automatic** or **Manual** configuration.  
-3. Enter the required fields.  
-4. Click **Apply Changes**.  
-5. The CID activates the new settings:  
-   - If successful, they become the active configuration.  
-   - If unsuccessful, the CID automatically rolls back to the previous settings.  
-6. Refresh or revisit the Networking page to confirm the new configuration.
+3. For **Manual**, enter the network values:
+   - **IP Address:** the static IPv4 address, in the same subnet as the connected instruments.
+   - **Subnet Mask:** the dotted-quad subnet mask, for example `255.255.255.0`.
+   - **Gateway Address** *(not recommended):* leave blank. The instrument network does not route to the corporate network or the internet.
+   - **DNS Address** *(optional):* leave blank unless your instrument vendor specifies a DNS server.
 
----
+4. Enter a **Reason / description for this change**.
 
-## Best Practices
+5. Click **Apply Changes**.
 
-- Prefer **DHCP** for the Corporate NIC unless static IPs are explicitly required.  
-- For the Instrument NIC, avoid setting a gateway and DNS unless instructed by an instrument vendor.  
-- Coordinate Corporate NIC changes with your IT department to prevent IP or routing conflicts.  
-- Ensure **Allow Changes** is enabled before making modifications.
+## Verify the configuration
+
+After **Apply Changes** completes, the **Networking** tab refreshes with the new values. If the change failed and was reverted, the previous values are shown and the Activity Log records the failure with the reason you entered.
+
+To confirm the CID is reachable on the new configuration, return to the CID's **Summary** page. The status should remain **Ready**.
+
+## See also
+
+- [Networking requirements](../../reference/system-requirements#networking-requirements): supported network speeds, DNS, and firewall port requirements.
+- [Supported topologies](../../reference/system-requirements#supported-topologies): how to wire the CID into your lab and instrument networks.
+- [Activate a CID](./activate-a-cid): the activation flow that uses the Corporate NIC to contact CID Hub.
+- [View CIDs](../monitoring/view-cids): monitor CID connectivity status after a network change.
+- [View activity logs](../monitoring/view-activity-logs): review the audit trail of NIC configuration changes.
