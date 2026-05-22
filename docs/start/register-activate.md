@@ -56,11 +56,10 @@ Add a record for your CID so that the CID Hub recognizes the device on its next 
 
 With the CID activated, configure it with your instrument in OpenLab Control Panel.
 
-1. Open Control Panel and [add an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FAddInstrument.htm).
-2. [Configure the instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FConfigure_instrument.htm) following the Control Panel help instructions.
-
-For more information, see the *Agilent OpenLab CDS Clients and Instrument Controllers* manual for your CDS version.
-
 :::important
 Using multiple instruments on a single CID is not supported.
 :::
+
+1. Open Control Panel and [add an instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FAddInstrument.htm).
+2. [Configure the instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FControlPanel%2FConfigure_instrument.htm) following the Control Panel help instructions.
+

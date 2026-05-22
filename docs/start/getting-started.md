@@ -8,11 +8,16 @@ title: "Before you install"
 
 This tutorial walks you through preparing your network environment and physically connecting a CID before activation. It is intended for network IT administrators who configure the lab infrastructure.
 
+:::important
+The following steps must be completed before installing CIDs and connecting them to OpenLab CDS.
+:::
+
 **Prerequisites**
 
 - You have administrative access to your corporate network, firewall, DHCP, and DNS systems.
 - You have the CID hardware and power cables on hand.
 - You have reviewed the [system requirements](../reference/system-requirements).
+- Your Agilent project team provides a Site Preparation Checklist during project kickoff. Use it alongside this tutorial to confirm your lab is ready.
 
 ## Enable CID connectivity
 
@@ -22,7 +27,7 @@ Before a CID can activate and receive updates, it needs outbound internet access
 2. Configure the network and firewalls to allow connections from the CIDs to the required internet sites (see the complete list in [system requirements](../reference/system-requirements#internet-requirements)).
 3. Review the applicable [SSL certificate requirements for HTTPS](../reference/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
 
-## Prepare CID network readiness
+## Enable CID network readiness
 
 When first connected, the CID automatically obtains its network settings using DHCP. After activation, you can assign a static network configuration. CDS clients must resolve CID hostnames to their IP addresses for proper operation.
 
@@ -50,8 +55,6 @@ With the network configured, you can now physically place and cable the CID.
 ## Register and activate your CIDs
 
 Your lab is now ready for your CIDs. Continue to [Register and activate your CIDs](register-activate).
-
-For further reference, see the *CID Requirements Guide* and *Site Preparation Checklist* documents.
 
 :::note
 For technical assistance, contact [Agilent Technical Support](https://www.agilent.com/en/support).
