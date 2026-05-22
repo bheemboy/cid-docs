@@ -4,63 +4,79 @@ title: "Activate a CID"
 ---
 
 # Activate a CID
-## Overview
-Each physical CID must have a corresponding record in the CID Hub before it can be used. These online records define the configuration that the CID would assume. These records are also required for accessing the CID and performing actions on them.
 
-:::info
-Before activating a CID, you must "[register an OpenLab Server](../setup/register-a-server)" and "[define a software template](../setup/define-software-template)" for it.
-:::
+Each physical CID must have a matching record in CID Hub before it can be used. This page is for the lab administrator or IT operator who creates that record and monitors the device through activation. Activation is largely automatic: once you create the record with a valid PIN code, the CID detects it on the next contact attempt and begins installing OpenLab CDS.
 
----
+## Prerequisites
+
+- A [registered OpenLab Server](../setup/register-a-server) for the CID to connect to.
+- A [defined software template](../setup/define-software-template) on that server. The template provides the default CDS version, drivers, and OS update levels the CID inherits during activation.
+- The 8-character PIN code printed on the QR sticker attached to the physical CID.
+- The CID powered on and connected to your corporate network through its House NIC.
 
 ## Add a CID record
 
-![Add CID Button](../../img/add-cid-btn.jpg)
+Creating a CID record in CID Hub links the physical device to the configuration it adopts during activation. To add a CID record:
 
-Clicking on the **Add** button launches the add CID dialog.
+1. In CID Hub, navigate to **CIDs** and click **Add**.
 
-New CIDs are constantly checking for a corresponding CID record in the Hub with a matching PIN code. As soon as the CID finds such a record, it starts activating itself using information specified in the record.
+   ![Location of the Add CID button on the CIDs list page](../../img/add-cid-btn.jpg)
 
-![Add CID Dialog](../../img/add-cid-dlg.jpg)
+2. In the **Add CID** dialog, enter the fields described below.
 
-#### Field Descriptions  
+   ![Add CID dialog with Name, FQDN, OpenLab Server, and PIN Code fields](../../img/add-cid-dlg.jpg)
 
-- **Name**  
-  Enter a machine name (hostname) for the CID. For better compatibility with some DNS systems, it is recommended to use no more than **15 lowercase alphanumeric letters** when entering this. It is also recommended to follow some pattern that can identify a CID and also distinguish them from AICs. For example: cid-1290lc-53
+3. Click **Add**.
 
-- **FQDN** *(use only if needed)*  
-  When the CID activates, it confirms that its hostname can be resolved by the DNS server to the IP that DHCP has assigned to it. In rare situations when hostname resolution does not work, entering the fully qualified domain name (FQDN) causes the CID to resolve the FQDN with DNS instead.
-  
-- **OpenLab Server**  
-  This informs the CIDs which server they must register with. This selection also provides the default software configuration template for the the CID.
+   The record is created with status **New**. The next time the CID contacts CID Hub (every 5 minutes for an unactivated device), it finds the record by its PIN code and begins activation.
 
-- **PIN Code**  
-  Pin code printed on the QR code attached to the physical device links it with the CID Hub record. The PIN code is used by the CID to legitimately identify itself with the CID Hub. Without it the activation cannot proceed. 
+### Field descriptions
 
----
+- **Name:** the machine name (hostname) for the CID. Use at most 15 lowercase alphanumeric characters for compatibility with all DNS servers. A naming pattern that distinguishes CIDs from AICs is recommended, for example `cid-1290lc-53`.
+- **FQDN** *(optional):* set only if short-hostname resolution fails in your network. When set, the CID resolves this fully qualified domain name through DNS instead of the short hostname.
+- **OpenLab Server:** the server this CID registers with. The server's software template provides the default CDS version, drivers, and OS update levels for the CID.
+- **PIN Code:** the 8-character code printed on the QR sticker attached to the physical CID. The PIN links this record to the hardware. PIN codes use the characters A–Z (excluding I and O) and digits 2–9 to avoid transcription errors.
 
-## Activation Process
+:::note
+You can also scan the QR sticker on the device. The activation URL embedded in the QR code opens the **Add CID** dialog with the **PIN Code** field prepopulated.
+:::
 
-The CID activation process consists of the following steps:
+<!-- IMAGE PLACEHOLDER: Example QR sticker showing MAC address and 8-character PIN code, with the PIN field highlighted -->
 
-- Verify network connection on house NIC
-- Connect to the CID Hub
-- Get OpenLab Server information
-- Change hostname (if needed) to what is specified in the CID record in the Hub
-- Confirm that DNS can resolve CID's hostname and that it resolves to the IP address assigned to it
-- Confirm that CID can connect to AWS IoT services
-- Confirm connection to OLSS Server
-- Install latest Linux Update and antivirus definitions
-- Download, install, and start CDS Virtual Machine
-- If needed, install ECM 3.x APIs in the CDS Virtual Machine
-- Configure and Register the CDS Virtual Machine as an AIC with the OLSS Server
-- Install Windows Updates on the CDS Virtual Machine
-- Install selected drivers and add-ons
-- Setup scheduled antivirus scans
-- Update passwords for the CID Linux subsystem and for the CDS virtual machine
+## What happens during activation
 
-### Recent Activities
+After the CID finds its record in CID Hub, it runs through the following steps. Monitor progress in the **Recent activity** section of the CID's **Summary** page.
 
-The CID activities are recorded and displayed in the "*Recent Activity*" section at the bottom of the **Summary** page of the CID. You can monitor this section to see what step the CID has performed. It also shows any issues that the CID encounters along the way.
+![Recent activity section on the CID Summary page showing activation steps in chronological order](../../img/recent-activity.jpg)
 
-![Recent Activity](../../img/recent-activity.jpg)
+1. Verifies network connection on the House NIC.
+2. Connects to CID Hub.
+3. Retrieves the OpenLab Server information from the CID record.
+4. Changes its hostname to **Name** if it differs from the current hostname.
+5. Confirms DNS resolves the hostname to the IP address assigned by DHCP.
+6. Confirms connectivity to AWS IoT Core.
+7. Confirms connectivity to the OpenLab Server.
+8. Installs the latest Linux update and antivirus definitions.
+9. Downloads, installs, and starts the OpenLab CDS Windows VM.
+10. Installs ECM 3.x APIs in the Windows VM if the OpenLab Server uses Enterprise Content Manager (ECM) as its backend.
+11. Configures and registers the Windows VM as an Analytical Instrument Controller (AIC) with the OpenLab Server.
+12. Installs Windows updates in the Windows VM.
+13. Installs the selected drivers and add-ons.
+14. Schedules antivirus scans.
+15. Rotates the default passwords for the CID Linux subsystem and the Windows VM.
+
+Activation typically takes 1–2 hours, depending on network speed and the size of the CDS download. The CID's status in CID Hub transitions from **New** to **Ready** when activation completes.
+
+If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Troubleshoot activation](../operations/troubleshoot-activation).
+
+<!-- IMAGE PLACEHOLDER: CID Summary page showing the Ready status after successful activation -->
+
+## See also
+
+- [Register an OpenLab Server](../setup/register-a-server): the prerequisite that supplies the activation target and default software template.
+- [Define a software template](../setup/define-software-template): the software defaults the CID inherits during activation.
+- [Configure network cards](./configure-network-cards): set up the House NIC and Instrument NIC after activation.
+- [View CIDs](../monitoring/view-cids): monitor CID status after activation completes.
+- [View activity logs](../monitoring/view-activity-logs): review activation events for audit and troubleshooting.
+- [CID administration](../operations/cid-administration): reboot, factory reset, and other post-activation operations.
+- [Troubleshoot activation](../operations/troubleshoot-activation): beep codes, Recent activity error messages, and recovery steps for stalled activations.
