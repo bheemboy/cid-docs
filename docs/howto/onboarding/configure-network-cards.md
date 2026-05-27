@@ -11,9 +11,10 @@ This page is for the lab administrator or IT operator who reconfigures a NIC fro
 
 ## Prerequisites
 
+- A CID Hub account with an administrator role. The actions on this page can only be performed by an administrator. If you do not have an administrator role, contact your account administrator.
 - The CID is activated and connected to CID Hub. The **Configure** buttons are disabled until the CID reports as connected.
-- The CID is unlocked. If **Allow Changes** is disabled on the CID, unlock it first.
-- For manual configuration of either NIC: the IP address and subnet mask assigned by your network administrator. For the Corporate NIC, also collect the gateway address and one or more DNS server addresses.
+- The CID allows changes. If **Allow Changes** is off for the CID, turn it on first.
+- Knowledge of the IP address and subnet mask assigned by your network administrator (required only for manual configuration). For the Corporate NIC, also collect the gateway address and one or more DNS server addresses.
 
 ## Open the Networking page
 

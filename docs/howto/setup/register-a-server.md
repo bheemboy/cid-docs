@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Register an OpenLab Server"
 ---
 
-# <mark>Register an OpenLab Server</mark>
+# Register an OpenLab Server
 
 Each CID activates against an OpenLab Server and inherits its software template. This page is for the lab administrator or IT operator who records the server's connection details in CID Hub so that CIDs can register with it during activation.
 
@@ -15,7 +15,8 @@ CID Hub and the OpenLab Server are independent systems and do not communicate wi
 
 ## Prerequisites
 
-- The fully qualified domain name (FQDN) of the OpenLab Server.
+- A CID Hub account with an administrator role. The actions on this page can only be performed by an administrator. If you do not have an administrator role, contact your account administrator.
+- Knowledge of the fully qualified domain name (FQDN) of the OpenLab Server.
 - An OpenLab admin username and password that the CID can present to OLSS during registration. The same credentials are reused when an administrator runs **Register CID** or **Reset OpenLab CDS** on a CID.
 - *(Optional)* The SMB path and credentials for a CID network share used to cache OpenLab CDS KVM images.
 
