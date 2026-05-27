@@ -23,7 +23,6 @@ To open the Devices page:
    The Devices list opens. The columns show hardware details, connection status, and tracking information.
 
 ![Devices List](../../img/devices-list.jpg)
-<!-- IMAGE PLACEHOLDER: Devices list view showing devices with varying statuses, including at least one Linked and one Active device, to illustrate the data described below -->
 
 - **Status**: Indicates the current state of the device's registration and connection.
   - **Linked**: A record for the CID has been created in CID Hub using the unique PIN code from the device's QR code sticker, but the physical device has not yet connected.
