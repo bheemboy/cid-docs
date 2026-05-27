@@ -1,82 +1,86 @@
 ---
 sidebar_position: 4
-title: "View Activity Logs"
+title: View activity logs
 ---
 
-# View Activity Logs
+# View activity logs
 
-## Overview
+The **Activity Log** is the historical record of actions taken in CID Hub. It captures who did what and when, across user management, CID configuration, software changes, server changes, remote access, and authentication events. Use it to trace a configuration change, gather evidence for a compliance review, or get context for a support investigation.
 
-The Activity Log provides a detailed, searchable record of all actions performed within the CID Hub, both by users and by the system itself. These logs are essential for traceability and auditing purposes, capturing high-level events related to user management, CID configuration, software changes, and more.
+CID Hub keeps a single account-wide log. You can read it in two ways: a **Global Activity Log** that shows every event in your account, or a **CID-specific Activity Log** that filters the same data down to one device.
 
-All events are recorded in a single, account-wide log. For convenience, this log can be viewed in two ways:
-- The **Global Activity Log** shows all events across your account.
-- The **CID-Specific Activity Log** is a filtered view that shows only the events related to a single device.
+## Prerequisites
 
----
+- You must be signed in to CID Hub.
 
-## Global Activity Log
+## Open the global activity log
 
-The Global Activity Log displays all events from across your CID Hub account in a single list.
+The Global Activity Log shows every event from your account in a single list.
 
-To access the Global Activity Log, click the **Activity Log** tab in the main navigation bar at the top of the page.
+1. In CID Hub, click **Activity Log** in the top navigation bar.
 
-![Global Activity Log](../../img/global-activity-log.jpg)
+   ![Global Activity Log](../../img/global-activity-log.jpg)
 
----
+The log opens sorted by **Date/Time**, newest first. CID Hub loads 100 entries at a time and fetches more as you scroll.
 
-## CID-Specific Activity Log
+## Open the activity log for one CID
 
-If you need to see the history for a particular CID, you can access its dedicated activity log.
+When you only need history for a single CID, open its filtered view from the **CIDs** list.
 
-1.  Navigate to the **CIDs** list page.
-2.  Click on the name of the CID you want to inspect.
-3.  Select the **Activity Log** tab from the left-hand navigation menu.
+1. In CID Hub, click **CIDs** in the top navigation bar.
+2. Click the name of the CID you want to inspect.
+3. Click the **Activity Log** tab in the left-hand navigation.
 
-![CID-Specific Activity Log](../../img/cid-activity-log.jpg)
+   ![CID-specific Activity Log](../../img/cid-activity-log.jpg)
 
----
+This view shows only the events that act on the CID you opened.
 
-## Sorting and Filtering
+## Sort and filter the list
 
-Both log views offer powerful sorting and filtering tools to help you find specific events quickly.
+Both views use the same column controls.
 
--   **Sorting**: Click on any column header to sort the list by that column.
--   **Filtering**: Click the chevron next to a column header to open a filter menu.
-    -   **Date/Time**: Filter by a specific date range.
-    -   **User**, **Description**, **Reason**: Filter using a text search (contains).
-    -   **Category**: Select one or more categories to display:
-        -   `Authentication` (user logins, role changes, etc.)
-        -   `CID Activation`
-        -   `CID Administration`
-        -   `CID Device`
-        -   `CID Networking`
-        -   `CID Software`
-        -   `CID Summary`
-        -   `Customer` (account-level changes)
-        -   `OpenLab Server Software`
-        -   `OpenLab Server Summary`
-    -   **Level**: Filter by the severity of the log entry:
-        -   `DEBUG`
-        -   `ERROR`
-        -   `INFO`
-        -   `WARNING`
+- Click a column header to sort by that column.
+- Click the chevron next to a column header to open that column's filter.
 
----
+The available filters are:
 
-## Activity Log vs. Recent Activity
+- **Date/Time:** Filter by a start and end date. Dates use your local timezone.
+- **User:** Case-insensitive text search. The literal value `SYSTEM` matches entries written by CID Hub itself rather than by a user.
+- **Description:** Case-insensitive text search. The text you type must appear in the description exactly, including punctuation. For example, `created tom` does not match `Created new CID: tom-cid-1` because of the colon; `created` does.
+- **Reason:** Case-insensitive text search over the reason a user typed when making a change. Entries written automatically by CID Hub show `System generated entry` in this column.
+- **Category:** Select one or more categories to display.
+  - `Additional Hubs`
+  - `Authentication` (sign-in, sign-out, session expiry, role assignment)
+  - `CID Activation`
+  - `CID Administration`
+  - `CID Device`
+  - `CID Networking`
+  - `CID Software`
+  - `CID Summary`
+  - `Customer` (account-level changes)
+  - `OpenLab Server Software`
+  - `OpenLab Server Summary`
+  - `Software Library`
+- **Level:** Filter by severity.
+  - `INFO` for successful operations and user requests.
+  - `WARNING` is reserved; no events currently use this level.
+  - `ERROR` for failed downloads, installs, uninstalls, and commands.
 
-It is important to understand the difference between the **Activity Log** and the **Recent Activity** feed.
+## Activity Log compared to Recent Activity
 
--   **Activity Log**: This is for **auditing and traceability**. It captures high-level actions performed by users (e.g., "Requested install driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid") and the system (e.g., "Installed driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid").
+CID Hub has two separate event feeds. They look similar but answer different questions.
 
--   **Recent Activity**: This feed, found on a CID's **Summary** page, is for **troubleshooting**. It shows detailed, low-level actions performed by the CID agent software on the device itself (e.g., "Resolving 'hostname' to its IP address..."). It provides a much more granular view of the CID's internal processes. See "[Recent Activities](../onboarding/activate-a-cid#recent-activities)" for more details.
+- The **Activity Log**, described on this page, is for traceability. It records high-level user and system actions such as `Requested install driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid` or `Installed driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid`.
+- The **Recent activity** feed on a CID's **Summary** page is for troubleshooting. It shows low-level steps taken by the CID agent on the device itself, such as `Resolving 'hostname' to its IP address...`. See [Activate a CID](../onboarding/activate-a-cid) for an example of this feed in use during activation.
 
-![Recent Activity Feed on CID Summary Page](../../img/recent-activity.jpg)
+  ![Recent Activity feed on the CID Summary page](../../img/recent-activity.jpg)
 
----
+Activity Log entries persist after a CID is deleted, so the history for a removed CID stays readable.
 
 ## See also
 
-- [Audit & Compliance](../../security/audit-and-compliance) — what is captured in the Activity Log, retention period, tamper protection, and options for forwarding records to an external SIEM.
+- [View CIDs](view-cids): use the CIDs list to find the CID you want to inspect.
+- [Configure software exceptions](../setup/configure-software-exceptions): a typical source of `CID Software` entries.
+- [Audit and compliance](../../security/audit-and-compliance): what is captured in the Activity Log, retention, tamper protection, and forwarding to an external SIEM.
+
 

@@ -78,6 +78,6 @@ If the **Recent activity** panel shows an error, the CID beeps repeatedly, or th
 - [Define a software template](../setup/define-software-template): the software defaults the CID inherits during activation.
 - [Configure network cards](./configure-network-cards): set up the Corporate NIC and Instrument NIC after activation.
 - [View CIDs](../monitoring/view-cids): monitor CID status after activation completes.
-- [View activity logs](../monitoring/view-activity-logs): review activation events for audit and troubleshooting.
+- [View activity logs](../monitoring/view-activity-logs): review activation events for traceability and troubleshooting.
 - [CID administration](../operations/cid-administration): reboot, factory reset, and other post-activation operations.
 - [Troubleshoot activation](../operations/troubleshoot-activation): beep codes, Recent activity error messages, and recovery steps for stalled activations.

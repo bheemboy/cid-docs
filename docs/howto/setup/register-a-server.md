@@ -85,4 +85,4 @@ If the server still has CIDs associated with it, CID Hub blocks the deletion and
 - [Define a software template](./define-software-template): set the default OpenLab CDS, driver, and OS update versions a CID inherits from this server.
 - [CID administration](../operations/cid-administration): run **Register CID** or **Reset OpenLab CDS** after credential or FQDN changes.
 - [View CIDs](../monitoring/view-cids): confirm CIDs reconnect after a server edit.
-- [View activity logs](../monitoring/view-activity-logs): review the audit trail for server registration, edits, and removals.
+- [View activity logs](../monitoring/view-activity-logs): review the history of server registration, edits, and removals.

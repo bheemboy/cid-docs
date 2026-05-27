@@ -114,4 +114,3 @@ The next time a CID registered to that server needs this version, it picks the f
 - [Configure software exceptions](../setup/configure-software-exceptions): assign versions from the library to a single CID that does not inherit.
 - [Register an OpenLab Server](../setup/register-a-server): configure the CID Network Share that holds cached KVM images.
 - [Apply updates](../updates/apply-updates): install software that a CID has downloaded.
-- [View activity logs](view-activity-logs): review the audit trail of software library imports and version changes.

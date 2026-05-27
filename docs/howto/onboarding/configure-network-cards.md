@@ -60,7 +60,7 @@ To configure the Corporate NIC:
 
 4. Enter a **Reason / description for this change**.
 
-   This is recorded in the Activity Log for audit purposes.
+   This is recorded in the Activity Log so the change can be traced later.
 
 5. Click **Apply Changes**.
 
@@ -102,4 +102,4 @@ To confirm the CID is reachable on the new configuration, return to the CID's **
 - [Supported topologies](../../reference/system-requirements#supported-topologies): how to wire the CID into your lab and instrument networks.
 - [Activate a CID](./activate-a-cid): the activation flow that uses the Corporate NIC to contact CID Hub.
 - [View CIDs](../monitoring/view-cids): monitor CID connectivity status after a network change.
-- [View activity logs](../monitoring/view-activity-logs): review the audit trail of NIC configuration changes.
+- [View activity logs](../monitoring/view-activity-logs): review the history of NIC configuration changes.

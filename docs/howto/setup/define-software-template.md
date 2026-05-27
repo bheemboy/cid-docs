@@ -93,4 +93,4 @@ Once the template is saved, every CID on this server that is set to inherit from
 - [Configure software exceptions](./configure-software-exceptions): override the template for a specific CID.
 - [Apply updates](../updates/apply-updates): install software that CIDs have downloaded against the template.
 - [View software library](../monitoring/view-software-library): browse the CDS, OS update, driver, and add-on versions available in CID Hub.
-- [View activity logs](../monitoring/view-activity-logs): review the audit trail of template changes.
+- [View activity logs](../monitoring/view-activity-logs): review the history of template changes.
