@@ -36,7 +36,7 @@ To open the CIDs list:
   - **Ready** means all pending changes are downloaded and ready to install.
   - **Updating** means software is being installed or removed.
 - **Inherit:** Shows whether the CID inherits software settings from the [server template](../setup/define-software-template) or uses its own [CID-level exceptions](../setup/configure-software-exceptions). A value of **No** is highlighted in red.
-- **Allow Updates:** Shows whether the CID currently permits changes. When this column shows that changes are not allowed, software changes and several administrative actions are blocked until a customer user turns them back on.
+- **Allow Updates:** The list-view label for the CID's **Allow Changes** state (the two names refer to the same setting). Shows whether the CID currently permits changes. When this column shows that changes are not allowed, software changes and several administrative actions are blocked until a customer user turns them back on.
 - **Server Name (FQDN):** The fully qualified domain name of the OpenLab Server the CID uses. In multi-server environments, use this column to filter the list to one server.
 - **Date Created:** When the CID record was created.
 - **Last Software Update:** When software was last successfully updated on the CID.
@@ -63,9 +63,9 @@ To use a bulk action:
 1. Select one or more CIDs in the list.
 2. Click the action you want to run above the table.
 
-- **Turn on 'Allow Updates'** and **Turn off 'Allow Updates'** let you allow or disallow changes for several CIDs at once.
+- **Turn on 'Allow Updates'** and **Turn off 'Allow Updates'** let you allow or disallow changes for several CIDs at once. (The toolbar labels say *Allow Updates*; this is the same **Allow Changes** setting that appears on each CID's detail page.)
 
-  ![Toolbar buttons for turning Allow Updates on or off for selected CIDs](../../img/allow-disallow-changes.jpg)
+  ![Toolbar buttons for turning Allow Changes on or off for selected CIDs](../../img/allow-disallow-changes.jpg)
 
   Customer administrators can use these buttons. Turning changes on requires a reason, which CID Hub records in the Activity Log for each affected CID. Turning changes off does not require a reason.
 

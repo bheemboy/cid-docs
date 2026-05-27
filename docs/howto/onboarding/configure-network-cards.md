@@ -13,7 +13,7 @@ This page is for the lab administrator or IT operator who reconfigures a NIC fro
 
 - You must have an administrator role to configure network cards.
 - The CID must be activated and connected to CID Hub.
-- The CID must allow changes. (If **Allow Updates** is off, turn it on first.)
+- The CID must allow changes. (If **Allow Changes** is off on the CID's detail page, turn it on first.)
 - You need the IP address and subnet mask assigned by your network administrator (if configuring manually). For the Corporate NIC, you also need the gateway address and DNS server addresses.
 
 ## Open the Networking page

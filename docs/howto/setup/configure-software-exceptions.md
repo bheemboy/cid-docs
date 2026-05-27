@@ -13,7 +13,7 @@ To give a CID its own software selections, you first turn off inheritance for th
 
 - You must have an administrator role to configure software exceptions.
 - The CID must be registered, activated, and connected to CID Hub.
-- The CID must allow changes. (If **Allow Updates** is off, turn it on first.)
+- The CID must allow changes. (If **Allow Changes** is off on the CID's detail page, turn it on first.)
 - You need to know the OpenLab CDS, driver, and add-on versions installed on the CDS Client systems that will connect to this CID.
 
 ## Turn off inheritance
