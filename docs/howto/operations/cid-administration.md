@@ -6,7 +6,7 @@ description: "Access the Administration tab, retrieve device credentials, restar
 toc_max_heading_level: 2
 ---
 
-# <mark>Administer a CID</mark>
+# Administer a CID
 
 The Administration tab on a CID is where you retrieve the credentials needed to open the CDS Desktop or Linux Cockpit, restart the agent or the embedded CDS VM, and run the heavier recovery actions when something is wrong. This page is for the lab administrator or IT operator responsible for keeping a CID healthy.
 
@@ -121,6 +121,6 @@ Every approval, decline, and session-close action is recorded in the CID's [acti
 ## See also
 
 - [View activity logs](../monitoring/view-activity-logs): review the history of restarts, recoveries, deletions, and remote access approvals on a CID.
-- [Configure software exceptions](../setup/configure-software-exceptions): change what a single CID installs without affecting its server's template.
 - [Apply updates](../updates/apply-updates): install pending software changes after a recovery.
+- [Activate a CID](../onboarding/activate-a-cid): register the CID with CID Hub again after a factory reset.
 - [Remote access and support tunnels](../../security/remote-access): trust model, approval flow, session termination, and audit surface for the Agilent support tunnel.
