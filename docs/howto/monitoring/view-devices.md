@@ -3,7 +3,7 @@ sidebar_position: 2
 title: View devices
 ---
 
-# <mark>View devices</mark>
+# View devices
 
 The Devices page provides a comprehensive list of all physical CID devices registered to your account. This view is primarily used for administrative and support purposes to track devices from their initial registration to their active state, helping to confirm that a device is functioning after disk cloning and hub registration.
 
