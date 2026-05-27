@@ -1,105 +1,126 @@
 ---
 sidebar_position: 1
-title: CID Administration 
-sidebar_label: CID Administration
-description: Guide for CID device access, credential management, and system recovery actions.
+title: "Administer a CID"
+sidebar_label: "Administer a CID"
+description: "Access the Administration tab, retrieve device credentials, restart services, and run recovery actions on a CID."
 toc_max_heading_level: 2
 ---
 
-# CID Administration
+# <mark>Administer a CID</mark>
 
-This guide provides details on accessing the Connected Instrument Device (CID) for maintenance and explains the system recovery actions available in the Hub.
+The Administration tab on a CID is where you retrieve the credentials needed to open the CDS Desktop or Linux Cockpit, restart the agent or the embedded CDS VM, and run the heavier recovery actions when something is wrong. This page is for the lab administrator or IT operator responsible for keeping a CID healthy.
 
-## Accessing the Administration Page
-
-To access the administration controls for a specific device:
-
-1.  Navigate to the **CIDs** list in the main header.
-2.  Select the specific CID you wish to manage.
-3.  Click the **Administration** tab in the left sidebar menu.
-
-![CID Administration Page](../../img/cid-administration.jpg)
-
-:::info
-To perform any administrative actions or restarts described below, the **Allow Changes** toggle must be enabled on the interface.
-:::
-
-## Device Access Credentials
-
-The CID uses a secure credential management system to ensure device security. These credentials allow access to the physical device components, not the CID Hub website.
-
-* **Rotation:** Passwords are **automatically recycled every 24 hours**.
-* **Reset:** Performing a **Factory Reset** will also reset these passwords.
-
-### CDS Desktop User
-* **Purpose:** Allows access to the console of the **Windows Virtual Machine**.
-* **Usage:** Use this credential when you launch the CDS Desktop to interact directly with the instrument software running inside the VM.
-
-### Cockpit User
-* **Purpose:** Allows access to the **Linux Cockpit** tool on the host system.
-
-:::warning[Restricted Access]
-The Cockpit interface requires deep knowledge of the Linux environment. **Do not use this account unless explicitly directed by CID Hub Support.** Incorrect configuration in Cockpit can render the device unusable.
-:::
-
-## System Actions & Recovery
-
-The CID architecture consists of a Linux Host system running a Windows Virtual Machine (VM) that contains the OpenLab CDS instrument software. Use the table below to determine the appropriate action for your maintenance needs.
-
-### Level 1: Service & System Restarts
-*Use these for standard maintenance or to clear stuck states.*
-
-| Action | Target | When to use |
-| :--- | :--- | :--- |
-| **Restart CID Agent** | CID Software Agent | - To synchronize OLSS page changes from the CID Hub. <br/> - When the CID is not receiving commands from the CID Hub despite being connected. <br/> - When the agent is unhealthy or behaving erratically. <br/>*(Note: A device must be online to receive the command, so this action cannot fix cloud connectivity issues.)* |
-| **Restart CDS Desktop** | Windows VM | - When CDS functionality issues require a desktop restart. <br/> - The OpenLab software is frozen, but the Linux system is responsive. |
-| **Reboot System** | Linux Host | - When IP or DNS changes have not propagated to the CID. <br/> - The entire device is sluggish, unresponsive, or requires a clean boot. |
-
-### Level 2: Reset OpenLab CDS (VM Re-image)
-*Use this to reset the Windows Virtual Machine.*
-
-Clicking **Reset OpenLab CDS** on the Administration tab will:
-1.  **Drop** the existing Windows Virtual Machine.
-2.  **Recreate** the VM from the original image.
+The CID itself is a Linux host that runs an embedded Windows virtual machine. OpenLab CDS lives inside that VM; the CID agent, networking, and recovery tooling live on the Linux host. Most administrative actions target one or the other, so it helps to keep that split in mind when choosing an action below.
 
 :::warning
-This action wipes the virtual machine state. Any local configurations inside the Windows environment such as IP configuration, any driver/add-on changes, etc. will also be lost and need to reapplied.
+Everything on this tab is for maintenance and troubleshooting. Do not use the CDS Desktop or Linux Cockpit access to install software, change system settings, or otherwise modify the Windows VM or the Linux host. Manual changes can put the CID into an unsupportable state, and any change made this way is wiped by a Reset OpenLab CDS, a CDS upgrade, or a factory reset. Use the Linux Cockpit only when explicitly directed by CID Hub Support.
 :::
 
-### Level 3: Factory Reset (Linux Environment Reset)
-*Use this to rename a CID, reset it to default settings, or decommission it.*
+## Prerequisites
 
-A Factory Reset resets the configuration in the underlying Linux operating system and triggers a fresh re-configuration of the device.
+- You must have an administrator role on the customer account that owns the CID.
+- The CID must be **Connected**. Restart and recovery buttons are disabled while the CID is **Disconnected** or **Not Installed**.
+- **Allow Changes** must be on for the CID. While Allow Changes is off, every action on this tab is read-only.
 
-**Prerequisites:**
-* **Close Connections:** Ensure all instrument connections are closed.
-* **Verify Data:** Although the CID does not store data locally, ensure all acquired data is visible in the backend storage before proceeding to avoid losing data currently in transit.
+## Open the Administration tab
 
-**Steps to perform a Factory Reset:**
+1. From the main header, click **CIDs** and select the CID you want to manage.
+2. In the left sidebar, click **Administration**.
 
-1.  Navigate to the **Summary** tab.
-2.  Click the **Delete CID** button.
-3.  **Physically restart** the CID hardware (toggle the power button on the unit).
+![CID Administration tab with credentials, restart buttons, and recovery actions](../../img/cid-administration.jpg)
 
-Upon reboot, the CID will detect it has been removed from the Hub and will automatically initiate the factory reset sequence.
+The credential blocks at the top are populated only while the CID is online. The restart, reboot, and recovery buttons enable or disable based on the prerequisites above.
 
-## Approve or Revoke Agilent Support Access
+## Retrieve device credentials
 
-Agilent support cannot connect to a CID without explicit approval from a Hub user at the customer site. Approval and revocation are surfaced as banners at the top of the CID's detail page, visible from any sub-tab.
+Two credentials are surfaced on this tab. They unlock the CID itself, not the CID Hub portal.
 
-**To approve or decline a pending request:**
+- **CDS Desktop user.** Use this to sign in to the Windows VM console that hosts OpenLab CDS. Required when you launch the CDS Desktop from the CID Hub.
+- **Cockpit user.** Use this to sign in to the Linux Cockpit web console on the CID host.
 
-1.  Open the CID's detail page (click the CID name on the **CIDs** list).
-2.  A red banner at the top of the page identifies the Agilent requester by name and email — for example, *"Jane Doe (jane.doe@agilent.com) is requesting access to this CID."*
-3.  Click **Accept** to grant the session, or **Decline** to reject the request.
+Both passwords rotate automatically every 24 hours. The CDS Desktop password is also regenerated when the Windows VM is rebuilt by **Reset OpenLab CDS**, and both passwords reset during a **Factory Reset**. Copy the current password from this tab each time you need it; do not store it locally.
 
-**To end an active support session:**
+## Restart a service or the host
 
-1.  Open the CID's detail page. While a session is in progress, a banner at the top reads *"Remote session in progress. Accessed by: \<requester email\>."*
-2.  Click **Close Session**. The tunnel is closed immediately.
+These actions clear stuck states without changing the installed software. Click the button on the Administration tab; if any instrument on the CID is active, CID Hub asks you to confirm before sending the restart.
 
-All accept, decline, and session-close actions are recorded in the CID's activity log.
+All three commands are sent to the CID agent for execution. They only help when the agent itself is still running and reachable. If the CID shows as **Disconnected** in CID Hub or the agent is unresponsive to any of these actions, power-cycle the CID at the chassis.
 
-## See also<
+| Action                  | Target             | When to use it                                                                                                                                     |
+| ----------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Restart CID Agent**   | CID software agent | The CID is **Connected** but is not picking up changes you made in CID Hub.                                                                        |
+| **Restart CDS Desktop** | Windows VM         | OpenLab CDS is frozen or unresponsive but the rest of the CID still responds. Restarts only the embedded VM; the Linux host is unaffected.         |
+| **Reboot System**       | Linux host         | The device is sluggish or unresponsive, or you need a clean boot of the whole CID. Restarts the Linux host, which in turn restarts the Windows VM. |
 
-- [Remote Access & Support Tunnels](../../security/remote-access) — trust model for the support tunnel, who can approve, what the session can do, audit-trail surface, and session-termination behavior.
+:::note
+These buttons are temporarily disabled while the CID is busy with another administrative operation, or while a remote access session (CDS Desktop or Linux Cockpit) is open.
+:::
+
+## Reset OpenLab CDS
+
+**Reset OpenLab CDS** drops the current Windows VM and rebuilds it for the CID's currently selected CDS version. Use it when the VM is in a state that a simple restart cannot recover, or when you want to clear local changes made inside the VM. If a remote access session (CDS Desktop or Linux Cockpit) is open on the CID, the button is disabled until the session ends.
+
+To run the reset:
+
+1. On the Administration tab, click **Reset OpenLab CDS**.
+2. Confirm the action in the dialog.
+
+:::warning
+The new VM starts fresh for the current CDS version. Use [Apply updates](../updates/apply-updates) afterward to reinstall your drivers, add-ons, and OS updates.
+:::
+
+## Factory reset the CID
+
+A factory reset clears the CID's identity and configuration and returns the device to a state where it must be registered with CID Hub again before it can be used. Reach for it when the CID's host configuration has become corrupted, or when you are taking the device out of service for reassignment.
+
+A factory reset:
+
+- Clears IoT certificates, container volumes, cached downloads, and the previous CID Hub identity.
+- Resets the CDS Desktop and Cockpit passwords.
+- Preserves the installed CID agent, operating system, and hostname, so the device is ready to register again without a full reinstall.
+- Removes the CDS VM image, along with any drivers and add-ons it contained. They are downloaded again as part of re-registration.
+
+### Before you start
+
+- Stop every acquisition running on the CID and disconnect any active instruments.
+- Confirm that recently acquired data has reached your OpenLab Server. The CID does not store sample data locally, but anything in transit at the moment of the reset can be lost.
+- You will need to register the CID again after the reset. Make sure you have the privilege to add a CID record in CID Hub and access to the PIN on the chassis.
+- Note the current CDS Desktop and Cockpit passwords from the Administration tab before you delete the CID. They keep working until the CID reboots and runs the reset, but they can no longer be retrieved through CID Hub once the record is removed.
+
+### Run the factory reset
+
+1. Open the CID's **Summary** tab.
+2. Click **Delete CID** and enter a reason when prompted. CID Hub records the deletion in the activity log. The CID keeps running normally until it reboots, so anyone using the device can finish what they are doing.
+3. Power-cycle the CID at the chassis.
+
+On the next boot the CID detects the deletion, runs the factory reset, and waits for a CID Hub record to register against. Create a new CID record in CID Hub and register the device using its PIN to bring it back into service. See [Activate a CID](../onboarding/activate-a-cid) for the registration steps.
+
+:::note
+The deleted CID's history stays in CID Hub for reference, and its original name is free to reuse on the new CID record.
+:::
+
+## Approve or end an Agilent support session
+
+Agilent support cannot connect to a CID without explicit approval from a CID Hub user on the customer account. Pending requests and active sessions both appear as banners at the top of the CID's detail page and are visible from any sub-tab.
+
+To approve or decline a pending request:
+
+1. Open the CID's detail page by clicking the CID name on the **CIDs** list.
+2. Read the red banner at the top of the page. It identifies the Agilent requester by name and email, for example "Jane Doe (jane.doe@agilent.com) is requesting access to this CID."
+3. Click **Accept** to grant the session, or **Decline** to reject the request.
+
+To end an active support session:
+
+1. Open the CID's detail page. While a session is in progress, the banner reads "Remote session in progress. Accessed by: \<requester email\>."
+2. Click **Close Session**. The tunnel closes immediately.
+
+The Agilent user can also close the session from their end. If the banner disappears before you act, the session has already been ended.
+
+Every approval, decline, and session-close action is recorded in the CID's [activity log](../monitoring/view-activity-logs).
+
+## See also
+
+- [View activity logs](../monitoring/view-activity-logs): review the history of restarts, recoveries, deletions, and remote access approvals on a CID.
+- [Configure software exceptions](../setup/configure-software-exceptions): change what a single CID installs without affecting its server's template.
+- [Apply updates](../updates/apply-updates): install pending software changes after a recovery.
+- [Remote access and support tunnels](../../security/remote-access): trust model, approval flow, session termination, and audit surface for the Agilent support tunnel.
