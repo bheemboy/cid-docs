@@ -3,7 +3,7 @@ sidebar_position: 2
 title: "Update or upgrade OpenLab CDS"
 ---
 
-# <mark>Update or upgrade OpenLab CDS</mark>
+# Update or upgrade OpenLab CDS
 
 CID Hub publishes new versions of OpenLab CDS as Agilent releases them. This page is for the lab administrator or IT operator who selects a CDS version for CIDs to install. The selection is made in CID Hub; the installation itself is covered by [Apply updates](./apply-updates).
 
@@ -66,6 +66,4 @@ When the **Updates** column shows **Ready** for the CID, install the change usin
 
 - [Define a software template](../setup/define-software-template): set CDS, drivers, OS updates, and add-ons at the server level for inheriting CIDs.
 - [Configure software exceptions](../setup/configure-software-exceptions): override the CDS selection for a single CID.
-- [View software library](../monitoring/view-software-library): browse every CDS, driver, add-on, and OS update version available in CID Hub.
-- [Apply updates](./apply-updates): install the selected CDS version on one or more CIDs.
 - [View activity logs](../monitoring/view-activity-logs): review the history of template and CID-level CDS selection changes.
