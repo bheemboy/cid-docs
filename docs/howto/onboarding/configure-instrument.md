@@ -25,11 +25,15 @@ To attach an instrument to a CID:
 
 2. Confirm the CID is listed as an available instrument controller.
 
-   <!-- IMAGE PLACEHOLDER: OpenLab Control Panel showing the CID's name in the list of available instrument controllers -->
+   :::note[Image placeholder — `olcp-controller-list.jpg`]
+   OpenLab Control Panel **Instruments** view with the CID's name highlighted in the list of available instrument controllers.
+   :::
 
 3. Add the instrument and assign the CID as its instrument controller. Follow the [Add an Instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects/ControlPanel/AddInstrument.htm) guide in OpenLab Help & Learning.
 
-   <!-- IMAGE PLACEHOLDER: Add Instrument wizard in OpenLab Control Panel with the CID selected as the instrument controller -->
+   :::note[Image placeholder — `olcp-add-instrument.jpg`]
+   OpenLab Control Panel **Add Instrument** wizard with the CID selected as the instrument controller.
+   :::
 
 4. Configure the instrument's modules and settings. Follow the [Configure an Instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects/ControlPanel/Configure_instrument.htm) guide.
 

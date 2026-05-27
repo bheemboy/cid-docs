@@ -38,11 +38,11 @@ Creating a CID record in CID Hub links the physical device to the configuration 
 - **OpenLab Server:** the server this CID registers with. The server's software template provides the default CDS version, drivers, and OS update levels for the CID.
 - **PIN Code:** the 8-character code printed on the QR sticker attached to the physical CID. The PIN links this record to the hardware. PIN codes use the characters A–Z (excluding I and O) and digits 2–9 to avoid transcription errors.
 
+![QR code sticker on the CID chassis showing the Corporate NIC MAC address and the 8-character activation PIN.](../../img/qr-code.jpg)
+
 :::note
 You can also scan the QR sticker on the device. The activation URL embedded in the QR code opens the **Add CID** dialog with the **PIN Code** field prepopulated.
 :::
-
-<!-- IMAGE PLACEHOLDER: Example QR sticker showing MAC address and 8-character PIN code, with the PIN field highlighted -->
 
 ## What happens during activation
 
@@ -70,7 +70,9 @@ Activation typically takes 1–2 hours, depending on network speed and the size 
 
 If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Troubleshoot activation](../operations/troubleshoot-activation).
 
-<!-- IMAGE PLACEHOLDER: CID Summary page showing the Ready status after successful activation -->
+:::note[Image placeholder — `cid-summary-ready.jpg`]
+CID Summary page after a successful activation, with the **Ready** status badge highlighted.
+:::
 
 ## See also
 

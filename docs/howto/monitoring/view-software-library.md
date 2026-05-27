@@ -39,7 +39,9 @@ Lists every OpenLab CDS version available to install on a CID, including base ve
 
 Lists the cumulative Linux updates available for the Oracle Linux host that runs on every CID.
 
-<!-- IMAGE PLACEHOLDER: Software Library Linux Update list -->
+:::note[Image placeholder — `software-library-linux-update.jpg`]
+Software Library Linux Update list with several published `YYYY.MM.DD` versions, the **Release Notes** link, and the **Release Date** column visible.
+:::
 
 - **Version:** Release-date based identifier in `YYYY.MM.DD` format (for example, `2026.01.07`).
 - **Release Notes:** Opens the release notes, which list package updates, security updates, and any Linux Agent changes included in the release.
