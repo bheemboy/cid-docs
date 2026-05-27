@@ -9,9 +9,9 @@ After a CID has activated and registered with your OpenLab Server, it appears in
 
 ## Prerequisites
 
-- The CID has been activated and registered with the OpenLab Server. The CID's name appears in OpenLab Control Panel under instrument controllers.
-- The physical instrument is connected to the CID's Instrument NIC and powered on. For the network side, see [Configure network cards](./configure-network-cards).
-- You have OpenLab Control Panel credentials with permission to add and configure instruments.
+- The CID must be activated and registered with the OpenLab Server. (The CID's name should appear in OpenLab Control Panel.)
+- The physical instrument must be connected to the CID's Instrument NIC and powered on.
+- You must have OpenLab Control Panel credentials with permission to add and configure instruments.
 
 :::important
 Each CID supports one instrument configuration. Do not attempt to add a second instrument to the same CID — the configuration is not supported and will fail.

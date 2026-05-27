@@ -15,10 +15,10 @@ CID Hub and the OpenLab Server are independent systems and do not communicate wi
 
 ## Prerequisites
 
-- A CID Hub account with an administrator role. The actions on this page can only be performed by an administrator. If you do not have an administrator role, contact your account administrator.
-- Knowledge of the fully qualified domain name (FQDN) of the OpenLab Server.
-- An OpenLab admin username and password that the CID can present to OLSS during registration. The same credentials are reused when an administrator runs **Register CID** or **Reset OpenLab CDS** on a CID.
-- *(Optional)* The SMB path and credentials for a CID network share used to cache OpenLab CDS KVM images.
+- You must have an administrator role to register an OpenLab Server.
+- You need the fully qualified domain name (FQDN) of the OpenLab Server.
+- You need an OpenLab admin username and password for the CID to present to OLSS during registration. (These are reused when running **Register CID** or **Reset OpenLab CDS**.)
+- *(Optional)* You need the SMB path and credentials for a network share used to cache OpenLab CDS KVM images.
 
 ## Register a server
 

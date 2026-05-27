@@ -9,11 +9,11 @@ Each physical CID must have a matching record in CID Hub before it can be used. 
 
 ## Prerequisites
 
-- A CID Hub account with an administrator role. The actions on this page can only be performed by an administrator. If you do not have an administrator role, contact your account administrator.
-- A [registered OpenLab Server](../setup/register-a-server) for the CID to connect to.
-- A [defined software template](../setup/define-software-template) on that server. The template provides the default CDS version, drivers, and OS update levels the CID inherits during activation.
-- The 8-character PIN code printed on the QR sticker attached to the physical CID.
-- The CID powered on and connected to your corporate network through its Corporate NIC.
+- You must have an administrator role to activate a CID.
+- You need a [registered OpenLab Server](../setup/register-a-server) for the CID to connect to.
+- You need a [defined software template](../setup/define-software-template) on that server.
+- You need the 8-character PIN code printed on the physical CID's QR sticker.
+- The physical CID must be powered on and connected to your network through its Corporate NIC.
 
 ## Add a CID record
 

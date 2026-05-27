@@ -3,62 +3,95 @@ sidebar_position: 1
 title: "View CIDs"
 ---
 
-# View the list of CIDs
+# View CIDs
 
-The CIDs list page is the default "Home" page of the CID Hub after you log in. You can also access it by clicking the "CIDs" tab in the top navigation bar.
+Use the **CIDs** page to monitor CID readiness, identify devices that need attention, and launch list-level actions such as software updates, export, and printing. This page is for the lab administrator or IT operator who needs an operational view of the CIDs in CID Hub.
 
-By default, the list is sorted by CID name in descending order. Click a column header to change the sort to ascending, descending, or unsorted.
+## Prerequisites
 
-You can filter one or more columns by clicking the chevron to the right of a column header to open a filter pop-up.
+- *(Optional)* You need at least one CID added to your account to work with live data.
 
-![CIDs List Filter](../../img/cids-list-filter.jpg)
+## Open the CIDs list
 
-### Column Descriptions
+Open the list to see the CIDs in your account and their current operational state.
 
-- **Name**: The CID name displayed in the CID Hub, which is also the hostname for the physical CID. CDS clients must resolve the CID's IP address using this name.
+To open the CIDs list:
 
-- **Description**: A user-provided description of the CID.
+1. In CID Hub, click **CIDs** in the top navigation bar.
 
-- **Status**: The current state of the CID:
-    - `New`: The CID record exists but the physical CID has not yet activated with it. Updates cannot be applied in this state.
-    - `Disconnected`: The CID is not connected to the CID Hub. Updates cannot be applied while it is disconnected.
-    - `CDS not running`: The CID is online but the OpenLab CDS VM is not running. Updates cannot be applied while CDS is stopped.
-    - `Server disconnected`: The CID is online and the OpenLab CDS VM is running, but the CID cannot connect to the OpenLab Server. Applying updates in this state is not recommended.
-    - `Ready`: The CID is online and the OpenLab CDS VM is running, but the CDS acquisition software is not active. This is the recommended state for applying updates.
-    - `In Use`: CDS is currently active on the CID. Applying updates while the CID is in use is discouraged but not blocked.
+   The list opens at `/cids`. The columns show whether each CID is connected, whether software changes are pending, and whether the CID is following its server template.
 
-- **Updates**: Shows whether updates are required and their current state:
-    - *(blank)*: No pending updates.
-    - `Downloading`: The CID is downloading one or more updates.
-    - `Ready`: All pending updates have been downloaded and are ready to install.
-    - `Updating`: Updates are currently being applied to the CID.
+- **Name:** The CID name shown in CID Hub. This is also the hostname of the physical CID, so CDS clients must be able to resolve it through DNS.
+- **Description:** A user-provided description of the CID.
+- **Status:** The current operating state of the CID.
+  - **New:** The CID record exists, but the physical CID has not activated with it yet. Software updates cannot be applied in this state.
+  - **Disconnected:** The CID is not connected to CID Hub. Software updates and most remote actions are unavailable while it is disconnected.
+  - **CDS not running:** The CID is online, but the OpenLab Instrument Service in the Windows VM is not running. If this condition and **Server disconnected** occur at the same time, CID Hub shows **CDS not running**.
+  - **Server disconnected:** The CID is online and the Windows VM is running, but the CID cannot reach its OpenLab Server.
+  - **Ready:** The CID is online and available for maintenance. This is the recommended state for applying updates.
+  - **In Use:** OpenLab CDS is active on the CID. Updates are possible, but Agilent recommends applying them only when the CID is not in use.
+- **Updates:** Shows whether software changes are pending or in progress. CID Hub shows this column in priority order: **Updating**, **Downloading**, **Ready**, then blank.
+  - Blank means no software changes are pending.
+  - **Downloading** means one or more selected changes are still being downloaded.
+  - **Ready** means all pending changes are downloaded and ready to install.
+  - **Updating** means software is being installed or removed.
+- **Inherit:** Shows whether the CID inherits software settings from the [server template](../setup/define-software-template) or uses its own [CID-level exceptions](../setup/configure-software-exceptions). A value of **No** is highlighted in red.
+- **Allow Updates:** Shows whether the CID currently permits changes. When this column shows that changes are not allowed, software changes and several administrative actions are blocked until a customer user turns them back on.
+- **Server Name (FQDN):** The fully qualified domain name of the OpenLab Server the CID uses. In multi-server environments, use this column to filter the list to one server.
+- **Date Created:** When the CID record was created.
+- **Last Software Update:** When software was last successfully updated on the CID.
 
-- **Inherit**: Indicates whether the CID inherits its software settings from the [server template](/howto/setup/define-software-template) or has individual [CID-level exceptions](/howto/setup/configure-software-exceptions).
+## Sort or filter the list
 
-- **Allow Updates**: Shows whether the CID is locked against changes. When updates are disallowed, no changes can be applied. After making required changes, you can lock a CID to prevent accidental modifications. Changes can be applied only after an administrator unlocks the CID.
+After you understand what each column shows, use sorting and filtering to narrow the list to the CIDs you need to review.
 
-- **Server Name (FQDN)**: The fully qualified domain name of the server the CID is connected to. In multi-server environments, you can filter CIDs by server to manage a specific set.
+To sort or filter the list:
 
-- **Date Created**: The date and time when the CID record was originally added to the CID Hub.
+1. Click a column header to cycle through ascending, descending, and unsorted order.
+2. Click the chevron next to a column header to open that column's filter options.
 
-- **Last Software Update**: The date and time when any software update was last applied to the CID.
+![Filter pop-up opened from a column header on the CIDs list](../../img/cids-list-filter.jpg)
 
-### Bulk Actions
+By default, CID Hub sorts the list by **Name** in ascending order.
 
-- **Toggle "Allow Updates"**: Use the "Turn on 'Allow Updates'" (unlock icon) and "Turn off 'Allow Updates'" (lock icon) buttons above the table to allow or disallow updates for one or more CIDs at once.
+## Use bulk actions
 
-  ![Allow Disallow Changes](../../img/allow-disallow-changes.jpg)
+After you identify the CIDs you want to work with, you can run list-level actions from the toolbar above the table.
 
-- **Apply Updates**: Use the "Apply Updates" (gear icon) button to initiate updates on one or more selected CIDs.
+To use a bulk action:
 
-  ![Apply Updates to Multiple CIDs](../../img/apply-all-cids-list-page.jpg)
+1. Select one or more CIDs in the list.
+2. Click the action you want to run above the table.
 
-- **Export CID Data**: Use the "Export CID Data" (cloud download icon) button to download information about the selected CIDs in JSON format.
+- **Turn on 'Allow Updates'** and **Turn off 'Allow Updates'** let you allow or disallow changes for several CIDs at once.
 
-  ![Export CID Data](../../img/export-cid.jpg)
+  ![Toolbar buttons for turning Allow Updates on or off for selected CIDs](../../img/allow-disallow-changes.jpg)
 
-- **Print Reports**: Use the "Print Report" (printer icon) button to print information about the selected CIDs.
-    - **Software Report**: A summary of the CID including its IP address and installed software versions.
-    - **Connectivity Report**: Shows whether the CID is connected to its instrument and the CID Hub IoT services.
+  Customer administrators can use these buttons. Turning changes on requires a reason, which CID Hub records in the Activity Log for each affected CID. Turning changes off does not require a reason.
 
-  ![Print Report](../../img/print-reports.jpg)
+- **Apply Updates** starts software installation for the selected CIDs.
+
+  ![Apply Updates button above the CIDs list](../../img/apply-all-cids-list-page.jpg)
+
+  Use this action when the selected CIDs are in a suitable state, ideally **Ready**, and their **Updates** column shows **Ready**.
+
+- **Export CID Data** downloads information about the selected CIDs in JSON format.
+
+  ![Export CID Data button above the CIDs list](../../img/export-cid.jpg)
+
+  Use this export when you need CID summary, software, and networking information outside the portal.
+
+- **Print Report** opens a printable report for the selected CIDs.
+
+  ![Print Report menu showing Software Report and Connectivity Report](../../img/print-reports.jpg)
+
+  - **Software Report:** Shows the CID overview and installed software versions.
+  - **Connectivity Report:** Shows whether each CID is connected to CID Hub and whether its connected instruments pass the report's connectivity check.
+
+## See also
+
+- [Activate a CID](../onboarding/activate-a-cid): create a CID record and bring a physical CID into service.
+- [Configure software exceptions](../setup/configure-software-exceptions): identify and manage CIDs that do not inherit the server template.
+- [Apply updates](../updates/apply-updates): install downloaded software changes on one or more CIDs.
+- [CID administration](../operations/cid-administration): reboot a CID, restart services, reset OpenLab CDS, and manage access.
+- [View activity logs](./view-activity-logs): review the audit trail for bulk actions and other CID events.

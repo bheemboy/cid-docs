@@ -13,10 +13,10 @@ A software template is not a server-side configuration. It lives in CID Hub and 
 
 ## Prerequisites
 
-- A CID Hub account with an administrator role. The actions on this page can only be performed by an administrator. If you do not have an administrator role, contact your account administrator.
-- A [registered OpenLab Server](./register-a-server).
-- Knowledge of the OpenLab CDS version installed on the OpenLab Server. The OpenLab Server's CDS version must be equal to or higher than the CDS version any connected CDS Client, AIC, or CID is running.
-- Knowledge of the OpenLab CDS, driver, and add-on versions installed on the CDS Client systems that will connect to these CIDs. The CDS, driver, and add-on versions selected in this template must match those Client versions exactly. CDS Clients talk to the AICs and CIDs they use, so any mismatch between them prevents OpenLab CDS from functioning correctly.
+- You must have an administrator role to define a software template.
+- You need a [registered OpenLab Server](./register-a-server).
+- You need to know the OpenLab CDS version installed on the OpenLab Server. (The server's version must be equal to or higher than the versions running on connected clients or CIDs.)
+- You need to know the OpenLab CDS, driver, and add-on versions installed on the CDS Client systems. (The versions you select must match the client versions exactly.)
 
 ## Open the server's software template
 
