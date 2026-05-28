@@ -9,6 +9,10 @@ slug: /cid-net-04
 **Audience:** Agilent Support, IT/Network Administrators
 **Support Reference:** Network / Firewall Configuration
 
+:::warning[For IT administrators only]
+The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
+:::
+
 ---
 
 ## Symptom
@@ -62,7 +66,7 @@ Before proceeding, please ensure the following conditions are met:
 ---
 
 :::tip[First Step]
-Before running manual diagnostics, use the [CID Connectivity Tester](/troubleshooting/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+Before running manual diagnostics, use the [CID Connectivity Tester](/cid-net-00) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
 :::
 
 ## Diagnostic Steps

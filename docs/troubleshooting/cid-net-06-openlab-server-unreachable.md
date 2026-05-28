@@ -9,6 +9,10 @@ slug: /cid-net-06
 **Audience:** Agilent Support, IT/Network Administrators
 **Support Reference:** Network / Firewall Configuration
 
+:::warning[For IT administrators only]
+The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
+:::
+
 ---
 
 ## Symptom
@@ -77,7 +81,7 @@ When the OpenLab server is unreachable, the following CID functions are impacted
 
 Before proceeding, please ensure the following conditions are met:
 
-- Access to the CID via Cockpit (see [CID Connectivity Tester → Accessing the App](/troubleshooting/cid-connectivity-tester#accessing-the-app)) — use the built-in **Terminal** tab to run diagnostic commands. Alternatively, command-line access via SSH or direct console connection
+- Access to the CID via Cockpit (see [CID-NET-00 → Access the connectivity tester](/cid-net-00#access-the-connectivity-tester)) — use the built-in **Terminal** tab to run diagnostic commands. Alternatively, command-line access via SSH or direct console connection
 - The OpenLab server hostname as configured in the CID Hub (visible under the server's **Connect using** field)
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable
 
@@ -86,7 +90,7 @@ All diagnostic utilities used below (`nmap`, `nc`, `curl`, `nslookup`) are pre-i
 ---
 
 :::tip[First Step]
-Before running manual diagnostics, use the [CID Connectivity Tester](/troubleshooting/cid-connectivity-tester) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs. Select the OpenLab server hostname from the endpoint list or enter it manually.
+Before running manual diagnostics, use the [CID Connectivity Tester](/cid-net-00) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs. Select the OpenLab server hostname from the endpoint list or enter it manually.
 :::
 
 ## Diagnostic Steps
@@ -241,4 +245,4 @@ If Step 5 showed that the OpenLab server version is older than the CID version:
 - [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01)
 - [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
 - [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)
-- [CID Connectivity Tester](/troubleshooting/cid-connectivity-tester)
+- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
