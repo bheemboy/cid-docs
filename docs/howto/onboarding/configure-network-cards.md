@@ -32,11 +32,13 @@ To view and change a CID's NIC configuration:
 
 ## Configure the Corporate NIC
 
-The Corporate NIC is the only network path between the CID and CID Hub. An incorrect change here can disconnect the CID from the hub.
+The Corporate NIC is the only network path between the CID and CID Hub. An incorrect change here can disconnect the CID from CID Hub.
 
 :::note
 The CID requires DHCP on the Corporate NIC to activate. You can switch to a manual configuration only after the CID has activated and is connected to CID Hub. Make sure DHCP is available on the corporate network during the initial activation, even if you intend to assign a static address afterward.
 :::
+
+Once the CID has activated, you can edit the Corporate NIC, but be deliberate about the values you change.
 
 :::caution
 Setting the wrong IP address, gateway, or DNS on the Corporate NIC can make the CID unreachable from CID Hub. CID Hub validates the new configuration after applying it and reverts automatically if it cannot reach the registration API after 5 retries, but the safety net cannot detect every misconfiguration. Coordinate Corporate NIC changes with your IT administrator.

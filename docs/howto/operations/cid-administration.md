@@ -33,9 +33,9 @@ The credential blocks at the top are populated only while the CID is online. The
 
 ## Retrieve device credentials
 
-Two credentials are surfaced on this tab. They unlock the CID itself, not the CID Hub portal.
+Two credentials are surfaced on this tab. They grant access to the CID itself, not to CID Hub.
 
-- **CDS Desktop user.** Use this to sign in to the Windows VM console that hosts OpenLab CDS. Required when you launch the CDS Desktop from the CID Hub.
+- **CDS Desktop user.** Use this to sign in to the Windows VM console that hosts OpenLab CDS. Required when you launch the CDS Desktop from CID Hub.
 - **Cockpit user.** Use this to sign in to the Linux Cockpit web console on the CID host.
 
 Both passwords rotate automatically every 24 hours. The CDS Desktop password is also regenerated when the Windows VM is rebuilt by **Reset OpenLab CDS**, and both passwords reset during a **Factory Reset**. Copy the current password from this tab each time you need it; do not store it locally.

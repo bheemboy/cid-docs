@@ -49,7 +49,7 @@ To change the selected CDS version:
    The new selection is recorded immediately. CIDs that inherit from this server (or this CID, if you changed it directly) begin downloading the new version in the background.
 
 :::important
-Changing the CDS version resets all driver, add-on, and OS update selections to the defaults bundled with the new CDS version. If your deployment requires specific driver, add-on, or update versions, reselect them on the same **Software** tab after the CDS change is saved. Apply the result with [Apply updates](./apply-updates) so the CID installs the CDS change together with your driver and update selections.
+Changing the CDS version resets all driver, add-on, and OS update selections to the defaults that ship with the new CDS version. If your deployment requires specific driver, add-on, or update versions, reselect them on the same **Software** tab after the CDS change is saved. Apply the result with [Apply updates](./apply-updates) so the CID installs the CDS change together with your driver and update selections.
 :::
 
 ## Install the new version

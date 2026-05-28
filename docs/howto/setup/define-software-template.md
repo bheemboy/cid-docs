@@ -50,6 +50,8 @@ To change the CDS version:
 Changing the CDS version resets the rest of the template. The Windows update and Linux update reset to the latest available updates for the new CDS version, and the driver and add-on versions reset to the defaults that ship with that CDS version. Reselect any specific versions you need after changing CDS.
 :::
 
+Beyond the cascade within the template, the chosen CDS version also has to align with the rest of the OpenLab CDS environment.
+
 :::caution
 The CDS version you select here will be installed on every inheriting CID on this server, and it must match the CDS version installed on the CDS Client systems that connect to those CIDs. Mismatched versions between a Client and the AIC or CID it talks to cause functional issues. The OpenLab Server's own CDS version must also be equal to or higher than the version you select. Coordinate any CDS version change with the rest of the OpenLab CDS environment before applying it.
 :::

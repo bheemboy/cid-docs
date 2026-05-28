@@ -45,7 +45,7 @@ To change a driver or add-on selection:
    The new selection is recorded immediately. CIDs that inherit from this server (or this CID, if you changed it directly) begin downloading the new version in the background.
 
 :::important
-Changing the OpenLab CDS version resets every driver and add-on selection to the defaults bundled with the new CDS version, and any optional driver that is not compatible with the new CDS version is marked for removal. If your deployment requires specific driver or add-on versions, reselect them on the same **Software** tab after the CDS change is saved.
+Changing the OpenLab CDS version resets every driver and add-on selection to the defaults that ship with the new CDS version, and any optional driver that is not compatible with the new CDS version is marked for removal. If your deployment requires specific driver or add-on versions, reselect them on the same **Software** tab after the CDS change is saved.
 :::
 
 ## Install the new version
