@@ -1,169 +1,170 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 slug: /cid-boot-01
+title: "CID-BOOT-01: Beep codes on startup"
+description: Identify and resolve the 1-, 2-, 3-, or 4-beep activation pattern emitted by a CID during or after boot.
+toc_max_heading_level: 3
 ---
 
-# CID-BOOT-01: Beep Codes on Startup
+# CID-BOOT-01: Beep codes on startup
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/Network Administrators
-**Support Reference:** Boot / Activation Connectivity
+**Audience:** Agilent Support, IT/network administrators
+**Support reference:** Boot / activation connectivity
+
+:::warning[For IT administrators only]
+The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
+:::
 
 ---
 
 ## Symptom
 
-The CID emits an audible beep pattern repeating every 30 seconds during or
-after boot. The beep count indicates which stage of the boot-and-registration
-sequence is failing.
+The CID emits an audible beep pattern, repeating every 5 minutes, during or after boot. The beep count identifies which stage of the boot-and-registration sequence is failing.
 
-- A repeating 1-, 2-, 3-, or 4-beep pattern from the CID chassis speaker
-- The CID does not appear as **Connected** in the CID Hub
-- For 1–3 beeps: the CID has not completed activation and remains in its
-  factory state
-- For 4 beeps: the CID has previously activated but cannot reach the
-  registration API on this boot
+- A repeating 1-, 2-, 3-, or 4-beep pattern from the CID chassis speaker.
+- The CID does not appear as **Connected** in **CID Hub**.
+- For 1, 2, or 3 beeps: the CID has not completed activation and remains in its factory state.
+- For 4 beeps: a previously activated CID cannot reach the registration API on this boot.
 
 ---
 
-## Confirm This Is the Right Document
+## Root cause
 
-Count the beeps in one full repetition. Use the table below to confirm and to
-identify the failing stage.
+Each beep count corresponds to a distinct failure stage in the activation sequence (CAR-P-011). One underlying cause, four observable forms:
 
-| Result | Next Step |
+- **1 beep, no network link.** The Corporate NIC has no DHCP-assigned address: the cable is unplugged, the switch port is disabled, or the Corporate and Instrument NIC cables are swapped and the instrument network has no DHCP server.
+- **2 beeps, registration API unreachable.** The Corporate NIC has link and an IP address, but the CID cannot reach the Registration API on TCP 443. Almost always a firewall, DNS, or routing problem on the customer's network. Swapped Corporate / Instrument NIC cables can also produce this pattern when the instrument network has its own DHCP server.
+- **3 beeps, no matching CID record in CID Hub.** The CID reached the registration API and the CID Hub recognized its MAC, but no CID record is linked to that MAC. Either the CID has not been added to the customer organization in **CID Hub**, or it was added under a different MAC.
+- **4 beeps, activated CID cannot reach registration API on boot.** A previously activated CID booted without connectivity to the Registration API. A registered CID with OpenLab CDS already installed emits the 4-beep pattern once and continues booting; an unregistered or partially activated CID repeats the pattern every 5 minutes until connectivity is restored.
+
+---
+
+## Confirm this is the right document
+
+Count the beeps in one full repetition, then use the table below to confirm the page applies and to identify the failing stage.
+
+| You observe | Next step |
 |---|---|
-| 1 beep | No network link detected on the House NIC. Continue with Step 1. |
-| 2 beeps | The CID has network link but cannot reach the registration API on `*.agilent.com`. Continue with Step 2. |
-| 3 beeps | The CID reached the registration API but no matching CID record was found in the CID Hub. Continue with Step 3. |
-| 4 beeps | An activated CID cannot reach the registration API on this boot. Continue with Step 4. |
-| No beeps but CID is offline in Hub | This page does not apply. Refer to [**CID-NET-01**](/cid-net-01) and the [CID Connectivity Tester](/troubleshooting/cid-connectivity-tester) instead. |
+| 1 beep | No network link on the Corporate NIC. Continue with Step 1. |
+| 2 beeps | The CID has network link but cannot reach the registration API. Continue with Step 2. |
+| 3 beeps | The CID reached the registration API but no matching CID record was found in **CID Hub**. Continue with Step 3. |
+| 4 beeps | A previously activated CID cannot reach the registration API on this boot. Continue with Step 4. |
+| No beeps, but CID is offline in **CID Hub** | This page does not apply. See [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) instead. |
 
 ---
 
-## Affected Services
+## Affected services
 
-A CID emitting a beep code has not completed the boot-and-registration
-sequence and cannot be managed from the CID Hub. CDS clients cannot connect
-to acquire data from instruments attached to the CID.
+A CID emitting a beep code has not completed the boot-and-registration sequence and cannot be managed from **CID Hub**. CDS clients cannot connect to acquire data from instruments attached to the CID.
 
-For the complete list of domains the CID requires for activation and
-registration, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
-
----
-
-## Root Cause
-
-Each beep count corresponds to a distinct failure stage:
-
-- **1 beep — No network link.** The House NIC has no link, the cable is unplugged or faulty, or the switch port is disabled.
-- **2 beeps — Registration API unreachable.** The House NIC has link and an IP address, but the CID cannot reach `*.agilent.com` on TCP 443. This is almost always a firewall, DNS, or routing problem on the customer's network.
-- **3 beeps — No matching CID record in the CID Hub.** The CID reached the registration API but the Hub has no record matching this CID's House-NIC MAC address. Either the CID has not been added to the customer organization in the Hub, or it was added under a different MAC.
-- **4 beeps — Activated CID cannot reach registration API on bootup.** A previously activated CID booted without connectivity to `*.agilent.com`. If OpenLab CDS is already installed on the CID, the CID continues booting after four beeps; if not, the four-beep pattern repeats every 30 seconds until connectivity is restored.
+For the complete list of domains the CID requires for activation and registration, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
 
 ---
 
 ## Prerequisites
 
-Before proceeding, please ensure the following conditions are met:
-
-- Physical access to the CID and its connected House-NIC cable
-- For 2- and 4-beep diagnosis: command-line access to the CID via SSH or direct console connection, with `nc`, `curl`, and `nslookup` available
-- For 3-beep diagnosis: CID Hub access for the customer organization, with permission to view and add CIDs
-- The 12-character House-NIC MAC address printed on the QR-code sticker affixed to the CID
+- Physical access to the CID and to the Corporate NIC cable.
+- For 2- and 4-beep diagnosis: command-line access to the CID via SSH or direct console connection, with `nc`, `curl`, and `nslookup` available.
+- For 3-beep diagnosis: **CID Hub** access for the customer organization, with permission to view and add CIDs.
+- The 12-character Corporate NIC MAC address printed on the QR-code sticker affixed to the CID chassis.
 
 ---
 
-## Diagnostic Steps
+## Diagnostic steps
 
-### Step 1 — Resolve a 1-beep pattern (no network link)
+### Step 1. Resolve a 1-beep pattern (no network link)
 
-Verify the physical House-NIC connection and the upstream switch port:
+Verify the physical Corporate NIC connection and the upstream switch port:
 
 ```bash
 ip link show
 ```
 
-| Result | Interpretation |
+| Result | Next step |
 |---|---|
-| House-NIC interface shows `state DOWN` or `NO-CARRIER` | The cable is unplugged, faulty, or the switch port is disabled. Reseat the cable and verify the switch port is active. |
-| House-NIC interface shows `state UP` | A 1-beep pattern with link present is unexpected. Reboot the CID; if the pattern persists, escalate to Agilent Support. |
+| Corporate NIC interface shows `state DOWN` or `NO-CARRIER` | The cable is unplugged, faulty, or the switch port is disabled. Reseat the cable and verify the switch port is active. |
+| Corporate NIC interface shows `state UP` | Confirm the cables are in the correct ports. If the Corporate (HOUSE) and Instrument cables are swapped and the instrument network has no DHCP server, the CID still beeps once. Restore the correct cable assignment, then reboot. |
+| Pattern persists after both checks | Reboot the CID. If the 1-beep pattern continues, open a support ticket with Agilent Support and note the beep count and the steps already attempted. |
 
 ---
 
-### Step 2 — Resolve a 2-beep pattern (registration API unreachable)
+### Step 2. Resolve a 2-beep pattern (registration API unreachable)
 
 Verify reachability of the registration API:
 
 ```bash
-nslookup api.agilent.com
-nc -zv api.agilent.com 443
+nslookup hub-ac-registration-api.prd-51.aws.agilent.com
+nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 ```
 
-| Result | Interpretation |
+| Result | Next step |
 |---|---|
-| `nslookup` fails | DNS is misconfigured. Refer to [**CID-NET-05** — DNS Resolution Failure](/cid-net-05). |
-| `nc` returns `Connection refused` or times out | TCP 443 to `*.agilent.com` is blocked. Refer to [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01). |
-| Both succeed but the CID continues to beep twice | An intermittent connectivity or TLS-inspection problem is likely. Refer to [**CID-NET-03** — SSL Inspection](/cid-net-03). |
+| `nslookup` fails | DNS is misconfigured. See [**CID-NET-05** — DNS resolution failure](/cid-net-05). |
+| `nc` returns `Connection refused` or times out | TCP 443 to the Registration API is blocked. See [**CID-NET-01** — TCP port 443 blocked](/cid-net-01). |
+| Both succeed, but the CID continues to beep twice | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [**CID-NET-02** — TLS handshake failure](/cid-net-02), [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03), and [**CID-NET-04** — NTP time synchronization failure](/cid-net-04) in that order. |
+| Cables look correct from the front but the CID still beeps twice | Confirm the Corporate (HOUSE) cable is in the HOUSE port and the Instrument cable is in the INSTRUMENT port. A cable swap can produce two beeps when the instrument network has its own DHCP server. |
+
+For a broader first-pass triage across all CID-NET failure modes, run [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) before working through the linked pages individually.
 
 ---
 
-### Step 3 — Resolve a 3-beep pattern (no matching CID record)
+### Step 3. Resolve a 3-beep pattern (no matching CID record)
 
-The CID has reached the Hub but the Hub does not recognize it. Confirm the
-CID has been added to the customer organization in the CID Hub:
+The CID has reached **CID Hub** but the Hub does not recognize it. Confirm the CID has been added to the customer organization:
 
-1. Read the 12-character House-NIC MAC address from the QR-code sticker on
-   the CID chassis.
-2. In the CID Hub, navigate to the CIDs list for the customer organization.
-3. Confirm a CID record exists whose registered MAC matches the sticker
-   exactly (no transposed characters, no mismatched case).
+1. Read the 12-character Corporate NIC MAC address from the QR-code sticker on the CID chassis.
+2. In **CID Hub**, navigate to the CIDs list for the customer organization.
+3. Confirm a CID record exists whose registered MAC matches the sticker exactly (no transposed characters, no mismatched case).
 
-| Result | Interpretation |
+| Result | Next step |
 |---|---|
 | No matching record | Add the CID following [Activate a CID](/howto/onboarding/activate-a-cid). |
-| A record exists with a different MAC | The CID was added under the wrong MAC. Correct the MAC on the existing record, or remove and re-add. |
-| A matching record exists | The Hub-side record is correct but the CID is not seeing it. Reboot the CID; if the 3-beep pattern persists, escalate to Agilent Support. |
+| A record exists with a different MAC | The CID was added under the wrong MAC, or the Corporate NIC has been replaced since activation and the sticker no longer reflects the in-service MAC. Correct the MAC on the existing record, or remove and re-add the CID via [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid). |
+| A matching record exists | The Hub-side record is correct, but the CID is not seeing it. Reboot the CID. If the 3-beep pattern persists, open a support ticket with Agilent Support and note the Corporate NIC MAC and the matching Hub record. |
 
 ---
 
-### Step 4 — Resolve a 4-beep pattern (activated CID cannot reach API)
+### Step 4. Resolve a 4-beep pattern (activated CID cannot reach API)
 
-This pattern indicates a previously activated CID has lost connectivity to
-`*.agilent.com`. The CID will continue to function for in-progress CDS
-acquisitions if OpenLab CDS is already installed, but no Hub-driven
-management is possible until connectivity is restored.
+This pattern indicates a previously activated CID has lost connectivity to the Registration API. If OpenLab CDS is already installed on the CID, the 4-beep pattern is emitted once and the CID continues booting; in-progress CDS acquisitions continue to function, but no Hub-driven management is possible until connectivity is restored. If the CID is partially activated (OpenLab CDS not yet installed), the 4-beep pattern repeats every 5 minutes.
 
-Run the same checks as Step 2:
+Run the same reachability checks as Step 2:
 
 ```bash
-nc -zv api.agilent.com 443
+nslookup hub-ac-registration-api.prd-51.aws.agilent.com
+nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 ```
 
-| Result | Interpretation |
+| Result | Next step |
 |---|---|
-| Connection fails | An outage or firewall change has blocked the CID's outbound path to `*.agilent.com`. Refer to [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01). |
-| Connection succeeds but 4-beep pattern persists across reboot | Escalate to Agilent Support with the output of `journalctl -u cid-agent --since "1 hour ago"`. |
+| `nslookup` fails | DNS resolution for the Registration API has broken since activation. See [**CID-NET-05** — DNS resolution failure](/cid-net-05). |
+| `nc` returns `Connection refused` or times out | An outage or firewall change has blocked the CID's outbound path to the Registration API. See [**CID-NET-01** — TCP port 443 blocked](/cid-net-01). |
+| Both succeed, but the 4-beep pattern recurs across reboot | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [**CID-NET-02** — TLS handshake failure](/cid-net-02), [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03), and [**CID-NET-04** — NTP time synchronization failure](/cid-net-04) in that order. If the pattern still persists, open a support ticket with Agilent Support and note that the 4-beep pattern recurs despite the Registration API being reachable. |
 
 ---
 
 ## Resolution
 
-| Recommended Action | Applicable When |
+| Recommended action | Applicable when |
 |---|---|
-| Reseat or replace the House-NIC cable; verify switch port is active | Step 1 confirmed no link |
-| Apply the resolution from [**CID-NET-05**](/cid-net-05) | Step 2 showed DNS failure |
+| Reseat or replace the Corporate NIC cable; verify the switch port is active | Step 1 confirmed no link |
+| Restore the correct Corporate / Instrument cable assignment | Step 1 or Step 2 identified swapped cables |
+| Apply the resolution from [**CID-NET-05**](/cid-net-05) | Step 2 or Step 4 showed DNS failure |
 | Apply the resolution from [**CID-NET-01**](/cid-net-01) | Step 2 or Step 4 showed TCP 443 blocked |
-| Apply the resolution from [**CID-NET-03**](/cid-net-03) | Step 2 succeeded but the 2-beep pattern persisted |
-| Add or correct the CID record in the CID Hub | Step 3 identified a missing or mismatched record |
-| Escalate to Agilent Support with `cid-agent` journal output | Step 1, 3, or 4 reached the "escalate" row |
+| Work through [**CID-NET-02**](/cid-net-02), [**CID-NET-03**](/cid-net-03), and [**CID-NET-04**](/cid-net-04) | Step 2 or Step 4 succeeded on TCP but the beep pattern persisted |
+| Add or correct the CID record in **CID Hub** | Step 3 identified a missing or mismatched record |
+| Open a support ticket with Agilent Support | Step 1, 3, or 4 reached an "escalate" row |
 
 ---
 
-## Related Documents
+## Related documents
 
-- [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01)
-- [**CID-NET-03** — SSL Inspection / Certificate Substitution](/cid-net-03)
-- [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)
-- [**CID Connectivity Tester**](/troubleshooting/cid-connectivity-tester) — GUI tool available on unactivated CIDs
-- [**Activate a CID**](/howto/onboarding/activate-a-cid) — required when Step 3 finds no Hub record
+- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
+- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
+- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
+- [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03)
+- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
+- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
+- [Activate a CID](/howto/onboarding/activate-a-cid)
+- [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid)

@@ -4,8 +4,7 @@
   "collapsed": true,
   "collapsible": true,
   "link": {
-    "type": "generated-index",
-    "slug": "/troubleshooting",
-    "description": "Diagnostic procedures and recovery steps for common CID boot, network, and connectivity failures."
+    "type": "doc",
+    "id": "troubleshooting/index"
   }
 }

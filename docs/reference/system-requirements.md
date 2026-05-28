@@ -175,7 +175,7 @@ The CID does not fail silently; the symptom depends on which endpoint is unreach
 - **Microsoft Update endpoints blocked.** Windows Update fails inside the VM. The CID continues to run but stops receiving Windows security patches.
 - **NTP blocked.** Time drift accumulates; eventually TLS handshakes, AWS IoT Core authentication, and CDS client/server setup against the OpenLab Server start failing. See [`CID-NET-04`: NTP time-sync failure](/cid-net-04).
 
-For symptoms and connectivity tests, see [Troubleshooting: Verify CID internet connectivity](../troubleshooting/cid-connectivity-tester) (`CID-NET-01..06`).
+For symptoms and connectivity tests, see [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) (`CID-NET-00..06`).
 
 ---
 
