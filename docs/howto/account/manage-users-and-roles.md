@@ -1,89 +1,114 @@
 ---
 sidebar_position: 1
-title: "Manage Users and Roles"
+title: "Manage users and roles"
+description: "Invite users to CID Hub, assign Administrator or User roles, reset passwords, and remove access."
+toc_max_heading_level: 2
 ---
 
-# Manage Users and Roles
+# <mark>Manage users and roles</mark>
 
-## Overview
+Use the **Users** page in CID Hub to invite people to your account, assign them a role, reset their password, and remove their access when they no longer need it. Roles, and what each one can do, are described in [Role privileges](#role-privileges) below.
 
-CID Hub allows administrators to manage user access by inviting new users and assigning them specific roles. This ensures that users only have permissions appropriate for their responsibilities. 
+Your account's first Administrator is created by Agilent when the account is provisioned. From that point on, Administrators in your account manage everyone else.
 
-While customer administrators can invite additional users to the Hub, the initial organization account and primary customer administrators are established by Agilent administrators. If you are the first person in your organization to access the Hub, ensure your IT filters allow emails from **CID Hub** \<no-reply@hub.cid.agilent.com\>.
+:::note
+Welcome emails are sent from `no-reply@hub.cid.agilent.com` with subject **Connected Instrument Device Hub for OpenLab CDS: Your Temporary Password**. Ask your IT team to allow this sender so invitations and password-reset emails are not filtered out.
+:::
 
----
+## Prerequisites
 
-## Accessing the Users Page
+- You must sign in as an **Administrator** to invite, edit, reset, or remove other users.
+- You need each new user's full name and email address before you invite them.
 
-To manage users for your account:
-1.  Click the **Settings** (gear) icon in the top-right corner of the navigation bar.
-2.  From the dropdown menu, select **Users**.
+## Open the Users page
 
-This will take you to the **Users** list page, where you can view, add, edit, or remove users.
+1. Click the **Settings** (gear) icon in the top-right corner of the top navigation bar.
+2. Select **Users**.
 
-![Users List](../../img/view-users.jpg)
+   The Users list opens. From here you can add, edit, reset, or remove users.
 
----
+   ![Users List](../../img/view-users.jpg)
 
-## User Roles and Privileges
+## Role privileges
 
-CID Hub defines two user roles with distinct sets of permissions: **Administrator** and **User**.
+CID Hub defines two roles. A user can hold one role or both at once.
 
 ### Administrator
-Administrators have full control over the CID Hub environment. Their privileges include:
-- Managing OpenLab Server registrations (`Add`, `Edit`, `Delete`).
-- Defining and updating software templates for servers and CIDs.
-- Adding, editing, and deleting CIDs.
-- Configuring CID network settings.
-- Performing all administrative actions on CIDs (e.g., `Reset OpenLab CDS`, `Reboot System`).
-- Managing other users (inviting new users, changing roles, deleting users).
-- Editing company account details.
+
+Administrators have full control of the account:
+
+- Register, edit, and remove OpenLab Servers.
+- Define and update software templates for servers and CIDs.
+- Add, edit, and remove CIDs.
+- Configure CID network settings.
+- Perform administrative actions on CIDs (for example, **Reset OpenLab CDS**, **Reboot System**).
+- Manage other users (invite, change roles, remove).
+- Edit account details.
 
 ### User
-The User role is designed for lab personnel who need to operate the CIDs but should not have administrative control. Their privileges are limited to:
-- Viewing the list of CIDs and their status.
-- Viewing server configurations without being able to change them.
-- Launching the CDS Desktop for a CID.
-- Granting or revoking remote access for support.
-- Restarting or shutting down a CID.
 
-Users **cannot** make software changes, modify network configurations, add/remove CIDs or servers, or manage other users.
+The **User** role suits lab staff who operate CIDs day-to-day but should not change configuration:
 
----
+- View CIDs and their status.
+- View server configurations (read-only).
+- Launch CDS Desktop on a CID.
+- Grant or revoke remote access for support.
+- Restart or shut down a CID.
 
-## Managing Users
+Users **cannot** change software, modify networking, add or remove CIDs or servers, or manage other users.
 
-### Add a New User
-1.  On the Users page, click the **+ Create User** button.
-2.  In the "Create User" dialog, enter the user's **Full Name** and **Email** address.
-3.  Select one or more roles (**Administrator** and/or **User**) to assign to them.
-4.  Click **Save**.
+## Invite a user
 
-The new user will receive an email invitation to join the CID Hub.
+1. On the Users page, click **+ Create User**.
+2. In the **Create User** dialog, enter the user's **Full Name** and **Email**.
+3. Select one or both roles: **Administrator**, **User**.
+4. Click **Save**.
 
-![Create User Dialog](../../img/create-user.jpg)
+   ![Create User Dialog](../../img/create-user.jpg)
 
-### Edit a User
-To change a user's name or roles:
-1.  Find the user in the list.
-2.  Click the **Edit** (pencil) icon in the 'Actions' column.
-3.  Make the necessary changes in the dialog and click **Save**.
+   The new user receives a welcome email at the address you entered, with a temporary password and a link to sign in.
 
-### Reset a User's Password
-If a user forgets their password:
-1.  Find the user in the list.
-2.  Click the **Reset Password** (key) icon in the 'Actions' column.
-3.  This will trigger a password reset process for the user, typically by sending them an email with instructions.
+:::note
+Email addresses are case-insensitive. CID Hub converts the address to lowercase on entry, so `Jane.Doe@example.com` and `jane.doe@example.com` are treated as the same user.
+:::
 
-### Delete a User
-To remove a user's access to the CID Hub:
-1.  Find the user in the list.
-2.  Click the **Delete** (trash can) icon in the 'Actions' column.
-3.  Confirm the deletion when prompted. <mark>The user is removed from the directory immediately. If the user has an active Hub session, it is terminated automatically on the next backend authorization check (within about a minute), and any further requests they make are rejected.</mark>
+## Edit a user
 
----
+You can change a user's full name or role assignment at any time. The email address is the account identifier and cannot be changed; if a user needs a different email, remove the account and invite them again.
+
+1. Find the user in the list.
+2. Click the **Edit** (pencil) icon in the **Actions** column.
+3. Update the **Full Name** or change which roles are selected.
+4. Click **Save**.
+
+If you edit your own account, the page reloads so your session reflects the new role assignment.
+
+## Reset a user's password
+
+If a user forgets their password or their temporary password expires before they sign in, send them a fresh reset email.
+
+1. Find the user in the list.
+2. Click the **Reset Password** (key) icon in the **Actions** column.
+3. Confirm when prompted.
+
+   CID Hub emails the user a link to set a new password. The link works once and replaces any previous temporary password.
+
+## Remove a user
+
+Removing a user revokes their access to your account.
+
+1. Find the user in the list.
+2. Click the **Delete** (trash can) icon in the **Actions** column.
+3. Confirm when prompted.
+
+The user is removed from the directory immediately. If they have an active CID Hub session, it is terminated on the next backend authorization check (within about a minute), and any further requests are rejected.
+
+:::note
+You cannot remove your own account. Ask another Administrator to do it, or contact Agilent support if you are the only Administrator.
+:::
 
 ## See also
 
-- [Security Model](../../security/security-model) — identity provider (Cognito), supported authentication methods (no SAML/OIDC, no MFA today), and the session-revocation model for deleted users.
-
+- [Manage account settings](./manage-account-settings): change account details and contact information.
+- [View activity logs](../monitoring/view-activity-logs): review sign-in, sign-out, and user-management events.
+- [Security model](../../security/security-model): identity provider, supported sign-in methods, and the session-revocation model for removed users.

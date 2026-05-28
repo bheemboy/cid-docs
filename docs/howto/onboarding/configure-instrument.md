@@ -3,7 +3,7 @@ sidebar_position: 3
 title: "Configure an instrument"
 ---
 
-# Configure an instrument
+# <mark>Configure an instrument</mark>
 
 After a CID has activated and registered with your OpenLab Server, it appears in OpenLab Control Panel as an Analytical Instrument Controller (AIC). This page is for the lab technician who is attaching a physical instrument to the CID and configuring it through OpenLab Control Panel. The procedure is identical to configuring an instrument on a conventional AIC; the work happens in OpenLab Control Panel, not in CID Hub.
 
@@ -25,13 +25,13 @@ To attach an instrument to a CID:
 
 2. Confirm the CID is listed as an available instrument controller.
 
-   :::note[Image placeholder — `olcp-controller-list.jpg`]
+   :::note[<mark>Image placeholder</mark> — `olcp-controller-list.jpg`]
    OpenLab Control Panel **Instruments** view with the CID's name highlighted in the list of available instrument controllers.
    :::
 
 3. Add the instrument and assign the CID as its instrument controller. Follow the [Add an Instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects/ControlPanel/AddInstrument.htm) guide in OpenLab Help & Learning.
 
-   :::note[Image placeholder — `olcp-add-instrument.jpg`]
+   :::note[<mark>Image placeholder</mark> — `olcp-add-instrument.jpg`]
    OpenLab Control Panel **Add Instrument** wizard with the CID selected as the instrument controller.
    :::
 

@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Activate a CID"
 ---
 
-# Activate a CID
+# <mark>Activate a CID</mark>
 
 Each physical CID must have a matching record in CID Hub before it can be used. This page is for the lab administrator or IT operator who creates that record and monitors the device through activation. Activation is largely automatic: once you create the record with a valid PIN code, the CID detects it on the next contact attempt and begins installing OpenLab CDS.
 
@@ -70,7 +70,7 @@ Activation typically takes 1–2 hours, depending on network speed and the size 
 
 If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Troubleshoot activation](../operations/troubleshoot-activation).
 
-:::note[Image placeholder — `cid-summary-ready.jpg`]
+:::note[<mark>Image placeholder</mark> — `cid-summary-ready.jpg`]
 CID Summary page after a successful activation, with the **Ready** status badge highlighted.
 :::
 

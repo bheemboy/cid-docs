@@ -3,7 +3,7 @@ sidebar_position: 3
 title: View software library
 ---
 
-# View software library
+# <mark>View software library</mark>
 
 The Software Library is the catalog of every software package available to CIDs in CID Hub: OpenLab CDS versions, Windows and Linux updates, instrument drivers, and add-ons. This page is for the lab administrator or IT operator who needs to look up which versions are available before assigning them, or to download a CDS KVM image for caching on a [registered server's network share](../setup/register-a-server).
 
@@ -39,7 +39,7 @@ Lists every OpenLab CDS version available to install on a CID, including base ve
 
 Lists the cumulative Linux updates available for the Oracle Linux host that runs on every CID.
 
-:::note[Image placeholder — `software-library-linux-update.jpg`]
+:::note[<mark>Image placeholder</mark> — `software-library-linux-update.jpg`]
 Software Library Linux Update list with several published `YYYY.MM.DD` versions, the **Release Notes** link, and the **Release Date** column visible.
 :::
 

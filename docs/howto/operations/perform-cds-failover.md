@@ -66,7 +66,7 @@ Since CID Hub is unreachable, the **Retrieve the CDS Desktop password** step abo
 1. In Chrome or Edge, go to `https://<cid-name-or-ip>/aic-windows-desktop/`. Use the CID's name if DNS resolves it, otherwise its IP address.
 2. The Windows sign-in screen opens.
 
-:::note[Image placeholder — `windows-vm-signin.jpg`]
+:::note[<mark>Image placeholder</mark> — `windows-vm-signin.jpg`]
 Browser tab showing the Windows VM console sign-in screen for a CID, with the **CDS Desktop user** field highlighted.
 :::
 
