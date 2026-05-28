@@ -6,6 +6,6 @@
   "link": {
     "type": "generated-index",
     "slug": "/howto",
-    "description": "Task-oriented procedures for setting up, activating, administering, monitoring, and updating CIDs and their users."
+    "description": "Task-oriented procedures for setting up OpenLab Servers, activating CIDs, monitoring them, applying updates, running day-to-day operations, and managing your CID Hub account."
   }
 }

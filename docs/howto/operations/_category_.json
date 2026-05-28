@@ -6,6 +6,6 @@
   "link": {
     "type": "generated-index",
     "slug": "/howto/operations",
-    "description": "Day-of-incident operations: CDS failover, and CID device administration via console access."
+    "description": "Run a CID through outages and routine administrative actions: administer a CID from CID Hub, and run OpenLab CDS in failover when the OpenLab Server is unreachable."
   }
 }

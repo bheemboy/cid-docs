@@ -6,6 +6,6 @@
   "link": {
     "type": "generated-index",
     "slug": "/howto/updates",
-    "description": "Apply OS updates, driver and add-on updates, CDS upgrades, and bundled software updates to one or more CIDs. See Audit & Compliance (under Security) for patch policy, vulnerability-response SLA, and rollback posture."
+    "description": "Apply OpenLab CDS, Windows, Linux, and driver updates to one or more CIDs."
   }
 }
