@@ -133,7 +133,11 @@ env | grep -i proxy
 If Step 1 showed the traceroute terminating at an internal IP, use `mtr` to capture per-hop packet loss for the network team. This adds information CID-NET-00's single-pass traceroute does not provide.
 
 ```bash
-mtr --report --tcp --port 443 hub-ac-registration-api.prd-51.aws.agilent.com
+# Replace <hostname> with the failing endpoint identified from
+# the CID-NET-00 results or CID Hub Recent Activity.
+# Example: hub-ac-registration-api.prd-51.aws.agilent.com
+
+mtr --report --tcp --port 443 <hostname>
 ```
 
 Provide the full output to your network security team along with the CID-NET-00 results.

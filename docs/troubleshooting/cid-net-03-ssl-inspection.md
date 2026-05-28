@@ -1,13 +1,16 @@
 ---
 sidebar_position: 4
 slug: /cid-net-03
+title: "CID-NET-03: SSL inspection and certificate substitution"
+description: Diagnose and resolve HTTPS certificate validation failures caused by a firewall or security appliance presenting its own certificate in place of the destination server's.
+toc_max_heading_level: 3
 ---
 
-# CID-NET-03: SSL Inspection / Certificate Substitution
+# CID-NET-03: SSL inspection and certificate substitution
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/Network Administrators
-**Support Reference:** Network / Firewall Configuration
+**Audience:** Agilent Support, IT/network administrators
+**Support reference:** Network / firewall configuration
 
 :::warning[For IT administrators only]
 The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
@@ -17,137 +20,135 @@ The diagnostic procedures on this page are intended for IT administrators famili
 
 ## Symptom
 
-The CID can establish a TCP connection to an external service endpoint on port 443, and the TLS handshake completes, but HTTPS requests fail with certificate validation errors. This may appear as:
+The CID can establish a TCP connection to an external endpoint on port 443 and the TLS handshake completes, but HTTPS requests fail with certificate validation errors. The server certificate returned to the CID is signed by a corporate or internal certificate authority rather than the expected public CA. This may manifest as:
 
-```
-curl: (60) SSL certificate problem: unable to get local issuer certificate
-curl: (60) SSL certificate problem: certificate verify failed
-```
-
-Alternatively, this condition may be identified as part of investigating a TLS handshake failure ([CID-NET-02](/cid-net-02)), where Step 2 of that document reveals a corporate or internal certificate authority is being presented instead of the expected server certificate.
+- Certificate validation errors appear in CID agent logs against external CID endpoints (for example, *"unable to get local issuer certificate"* or *"certificate verify failed"*).
+- In **CID Hub**, the **Recent Activity** view shows entries such as *"Error validating IoT device certificate: `<error-info>`"* when the AWS IoT connection cannot validate the certificate the firewall is presenting.
+- An earlier diagnosis through [**CID-NET-02** — TLS handshake failure](/cid-net-02) revealed a corporate or internal issuer in the certificate chain.
 
 ---
 
-## Confirm This Is the Right Document
+## Root cause
 
-Run the following command, substituting the hostname of the failing service:
+SSL inspection (also called TLS inspection or HTTPS deep packet inspection) is a feature of many enterprise firewalls and security appliances. When active, the appliance:
 
-```bash
-openssl s_client -connect <hostname>:443 2>/dev/null | openssl x509 -noout -issuer -subject
-```
+1. Intercepts the outbound TLS connection from the CID.
+2. Establishes its own separate TLS session with the destination server.
+3. Re-encrypts the traffic and presents a new certificate to the CID, signed by the appliance's internal certificate authority.
 
-| Result | Next Step |
+This allows the appliance to inspect encrypted traffic. The CID does not trust the corporate CA presented by the inspection appliance for external cloud service endpoints, so it rejects the connection.
+
+The supported resolution is an **SSL inspection bypass** for the affected endpoints.
+
+---
+
+## Confirm this is the right document
+
+| Where you came from | Next step |
 |---|---|
-| Issuer shows Amazon, Microsoft, or another recognized public CA | SSL Inspection is not active. Refer to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02) if connections are still failing. |
-| Issuer shows a corporate, internal, or unrecognized CA | This is the correct document. Continue below. |
-| Command returns no certificate output at all | The connection is being blocked before the handshake completes. Refer to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02). |
+| You arrived from [**CID-NET-02** — TLS handshake failure](/cid-net-02) Step 1 after observing a corporate or internal issuer in the certificate chain | This is the correct document. Continue below. |
+| Logs or **CID Hub** Recent Activity show certificate-validation errors against a CID cloud endpoint | This is the correct document. Continue below. |
+| You ran [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) and TCP/443 was reachable, but the CID still fails with certificate-validation errors | This is the correct document. Continue below. |
+| The TLS handshake terminates with no server response | The issue is a hard block, not inspection. See [**CID-NET-02** — TLS handshake failure](/cid-net-02). |
+| You have not yet identified that certificate validation is the failing layer | Run [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) first. |
 
 ---
 
-## Background
+## Affected services
 
-SSL Inspection (also referred to as TLS Inspection or HTTPS Deep Packet Inspection) is a security feature present in many enterprise firewalls and security appliances. When active, the appliance:
-
-1. Intercepts the outbound TLS connection from the CID
-2. Establishes its own separate TLS session with the destination server
-3. Re-encrypts the traffic and presents a new certificate to the CID — signed by the appliance's internal certificate authority
-
-This allows the appliance to inspect encrypted traffic for security purposes. However, the CID only trusts publicly recognized certificate authorities for external cloud services. When a corporate CA certificate is presented instead of the expected server certificate, the CID rejects the connection.
-
-> **Important:** Corporate or self-signed certificate authorities cannot be added to the CID's trust store for external cloud service endpoints. The required resolution is an SSL Inspection Bypass — not certificate installation.
-
----
-
-## Affected Services
-
-SSL Inspection can affect all CID services that communicate over HTTPS. For the complete list of required domains, see [System Requirements → Internet Requirements](/reference/system-requirements#internet-requirements).
+SSL inspection affects every CID service that communicates over HTTPS to external cloud endpoints: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
 
 ---
 
 ## Prerequisites
 
-Before proceeding, please ensure the following conditions are met:
-
-- Command-line access to the CID via SSH or direct console connection
-- The following utilities are available on the system: `openssl` and `curl`
-- Authorization from your IT or network security team to execute network diagnostic commands, if applicable
+- Command-line access to the CID via SSH or direct console connection.
+- The failing endpoint hostname, identified from the CID-NET-00 results, **CID Hub** Recent Activity, or an earlier CID-NET-02 Step 1 capture.
+- Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
 
-:::tip[First Step]
-Before running manual diagnostics, use the [CID Connectivity Tester](/cid-net-00) — a built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
-:::
+## Diagnostic steps
 
-## Diagnostic Steps
+### Step 1. Capture the certificate being presented
 
-### Step 1 — Identify the Certificate Being Presented
-
-Retrieve the full certificate chain that the firewall is presenting to the CID for each affected service. This output will be required by your network security team to identify which inspection policy is in effect.
+Retrieve the issuer, subject, and validity dates from the certificate the firewall is presenting. This output identifies which inspection policy is in effect and is required by your network security team.
 
 ```bash
+# Replace <hostname> with the failing endpoint identified from
+# the CID-NET-00 results or CID Hub Recent Activity.
+# Example: hub-ac-registration-api.prd-51.aws.agilent.com
+
 openssl s_client -connect <hostname>:443 2>/dev/null | openssl x509 -noout -issuer -subject -dates
 ```
 
-Run this command for each affected domain and collect the output. A corporate CA in the issuer field confirms SSL Inspection is active for that destination.
+Run this command for each affected endpoint and collect the output. A corporate or internal CA in the **issuer** field confirms SSL inspection is active for that destination.
 
 ---
 
-### Step 2 — Determine the Scope of Inspection
+### Step 2. Determine the scope of inspection
 
-Test multiple service domains to establish whether SSL Inspection is applied broadly or only to specific destinations. This helps your IT team identify which inspection policy scope needs to be adjusted.
+Test multiple CID endpoint groups to establish whether SSL inspection is applied broadly or only to specific destinations. This scopes the bypass rule the network team needs to add.
 
 ```bash
-# Test Agilent Hub
-openssl s_client -connect api.agilent.com:443 2>/dev/null | openssl x509 -noout -issuer
-
-# Test AWS S3
-openssl s_client -connect s3.amazonaws.com:443 2>/dev/null | openssl x509 -noout -issuer
-
-# Test AWS IoT
-openssl s_client -connect iot.us-east-1.amazonaws.com:443 2>/dev/null | openssl x509 -noout -issuer
-
-# Test Microsoft Update
-openssl s_client -connect windowsupdate.microsoft.com:443 2>/dev/null | openssl x509 -noout -issuer
+openssl s_client -connect hub-ac-registration-api.prd-51.aws.agilent.com:443 2>/dev/null | openssl x509 -noout -issuer
+openssl s_client -connect a3cb4mwmdz2oep-ats.iot.us-east-1.amazonaws.com:443 2>/dev/null | openssl x509 -noout -issuer
+openssl s_client -connect agilent-aws-prd-51-ac-images.s3.amazonaws.com:443 2>/dev/null | openssl x509 -noout -issuer
+openssl s_client -connect microsoft.com:443 2>/dev/null | openssl x509 -noout -issuer
 ```
 
-Share the issuer output for each domain with your network security team.
+| Pattern in the results | Interpretation |
+|---|---|
+| All four return a corporate CA | Inspection is applied broadly to outbound HTTPS. |
+| Only `*.amazonaws.com` endpoints return a corporate CA | Inspection is scoped to AWS endpoints. |
+| Only `*.agilent.com` endpoints return a corporate CA | Inspection is scoped to Agilent endpoints. |
+| Only one endpoint returns a corporate CA | Inspection is scoped to a specific destination. |
+| One or more return a public CA (Amazon, DigiCert, Microsoft) | Those endpoints are not being inspected; the issue may be scoped to specific service groups. |
+
+Share the per-endpoint issuer output with your network security team.
 
 ---
 
-### Step 3 — Confirm the Certificate Validation Failure
+### Step 3. Confirm certificate validation is the direct cause
 
-Verify that the certificate substitution is the direct cause of the HTTPS failure by attempting a connection with certificate verification explicitly disabled. This is for diagnostic purposes only and should not be used as a permanent configuration.
+Verify that the certificate substitution is what's blocking the HTTPS request by retrying the request with certificate verification disabled. This is for diagnostic purposes only and is not a supported runtime configuration.
 
 ```bash
+# Replace <hostname> with the failing endpoint identified from
+# the CID-NET-00 results or CID Hub Recent Activity.
+# Example: hub-ac-registration-api.prd-51.aws.agilent.com
+
 curl -v --insecure https://<hostname>
 ```
 
-**If this succeeds while the normal request fails:** The certificate validation failure is confirmed as the root cause. The corporate CA presented by the SSL Inspection appliance is not trusted by the CID.
-
-**If this also fails:** An additional issue may be present. Review the curl output and consider referring to [**CID-NET-02: TLS Handshake Failure**](/cid-net-02).
+| Result | Interpretation |
+|---|---|
+| Succeeds while the normal request fails | Certificate validation is the direct cause. The corporate CA presented by the inspection appliance is not trusted by the CID. |
+| Also fails | An additional issue is present. Review the `curl` output and see [**CID-NET-02** — TLS handshake failure](/cid-net-02). |
 
 ---
 
 ## Resolution
 
-SSL Inspection Bypass is the required resolution. Provide the output from the diagnostic steps above to your network security team and request the following:
+The supported resolution is an **SSL inspection bypass** for every CID internet endpoint affected by inspection. Provide the diagnostic output from the steps above to your network security team and request the bypass scope identified in Step 2.
 
-**Configure an SSL Inspection Bypass** for all domains listed in the [Affected Services](#affected-services) section. This instructs the firewall or security appliance to pass HTTPS traffic to these destinations without interception or certificate substitution.
+Bypassing inspection does not weaken security for these connections: the traffic remains end-to-end encrypted using the destination server's legitimate certificate. The bypass instructs the appliance not to act as a TLS intermediary for verified Agilent and cloud service endpoints.
 
-This exemption does not eliminate security coverage for these connections — the traffic remains encrypted end-to-end using the destination server's legitimate certificate. It instructs the appliance not to act as an intermediary for verified Agilent and cloud service endpoints.
-
-| Recommended Action | Applicable When |
+| Recommended action | Applicable when |
 |---|---|
-| Configure SSL Inspection Bypass for `*.agilent.com` | Step 2 showed corporate CA for Agilent endpoints |
-| Configure SSL Inspection Bypass for `*.amazonaws.com` | Step 2 showed corporate CA for AWS endpoints |
-| Configure SSL Inspection Bypass for `*.microsoft.com` and associated Microsoft domains | Step 2 showed corporate CA for Microsoft endpoints |
-| Configure SSL Inspection Bypass for all CID internet endpoints | Step 2 showed corporate CA across all tested domains |
+| Configure SSL inspection bypass for `*.agilent.com` | Step 2 showed a corporate CA for Agilent endpoints |
+| Configure SSL inspection bypass for `*.amazonaws.com` | Step 2 showed a corporate CA for AWS endpoints |
+| Configure SSL inspection bypass for `*.microsoft.com` and associated Microsoft domains | Step 2 showed a corporate CA for Microsoft endpoints |
+| Configure SSL inspection bypass for all CID internet endpoints listed in [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) | Step 2 showed a corporate CA across all tested domains |
 
 ---
 
-## Related Documents
+## Related documents
 
-- [**CID-NET-01** — TCP Port 443 Blocked](/cid-net-01)
-- [**CID-NET-02** — TLS Handshake Failure](/cid-net-02)
-- [**CID-NET-04** — NTP Time Synchronization Failure](/cid-net-04)
-- [**CID-NET-05** — DNS Resolution Failure](/cid-net-05)
+- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
+- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
+- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
+- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
+- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
+- [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01)
+- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
