@@ -169,7 +169,7 @@ Cognito access tokens and ID tokens are valid for 15 minutes. Refresh tokens are
 - **Idle sessions are bounded.** A user who walks away from the Hub UI is logged out within about a minute of their last token expiring. Resuming work requires re-authentication.
 - **User deletion.** When an administrator deletes a user, the user is removed from the Cognito directory immediately and can no longer obtain new tokens. An access token the user already holds remains technically valid until it expires (up to 15 minutes) because Cognito access tokens cannot be individually revoked once issued. The next refresh attempt fails.
 
-The deletion procedure lives in [Manage Users and Roles → Delete a User](../howto/account/manage-users-and-roles#delete-a-user).
+The deletion procedure lives in [Manage Users and Roles → Remove a User](../howto/account/manage-users-and-roles#remove-a-user).
 
 ## Shared responsibility
 
@@ -191,7 +191,7 @@ The reference list of customer obligations lives in [System Requirements → Sec
 | **CDS client PCs and traditional AICs** | — | OS patching, anti-malware, screen-lock policy, password-cache policy, accurate system clock, and physical access. CID Hub does not manage these systems. |
 | **Sample data and lab records** | The CID stages sample data on local disk during acquisition; this copy is transient by design. | The true record of sample data lives on the OpenLab CDS Server, which is customer-operated and customer-backed-up. Agilent does not back up CID-local CDS data. |
 | **Audit logs** | Generating and retaining audit records of Hub-side and CID-side actions; surfacing them through the activity-log UI. | Incorporating the activity log into the customer's own monitoring, review, or SIEM workflow. |
-| **Agilent support access** | Issuing the support-access request and providing the per-session tunnel infrastructure (AWS IoT Secure Tunneling); session start, end, and audit-log entries. | Reviewing and approving or declining each support request at the device, and closing the session when work is complete. See [Approve or Revoke Agilent Support Access](../howto/operations/cid-administration#approve-or-revoke-agilent-support-access). |
+| **Agilent support access** | Issuing the support-access request and providing the per-session tunnel infrastructure (AWS IoT Secure Tunneling); session start, end, and audit-log entries. | Reviewing and approving or declining each support request at the device, and closing the session when work is complete. See [Approve or end an Agilent support session](../howto/operations/cid-administration#approve-or-end-an-agilent-support-session). |
 
 ## See also
 

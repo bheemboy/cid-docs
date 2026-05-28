@@ -1,12 +1,12 @@
 ---
-sidebar_position: 1
-slug: /cid-net-00
-title: "CID-NET-00: Verify CID internet connectivity"
-description: First-pass triage tool for any suspected CID connectivity issue. Runs the built-in connectivity tester and routes to the right CID-NET page.
+sidebar_position: 2
+slug: /troubleshooting/verify-internet-connectivity
+title: "Verify CID internet connectivity"
+description: First-pass triage tool for any suspected CID connectivity issue. Runs the built-in connectivity tester and routes to the matching network failure-mode page.
 toc_max_heading_level: 3
 ---
 
-# CID-NET-00: Verify CID internet connectivity
+# Verify CID internet connectivity
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/network administrators
@@ -32,8 +32,8 @@ You suspect a network or connectivity problem is preventing the CID from reachin
 
 | You observe | Go to |
 |---|---|
-| One or more beeps on startup | [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01) |
-| A specific TCP, TLS, certificate, NTP, or DNS error in logs or the UI | The matching [**CID-NET-NN**](#related-documents) page below |
+| One or more beeps on startup | [Beep codes on startup](/troubleshooting/beep-codes-on-startup) |
+| A specific TCP, TLS, certificate, NTP, or DNS error in logs or the UI | The matching page in [Related documents](#related-documents) below |
 | No specific error, but connectivity is suspect | Continue with this page |
 
 ---
@@ -95,7 +95,7 @@ The connectivity tester is a diagnostic application inside the Linux Cockpit int
 
 #### No network access (direct console)
 
-If the CID cannot be reached over the network, for example because of a misconfigured IP address or a complete connectivity failure, attach a monitor and keyboard directly to the CID and log in at the console. From the console you can run the manual diagnostic commands described in the linked CID-NET pages directly in the terminal.
+If the CID cannot be reached over the network, for example because of a misconfigured IP address or a complete connectivity failure, attach a monitor and keyboard directly to the CID and log in at the console. From the console you can run the manual diagnostic commands described in the linked failure-mode pages directly in the terminal.
 
 ---
 
@@ -124,10 +124,10 @@ Each failed result includes DNS, port-state, and traceroute information. Use the
 
 | Result indicator | Failure type | Next step |
 |---|---|---|
-| Hostname does not resolve to an IP address | DNS | [**CID-NET-05** — DNS resolution failure](/cid-net-05) |
-| Port 443 shows `filtered`, or the connection times out | Firewall silently dropping TCP 443 | [**CID-NET-01** — TCP port 443 blocked](/cid-net-01) |
-| Port 443 shows `closed` (actively refused) | Firewall or routing rejecting TCP 443 | [**CID-NET-01** — TCP port 443 blocked](/cid-net-01) |
-| Traceroute terminates at an internal IP address | Traffic is not leaving the corporate network | [**CID-NET-01** — TCP port 443 blocked](/cid-net-01) |
+| Hostname does not resolve to an IP address | DNS | [DNS resolution failure](/troubleshooting/dns-resolution-failure) |
+| Port 443 shows `filtered`, or the connection times out | Firewall silently dropping TCP 443 | [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) |
+| Port 443 shows `closed` (actively refused) | Firewall or routing rejecting TCP 443 | [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) |
+| Traceroute terminates at an internal IP address | Traffic is not leaving the corporate network | [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) |
 
 ### Step 4. Rule out the false-positive cases
 
@@ -135,10 +135,10 @@ A passing tester does not exclude every cause. If activation or sync continues t
 
 | Symptom alongside a passing tester | Next step |
 |---|---|
-| Certificate or TLS errors in logs | [**CID-NET-02** — TLS handshake failure](/cid-net-02) |
-| Corporate CA shown in place of the expected issuer | [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03) |
-| NTP errors, time-sync warnings, or clock-skew messages during activation | [**CID-NET-04** — NTP time synchronization failure](/cid-net-04) |
-| OpenLab server cannot be reached or fails validation | [**CID-NET-06** — OpenLab server unreachable](/cid-net-06) |
+| Certificate or TLS errors in logs | [TLS handshake failure](/troubleshooting/tls-handshake-failure) |
+| Corporate CA shown in place of the expected issuer | [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection) |
+| NTP errors, time-sync warnings, or clock-skew messages during activation | [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure) |
+| OpenLab server cannot be reached or fails validation | [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable) |
 
 ### Step 5. Test a specific endpoint (optional)
 
@@ -148,19 +148,19 @@ Use the **Choose or type an endpoint** field to select a predefined endpoint or 
 
 ## Resolution
 
-This page does not resolve a connectivity failure on its own. Its job is to identify which failure-mode page applies. Apply the resolution from the CID-NET page identified in Step 3 or Step 4.
+This page does not resolve a connectivity failure on its own. Its job is to identify which failure-mode page applies. Apply the resolution from the page identified in Step 3 or Step 4.
 
-If every test passes and no downstream CID-NET page applies, the failure is not at the network layer. Collect a support bundle and open a support ticket.
+If every test passes and no downstream failure-mode page applies, the failure is not at the network layer. Collect a support bundle and open a support ticket.
 
 ---
 
 ## Related documents
 
-- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
-- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
-- [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03)
-- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
-- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
-- [**CID-NET-06** — OpenLab server unreachable](/cid-net-06)
-- [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01)
+- [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked)
+- [TLS handshake failure](/troubleshooting/tls-handshake-failure)
+- [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
+- [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
+- [DNS resolution failure](/troubleshooting/dns-resolution-failure)
+- [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable)
+- [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
 - [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)

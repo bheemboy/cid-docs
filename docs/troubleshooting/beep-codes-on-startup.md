@@ -1,12 +1,12 @@
 ---
-sidebar_position: 0
-slug: /cid-boot-01
-title: "CID-BOOT-01: Beep codes on startup"
+sidebar_position: 1
+slug: /troubleshooting/beep-codes-on-startup
+title: "Beep codes on startup"
 description: Identify and resolve the 1-, 2-, 3-, or 4-beep activation pattern emitted by a CID during or after boot.
 toc_max_heading_level: 3
 ---
 
-# CID-BOOT-01: Beep codes on startup
+# Beep codes on startup
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/network administrators
@@ -31,7 +31,7 @@ The CID emits an audible beep pattern, repeating every 5 minutes, during or afte
 
 ## Root cause
 
-Each beep count corresponds to a distinct failure stage in the activation sequence (CAR-P-011). One underlying cause, four observable forms:
+Each beep count corresponds to a distinct failure stage in the activation sequence. One underlying cause, four observable forms:
 
 - **1 beep, no network link.** The Corporate NIC has no DHCP-assigned address: the cable is unplugged, the switch port is disabled, or the Corporate and Instrument NIC cables are swapped and the instrument network has no DHCP server.
 - **2 beeps, registration API unreachable.** The Corporate NIC has link and an IP address, but the CID cannot reach the Registration API on TCP 443. Almost always a firewall, DNS, or routing problem on the customer's network. Swapped Corporate / Instrument NIC cables can also produce this pattern when the instrument network has its own DHCP server.
@@ -50,7 +50,7 @@ Count the beeps in one full repetition, then use the table below to confirm the 
 | 2 beeps | The CID has network link but cannot reach the registration API. Continue with Step 2. |
 | 3 beeps | The CID reached the registration API but no matching CID record was found in **CID Hub**. Continue with Step 3. |
 | 4 beeps | A previously activated CID cannot reach the registration API on this boot. Continue with Step 4. |
-| No beeps, but CID is offline in **CID Hub** | This page does not apply. See [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) instead. |
+| No beeps, but CID is offline in **CID Hub** | This page does not apply. See [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) instead. |
 
 ---
 
@@ -100,12 +100,12 @@ nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 
 | Result | Next step |
 |---|---|
-| `nslookup` fails | DNS is misconfigured. See [**CID-NET-05** — DNS resolution failure](/cid-net-05). |
-| `nc` returns `Connection refused` or times out | TCP 443 to the Registration API is blocked. See [**CID-NET-01** — TCP port 443 blocked](/cid-net-01). |
-| Both succeed, but the CID continues to beep twice | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [**CID-NET-02** — TLS handshake failure](/cid-net-02), [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03), and [**CID-NET-04** — NTP time synchronization failure](/cid-net-04) in that order. |
+| `nslookup` fails | DNS is misconfigured. See [DNS resolution failure](/troubleshooting/dns-resolution-failure). |
+| `nc` returns `Connection refused` or times out | TCP 443 to the Registration API is blocked. See [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked). |
+| Both succeed, but the CID continues to beep twice | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [TLS handshake failure](/troubleshooting/tls-handshake-failure), [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection), and [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure) in that order. |
 | Cables look correct from the front but the CID still beeps twice | Confirm the Corporate (HOUSE) cable is in the HOUSE port and the Instrument cable is in the INSTRUMENT port. A cable swap can produce two beeps when the instrument network has its own DHCP server. |
 
-For a broader first-pass triage across all CID-NET failure modes, run [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) before working through the linked pages individually.
+For a broader first-pass triage across all network failure modes, run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) before working through the linked pages individually.
 
 ---
 
@@ -138,9 +138,9 @@ nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 
 | Result | Next step |
 |---|---|
-| `nslookup` fails | DNS resolution for the Registration API has broken since activation. See [**CID-NET-05** — DNS resolution failure](/cid-net-05). |
-| `nc` returns `Connection refused` or times out | An outage or firewall change has blocked the CID's outbound path to the Registration API. See [**CID-NET-01** — TCP port 443 blocked](/cid-net-01). |
-| Both succeed, but the 4-beep pattern recurs across reboot | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [**CID-NET-02** — TLS handshake failure](/cid-net-02), [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03), and [**CID-NET-04** — NTP time synchronization failure](/cid-net-04) in that order. If the pattern still persists, open a support ticket with Agilent Support and note that the 4-beep pattern recurs despite the Registration API being reachable. |
+| `nslookup` fails | DNS resolution for the Registration API has broken since activation. See [DNS resolution failure](/troubleshooting/dns-resolution-failure). |
+| `nc` returns `Connection refused` or times out | An outage or firewall change has blocked the CID's outbound path to the Registration API. See [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked). |
+| Both succeed, but the 4-beep pattern recurs across reboot | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [TLS handshake failure](/troubleshooting/tls-handshake-failure), [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection), and [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure) in that order. If the pattern still persists, open a support ticket with Agilent Support and note that the 4-beep pattern recurs despite the Registration API being reachable. |
 
 ---
 
@@ -150,9 +150,9 @@ nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 |---|---|
 | Reseat or replace the Corporate NIC cable; verify the switch port is active | Step 1 confirmed no link |
 | Restore the correct Corporate / Instrument cable assignment | Step 1 or Step 2 identified swapped cables |
-| Apply the resolution from [**CID-NET-05**](/cid-net-05) | Step 2 or Step 4 showed DNS failure |
-| Apply the resolution from [**CID-NET-01**](/cid-net-01) | Step 2 or Step 4 showed TCP 443 blocked |
-| Work through [**CID-NET-02**](/cid-net-02), [**CID-NET-03**](/cid-net-03), and [**CID-NET-04**](/cid-net-04) | Step 2 or Step 4 succeeded on TCP but the beep pattern persisted |
+| Apply the resolution from [DNS resolution failure](/troubleshooting/dns-resolution-failure) | Step 2 or Step 4 showed DNS failure |
+| Apply the resolution from [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) | Step 2 or Step 4 showed TCP 443 blocked |
+| Work through [TLS handshake failure](/troubleshooting/tls-handshake-failure), [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection), and [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure) | Step 2 or Step 4 succeeded on TCP but the beep pattern persisted |
 | Add or correct the CID record in **CID Hub** | Step 3 identified a missing or mismatched record |
 | Open a support ticket with Agilent Support | Step 1, 3, or 4 reached an "escalate" row |
 
@@ -160,11 +160,11 @@ nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 
 ## Related documents
 
-- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
-- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
-- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
-- [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03)
-- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
-- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
+- [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity)
+- [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked)
+- [TLS handshake failure](/troubleshooting/tls-handshake-failure)
+- [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
+- [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
+- [DNS resolution failure](/troubleshooting/dns-resolution-failure)
 - [Activate a CID](/howto/onboarding/activate-a-cid)
 - [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid)

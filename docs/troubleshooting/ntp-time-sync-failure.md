@@ -1,12 +1,12 @@
 ---
 sidebar_position: 5
-slug: /cid-net-04
-title: "CID-NET-04: NTP time synchronization failure"
+slug: /troubleshooting/ntp-time-sync-failure
+title: "NTP time synchronization failure"
 description: Diagnose and resolve clock drift on the CID caused by outbound UDP port 123 being blocked or by NTP hostname resolution failing.
 toc_max_heading_level: 3
 ---
 
-# CID-NET-04: NTP time synchronization failure
+# NTP time synchronization failure
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/network administrators
@@ -52,9 +52,9 @@ chronyc tracking
 | Result | Next step |
 |---|---|
 | `System time` offset is large (seconds or greater), or `Reference ID` shows `7F7F0101` (no sync source) | This is the correct document. Continue below. |
-| Clock is synchronized with a small offset (milliseconds) | NTP is functioning. If HTTPS failures persist, see [**CID-NET-01** — TCP port 443 blocked](/cid-net-01), [**CID-NET-02** — TLS handshake failure](/cid-net-02), or [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03). |
+| Clock is synchronized with a small offset (milliseconds) | NTP is functioning. If HTTPS failures persist, see [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked), [TLS handshake failure](/troubleshooting/tls-handshake-failure), or [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection). |
 
-You can also arrive here from [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) if the NTP test there reported a `chronyc sources` REACH value below `377` for `pool.ntp.org`.
+You can also arrive here from [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) if the NTP test there reported a `chronyc sources` REACH value below `377` for `pool.ntp.org`.
 
 ---
 
@@ -135,7 +135,7 @@ Confirm the CID can resolve NTP pool hostnames. DNS failure can prevent NTP from
 nslookup pool.ntp.org
 ```
 
-If this fails, see [**CID-NET-05** — DNS resolution failure](/cid-net-05) before working further on NTP.
+If this fails, see [DNS resolution failure](/troubleshooting/dns-resolution-failure) before working further on NTP.
 
 ---
 
@@ -155,9 +155,9 @@ For background on why `pool.ntp.org` is the only supported NTP source and how th
 
 ## Related documents
 
-- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
-- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
-- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
-- [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03)
-- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
+- [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity)
+- [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked)
+- [TLS handshake failure](/troubleshooting/tls-handshake-failure)
+- [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
+- [DNS resolution failure](/troubleshooting/dns-resolution-failure)
 - [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)

@@ -68,7 +68,7 @@ After the CID finds its record in CID Hub, it runs through the following steps. 
 
 Activation typically takes 1–2 hours, depending on network speed and the size of the CDS download. The CID's status in CID Hub transitions from **New** to **Ready** when activation completes.
 
-If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Troubleshoot activation](../operations/troubleshoot-activation).
+If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Beep codes on startup](/troubleshooting/beep-codes-on-startup) for beep-pattern diagnosis, or the [Troubleshooting](/troubleshooting) index to route by symptom.
 
 :::note[<mark>Image placeholder</mark> — `cid-summary-ready.jpg`]
 CID Summary page after a successful activation, with the **Ready** status badge highlighted.
@@ -82,4 +82,4 @@ CID Summary page after a successful activation, with the **Ready** status badge 
 - [View CIDs](../monitoring/view-cids): monitor CID status after activation completes.
 - [View activity logs](../monitoring/view-activity-logs): review activation events for traceability and troubleshooting.
 - [CID administration](../operations/cid-administration): reboot, factory reset, and other post-activation operations.
-- [Troubleshoot activation](../operations/troubleshoot-activation): beep codes, Recent activity error messages, and recovery steps for stalled activations.
+- [Troubleshooting](/troubleshooting): symptom-first index to beep codes, network failure modes, and recovery steps for stalled activations.

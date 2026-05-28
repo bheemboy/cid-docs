@@ -1,12 +1,12 @@
 ---
-sidebar_position: 4
-slug: /cid-net-03
-title: "CID-NET-03: SSL inspection and certificate substitution"
+sidebar_position: 7
+slug: /troubleshooting/ssl-inspection
+title: "SSL inspection and certificate substitution"
 description: Diagnose and resolve HTTPS certificate validation failures caused by a firewall or security appliance presenting its own certificate in place of the destination server's.
 toc_max_heading_level: 3
 ---
 
-# CID-NET-03: SSL inspection and certificate substitution
+# SSL inspection and certificate substitution
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/network administrators
@@ -24,7 +24,7 @@ The CID can establish a TCP connection to an external endpoint on port 443 and t
 
 - Certificate validation errors appear in CID agent logs against external CID endpoints (for example, *"unable to get local issuer certificate"* or *"certificate verify failed"*).
 - In **CID Hub**, the **Recent Activity** view shows entries such as *"Error validating IoT device certificate: `<error-info>`"* when the AWS IoT connection cannot validate the certificate the firewall is presenting.
-- An earlier diagnosis through [**CID-NET-02** — TLS handshake failure](/cid-net-02) revealed a corporate or internal issuer in the certificate chain.
+- An earlier diagnosis through [TLS handshake failure](/troubleshooting/tls-handshake-failure) revealed a corporate or internal issuer in the certificate chain.
 
 ---
 
@@ -46,11 +46,11 @@ The supported resolution is an **SSL inspection bypass** for the affected endpoi
 
 | Where you came from | Next step |
 |---|---|
-| You arrived from [**CID-NET-02** — TLS handshake failure](/cid-net-02) Step 1 after observing a corporate or internal issuer in the certificate chain | This is the correct document. Continue below. |
+| You arrived from [TLS handshake failure](/troubleshooting/tls-handshake-failure) Step 1 after observing a corporate or internal issuer in the certificate chain | This is the correct document. Continue below. |
 | Logs or **CID Hub** Recent Activity show certificate-validation errors against a CID cloud endpoint | This is the correct document. Continue below. |
-| You ran [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) and TCP/443 was reachable, but the CID still fails with certificate-validation errors | This is the correct document. Continue below. |
-| The TLS handshake terminates with no server response | The issue is a hard block, not inspection. See [**CID-NET-02** — TLS handshake failure](/cid-net-02). |
-| You have not yet identified that certificate validation is the failing layer | Run [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) first. |
+| You ran [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) and TCP/443 was reachable, but the CID still fails with certificate-validation errors | This is the correct document. Continue below. |
+| The TLS handshake terminates with no server response | The issue is a hard block, not inspection. See [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
+| You have not yet identified that certificate validation is the failing layer | Run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) first. |
 
 ---
 
@@ -63,7 +63,7 @@ SSL inspection affects every CID service that communicates over HTTPS to externa
 ## Prerequisites
 
 - Command-line access to the CID via SSH or direct console connection.
-- The failing endpoint hostname, identified from the CID-NET-00 results, **CID Hub** Recent Activity, or an earlier CID-NET-02 Step 1 capture.
+- The failing endpoint hostname, identified from the connectivity tester results, **CID Hub** Recent Activity, or an earlier TLS handshake failure Step 1 capture.
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -76,7 +76,7 @@ Retrieve the issuer, subject, and validity dates from the certificate the firewa
 
 ```bash
 # Replace <hostname> with the failing endpoint identified from
-# the CID-NET-00 results or CID Hub Recent Activity.
+# the connectivity tester results or CID Hub Recent Activity.
 # Example: hub-ac-registration-api.prd-51.aws.agilent.com
 
 openssl s_client -connect <hostname>:443 2>/dev/null | openssl x509 -noout -issuer -subject -dates
@@ -115,7 +115,7 @@ Verify that the certificate substitution is what's blocking the HTTPS request by
 
 ```bash
 # Replace <hostname> with the failing endpoint identified from
-# the CID-NET-00 results or CID Hub Recent Activity.
+# the connectivity tester results or CID Hub Recent Activity.
 # Example: hub-ac-registration-api.prd-51.aws.agilent.com
 
 curl -v --insecure https://<hostname>
@@ -124,7 +124,7 @@ curl -v --insecure https://<hostname>
 | Result | Interpretation |
 |---|---|
 | Succeeds while the normal request fails | Certificate validation is the direct cause. The corporate CA presented by the inspection appliance is not trusted by the CID. |
-| Also fails | An additional issue is present. Review the `curl` output and see [**CID-NET-02** — TLS handshake failure](/cid-net-02). |
+| Also fails | An additional issue is present. Review the `curl` output and see [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
 
 ---
 
@@ -145,10 +145,10 @@ Bypassing inspection does not weaken security for these connections: the traffic
 
 ## Related documents
 
-- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
-- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
-- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
-- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
-- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
-- [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01)
+- [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity)
+- [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked)
+- [TLS handshake failure](/troubleshooting/tls-handshake-failure)
+- [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
+- [DNS resolution failure](/troubleshooting/dns-resolution-failure)
+- [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
 - [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)

@@ -48,7 +48,7 @@ With the network configured, you can now physically place and cable the CID.
    b. **Instrument NIC** connects to the analytical instruments, either directly or through an instrument-dedicated LAN or VLAN.
 4. Connect the power cable and turn on the CID.
 5. On startup, the CID connects to the CID Hub via the internet.
-   If successful, it beeps three times every 30 seconds until you [add the CID to the Hub](register-activate#3-add-the-cid-to-the-cid-hub). See [CID-BOOT-01 — Beep codes on startup](/cid-boot-01) for the meaning of other beep patterns.
+   If successful, it beeps three times every 30 seconds until you [add the CID to the Hub](register-activate#add-the-cid-to-the-cid-hub). See [Beep codes on startup](/troubleshooting/beep-codes-on-startup) for the meaning of other beep patterns.
 
 ![CID deployment layout showing CDS clients on the corporate LAN connecting to the CID, the CID's outbound link to CID Hub, and the CID's Instrument NIC connecting to the attached instrument.](../img/layout-1.jpg)
 

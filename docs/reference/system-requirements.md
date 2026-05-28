@@ -172,14 +172,14 @@ The Windows VM reaches these endpoints through the Linux host via NAT on the Hou
 
 The CID does not fail silently; the symptom depends on which endpoint is unreachable.
 
-- **`*.agilent.com` unreachable at boot.** The CID emits boot-time beep codes (2 beeps when the registration API cannot be reached at activation; 4 beeps for an activated CID that cannot reach the API on bootup). See [`CID-BOOT-01`: Beep codes on startup](/cid-boot-01).
+- **`*.agilent.com` unreachable at boot.** The CID emits boot-time beep codes (2 beeps when the registration API cannot be reached at activation; 4 beeps for an activated CID that cannot reach the API on bootup). See [Beep codes on startup](/troubleshooting/beep-codes-on-startup).
 - **AWS IoT Core unreachable.** CID Hub shows the device as **Disconnected**. Hub-initiated commands and configuration changes cannot reach the CID until connectivity is restored. Local CDS data acquisition and processing continue unaffected.
 - **AWS IoT Secure Tunneling unreachable.** Windows VM console and Linux Cockpit sessions initiated from CID Hub cannot be opened, or fail mid-session. The device itself stays connected to AWS IoT Core, and local CDS operation is unaffected.
 - **S3 or CloudFront unreachable.** Image, driver, and CDS package downloads fail with a network error surfaced in the Hub's job and activity log. The CID continues to run with the software it already has.
 - **Microsoft Update endpoints blocked.** Windows Update fails inside the VM. The CID continues to run but stops receiving Windows security patches.
-- **NTP blocked.** Time drift accumulates; eventually TLS handshakes, AWS IoT Core authentication, and CDS client/server setup against the OpenLab Server start failing. See [`CID-NET-04`: NTP time-sync failure](/cid-net-04).
+- **NTP blocked.** Time drift accumulates; eventually TLS handshakes, AWS IoT Core authentication, and CDS client/server setup against the OpenLab Server start failing. See [NTP time-sync failure](/troubleshooting/ntp-time-sync-failure).
 
-For symptoms and connectivity tests, see [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) (`CID-NET-00..06`).
+For symptoms and connectivity tests, see [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity), the entry point into the network failure-mode pages.
 
 ---
 

@@ -1,12 +1,12 @@
 ---
-sidebar_position: 2
-slug: /cid-net-01
-title: "CID-NET-01: TCP port 443 blocked"
+sidebar_position: 4
+slug: /troubleshooting/tcp-port-443-blocked
+title: "TCP port 443 blocked"
 description: Diagnose and resolve outbound TCP port 443 blocking that prevents the CID from reaching Agilent, AWS, and Microsoft endpoints.
 toc_max_heading_level: 3
 ---
 
-# CID-NET-01: TCP port 443 blocked
+# TCP port 443 blocked
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/network administrators
@@ -22,7 +22,7 @@ The diagnostic procedures on this page are intended for IT administrators famili
 
 The CID cannot establish a TCP connection on port 443 to one or more required external endpoints. Connection attempts time out or are refused immediately. This may manifest as:
 
-- The CID emits **2 beeps** every 5 minutes during or after boot (see [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01)).
+- The CID emits **2 beeps** every 5 minutes during or after boot (see [Beep codes on startup](/troubleshooting/beep-codes-on-startup)).
 - Software updates, package installations, or cloud-service communication fail entirely.
 - HTTPS requests return connection-timeout errors rather than TLS errors.
 - In **CID Hub**, the **Recent Activity** view shows entries such as *"Unable to connect to AWS IoT endpoint. Restarting network services and agent."* These appear when AWS IoT is blocked but the Registration API is still reachable, since Recent Activity logging itself uses the Registration API.
@@ -45,18 +45,18 @@ When TCP connections on port 443 fail outright, the most common causes are:
 
 | Where you came from | Next step |
 |---|---|
-| You ran [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) and one or more endpoints returned port-state `filtered`, `closed`, or a connection timeout | This is the correct document. Continue below. |
-| You arrived from [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01) Step 2 or Step 4 with `nc -zv` against the Registration API returning `Connection refused` or timing out | This is the correct document. Continue below. |
-| CID-NET-00 reported all endpoints as reachable, but the CID still fails | TCP 443 is reachable; the failure is at the TLS or application layer. See [**CID-NET-02** — TLS handshake failure](/cid-net-02). |
-| You have not yet identified a specific endpoint that is failing | Run [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) first to identify the failing endpoint(s). |
+| You ran [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) and one or more endpoints returned port-state `filtered`, `closed`, or a connection timeout | This is the correct document. Continue below. |
+| You arrived from [Beep codes on startup](/troubleshooting/beep-codes-on-startup) Step 2 or Step 4 with `nc -zv` against the Registration API returning `Connection refused` or timing out | This is the correct document. Continue below. |
+| the connectivity tester reported all endpoints as reachable, but the CID still fails | TCP 443 is reachable; the failure is at the TLS or application layer. See [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
+| You have not yet identified a specific endpoint that is failing | Run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) first to identify the failing endpoint(s). |
 
-If you are working from a direct console with no browser access to CID-NET-00, substitute `nc -zv <hostname> 443` against any of the canonical endpoints listed in [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) to confirm a failing endpoint.
+If you are working from a direct console with no browser access to the connectivity tester, substitute `nc -zv <hostname> 443` against any of the canonical endpoints listed in [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) to confirm a failing endpoint.
 
 ---
 
 ## Affected services
 
-Outbound TCP/443 blocking affects every CID service that depends on the internet: activation and registration, telemetry to CID Hub, software updates, and image downloads. OpenLab server communication is unaffected by this failure mode because the OLSS server is reached over the local LAN; see [**CID-NET-06** — OpenLab server unreachable](/cid-net-06) for that case. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+Outbound TCP/443 blocking affects every CID service that depends on the internet: activation and registration, telemetry to CID Hub, software updates, and image downloads. OpenLab server communication is unaffected by this failure mode because the OLSS server is reached over the local LAN; see [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable) for that case. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
 
 ---
 
@@ -66,7 +66,7 @@ Outbound TCP/443 blocking affects every CID service that depends on the internet
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 :::tip[First step]
-Before running manual diagnostics, use [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00), the built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
+Before running manual diagnostics, use [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity), the built-in GUI tool that tests all required endpoints and is available even on unactivated CIDs.
 :::
 
 ---
@@ -75,20 +75,20 @@ Before running manual diagnostics, use [**CID-NET-00** — Verify CID internet c
 
 ### Step 1. Identify the scope and shape of the block
 
-Use the failed-endpoint list from [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00). The Connectivity Tester runs `nmap` with `-p 443` and `--traceroute` against every required endpoint, so its output already identifies the port state (`filtered` vs `closed`) and shows where the traffic stops.
+Use the failed-endpoint list from [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity). The Connectivity Tester runs `nmap` with `-p 443` and `--traceroute` against every required endpoint, so its output already identifies the port state (`filtered` vs `closed`) and shows where the traffic stops.
 
 Identify the **scope** of the block:
 
-| Pattern in the CID-NET-00 results | Interpretation |
+| Pattern in the connectivity tester results | Interpretation |
 |---|---|
 | All or most endpoints fail | Port 443 is broadly blocked for the CID. Continue to Step 2 to confirm whether the CID has any internet path. |
-| Only AWS endpoints fail | A firewall rule is targeting `*.amazonaws.com`. Provide the CID-NET-00 results to your network team. |
-| Only Agilent endpoints fail | A rule is targeting `*.agilent.com`. Provide the CID-NET-00 results to your network team. |
+| Only AWS endpoints fail | A firewall rule is targeting `*.amazonaws.com`. Provide the connectivity tester results to your network team. |
+| Only Agilent endpoints fail | A rule is targeting `*.agilent.com`. Provide the connectivity tester results to your network team. |
 | Only one endpoint fails | A domain-specific rule is in effect. The affected domain must be added to the allowlist individually. |
 
-Identify the **shape** of the block from the per-endpoint port state in the CID-NET-00 output:
+Identify the **shape** of the block from the per-endpoint port state in the connectivity tester output:
 
-| Port state in CID-NET-00 output | Interpretation |
+| Port state in the connectivity tester output | Interpretation |
 |---|---|
 | `filtered` | The firewall is silently dropping packets. No reject message is sent back to the CID. |
 | `closed` | The destination is actively refusing the connection. |
@@ -130,17 +130,17 @@ env | grep -i proxy
 
 ### Step 4. Characterize the dropping hop
 
-If Step 1 showed the traceroute terminating at an internal IP, use `mtr` to capture per-hop packet loss for the network team. This adds information CID-NET-00's single-pass traceroute does not provide.
+If Step 1 showed the traceroute terminating at an internal IP, use `mtr` to capture per-hop packet loss for the network team. This adds information the connectivity tester's single-pass traceroute does not provide.
 
 ```bash
 # Replace <hostname> with the failing endpoint identified from
-# the CID-NET-00 results or CID Hub Recent Activity.
+# the connectivity tester results or CID Hub Recent Activity.
 # Example: hub-ac-registration-api.prd-51.aws.agilent.com
 
 mtr --report --tcp --port 443 <hostname>
 ```
 
-Provide the full output to your network security team along with the CID-NET-00 results.
+Provide the full output to your network security team along with the connectivity tester results.
 
 ---
 
@@ -162,11 +162,11 @@ Provide the diagnostic output from the steps above to your network security team
 
 ## Related documents
 
-- [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01)
-- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
-- [**CID-NET-02** — TLS handshake failure](/cid-net-02)
-- [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03)
-- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
-- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
-- [**CID-NET-06** — OpenLab server unreachable](/cid-net-06)
+- [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
+- [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity)
+- [TLS handshake failure](/troubleshooting/tls-handshake-failure)
+- [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
+- [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
+- [DNS resolution failure](/troubleshooting/dns-resolution-failure)
+- [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable)
 - [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)

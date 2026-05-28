@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
-slug: /cid-net-02
-title: "CID-NET-02: TLS handshake failure"
+sidebar_position: 6
+slug: /troubleshooting/tls-handshake-failure
+title: "TLS handshake failure"
 description: Diagnose and resolve TLS handshake failures when TCP port 443 is reachable but the encrypted session is terminated by a network device.
 toc_max_heading_level: 3
 ---
 
-# CID-NET-02: TLS handshake failure
+# TLS handshake failure
 
 **Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience:** Agilent Support, IT/network administrators
@@ -23,7 +23,7 @@ The diagnostic procedures on this page are intended for IT administrators famili
 The CID can establish a TCP connection to an external endpoint on port 443, but the HTTPS session fails immediately during the TLS handshake. The connection is terminated by a network device before any encrypted data is exchanged. This may manifest as:
 
 - TLS / SSL errors appear in CID agent logs against external CID endpoints (for example, `SSL_ERROR_SYSCALL` or a connection reset during the TLS handshake).
-- The CID emits **2 beeps** every 5 minutes during or after boot, but [**CID-NET-01** — TCP port 443 blocked](/cid-net-01) has been ruled out and TCP/443 is confirmed reachable.
+- The CID emits **2 beeps** every 5 minutes during or after boot, but [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) has been ruled out and TCP/443 is confirmed reachable.
 - In **CID Hub**, the **Recent Activity** view shows entries such as *"Unable to connect to AWS IoT endpoint. Restarting network services and agent."* when the TLS handshake to AWS IoT is being terminated by a firewall.
 
 ---
@@ -36,7 +36,7 @@ When TCP connectivity is confirmed but the TLS handshake fails, the most common 
 - **TLS version filtering.** The firewall is configured to block specific TLS versions, preventing the handshake from completing.
 - **Firewall policy resetting TLS traffic.** A security rule resets the connection upon detection of TLS negotiation to certain destinations.
 
-A separate condition, **SSL inspection**, also produces a TLS-layer failure but presents differently: the handshake completes, and the server certificate returned to the CID has a corporate or internal issuer rather than the expected public CA. SSL inspection requires a different resolution path. See [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03).
+A separate condition, **SSL inspection**, also produces a TLS-layer failure but presents differently: the handshake completes, and the server certificate returned to the CID has a corporate or internal issuer rather than the expected public CA. SSL inspection requires a different resolution path. See [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection).
 
 ---
 
@@ -44,12 +44,12 @@ A separate condition, **SSL inspection**, also produces a TLS-layer failure but 
 
 | Where you came from | Next step |
 |---|---|
-| You ran [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) and all endpoints reported TCP/443 reachable, but the CID still fails with TLS / SSL errors | This is the correct document. Continue below. |
-| You arrived from [**CID-NET-01** — TCP port 443 blocked](/cid-net-01) after confirming TCP/443 is reachable | This is the correct document. Continue below. |
-| You arrived from [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01) Step 2 or Step 4 with `nc -zv` succeeding but the beep pattern persisting | This is the correct document. Continue below. |
-| TCP/443 is blocked or the connection times out | See [**CID-NET-01** — TCP port 443 blocked](/cid-net-01) instead. |
-| Logs or earlier output show a server certificate with a corporate / internal issuer | This is SSL inspection, not a hard TLS block. See [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03) instead. |
-| You have not yet identified that TLS is the failing layer | Run [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00) first. |
+| You ran [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) and all endpoints reported TCP/443 reachable, but the CID still fails with TLS / SSL errors | This is the correct document. Continue below. |
+| You arrived from [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) after confirming TCP/443 is reachable | This is the correct document. Continue below. |
+| You arrived from [Beep codes on startup](/troubleshooting/beep-codes-on-startup) Step 2 or Step 4 with `nc -zv` succeeding but the beep pattern persisting | This is the correct document. Continue below. |
+| TCP/443 is blocked or the connection times out | See [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) instead. |
+| Logs or earlier output show a server certificate with a corporate / internal issuer | This is SSL inspection, not a hard TLS block. See [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection) instead. |
+| You have not yet identified that TLS is the failing layer | Run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) first. |
 
 ---
 
@@ -62,7 +62,7 @@ A TLS handshake failure affects every CID service that communicates over HTTPS: 
 ## Prerequisites
 
 - Command-line access to the CID via SSH or direct console connection.
-- The CID-NET-00 results, or the failing endpoint hostname from logs or **CID Hub** Recent Activity.
+- The the connectivity tester results, or the failing endpoint hostname from logs or **CID Hub** Recent Activity.
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -75,7 +75,7 @@ Initiate a full TLS negotiation and capture detailed output to identify exactly 
 
 ```bash
 # Replace <hostname> with the failing endpoint identified from
-# the CID-NET-00 results or CID Hub Recent Activity.
+# the connectivity tester results or CID Hub Recent Activity.
 # Example: hub-ac-registration-api.prd-51.aws.agilent.com
 
 openssl s_client -connect <hostname>:443 -debug 2>&1 | head -40
@@ -94,7 +94,7 @@ openssl s_client -connect <hostname>:443 -debug 2>&1 | head -40
 | Result | Next step |
 |---|---|
 | Connection closes immediately after Client Hello with no server response | The firewall is dropping the TLS handshake. Continue to Step 2. |
-| Server returns a certificate, but the issuer is corporate or internal | This is SSL inspection. See [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03). |
+| Server returns a certificate, but the issuer is corporate or internal | This is SSL inspection. See [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection). |
 | Server returns a certificate with the expected public issuer, and the handshake completes | TLS is succeeding to this endpoint. Recheck which endpoint is actually failing. |
 
 Collect this output for your network security team.
@@ -107,7 +107,7 @@ Some firewall policies block specific TLS versions. Run both commands to determi
 
 ```bash
 # Replace <hostname> with the failing endpoint identified from
-# the CID-NET-00 results or CID Hub Recent Activity.
+# the connectivity tester results or CID Hub Recent Activity.
 # Example: hub-ac-registration-api.prd-51.aws.agilent.com
 
 curl -v --tlsv1.2 --tls-max 1.2 https://<hostname>
@@ -146,11 +146,11 @@ Share the results with your network security team. For the complete list of requ
 
 ### Step 4. Characterize the network path
 
-If Step 1 showed the handshake terminating with no server response, identify where in the path the reset originates. CID-NET-00's traceroute already shows hop-by-hop progress; `mtr` adds per-hop packet loss.
+If Step 1 showed the handshake terminating with no server response, identify where in the path the reset originates. The connectivity tester's traceroute already shows hop-by-hop progress; `mtr` adds per-hop packet loss.
 
 ```bash
 # Replace <hostname> with the failing endpoint identified from
-# the CID-NET-00 results or CID Hub Recent Activity.
+# the connectivity tester results or CID Hub Recent Activity.
 # Example: hub-ac-registration-api.prd-51.aws.agilent.com
 
 mtr --report --tcp --port 443 <hostname>
@@ -170,16 +170,16 @@ Provide the diagnostic output from the steps above to your network security team
 | Permit TLS 1.2 for outbound HTTPS | Step 2 showed TLS 1.2 failing while TLS 1.3 succeeded |
 | Add SNI / domain allowlist rules for the affected service group | Step 3 identified one or more blocked domain groups |
 | Investigate the dropping hop with your network team | Step 4 identified an internal hop that resets the connection |
-| Switch to the SSL inspection workflow | Step 1 returned a corporate certificate issuer; use [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03) |
+| Switch to the SSL inspection workflow | Step 1 returned a corporate certificate issuer; use [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection) |
 
 ---
 
 ## Related documents
 
-- [**CID-NET-00** — Verify CID internet connectivity](/cid-net-00)
-- [**CID-NET-01** — TCP port 443 blocked](/cid-net-01)
-- [**CID-NET-03** — SSL inspection and certificate substitution](/cid-net-03)
-- [**CID-NET-04** — NTP time synchronization failure](/cid-net-04)
-- [**CID-NET-05** — DNS resolution failure](/cid-net-05)
-- [**CID-BOOT-01** — Beep codes on startup](/cid-boot-01)
+- [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity)
+- [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked)
+- [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
+- [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
+- [DNS resolution failure](/troubleshooting/dns-resolution-failure)
+- [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
 - [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
