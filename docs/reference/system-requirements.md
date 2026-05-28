@@ -158,11 +158,15 @@ All internet traffic is outbound and CID-initiated. Every domain listed below is
 
 The Windows VM reaches these endpoints through the Linux host via NAT on the House NIC; the VM has no separate egress path.
 
+**Endpoint set evolves.** Microsoft adds and rotates CDN, Azure Front Door, and binary-delivery hosts continuously. The wildcards above remain stable for firewalls that filter by FQDN or SNI. Firewalls that filter by IP must refresh the rule set periodically against Microsoft's authoritative published list. To identify which specific hostnames the CID's Windows VM is contacting at a given time, monitor outbound DNS from the VM.
+
 ### Time synchronization
 
 | Domain | Direction | Port (Protocol) | Purpose |
 |---|---|---|---|
 | `*.pool.ntp.org` | Outbound | 123 (Network Time Protocol (NTP), UDP) | Public NTP pool used by the CID's chrony service. Accurate time is required for TLS certificate validation, AWS IoT Core authentication, and audit-log timestamps. |
+
+**Pool peers rotate.** `pool.ntp.org` returns rotating A records, and the underlying servers and IPs change continuously. The wildcard remains stable for firewalls filtering by FQDN. For firewalls filtering by IP, permitting UDP/123 to the wildcard FQDN is preferred over maintaining a list of pool IPs. To see the peers the CID has currently selected, run `chronyc sources` on the CID.
 
 ### Behavior when an endpoint is blocked
 
