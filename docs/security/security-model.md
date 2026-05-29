@@ -22,15 +22,13 @@ See [System Requirements §Networking](../reference/system-requirements#networki
 
 ## Attack surface
 
-:::note[Diagram placeholder: `reverse-proxy-listeners.svg`]
-Show the CID nginx reverse proxy as the only thing listening on the Corporate NIC IP at TCP 443, with internal-only upstreams: `/` → Windows VM, `/aic-windows-desktop/` → browser-based Windows VM console, `/ac-cockpit/` → Linux Cockpit administration UI. Make clear that none of the upstream services are bound to the Corporate NIC interface.
-:::
+![nginx as the only TCP 443 listener, routing each path to an internal-only upstream: Windows VM, noVNC console, websockify, and Linux Cockpit.](../img/reverse-proxy-listeners.svg)
 
 From an attacker on the corporate LAN, the CID presents:
 
-- **A single Linux IP, with TCP 443 open.** The reverse proxy serves CDS-client traffic (`/` → Windows VM), the browser-based Windows VM console (`/aic-windows-desktop/`), and the Linux Cockpit administration UI (`/ac-cockpit/`). All upstream services are bound to internal-only interfaces. The proxy is the only process listening on the corporate-facing interface.
+- **A single Linux IP, with TCP 443 open.** The reverse proxy serves CDS-client traffic (`/` → Windows VM), the browser-based Windows VM console (`/aic-windows-desktop/`), and the Linux Cockpit administration UI (`/ac-cockpit/`). Every upstream binds to an internal-only interface, including the console's VNC service, which is reachable only through the TLS proxy and never on the Corporate NIC. The proxy is the only process listening on the corporate-facing interface.
 - **An OpenLab-issued TLS certificate.** At runtime the CID replaces nginx's default self-signed certificate with the OpenLab certificate copied from the embedded Windows VM. Corporate clients therefore see the OpenLab-issued certificate rather than a bare device cert.
-- **No public internet exposure.** The CID is not addressable from the public internet on either NIC. The Hub-side IoT and tunnel endpoints are reached outbound from the CID; nothing inbound is ever required. Outbound traffic is limited to a known set of AWS and Agilent endpoints listed in [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements). Internet connectivity is required for activation, security updates, and remote management. CDS data acquisition itself runs entirely on the customer's local network and continues if the internet path is interrupted. Only Hub-mediated functions (updates, support tunnels, status reporting) become unavailable.
+- **No public internet exposure.** The CID is not addressable from the public internet on either NIC. The Hub-side IoT and tunnel endpoints are reached outbound from the CID; nothing inbound is ever required. Outbound traffic is limited to a known set of AWS and Agilent endpoints listed in [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements). CDS data flows entirely on the local network and continues even if the internet path is interrupted.
 
 :::note[TLS protocol versions]
 The CID's reverse proxy accepts TLS 1.2 and TLS 1.3 only. The legacy TLS 1.0 and 1.1 protocols are disabled.
