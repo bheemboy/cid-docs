@@ -9,52 +9,14 @@ This page describes the Connected Instrument Device (CID) trust boundaries, atta
 
 ## Trust boundaries
 
-:::note[Diagram placeholder: `trust-boundaries.svg`]
-**Layout:** Five zones arranged left to right: Corporate LAN — CID Linux host (containing the Windows VM as a nested sub-zone) — Instrument LAN. AWS / CID Hub sits above or top-right of the Linux host, reachable only by outbound arrows from it.
-
-**Zones and their contents:**
-
-- **Corporate LAN** (leftmost): label with representative clients — OpenLab CDS workstations and browsers.
-- **CID Linux host** (center container): show the Corporate NIC as the left-facing edge of the box and the Instrument NIC as the right-facing edge. Show nginx reverse proxy as a component inside the box, sitting directly behind the Corporate NIC. Show Linux Cockpit as a separate component inside the box, bound to an internal interface only.
-- **Windows VM** (nested box inside the Linux host): label it "Windows VM (OpenLab Instrument Controller)". It has no IP address on the corporate LAN. Its corporate-side connectivity is a NAT link to the Linux host (192.168.122.x subnet) — show this as an internal arrow with "NAT" label, not as a direct connection to the Corporate NIC.
-- **Instrument LAN** (rightmost): show instruments (label generically as "Instruments"). Can be a direct cable or a dedicated LAN/VLAN.
-- **AWS / CID Hub** (top or top-right, outside the CID): label "AWS `us-east-1` — CID Hub".
-
-**Connections to draw (with labels):**
-
-Boundary 1 — Corporate LAN ⇄ Linux host:
-- Inbound arrow from CDS clients to Corporate NIC: "TCP 443 — HTTPS / WSS (TLS terminated by nginx)"
-- Inbound arrow from browser / admin to Corporate NIC: "TCP 22 — SSH (daily-rotating password)"
-- Annotate the boundary line: "All other ports closed"
-
-Boundary 2 — Linux host ⇄ Windows VM (inside the Linux host box):
-- Arrow from nginx to Windows VM: "proxied paths: `/`"
-- Arrow from nginx to Windows VM: "`/aic-windows-desktop/`"
-- Arrow from nginx to Linux Cockpit (stays inside Linux host): "`/ac-cockpit/`"
-- Annotate: "Proxy forwards selected paths only — Windows VM has no direct corporate LAN exposure"
-
-Boundary 3 — Windows VM ⇄ Instrument LAN:
-- Bidirectional arrow from Windows VM V-NIC through Instrument NIC to Instrument LAN: "macvtap direct attach"
-- Annotate the Instrument NIC: "No default gateway — traffic cannot route to corporate LAN or internet"
-- Add a note on direction: most drivers VM→instrument; GC instruments initiate the connection back to the VM.
-
-Boundary 4 — CID ⇄ CID Hub:
-- Single outbound arrow from Linux host to AWS: "CID-initiated outbound TLS only"
-- Annotate with three sub-labels on the arrow: "HTTPS (REST / file transfer)", "MQTT over TLS (IoT control plane)", "AWS IoT Secure Tunneling (support sessions)"
-- Add a "no return arrow" annotation or crossed-out inbound arrow: "Hub never initiates inbound connections"
-
-**What to make visually clear:**
-- The Windows VM is hidden inside the Linux host — it has no direct path to the corporate LAN except through the proxy.
-- The Instrument NIC is a dead end for routing — no path to the internet or the corporate LAN.
-- All four outbound-to-cloud protocols share one logical outbound boundary from the Linux host; they do not originate from the Windows VM directly.
-:::
+![The four CID trust boundaries as nested zones: Corporate LAN, Linux host, Windows VM, instrument network, and CID Hub.](../img/trust-boundaries.svg)
 
 The CID is a Linux appliance that hosts an embedded Windows 11 IoT Enterprise Long-Term Servicing Channel (LTSC) virtual machine. Four trust boundaries shape everything else on this page:
 
-- **Corporate LAN ⇄ Linux host.** The Linux host is the only component exposed to the corporate LAN. A network scan of the CID's Corporate NIC IP shows two open ports: TCP 443 and TCP 22 (SSH). TCP 443 carries HTTPS and WebSocket Secure (WSS) traffic for Chromatography Data System (CDS) clients and administrative interfaces. TCP 22 is open by default on all CIDs. It is available for Agilent support access and is protected by the daily-rotating administrative password. If you want to restrict SSH access at the network level, block port 22 at your VLAN. All other ports are closed. The CID does not require inbound connections from the public internet on either NIC. Because the CID cannot distinguish intranet from internet traffic, your firewall and network controls are what prevent public internet access to the device.
-- **Linux host ⇄ Windows VM.** The Windows VM has no IP address on the corporate LAN. It sits behind the CID's nginx reverse proxy, which terminates Transport Layer Security (TLS) on the Corporate NIC and forwards selected paths inward over an internal NAT network. Anything not explicitly routed by the proxy is not reachable from the corporate LAN.
-- **Windows VM ⇄ Instrument LAN.** A second virtual NIC (V-NIC) connects the Windows VM directly to the Instrument LAN via macvtap direct attach to the physical Instrument NIC on the Linux host. The Instrument NIC has no default gateway by design. The Hub UI labels the gateway field **Gateway Address (Not Recommended)**. Instrument-network traffic therefore cannot route to the corporate LAN or the internet.
-- **CID ⇄ CID Hub.** All Hub traffic is CID-initiated outbound TLS to AWS endpoints in `us-east-1`. The CID uses HTTPS for REST and file transfer, MQTT (Message Queuing Telemetry Transport) over TLS for the IoT control plane, and AWS IoT Secure Tunneling for support sessions. The Hub never opens a connection back to a CID. Remote-management commands ride the MQTT channel the CID already holds open.
+1. **Corporate LAN ⇄ Linux host.** The Linux host is the only component exposed to the corporate LAN. A network scan of the CID's Corporate NIC IP shows two open ports: TCP 443 and TCP 22 (SSH). TCP 443 carries HTTPS and WebSocket Secure (WSS) traffic for Chromatography Data System (CDS) clients and administrative interfaces. TCP 22 is open by default on all CIDs. It is available for Agilent support access and is protected by the daily-rotating administrative password. If you want to restrict SSH access at the network level, block port 22 at your VLAN. All other ports are closed. The CID does not require inbound connections from the public internet on either NIC. Because the CID cannot distinguish intranet from internet traffic, your firewall and network controls are what prevent public internet access to the device.
+2. **Linux host ⇄ Windows VM.** The Windows VM has no IP address on the corporate LAN. It sits behind the CID's nginx reverse proxy, which terminates Transport Layer Security (TLS) on the Corporate NIC and forwards selected paths inward over an internal NAT network. Anything not explicitly routed by the proxy is not reachable from the corporate LAN.
+3. **Windows VM ⇄ Instrument LAN.** A second virtual NIC (V-NIC) connects the Windows VM directly to the Instrument LAN via macvtap direct attach to the physical Instrument NIC on the Linux host. The Instrument NIC has no default gateway by design. The Hub UI labels the gateway field **Gateway Address (Not Recommended)**. Instrument-network traffic therefore cannot route to the corporate LAN or the internet.
+4. **CID ⇄ CID Hub.** All Hub traffic is CID-initiated outbound TLS to AWS endpoints in `us-east-1`. The CID uses HTTPS for REST and file transfer, MQTT (Message Queuing Telemetry Transport) over TLS for the IoT control plane, and AWS IoT Secure Tunneling for support sessions. The Hub never opens a connection back to a CID. Remote-management commands ride the MQTT channel the CID already holds open.
 
 See [System Requirements §Networking](../reference/system-requirements#networking-requirements) for the canonical inbound/outbound table, and [Data Flow & Privacy](./data-flow-and-privacy) for the inventory of what crosses each boundary.
 
