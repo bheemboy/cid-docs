@@ -310,6 +310,17 @@ The categories that *do* flow between CID and Hub are summarized in the **Data T
 
 This table is the authoritative inventory of what crosses the boundary and is what IT reviewers should be pointed at for IT Qs 15 and 21 (data transit through Hub, telemetry inventory).
 
+#### 3f-ii. Field-level telemetry inventory (closes G-06)
+
+The §3f-i Data Types Summary Table is a *category* map. The field-level inventory that IT Q 21 demands is held in the canonical artifact **`source/cid-telemetry-inventory.md`** (architect-supplied, 2026-06-03). It is the authoritative telemetry reference for the security doc; reproduce or link it from `cid-data-flow.md` rather than restating it here. What it establishes:
+
+- **24-field CID→Hub inventory.** Every reported field is enumerated with a description, a sensitivity classification, and direction. All 24 are CID → Hub. Most are classified **Low** (operational/identifier); the four **Medium — infrastructure** fields are `network_cards`, `aic_network_cards`, `aic.olss_server_fqdn`, and `aic.olss_username` (the last also flagged as internal-user PII).
+- **Explicitly sanitized fields (never transmitted / stripped before storage).** Credentials and private keys are removed at the agent or before storage: `ac_admin_password`, `agilentac_password`, `ssh_private_key` (AC + AIC), `aic.olss_password`, `aic.tech_token`, and `software.downloads[*].url` (presigned URLs stripped).
+- **Per-category retention.** `ACReportedState` (versioned history) and `ActivityLog` are retained **indefinitely — no documented TTL/purge policy in the codebase**; `MostRecentACReportedState` is overwritten per update; IoT certificates are revoked on deregistration; device registration and its cascade (reported states + activity logs) are deleted when a CID is removed from the Hub. There is no automatic purge window — retention is effectively indefinite until CID deletion.
+- **PII / sample-data confirmation.** No PHI; no customer sample/analytical data; minimal PII (internal `olss_username` and registration email only); credentials sanitized; all channels TLS (HTTPS + MQTT/TLS).
+
+**Residual note for the doc (not a G-06 blocker):** the inventory records indefinite retention because no purge policy exists in code. If a bounded retention window is later defined (cf. G-05's "≥7 years online" for audit logs), update both this artifact and `audit-and-compliance.md`.
+
 ---
 
 ## 4. Operational interfaces
@@ -660,8 +671,7 @@ Phase 1.3 closed most of the original gap list. Closed items have been folded in
 
 | ID | Topic | Where in this pack | Owner | What's still needed |
 |---|---|---|---|---|
-| G-06 | Telemetry inventory + per-category retention | §3f / §3f-i | **Alok** | Field-level inventory of CID→Hub telemetry, sensitivity classification per field, and per-category retention windows. The 9-row data-types table is a category map, not a field-level inventory. |
-| G-07 / G-17 | Hardware-side attestations + regulatory certifications | §8a | **Edison → Bhavani** | Any Lenovo attestation/certification documents (SOC 2 / ISO at the OEM, plus CE / FCC / UL / RoHS / REACH / WEEE certificate numbers) for the specific Lenovo SKU used as the CID. |
+| G-07 / G-17 | Hardware-side attestations + regulatory certifications | §8a | **Edison → Bhavani** | OEM org-level attestations (SOC 2 / ISO 27001 at Lenovo) and specific certificate numbers / Declaration-of-Conformity documents. **Partial answer 2026-06-03:** the SE10n Gen 2 datasheet supplies the certification *list* (CE, FCC Class B, RoHS, REACH, WEEE, MIL-STD-810H, BSMI, CCC, CB, ErP Lot 6, Low Halogen, TED — note no UL); cert numbers/DoC and org-level attestations still outstanding. |
 | G-18 | TPM 2.0 + measured-boot posture | §8c | **Alok** | Confirm whether the CID hardware exposes TPM 2.0 and whether measured boot is used. (Secure Boot is confirmed **disabled**.) |
 | G-20 | Modernized Hub VPC architecture diagrams | §10 | **Sunil** | Re-author the four drawio diagrams in a current tool and produce publication-ready exports. |
 | G-03 (sub) | Vulnerability-disclosure intake channel | §7e | **PM / Security** | Documented address/channel for customers and third-party researchers to report suspected vulnerabilities, plus acknowledgement and response timelines. OLAC-5819 noted the broken "Contact Support" email; needs a working replacement. |
@@ -686,6 +696,7 @@ These three Jira stories were opened during Phase 1.3 and will change what the s
 | G-03 (Patch SLA / CVE) | §7e (and §12a sub-gap for intake channel) |
 | G-04 (Data residency) | §3c |
 | G-05 (Audit retention / tamper / SIEM) | §9b, §9c |
+| G-06 (Telemetry inventory + retention) | §3f-ii (canonical artifact: `source/cid-telemetry-inventory.md`) |
 | G-08 (URL allow-list narrowing) | §3b |
 | G-09 (Offline-CID notification) | §3e |
 | G-10 (AD integration) | §1c |
