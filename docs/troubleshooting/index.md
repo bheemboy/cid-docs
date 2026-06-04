@@ -22,7 +22,7 @@ The diagnostic procedures linked from this page are intended for IT administrato
 | Activation of a brand-new CID is stalling or failing with no specific error | [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) |
 | Activation, monitoring, or software updates broke after a network change | [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) |
 | You see a specific TCP, TLS, certificate, NTP, or DNS error in logs or the UI | The matching page in [All pages](#all-pages) below |
-| The CID record in **CID Hub** has the wrong MAC, or the Corporate NIC was replaced | [Beep codes on startup, Step 3 — Resolve a 3-beep pattern](/troubleshooting/beep-codes-on-startup#step-3-resolve-a-3-beep-pattern-no-matching-cid-record); then [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid) if the record must be re-added |
+| The CID record in **CID Hub** has the wrong MAC, or the Corporate NIC was replaced | See [Resolve a 3-beep pattern](/troubleshooting/beep-codes-on-startup#step-3-resolve-a-3-beep-pattern-no-matching-cid-record) in Beep codes on startup; then [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid) if the record must be re-added |
 | You need to register a brand-new CID for the first time | [Activate a CID](/howto/onboarding/activate-a-cid) (a how-to, not a troubleshooting flow) |
 
 ## All pages
@@ -42,4 +42,4 @@ Pages are listed in the order they tend to apply when reading top-down: boot-tim
 
 - [Activate a CID](/howto/onboarding/activate-a-cid)
 - [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

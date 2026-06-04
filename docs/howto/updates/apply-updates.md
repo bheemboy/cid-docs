@@ -82,7 +82,7 @@ Use this method when you want to update one specific CID, without affecting othe
 
    ![Software tab on a CID detail page with the Apply All Updates button highlighted](../../img/cid-software-page-apply-all.jpg)
 
-   The CID installs every pending component in the [installation order](#installation-order) shown above. The status of each component updates live in the **Status** column.
+   The CID installs every pending component in the [installation order](#installation-order). The status of each component updates live in the **Status** column.
 
 ## Apply a single update to one CID
 

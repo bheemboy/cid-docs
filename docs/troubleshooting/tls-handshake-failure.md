@@ -55,14 +55,14 @@ A separate condition, **SSL inspection**, also produces a TLS-layer failure but 
 
 ## Affected services
 
-A TLS handshake failure affects every CID service that communicates over HTTPS: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+A TLS handshake failure affects every CID service that communicates over HTTPS: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
 ## Prerequisites
 
 - Command-line access to the CID via SSH or direct console connection.
-- The the connectivity tester results, or the failing endpoint hostname from logs or **CID Hub** Recent Activity.
+- The connectivity tester results, or the failing endpoint hostname from logs or **CID Hub** Recent Activity.
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -140,7 +140,7 @@ curl -v https://microsoft.com
 | Only `*.agilent.com` endpoints fail | The firewall is targeting Agilent endpoints by SNI. |
 | Only one endpoint fails | A domain-specific SNI rule is in effect. The affected domain must be added to the allowlist individually. |
 
-Share the results with your network security team. For the complete list of required hostnames, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+Share the results with your network security team. For the complete list of required hostnames, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
@@ -162,7 +162,7 @@ Provide the output to your network security team along with the Step 1 capture. 
 
 ## Resolution
 
-Provide the diagnostic output from the steps above to your network security team and request the appropriate action.
+Provide the diagnostic output from the diagnostic steps to your network security team and request the appropriate action.
 
 | Recommended action | Applicable when |
 |---|---|
@@ -182,4 +182,4 @@ Provide the diagnostic output from the steps above to your network security team
 - [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
 - [DNS resolution failure](/troubleshooting/dns-resolution-failure)
 - [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

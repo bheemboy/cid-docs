@@ -42,7 +42,7 @@ To change the selected CDS version:
 
 3. Select the version you want to install and click **Save**.
 
-   A confirmation dialog summarizes the change. Review it carefully because changing the CDS version resets other selections (see below).
+   A confirmation dialog summarizes the change. Review it carefully because changing the CDS version resets other selections.
 
 4. Confirm the change.
 

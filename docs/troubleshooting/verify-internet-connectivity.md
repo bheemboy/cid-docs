@@ -47,7 +47,7 @@ A connectivity failure detected on this page can affect any CID service that dep
 - Software update delivery
 - Communication with the OpenLab server
 
-For the canonical list of endpoints the CID must reach, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+For the canonical list of endpoints the CID must reach, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
@@ -111,7 +111,7 @@ In the Cockpit left-hand navigation, open the **CID Connectivity** page.
 
 Click **Run general connectivity tests** to test every endpoint the CID requires in a single pass. This is the recommended starting point.
 
-For the full endpoint list, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+For the full endpoint list, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 | Result | Next step |
 |---|---|
@@ -163,4 +163,4 @@ If every test passes and no downstream failure-mode page applies, the failure is
 - [DNS resolution failure](/troubleshooting/dns-resolution-failure)
 - [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable)
 - [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

@@ -50,13 +50,13 @@ When TCP connections on port 443 fail outright, the most common causes are:
 | the connectivity tester reported all endpoints as reachable, but the CID still fails | TCP 443 is reachable; the failure is at the TLS or application layer. See [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
 | You have not yet identified a specific endpoint that is failing | Run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) first to identify the failing endpoint(s). |
 
-If you are working from a direct console with no browser access to the connectivity tester, substitute `nc -zv <hostname> 443` against any of the canonical endpoints listed in [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) to confirm a failing endpoint.
+If you are working from a direct console with no browser access to the connectivity tester, substitute `nc -zv <hostname> 443` against any of the canonical endpoints listed in the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements to confirm a failing endpoint.
 
 ---
 
 ## Affected services
 
-Outbound TCP/443 blocking affects every CID service that depends on the internet: activation and registration, telemetry to CID Hub, software updates, and image downloads. OpenLab server communication is unaffected by this failure mode because the OLSS server is reached over the local LAN; see [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable) for that case. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+Outbound TCP/443 blocking affects every CID service that depends on the internet: activation and registration, telemetry to CID Hub, software updates, and image downloads. OpenLab server communication is unaffected by this failure mode because the OLSS server is reached over the local LAN; see [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable) for that case. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
@@ -123,7 +123,7 @@ env | grep -i proxy
 | Result | Next step |
 |---|---|
 | No proxy variables set, and the network does not require a proxy | This step is not the cause. Continue to Step 4. |
-| No proxy variables set, but the network requires a proxy | The CID cannot route through the corporate proxy. Request that your IT team add an allowlist rule that lets the CID reach the required endpoints directly. See [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) for the full endpoint list. |
+| No proxy variables set, but the network requires a proxy | The CID cannot route through the corporate proxy. Request that your IT team add an allowlist rule that lets the CID reach the required endpoints directly. See the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements for the full endpoint list. |
 | Proxy variables are set in the environment | This is not a supported configuration. Remove the variables and apply the firewall allowlist approach above. |
 
 ---
@@ -146,7 +146,7 @@ Provide the full output to your network security team along with the connectivit
 
 ## Resolution
 
-Provide the diagnostic output from the steps above to your network security team and request the appropriate action.
+Provide the diagnostic output from the diagnostic steps to your network security team and request the appropriate action.
 
 | Recommended action | Applicable when |
 |---|---|
@@ -169,4 +169,4 @@ Provide the diagnostic output from the steps above to your network security team
 - [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
 - [DNS resolution failure](/troubleshooting/dns-resolution-failure)
 - [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

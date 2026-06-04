@@ -61,14 +61,14 @@ Common DNS failure modes:
 
 ## Affected services
 
-DNS failures affect every CID service that contacts an endpoint by name: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, NTP synchronization, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+DNS failures affect every CID service that contacts an endpoint by name: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, NTP synchronization, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
 ## Prerequisites
 
 - Command-line access to the CID via SSH or direct console connection.
-- The the connectivity tester results, or a specific failing hostname from logs or **CID Hub** Recent Activity.
+- The connectivity tester results, or a specific failing hostname from logs or **CID Hub** Recent Activity.
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -87,7 +87,7 @@ the connectivity tester already runs `nmap -v --script=resolveall --traceroute -
 | Only one endpoint fails to resolve | A specific DNS block or missing record. |
 | Intermittent failures | DNS server availability or performance issue. |
 
-If you are working from a direct console with no browser access to the connectivity tester, substitute `nslookup` against any of the canonical endpoints listed in [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) to identify failing hostnames, then return to the table above.
+If you are working from a direct console with no browser access to the connectivity tester, substitute `nslookup` against any of the canonical endpoints listed in the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements to identify failing hostnames, then return to the result table for this step.
 
 ---
 
@@ -156,7 +156,7 @@ If TCP/53 succeeds but UDP/53 (Step 3) failed, report this discrepancy to your n
 
 ## Resolution
 
-Provide the diagnostic output from the steps above to your network security team and request the appropriate action.
+Provide the diagnostic output from the diagnostic steps to your network security team and request the appropriate action.
 
 | Recommended action | Applicable when |
 |---|---|
@@ -178,4 +178,4 @@ DNS server assignment on the CID is managed through the **CID Hub** Networking p
 - [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
 - [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
 - [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

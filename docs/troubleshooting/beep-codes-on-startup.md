@@ -42,7 +42,7 @@ Each beep count corresponds to a distinct failure stage in the activation sequen
 
 ## Confirm this is the right document
 
-Count the beeps in one full repetition, then use the table below to confirm the page applies and to identify the failing stage.
+Count the beeps in one full repetition, then use the following table to confirm the page applies and to identify the failing stage.
 
 | You observe | Next step |
 |---|---|
@@ -58,7 +58,7 @@ Count the beeps in one full repetition, then use the table below to confirm the 
 
 A CID emitting a beep code has not completed the boot-and-registration sequence and cannot be managed from **CID Hub**. CDS clients cannot connect to acquire data from instruments attached to the CID.
 
-For the complete list of domains the CID requires for activation and registration, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+For the complete list of domains the CID requires for activation and registration, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 

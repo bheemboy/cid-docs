@@ -45,7 +45,7 @@ Cockpit is the host-OS administration UI for the Linux side of the CID. It exist
 
 ### CID Hub Web UI
 
-The Hub Web UI is the SaaS control plane, reached at `hub.cid.agilent.com` from any browser over HTTPS. It is not tunneled; it is a public TLS endpoint authenticated by AWS Cognito. Session, MFA, federation, and token-lifetime details are in [Security Model — User identity and authentication](./security-model#user-identity-and-authentication).
+The Hub Web UI is the SaaS control plane, reached at `hub.cid.agilent.com` from any browser over HTTPS. It is not tunneled; it is a public TLS endpoint authenticated by AWS Cognito. Authentication, session, and token-lifetime details are in [Security Model — CID Hub user identity](./security-model#cid-hub-user-identity).
 
 The Hub Web UI is also the launchpad for sessions to the Windows console and Linux Cockpit on every CID you have access to. You log in to the Hub, select a CID, retrieve the rotated `agilentac` credential, and open the corresponding console.
 

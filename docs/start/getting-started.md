@@ -24,7 +24,7 @@ The following steps must be completed before installing CIDs and connecting them
 Before a CID can activate and receive updates, it needs outbound internet access to specific Agilent and cloud service endpoints.
 
 1. Make sure that each CID has an internet connection for activation, security updates, monitoring, and other maintenance activities.
-2. Configure the network and firewalls to allow connections from the CIDs to the required internet sites (see the complete list in [system requirements](../reference/system-requirements#internet-requirements)).
+2. Configure the network and firewalls to allow connections from the CIDs to the required internet sites (see the complete list in the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements).
 3. Review the applicable [SSL certificate requirements for HTTPS](../reference/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
 
 ## Enable CID network readiness

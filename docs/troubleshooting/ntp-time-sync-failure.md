@@ -60,7 +60,7 @@ You can also arrive here from [Verify CID internet connectivity](/troubleshootin
 
 ## Affected services
 
-Sustained clock drift cascades into TLS certificate validation, AWS request signing, and **CID Hub** telemetry — every cloud-facing CID service is eventually affected. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+Sustained clock drift cascades into TLS certificate validation, AWS request signing, and **CID Hub** telemetry — every cloud-facing CID service is eventually affected. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
@@ -141,7 +141,7 @@ If this fails, see [DNS resolution failure](/troubleshooting/dns-resolution-fail
 
 ## Resolution
 
-Provide the diagnostic output from the steps above to your network security team and request the appropriate action.
+Provide the diagnostic output from the diagnostic steps to your network security team and request the appropriate action.
 
 | Recommended action | Applicable when |
 |---|---|
@@ -149,7 +149,7 @@ Provide the diagnostic output from the steps above to your network security team
 | Verify DNS resolution for `pool.ntp.org` | Step 4 showed DNS resolution failure |
 | Investigate upstream chrony or routing issue with Agilent Support | Step 3 left a large offset despite UDP/123 reachable and DNS resolving |
 
-For background on why `pool.ntp.org` is the only supported NTP source and how the wildcard interacts with firewalls that filter by IP, see [System requirements, Time synchronization](/reference/system-requirements#time-synchronization).
+For background on why `pool.ntp.org` is the only supported NTP source and how the wildcard interacts with firewalls that filter by IP, see the [Time synchronization](/reference/system-requirements#time-synchronization) section of System requirements.
 
 ---
 
@@ -160,4 +160,4 @@ For background on why `pool.ntp.org` is the only supported NTP source and how th
 - [TLS handshake failure](/troubleshooting/tls-handshake-failure)
 - [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
 - [DNS resolution failure](/troubleshooting/dns-resolution-failure)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

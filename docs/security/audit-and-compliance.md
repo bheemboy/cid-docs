@@ -95,7 +95,7 @@ If you operate in a regulated market, continue to rely on Agilent's OpenLab CDS 
 
 The CID Hub is delivered on AWS and inherits the controls of the underlying AWS services that host it. See [CID Hub Architecture](./cid-hub-architecture) for the service inventory and [Encryption posture](./cid-hub-architecture#encryption-posture) for the in-transit and at-rest controls.
 
-If your procurement process requires a control mapping rather than a single certificate, this documentation set is structured to be mapped directly: trust boundaries and attack surface ([Security Model](./security-model)), identity and authentication ([Security Model → User identity](./security-model#user-identity-and-authentication)), network exposure ([System Requirements → Networking](../reference/system-requirements#networking-requirements)), audit ([this page](#activity-log)), and remote-access governance ([Remote Access](./remote-access)).
+If your procurement process requires a control mapping rather than a single certificate, this documentation set is structured to be mapped directly: trust boundaries and attack surface ([Security Model](./security-model)), identity and authentication ([Security Model → CID Hub user identity](./security-model#cid-hub-user-identity)), network exposure ([System Requirements → Networking](../reference/system-requirements#networking-requirements)), audit ([this page](#activity-log)), and remote-access governance ([Remote Access](./remote-access)).
 
 ### Where laboratory records are protected at rest
 

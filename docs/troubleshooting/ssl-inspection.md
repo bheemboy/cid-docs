@@ -56,7 +56,7 @@ The supported resolution is an **SSL inspection bypass** for the affected endpoi
 
 ## Affected services
 
-SSL inspection affects every CID service that communicates over HTTPS to external cloud endpoints: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see [System requirements, Internet requirements](/reference/system-requirements#internet-requirements).
+SSL inspection affects every CID service that communicates over HTTPS to external cloud endpoints: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
@@ -130,7 +130,7 @@ curl -v --insecure https://<hostname>
 
 ## Resolution
 
-The supported resolution is an **SSL inspection bypass** for every CID internet endpoint affected by inspection. Provide the diagnostic output from the steps above to your network security team and request the bypass scope identified in Step 2.
+The supported resolution is an **SSL inspection bypass** for every CID internet endpoint affected by inspection. Provide the diagnostic output from the diagnostic steps to your network security team and request the bypass scope identified in Step 2.
 
 Bypassing inspection does not weaken security for these connections: the traffic remains end-to-end encrypted using the destination server's legitimate certificate. The bypass instructs the appliance not to act as a TLS intermediary for verified Agilent and cloud service endpoints.
 
@@ -139,7 +139,7 @@ Bypassing inspection does not weaken security for these connections: the traffic
 | Configure SSL inspection bypass for `*.agilent.com` | Step 2 showed a corporate CA for Agilent endpoints |
 | Configure SSL inspection bypass for `*.amazonaws.com` | Step 2 showed a corporate CA for AWS endpoints |
 | Configure SSL inspection bypass for `*.microsoft.com` and associated Microsoft domains | Step 2 showed a corporate CA for Microsoft endpoints |
-| Configure SSL inspection bypass for all CID internet endpoints listed in [System requirements, Internet requirements](/reference/system-requirements#internet-requirements) | Step 2 showed a corporate CA across all tested domains |
+| Configure SSL inspection bypass for all CID internet endpoints listed in the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements | Step 2 showed a corporate CA across all tested domains |
 
 ---
 
@@ -151,4 +151,4 @@ Bypassing inspection does not weaken security for these connections: the traffic
 - [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
 - [DNS resolution failure](/troubleshooting/dns-resolution-failure)
 - [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
-- [System requirements, Internet requirements](/reference/system-requirements#internet-requirements)
+- [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements
