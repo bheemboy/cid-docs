@@ -66,57 +66,51 @@ The full split (what Agilent owns versus what the customer owns across all CID s
 
 ## Device identity
 
-Each CID is identified to the Hub by a unique AWS IoT Core–issued X.509 client certificate. Identity is established once at activation and maintained over the device's lifetime. It does not depend on any customer-managed PKI.
+Each CID is identified to the Hub by a unique AWS IoT Core–issued X.509 client certificate. This certificate establishes a persistent mutual TLS (mTLS) outbound connection to the AWS IoT control plane, enabling the Hub to securely communicate with the appliance without requiring inbound firewall access. Identity is established at activation and maintained over the device's lifetime.
 
 ### Activation and certificate issuance
 
 ```mermaid
 sequenceDiagram
     autonumber
+    participant Cust as Administrator
     participant CID as CID (first boot)
     participant Hub as Hub Registration API
     participant IoT as AWS IoT Core
-    CID->>Hub: POST MAC + PIN (HTTPS / TLS)
-    Hub->>Hub: Validate MAC ↔ PIN pairing
+    Cust->>Hub: Enter PIN to link device
+    CID->>Hub: Present MAC address (HTTPS / TLS)
+    Hub->>Hub: Verify MAC is linked
     Hub->>IoT: Create Thing, X.509 cert, keypair
     IoT-->>Hub: cert + private key + thing ARN
     Hub-->>CID: Activation bundle (cert, key, MQTT endpoint, hub URL)
     CID->>CID: Store cert and activation context locally
-    CID->>IoT: Open mutual-TLS MQTT (PIN no longer used)
+    CID->>IoT: Open mutual-TLS MQTT
 ```
 
-The CID ships with an 8-character alphanumeric registration code (PIN) printed on a QR sticker on the chassis. At first boot the CID contacts the Hub registration API and presents its MAC address and PIN. The Hub validates the pairing, issues a unique IoT X.509 client certificate and private key, and attaches them to a dedicated IoT Thing for that device. The Hub returns the bundle over HTTPS/TLS. The CID stores the certificate and records the activation context (cert paths, MQTT endpoint, Hub URL, thing name) locally. From that point forward the CID authenticates to AWS IoT Core using mutual TLS with that certificate. The PIN is not reused.
+The CID ships with an 8-character alphanumeric PIN code printed on a QR sticker on the chassis. An administrator enters this PIN code into the CID Hub to link the physical hardware to their account. At first boot, the CID contacts the Hub registration API and presents its MAC address. When the Hub recognizes the MAC address as linked, it issues a unique IoT X.509 client certificate and private key, and attaches them to a dedicated IoT Thing for that device. The Hub returns the bundle over HTTPS/TLS. The CID stores the certificate and records the activation context (cert paths, MQTT endpoint, Hub URL, thing name) locally. From that point forward the CID authenticates to AWS IoT Core using mutual TLS with that certificate.
+
+This initial bootstrap is designed with strict boundaries to protect the device identity:
+- **Time-limited exposure:** The activation bundle is only available during the brief window after an administrator links the PIN in the Hub and before the physical device claims it. Once claimed, the Hub rejects further activation attempts for that hardware.
+- **Immediate detectability:** If an activation bundle were somehow claimed by an unauthorized system, the legitimate physical device would immediately fail to activate and sound a local fault indicator (beep code).
+- **Instant remediation:** Deleting the CID record in the Hub permanently revokes the issued certificate, instantly neutralizing any misconfigured or rogue activation.
+- **Contained scope:** The IoT certificate secures only the Hub management control plane. It does not provide access to laboratory sample data, which flows exclusively on the local network to the customer's OpenLab Server and never through the Hub.
 
 The procedure side of this flow lives in [Activate a CID](../howto/onboarding/activate-a-cid). The data exchanged during activation is enumerated in [Data Flow & Privacy](./data-flow-and-privacy).
 
-### Certificate lifetime and rotation
+### Certificate lifecycle and revocation
 
-- **Lifetime.** Device certificates are AWS IoT Core–issued and carry the AWS default validity of approximately 50 years (about 18,262 days). This is the AWS-issued maximum and is not customer-configurable.
-- **Renewal check.** The CID agent checks the certificate synchronously at startup and on a 7-day cadence thereafter. If the certificate is expiring within the renewal window, has expired, or has been deleted, the agent triggers a rotation. Failed checks retry every 5 minutes.
-- **Rotation.** The Hub creates a new keypair and certificate, attaches it to the existing IoT Thing and policy, hands it to the CID, and only then detaches and deletes the old certificate. The CID swaps to the new credential without service interruption. If the rotation fails partway through, the Hub re-attaches the old certificate so the CID can retry on the next cycle.
-- **AWS IoT Core is the certificate authority.** Each CID's device certificate is issued and managed by AWS IoT Core. The activation and rotation flows above operate entirely within that authority.
+- **Managed lifecycle.** Device certificates are issued directly by AWS IoT Core during activation and carry AWS's default validity. The CID does not rely on customer-managed PKI or manual certificate tracking.
+- **Automated health checks.** The CID agent synchronously validates its certificate at startup and on a 7-day cadence. If a certificate is deleted from the Hub or eventually reaches its renewal window, the Hub automatically generates and attaches a new keypair and certificate. Certificates that have been manually revoked or disabled are intentionally excluded from auto-renewal.
+- **Zero-downtime replacement.** When a certificate replacement does occur, the Hub only detaches and deletes the old certificate after the CID successfully transitions to the new one, ensuring no service interruption. If a rotation attempt fails, the CID retries every 5 minutes.
+- **Instant revocation.** Because the certificate is long-lived, security relies on strict revocation capabilities. Deleting a CID record in the Hub instantly detaches the certificate from its IoT policy and signals the device to wipe its local keypair. The certificate secures only the Hub management control plane; it does not grant access to laboratory sample data.
 
-### Decommissioning and revocation
+### Decommissioning and offline devices
 
-```mermaid
-flowchart TD
-    A[Administrator clicks Delete in Hub] --> B[Hub soft-deletes CID record<br/>+ removes registration association<br/>+ signals device to reset]
-    B --> C{CID online?}
-    C -->|Yes| D[Agent reads reset signal]
-    D --> E[On next reboot:<br/>self-factory-reset]
-    E --> F[Wipe local data<br/>incl. cert + private key]
-    F --> G[Fresh-from-factory state<br/>ready for re-activation]
-    C -->|No / cert extracted| H[Contact Agilent Support]
-    H --> I[Out-of-band deactivation<br/>of cert in AWS IoT Core]
-```
+When an administrator deletes a CID from the Hub, the Hub deletes the device's record and signals the physical appliance to perform a factory reset on its next reboot. The reset wipes all local data, including the AWS IoT certificate and private key.
 
-When an administrator deletes a CID from the Hub, three things happen server-side. The CID's record is soft-deleted (so future registration API calls from that device are rejected). The device-registration association is removed (the hardware can be re-associated with a fresh PIN). Finally, the Hub signals the device to perform a factory reset via the IoT control plane.
+If a device is permanently offline before the reset signal arrives (for example, due to hardware failure, a return, or network isolation), its IoT certificate remains technically valid on the physical hardware. However, once the device's record is deleted in the Hub, the Hub rejects all API calls and management requests using that certificate.
 
-The CID agent reads the reset signal on its next reachable cycle. On the next reboot the device performs a self-factory-reset: local data is wiped, including the on-device X.509 certificate and private key. The device returns to a fresh-from-factory state ready for re-activation under a new PIN.
-
-:::warning[Lost or stolen devices: offline revocation]
-Deleting a CID record marks the device deleted in the Hub but does not automatically deactivate the certificate inside AWS IoT Core. A device that is online when it is deleted self-wipes (including the cert and key) before it can be removed from the customer's premises. For a device that was offline at the time of deletion, or where there is reason to believe the certificate and private key were extracted, contact Agilent Support to deactivate the certificate inside AWS IoT Core as an out-of-band step.
-:::
+While the Hub safely ignores connections from a deleted device, the certificate itself remains mathematically valid for raw AWS IoT connections. If your organization's compliance policy requires formal cryptographic revocation for decommissioned hardware, contact Agilent Support to deactivate the certificate directly inside AWS IoT Core.
 
 ## User identity and authentication
 
