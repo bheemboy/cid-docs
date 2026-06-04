@@ -5,11 +5,9 @@ title: "CID Hub Architecture"
 
 # <mark>CID Hub Architecture</mark>
 
-The CID Hub is the Software-as-a-Service (SaaS) control plane that activates CIDs, distributes software and configuration, mediates Agilent-support tunnels, and stores the audit trail of administrative actions. It is delivered exclusively as SaaS on AWS; there is no on-premise or air-gapped Hub. This page describes the Hub's AWS service inventory, multi-tenant isolation model, and region / residency posture. See the [How-to](../howto/onboarding/activate-a-cid) pages for the customer-facing Hub experience (Web UI, APIs). See [Data Flow & Privacy](./data-flow-and-privacy) for the data that crosses the CID ⇄ Hub boundary.
+The CID Hub is the Software-as-a-Service (SaaS) control plane that activates CIDs, distributes software and configuration, mediates Agilent-support tunnels, and stores the audit trail of administrative actions. Agilent hosts and operates the Hub as a fully managed service, and access is included with your CID purchase, so there is no Hub software for you to install, host, patch, or maintain. The Hub is not offered as installable software for on-premise or private-cloud deployment. This page describes the Hub's AWS service inventory, multi-tenant isolation model, and region / residency posture.
 
-:::note[Diagram placeholder — `hub-aws-architecture.svg`]
-Show the production Hub at a service level: customer browser → CloudFront / ALB → API Gateway → Hub backend (Registration API, Management API) → PostgreSQL RDS (private subnet) and AWS IoT Core. Side panel: Cognito user pool, S3 image buckets (origin behind CloudFront for `files.cid.agilent.com`), AWS IoT Secure Tunneling, Tunnel Server EC2 in private subnet. All in `us-east-1`. Source: `source/4.aws-architecture.drawio` (to be modernized).
-:::
+![CID Hub production service architecture, drawn bottom-up from the customer browser and CID up through the AWS services to the private-subnet data tier.](../img/hub-aws-architecture.svg)
 
 ## AWS service inventory
 
@@ -17,12 +15,15 @@ The Hub is composed of the following AWS services. All are managed by Agilent; c
 
 | Service | Role in the Hub | Customer-visible endpoint |
 |---|---|---|
-| **AWS Cognito** | User directory and authentication for the Hub Web UI. One user pool per environment, partitioned per tenant at the application layer. | `hub-ac-login.cid.agilent.com` |
-| **API Gateway + Lambda / ECS backends** | Registration API (called by CIDs at activation) and Management API (called by the Web UI). | `*.aws.agilent.com` |
-| **CloudFront + S3** | Frontend hosting for the Hub Web UI, image / software-bundle distribution to CIDs. | `hub.cid.agilent.com`, `files.cid.agilent.com` |
+| **Tunnel LB (internet-facing)** | Public entry point for browser-based remote console sessions. Terminates TLS, validates the session cookie, and forwards to the EC2 Tunnel Server in the private subnet. | `hub-ac-tunnel.cid.agilent.com` |
+| **Amazon Cognito** | User directory and authentication for the Hub Web UI. One user pool per environment, partitioned per tenant at the application layer. | `hub-ac-login.cid.agilent.com` |
+| **CloudFront / ALB** | Front-end hosting for the Hub Web UI and the content-delivery network (CDN) for software images and bundles delivered to CIDs. | `hub.cid.agilent.com`, `files.cid.agilent.com` |
+| **Amazon API Gateway** | Front door for the Hub REST APIs, routing requests to the Lambda backend. | `*.aws.agilent.com` |
 | **AWS IoT Core** | Message Queuing Telemetry Transport (MQTT) control plane for CIDs. CID ⇄ Hub commands, shadow state, status telemetry. | `*.iot.us-east-1.amazonaws.com` (see [System Requirements](../reference/system-requirements#internet-requirements) for the current hostname) |
+| **S3 image buckets** | Origin storage behind CloudFront for the software images and bundles delivered to CIDs. | Behind CloudFront (`files.cid.agilent.com`) |
+| **AWS Lambda (Hub backend)** | Serverless backend behind API Gateway: the Registration API (called by CIDs at activation) and the Management API (called by the Web UI). | Behind API Gateway (`*.aws.agilent.com`) |
 | **AWS IoT Secure Tunneling** | On-demand support tunnels to Linux Cockpit / Windows console (Agilent-support approval required). | `data.tunneling.iot.us-east-1.amazonaws.com` (Hub-initiated, CID joins outbound) |
-| **EC2 Tunnel Server** | Companion service for the support-tunnel join flow. One instance per environment, fronted by an Application Load Balancer (ALB); security group permits only the ALB ports. | `hub-ac-tunnel.cid.agilent.com` |
+| **EC2 Tunnel Server** | Companion service for the support-tunnel join flow, in the private subnet. One instance per environment, reachable only through the Tunnel LB (browser sessions) and the Management API's internal load balancer; its security group permits only the load-balancer ports. It joins the CID's tunnel outbound via AWS IoT Secure Tunneling. | Internal only (private subnet) |
 | **PostgreSQL on RDS** | Authoritative store for Hub state: customer accounts, users, CID records, software templates, and Activity Log. Encrypted at rest, deployed in a private subnet, not reachable from the public internet. | Internal only |
 
 The corresponding firewall allow-list for CIDs is in [System Requirements → Internet Requirements](../reference/system-requirements#internet-requirements).
@@ -42,7 +43,7 @@ Each update is tested against the same hardware-plus-software target the custome
 The Hub is a **multi-tenant SaaS**. Each customer organization is a separate **customer account** (tenant) on a shared set of AWS services, with isolation enforced at the application layer:
 
 - **Database scoping.** Every business object (users, CIDs, software templates, audit-log entries) carries a tenant identifier linked to the owning customer account. Backend APIs and the Web UI scope every query by the authenticated user's tenant; queries return only the calling tenant's data.
-- **AWS IoT topic scoping.** IoT topic rules and message queues are scoped per environment. CID shadow updates are routed by the IoT Thing name, which embeds the CID's tenant-scoped identifier.
+- **AWS IoT topic scoping.** IoT topic rules and message queues are scoped per environment. CID shadow updates are routed by the IoT Thing name, which is unique to each CID. Each CID record is linked in the Hub database to its owning customer account, so a CID's IoT traffic resolves to a single tenant.
 - **Cognito.** A single user pool per environment is partitioned per tenant by a tenant attribute on the user record. A user from one tenant cannot enumerate, view, or act on resources in another tenant.
 - **Agilent-internal roles.** A dedicated internal role exists for Agilent support staff. Agilent users have **view-only** access across tenants, **cannot register CIDs or servers on a customer's behalf**, and **cannot approve their own remote-access requests**. Approval requires a customer user.
 - **Activity Log scoping.** Customer users see only their own tenant's Activity Log. Agilent users with the appropriate privilege see a global view, also recorded.
