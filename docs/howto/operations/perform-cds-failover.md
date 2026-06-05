@@ -2,13 +2,15 @@
 sidebar_position: 2
 title: "Run OpenLab CDS in failover"
 sidebar_label: "Run CDS in failover"
-description: "Access the Windows VM console on a CID and continue acquiring samples when the OpenLab Server is unavailable."
+description: "Access the Windows VM console on a CID to submit and run new samples when the OpenLab Server is unavailable."
 toc_max_heading_level: 2
 ---
 
 # <mark>Run OpenLab CDS in failover mode</mark>
 
-When a CID cannot reach its OpenLab Server, the CDS Acquisition client cannot connect to the instrument the normal way. You can, however, connect to the instrument by signing in to the CID's Windows VM console directly and operating OpenLab CDS Acquisition in failover mode. This page walks you through accessing the console and starting CDS in failover.
+When a CID cannot reach its OpenLab Server, samples already running or queued on the CID continue to completion. Their data transfers to the Server once the connection is restored, and you do not need to do anything to keep that work running.
+
+You need the Windows VM console only when you must submit or queue new samples during the outage. With the Server unreachable, the CDS Acquisition client cannot reach the instrument the normal way. Instead, you sign in to the CID's Windows VM console directly and operate OpenLab CDS Acquisition in failover mode. This page walks you through accessing the console and starting CDS in failover.
 
 You will work in two places: CID Hub (from any internet-connected device, including a phone) to retrieve the current Windows VM password, and the Windows VM console on the CID itself to run CDS.
 
@@ -75,6 +77,10 @@ Browser tab showing the Windows VM console sign-in screen for a CID, with the **
 1. Sign in with the **CDS Desktop user** credentials you copied from the Administration tab.
 2. Launch **OpenLab Control Panel** from the Windows desktop. Because the OpenLab Server is unreachable, Control Panel prompts you to switch to failover mode. Accept the prompt.
 3. From Control Panel, launch **OpenLab CDS Acquisition** and continue your work.
+
+:::note
+Log out of Windows when you finish. If you close the browser tab instead, a missed keep-alive heartbeat logs you out automatically; samples already running or queued continue regardless. To return, launch the console again and sign in with the current credentials. Only one console session is active per CID at a time, so a new connection displaces any existing one. See the [Windows VM console](../../security/remote-access#windows-vm-console) section of Remote access for the full session rules.
+:::
 
 From this point on you are inside OpenLab CDS, not the CID. The **Acquisition Failover Users Guide** that ships with OpenLab CDS covers everything that happens next, including which methods and projects are available offline, restrictions on creating instruments or modifying settings, the (Q-)TOF Operational Continuity flow, audit-trail attribution for failover sessions, and how acquired results are returned to the Server. It is available from [OpenLab CDS Help](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects%2FGuides%2FOpenLAB_CDS.htm).
 
