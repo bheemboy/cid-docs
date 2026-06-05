@@ -134,6 +134,7 @@ All CID to Hub traffic lands in AWS `us-east-1`. This includes the Registration 
 - **Device registration records** (Device Registration, IoT Credentials, Configuration Data) persist for the life of the CID's enrollment in the tenant.
 - **Removal on device deletion.** When a CID is removed from the tenant, its registration record, reported-state history, and activity-log entries are deleted together.
 - **Software-download artifacts** are immutable, version-tagged objects; the CID retains only the version currently installed and the prior version available for rollback.
+
 ## See also
 
 - [Security model](./security-model): overview of the CID security architecture.
