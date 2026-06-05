@@ -3,7 +3,7 @@ sidebar_position: 3
 title: "CID Hub architecture"
 ---
 
-# <mark>CID Hub architecture</mark>
+# CID Hub architecture
 
 The CID Hub is the Software-as-a-Service (SaaS) control plane that activates CIDs, distributes software and configuration, mediates Agilent-support tunnels, and stores the audit trail of administrative actions. Agilent hosts and operates the Hub as a fully managed service, and access is included with your CID purchase, so there is no Hub software for you to install, host, patch, or maintain. The Hub is not offered as installable software for on-premise or private-cloud deployment. This page describes the Hub's AWS service inventory, multi-tenant isolation model, and region / residency posture.
 
