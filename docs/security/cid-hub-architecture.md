@@ -23,6 +23,7 @@ The Hub is composed of the following AWS services. All are managed by Agilent; c
 | **AWS IoT Core** | Message Queuing Telemetry Transport (MQTT) control plane for CIDs. CID ⇄ Hub commands, shadow state, status telemetry. | `*.iot.us-east-1.amazonaws.com` |
 | **S3 yum/RPM mirror** | Linux package mirror in `us-west-2`: OL8 third-party RPMs and ClamAV antivirus definitions for the CID's Oracle Linux host. Carries only Agilent-built OS packages, no customer or device data. Pulled directly by the CID's Linux host over HTTPS, not via CloudFront or the Hub. | `*.s3.us-west-2.amazonaws.com` |
 | **Tunnel LB** | Public entry point for browser-based remote console sessions. Terminates TLS, validates the session cookie, and forwards to the EC2 Tunnel Server in the private subnet. | `*.agilent.com` |
+| **AWS IoT Secure Tunneling** | Data plane for on-demand support tunnels to Linux Cockpit / Windows VM console. The CID joins this endpoint outbound as the tunnel destination when a Hub user starts a session; the EC2 Tunnel Server is the source side. Agilent-support sessions require approval from your organization. | `*.iot.us-east-1.amazonaws.com` |
 
 **Note:** The domains above are the wildcards used in the CID firewall allow-list; for the exact hostnames and the required ports, see the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements.
 
@@ -32,7 +33,6 @@ The Hub is composed of the following AWS services. All are managed by Agilent; c
 |---|---|---|
 | **AWS Lambda (Hub backend)** | Serverless backend behind API Gateway: the Registration API (called by CIDs at activation) and the Management API (called by the Web UI). | Behind API Gateway |
 | **S3 image buckets** | Origin storage (`us-east-1`) behind CloudFront for the software images and bundles delivered to CIDs. | Behind CloudFront |
-| **AWS IoT Secure Tunneling** | On-demand support tunnels to Linux Cockpit / Windows console (Agilent-support approval required). | Hub-initiated, CID joins outbound |
 | **Amazon CloudWatch** | Operational telemetry and monitoring for the Hub: collects logs, metrics, and alarms from the Lambda backend and the other Hub services. Used by Agilent operations to observe service health; it does not store customer business data. | Internal only (Agilent operations) |
 | **EC2 Tunnel Server** | Companion service for the support-tunnel join flow, in the private subnet. One instance per environment, reachable only through the Tunnel LB (browser sessions) and the Management API's internal load balancer; its security group permits only the load-balancer ports. It joins the CID's tunnel outbound via AWS IoT Secure Tunneling. | Internal only (private subnet) |
 | **PostgreSQL on RDS** | Authoritative store for Hub state: customer accounts, users, CID records, software templates, and Activity Log. Encrypted at rest, deployed in a private subnet, not reachable from the public internet. | Internal only |
