@@ -3,111 +3,88 @@ sidebar_position: 6
 title: "Traceability and compliance"
 ---
 
-# <mark>Traceability and compliance</mark>
+# Traceability and compliance
 
-This page describes how the CID Hub records administrative and operational events, how long those records are retained, what tamper-protection and export options exist, the patch and update logging surface, and the CID's relationship to laboratory-records compliance frameworks (21 CFR Part 11, EU GMP Annex 11).
-
-An important scoping point: the **CID is a deployment model for OpenLab CDS, not a record store for laboratory data**. Sample data is staged transiently on the CID during acquisition and persisted to the **OpenLab CDS Server**, which is the canonical record store. The Part 11 / Annex 11 audit trails, e-signatures, and record retention that those frameworks require are properties of **OpenLab CDS**, not of the CID. The traceability surface this page describes is the **Hub's administrative activity log** (who activated, configured, patched, accessed, or decommissioned which CID) and is separate from CDS-layer record traceability.
+This page describes how the CID Hub records administrative and operational events, how long those records are retained, what tamper-protection exists, and how software changes are logged across their lifecycle. The page also discusses how the CID relates to laboratory-records compliance frameworks.
 
 ## Activity Log
 
-The CID Hub records administrative and operational activity in an **Activity Log** that is the single authoritative source for "who did what, when, to which CID."
+The CID Hub records administrative and operational activity in an Activity Log that is the single authoritative source for "who did what, when, to which CID."
 
-| Column | Notes |
-|---|---|
-| Date / Time | Start time to one-second precision; ordering preserved to millisecond. |
-| User | Displayed as "Full Name (USERID)". |
-| Description | Human-readable event description. |
-| Reason | Mandatory free-text reason for changes to critical fields (see [Reason-for-change](#reason-for-change-on-critical-fields)). |
-| Event Category | One of: Additional Hubs, Authentication, CID Activation, CID Administration, CID Device, CID Networking, CID Software, CID Summary, Customer, OpenLab Server Software, OpenLab Server Summary, Software Library. |
-| Level | Severity / classification of the event. |
+Logging is automatic and not optional. Every change a user or the system makes is recorded as it happens; there is no setting that turns logging off and no action that bypasses it. When a user modifies an existing entity in the Hub or performs an administrative action on a CID, the Hub also requires a reason for the change before it is applied.
 
-The Activity Log you see is scoped to your own account; every entry already belongs to it.
+Each entry captures the event timestamp, the acting user, a description of the event, a reason for changes to critical fields, an event category, and a severity level. Together these make every recorded action attributable, time-ordered, and explainable. For the on-screen columns, the full set of category and severity values, and how to view, sort, and filter them, see [View activity logs](../howto/monitoring/view-activity-logs).
 
-Recorded event classes include:
+Logging spans every class of administrative and operational event:
 
-- **Authentication**. Logins, explicit logouts, inactivity logouts, session-expiry logouts, sign-in via continue page.
-- **User administration**. User add, remove, edit, password reset, invitation.
-- **CID lifecycle**. Activation, registration, decommissioning, account move.
-- **CID configuration**. Network changes, certificate operations, credential rotation.
-- **Software and patching**. Software downloads, installs, upgrades, removals. Each Windows KB article is logged as its own entry.
-- **Remote access**. Agilent-support request, approval or rejection, session start, session termination, authorization expiry.
-- **Failure / rollback**. Including the AIC-side rollback log entries when an update could not be applied.
+- **Authentication**. Logins, logouts, inactivity logouts, and session-expiry logouts.
+- **User and account administration**. User add, remove, edit, password reset, and account edits.
+- **CID activation and lifecycle**. Activation, registration, deletion, factory reset, and CID summary changes.
+- **CID administration**. **Allow Changes** toggling, software-inheritance changes, and other administrative actions on a CID.
+- **CID networking**. NIC settings (IP, gateway, DNS, subnet) changes.
+- **Certificate authorities**. Certificate Authority operations (adding, updating, and removing trusted certificate authorities).
+- **Software and patching**. Changes to OS, CDS version, driver, and add-on selections. Software downloads, installs, upgrades, and removals on the CID.
+- **OpenLab Server**. Registration and editing of OpenLab Servers.
+- **Remote access**. Agilent-support request, approval or rejection, session start, and session termination.
+- **Failure and rollback**. Failed downloads, installs, removals, and commands, including the rollback entries on the Analytical Instrument Controller (AIC) when an update could not be applied.
 
-Sensitive values (administrative credentials, service secrets, and connection keys) are **masked with `****`** in Activity Log views. DNS server addresses are similarly sanitized.
+Sensitive values (administrative credentials, service secrets, and connection keys) are masked with `****` in Activity Log views.
 
-## Reason-for-change on critical fields
+### Reason for change
 
-The Hub enforces a **mandatory reason-for-change** on administrative operations. Most actions on a CID's administration pages prompt you to enter a reason before the change is applied. Examples include:
+The Hub requires a reason whenever a user changes a critical field of an existing entity or performs an administrative action on a CID. The Hub prompts for the reason before the change is applied, and the change does not proceed until one is entered. Examples include:
 
-- Editing a CID.
+- Editing CID configuration.
 - Editing a registered OpenLab Server.
-- Other administrative changes the Hub designates as critical for traceability.
+- Accessing the Linux Cockpit or the OpenLab CDS Desktop.
+- Administrative actions such as rebooting the CID.
 
-The reason text is recorded alongside the user identity and timestamp in the Activity Log, supporting traceability requirements that compliant laboratories typically apply to administrative changes.
+The reason text is recorded alongside the user identity and timestamp in the Activity Log, so any administrative change can later be traced to who made it and why. Events the system generates on its own, such as authentication events, carry a system-generated reason rather than a user-entered one.
 
-## Integrity of Activity Log entries
+### Integrity
 
-Activity Log entries are stored in the Hub's database (RDS, encrypted at rest, deployed in a private subnet that is not reachable from the public internet). The Hub UI and APIs expose Activity Log entries as **append-only** — entries can be searched and viewed but not edited or deleted. Access to the underlying database is restricted by AWS account controls and role-based permissions.
+Activity Log entries are stored in the Hub's database (RDS, encrypted at rest, deployed in a private subnet that is not reachable from the public internet). The Hub UI and APIs expose Activity Log entries as *append-only*: entries can be searched and viewed but not edited or deleted. Access to the underlying database is restricted by AWS account controls and role-based permissions.
 
-## Retention
+### Retention
 
 The Activity Log is stored centrally in the Hub's database (RDS, encrypted at rest).
 
-- **Online retention: at least 7 years**. The Hub-side Activity Log is retained online (searchable from the Hub UI) for a minimum of seven years.
-- **Per-CID local logs** on the device itself are operational diagnostic logs, not the authoritative activity record; the Hub Activity Log is the source of truth.
+- **Online retention**. The Hub-side Activity Log is retained online (searchable from the Hub UI) for a minimum of 7 years.
+- **Per-CID local logs**. The logs on the device itself are operational diagnostic logs, not the authoritative activity record; the Hub Activity Log is the source of truth.
 
-## Activity Log export
+### Logging across the software-change lifecycle
 
-You can search, filter, and view your tenant's Activity Log entries directly in the Hub UI.
+Most administrative actions, such as editing CID configuration, toggling **Allow Changes**, or rebooting a CID, produce a single Activity Log entry at the moment they happen. Software changes are different: they unfold over time and are logged at each stage, so one change to a CID's software produces a sequence of related entries rather than a single record.
 
-When you need the Activity Log delivered as a file (for a compliance review, a regulatory request, or offline retention), **Agilent performs the export on demand** and delivers the tenant-scoped output. Place requests through standard Agilent support channels.
+Each stage is recorded in the Activity Log:
 
-## Patch and update logging
+1. **Change request**. Administrator selects a software version. Recorded with the acting user, the timestamp, and a description of the action.
+2. **Download**. The CID downloads the bits from the Hub. The completed download is recorded automatically as a system-generated entry, and failed download attempts are logged as well.
+3. **Install request**. Administrator initiates the installation when ready. Recorded with the acting user, the timestamp, and a description of the action.
+4. **Install**. The CID installs the component. On success, the active version on the Software page is updated. The installation is recorded automatically as a system-generated entry.
+5. **Failure and rollback**. A failed step is logged, followed by a rollback entry that restores the previously active version.
 
-Patching of the CID is mediated entirely by the Hub, and every step is captured in the Activity Log:
-
-- **Windows VM updates**. Each KB article applied to the embedded Windows 11 IoT VM is logged as its own download entry and install entry, separately, so a reviewer can reconstruct exactly which KBs are present on a given CID at a given date.
-- **Linux host updates**. Linux package updates delivered from the Agilent-published channel are logged at the update-bundle level.
-- **Driver updates**. Driver installs initiated by the Hub (post-registration driver tasks and subsequent driver upgrades) are logged per driver and per CID.
-- **CDS upgrades**. Bundle-level upgrades to OpenLab CDS on the CID are logged.
-
-Privileges to import Windows updates into the Hub's update library and to push them to CIDs are gated by separate roles, both recorded in the Activity Log.
-
-## Patch policy and service availability
-
-The contractual service level for the CID Hub is **99% annual System Availability**, defined in the CID Hub end-user licence agreement. Patch delivery follows the published release cadence: Linux host updates, Windows VM updates, driver updates, and CDS upgrades are released multiple times per year through the Hub.
-
-The CID's exposure-reduction posture is structural: the device has no inbound internet exposure (see the [Attack surface](./security-model#attack-surface) section of Security model), the embedded Windows VM is an appliance OS with daily-rotated administrative credentials, and Agilent-support tunnel sessions require per-session approval (see the [AWS IoT Secure Tunneling](./remote-access#aws-iot-secure-tunneling) section of Remote access). Vulnerability reports for the CID or the CID Hub should be sent through standard **Agilent support channels**.
+Because each stage is timestamped and attributable, a reviewer can reconstruct exactly which software versions were selected, applied, or rolled back on a given CID, and when.
 
 ## Compliance posture
 
+A CID hosts the OpenLab CDS AIC software in a managed Windows VM, the same software a traditional AIC PC runs. Since a CID runs the identical OpenLab CDS AIC software over the same acquisition-to-server path, deploying CDS on a CID does not change the documented CDS Part 11 / Annex 11 posture.
+
 ### 21 CFR Part 11 / EU GMP Annex 11
 
-The CID does **not** alter the 21 CFR Part 11 / EU GMP Annex 11 posture of OpenLab CDS.
+The regulated records and the controls around them are properties of OpenLab CDS:
 
-- **Laboratory records** (chromatograms, sequence runs, e-signatures on results, analyst attribution) live on the **OpenLab CDS Server**. The Part 11 / Annex 11 audit trails, e-signature, record-retention, and validation evidence that those frameworks require are properties of **OpenLab CDS**, governed by Agilent's existing regulatory-position documentation for OpenLab CDS.
-- The CID itself is a **deployment model** for the CDS instrument-controller workload. Running CDS on a CID, rather than on a customer-owned AIC PC, does not change which system creates, signs, or stores the Part 11 records.
-- The Hub-side **Activity Log** described above covers *administrative* events (who activated, patched, configured, or accessed the CID). It complements, but does not replace, the CDS-side Part 11 audit trail.
+- The AIC controls instruments and acquires data; it is not where the regulated laboratory records live. As soon as they are ready, acquired data is transferred to the OpenLab CDS Server, which holds the central records that 21 CFR Part 11 and EU GMP Annex 11 govern.
+- The Part 11 / Annex 11 audit trails, e-signature, record-retention, and validation evidence that those frameworks require are properties of OpenLab CDS, governed by Agilent's existing regulatory-position documentation for OpenLab CDS.
+- The CID is designed as a drop-in AIC replacement: it runs the same OpenLab CDS software and passes the same instrument-controller validation tests recommended for an AIC, so your established CDS validation and compliance approach continues to apply unchanged.
+- The Hub-side Activity Log described above covers *administrative* events (who activated, patched, configured, or accessed the CID). It complements, but does not replace, the CDS-side Part 11 audit trail.
 
-If you operate in a regulated market, continue to rely on Agilent's OpenLab CDS Part 11 / Annex 11 documentation for the laboratory-records compliance position, and use the Hub Activity Log as the administrative-controls traceability surface for the instrument-controller layer.
-
-### Security framework alignment
-
-The CID Hub is delivered on AWS and inherits the controls of the underlying AWS services that host it. See [CID Hub architecture](./cid-hub-architecture) for the service inventory and the [Encryption posture](./cid-hub-architecture#encryption-posture) section for the in-transit and at-rest controls.
-
-If your procurement process requires a control mapping rather than a single certificate, this documentation set is structured to be mapped directly: trust boundaries and attack surface ([Security model](./security-model)), identity and authentication (the [CID Hub user identity](./security-model#cid-hub-user-identity) section of Security model), network exposure (the [Networking requirements](../reference/system-requirements#networking-requirements) section of System requirements), traceability ([this page](#activity-log)), and remote-access governance ([Remote access](./remote-access)).
-
-### Where laboratory records are protected at rest
-
-Laboratory records are protected at rest on the **OpenLab CDS Server**, which is the canonical store for analytical data, electronic records, and e-signatures. The CID stages sample data transiently to local disk during acquisition and then persists it to the CDS Server. The CDS Server is the appropriate point for at-rest protection of laboratory records under your existing CDS-side controls.
-
-Hub-side data is encrypted at rest on AWS (RDS, S3, Cognito-managed credential material), as described in the [Encryption posture](./cid-hub-architecture#encryption-posture) section of CID Hub architecture.
+As with any AIC, validating your deployed analytical system remains your organization's responsibility.
 
 ## See also
 
 - [Security model](./security-model): trust boundaries, attack surface, device and user identity.
 - [CID Hub architecture](./cid-hub-architecture): where the Activity Log lives, encryption posture, region.
-- [Data flow and privacy](./data-flow-and-privacy): what crosses the CID ⇄ Hub boundary, including the activity-event stream.
+- [Data flow and privacy](./data-flow-and-privacy): what crosses between the CID and the Hub, including the activity-event stream.
 - [Remote access](./remote-access): Agilent support session approval, termination, and activity-log surface.
 - [Shared responsibility](./security-model#shared-responsibility): what stays your responsibility (CDS-side records, OpenLab Server, instrument LAN).

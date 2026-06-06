@@ -45,7 +45,7 @@ Both views use the same column controls.
 The available filters are:
 
 - **Date/Time**. Filter by a start and end date. Dates use your local timezone.
-- **User**. Case-insensitive text search. The literal value `SYSTEM` matches entries written by CID Hub itself rather than by a user.
+- **User**. Case-insensitive text search; the column shows each user as "Full Name (USERID)". The literal value `SYSTEM` matches entries written by CID Hub itself rather than by a user.
 - **Description**. Case-insensitive text search. The text you type must appear in the description exactly, including punctuation. For example, `created tom` does not match `Created new CID: tom-cid-1` because of the colon; `created` does.
 - **Reason**. Case-insensitive text search over the reason a user typed when making a change. Entries written automatically by CID Hub show `System generated entry` in this column.
 - **Category**. Select one or more categories to display.

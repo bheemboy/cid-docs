@@ -47,6 +47,10 @@ Beyond identity, control, and traceability, the Hub is the channel through which
 
 Each update is tested against the same hardware-plus-software target the customer is running. Customers benefit from a delivery channel where every payload has already been exercised on the device stack it will land on.
 
+## Service availability
+
+The CID Hub carries a contractual service level of 99% annual System Availability, defined in the CID Hub end-user licence agreement.
+
 ## Multi-tenancy and isolation
 
 The Hub is a **multi-tenant SaaS** platform: many customer organizations share one set of AWS services, with each organization isolated as a separate **customer account** (tenant) at the application layer:
