@@ -138,5 +138,5 @@ All CID to Hub traffic lands in AWS `us-east-1`. This includes the Registration 
 ## See also
 
 - [Security model](./security-model): overview of the CID security architecture.
-- [Audit and compliance](./audit-and-compliance): Activity Log surface, capture cadence, and review workflow.
+- [Traceability and compliance](./traceability-and-compliance): Activity Log surface, capture cadence, and review workflow.
 - [Internet requirements](../reference/system-requirements#internet-requirements): firewall allow-list for CID to Hub connectivity.

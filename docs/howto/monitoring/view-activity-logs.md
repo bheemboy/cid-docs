@@ -81,6 +81,6 @@ Activity Log entries persist after a CID is deleted, so the history for a remove
 
 - [View CIDs](view-cids): use the CIDs list to find the CID you want to inspect.
 - [Configure software exceptions](../setup/configure-software-exceptions): a typical source of `CID Software` entries.
-- [Audit and compliance](../../security/audit-and-compliance): what is captured in the Activity Log, retention, and tamper protection.
+- [Traceability and compliance](../../security/traceability-and-compliance): what is captured in the Activity Log, retention, and tamper protection.
 
 

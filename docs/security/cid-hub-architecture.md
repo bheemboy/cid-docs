@@ -84,5 +84,5 @@ The Hub services above are **Agilent-operated**. Customers do not need to deploy
 - [Security model](./security-model): trust boundaries between corporate LAN, CID, and Hub; device identity (X.509) and user identity (Cognito).
 - [Data flow and privacy](./data-flow-and-privacy): nine-category inventory of what crosses the CID ⇄ Hub boundary, retention, and what does not transit the Hub.
 - [Remote access](./remote-access): Windows console, Linux Cockpit, and the Agilent-support tunnel flow that uses AWS IoT Secure Tunneling.
-- [Audit and compliance](./audit-and-compliance): Activity Log retention, integrity, and the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11.
+- [Traceability and compliance](./traceability-and-compliance): Activity Log retention, integrity, and the CID's relationship to 21 CFR Part 11 and EU GMP Annex 11.
 - [System requirements](../reference/system-requirements): the customer-facing firewall allow-list and the shared-responsibility table.

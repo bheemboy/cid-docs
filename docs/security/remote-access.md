@@ -61,7 +61,7 @@ AWS IoT Secure Tunneling is the AWS service that carries an outside-the-network 
   - An Agilent user cannot approve any request, including their own; approval comes only from your account.
   - You can end an in-progress Agilent session at any time from the Hub, and the Agilent user can close their own.
   - Closing a session expires the authorization; re-access requires a fresh approval.
-- **Recorded**. Every request, approval, session, and termination is recorded in the CID Hub Activity Log, scoped per tenant. See [Audit and compliance](./audit-and-compliance) for retention, export, and entry-integrity details.
+- **Recorded**. Every request, approval, session, and termination is recorded in the CID Hub Activity Log, scoped per tenant. See [Traceability and compliance](./traceability-and-compliance) for retention, export, and entry-integrity details.
 - **Brokered**. The browser never connects to the CID directly. An Agilent-operated service in the Hub joins the tunnel on the browser's behalf and relays the session to the Windows VM console or Cockpit. That service runs in a private subnet and is described in the [AWS service inventory](./cid-hub-architecture#aws-service-inventory) section of CID Hub architecture.
 
 The steps for approving or ending a session are in the [Approve or end an Agilent support session](../howto/operations/cid-administration#approve-or-end-an-agilent-support-session) section of Administer a CID.
@@ -80,7 +80,7 @@ For the symptoms of blocking each endpoint, see the [Behavior when an endpoint i
 
 - [Security model](./security-model): trust boundaries, attack surface, device and user identity.
 - [CID Hub architecture](./cid-hub-architecture): Tunnel Server and AWS IoT Secure Tunneling in the broader Hub topology.
-- [Audit and compliance](./audit-and-compliance): Activity Log retention and export.
+- [Traceability and compliance](./traceability-and-compliance): Activity Log retention and export.
 - [Data flow and privacy](./data-flow-and-privacy): what does and does not cross the CID-to-Hub boundary outside support sessions.
 - [Internet requirements](../reference/system-requirements#internet-requirements): the firewall allow-list that includes the IoT tunneling endpoint.
 - [Administer a CID](../howto/operations/cid-administration): procedure for approving and ending Agilent sessions.
