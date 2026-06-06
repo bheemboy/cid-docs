@@ -164,7 +164,7 @@ The Windows VM reaches these endpoints through the Linux host via NAT on the Hou
 
 | Domain | Direction | Port (Protocol) | Purpose |
 |---|---|---|---|
-| `*.pool.ntp.org` | Outbound | 123 (Network Time Protocol (NTP), UDP) | Public NTP pool used by the CID's chrony service. Accurate time is required for TLS certificate validation, AWS IoT Core authentication, and audit-log timestamps. |
+| `*.pool.ntp.org` | Outbound | 123 (Network Time Protocol (NTP), UDP) | Public NTP pool used by the CID's chrony service. Accurate time is required for TLS certificate validation, AWS IoT Core authentication, and activity-log timestamps. |
 
 **Pool peers rotate.** `pool.ntp.org` returns rotating A records, and the underlying servers and IPs change continuously. The wildcard remains stable for firewalls filtering by FQDN. For firewalls filtering by IP, permitting UDP/123 to the wildcard FQDN is preferred over maintaining a list of pool IPs. To see the peers the CID has currently selected, run `chronyc sources` on the CID.
 
@@ -194,5 +194,5 @@ Security on a CID deployment is a shared responsibility between Agilent and the 
 - **Update authorization.** Authorize when Agilent-delivered updates (Linux, Windows, drivers, CDS) are applied within your change-management window, and confirm via the activity log that they landed.
 - **CDS client PCs and traditional AICs.** OS patching, anti-malware, screen-lock policy, password-cache policy, accurate system clock, and physical access: CID Hub does not manage these systems.
 - **Sample-data retention and backup.** The true record of sample data lives on the OpenLab CDS Server, which is customer-operated and customer-backed-up. Agilent does not back up CID-local CDS data.
-- **Audit-log review.** Incorporate the CID Hub activity log into your own monitoring, review, or SIEM workflow.
+- **Activity-log review.** Incorporate the CID Hub activity log into your own monitoring, review, or SIEM workflow.
 - **Approval of Agilent support requests.** When an Agilent engineer requests remote access to a CID for troubleshooting, a Hub user at the customer site must approve or decline the request and close the session when work is complete.

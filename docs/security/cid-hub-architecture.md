@@ -5,7 +5,7 @@ title: "CID Hub architecture"
 
 # CID Hub architecture
 
-The CID Hub is the Software-as-a-Service (SaaS) control plane that activates CIDs, distributes software and configuration, mediates Agilent-support tunnels, and stores the audit trail of administrative actions. Agilent hosts and operates the Hub as a fully managed service, and access is included with your CID purchase, so there is no Hub software for you to install, host, patch, or maintain. The Hub is not offered as installable software for on-premise or private-cloud deployment. This page describes the Hub's AWS service inventory, multi-tenant isolation model, and region / residency posture.
+The CID Hub is the Software-as-a-Service (SaaS) control plane that activates CIDs, distributes software and configuration, mediates Agilent-support tunnels, and stores the activity log of administrative actions. Agilent hosts and operates the Hub as a fully managed service, and access is included with your CID purchase, so there is no Hub software for you to install, host, patch, or maintain. The Hub is not offered as installable software for on-premise or private-cloud deployment. This page describes the Hub's AWS service inventory, multi-tenant isolation model, and region / residency posture.
 
 ![CID Hub production service architecture, drawn bottom-up from the customer browser and CID up through the AWS services to the private-subnet data tier.](../img/hub-aws-architecture.svg)
 
@@ -39,7 +39,7 @@ The Hub is composed of the following AWS services. All are managed by Agilent; c
 
 ## Software delivery from the Hub
 
-Beyond identity, control, and audit, the Hub is the channel through which Agilent delivers a tested software stack to every CID in the field. Updates are produced and validated centrally and then made available to customers through the Hub:
+Beyond identity, control, and traceability, the Hub is the channel through which Agilent delivers a tested software stack to every CID in the field. Updates are produced and validated centrally and then made available to customers through the Hub:
 
 - **Linux and Windows OS updates.** Microsoft KB articles for the embedded Windows 11 VM and Linux package updates for the Oracle Linux host are vetted by Agilent against the CID stack. Approved updates are provisioned for customer environments through the Hub.
 - **OpenLab CDS releases.** New CDS releases are published to the Hub after testing the corresponding Windows VM image on standard CID hardware in a laboratory setting.
@@ -51,7 +51,7 @@ Each update is tested against the same hardware-plus-software target the custome
 
 The Hub is a **multi-tenant SaaS** platform: many customer organizations share one set of AWS services, with each organization isolated as a separate **customer account** (tenant) at the application layer:
 
-- **Database scoping.** Every business object (users, CIDs, software templates, audit-log entries) carries a tenant identifier linked to the owning customer account. Backend APIs and the Web UI scope every query by the authenticated user's tenant; queries return only the calling tenant's data.
+- **Database scoping.** Every business object (users, CIDs, software templates, activity-log entries) carries a tenant identifier linked to the owning customer account. Backend APIs and the Web UI scope every query by the authenticated user's tenant; queries return only the calling tenant's data.
 - **AWS IoT topic scoping.** IoT topic rules and message queues are scoped per environment. CID shadow updates are routed by the IoT Thing name, which is unique to each CID. Each CID record is linked in the Hub database to its owning customer account, so a CID's IoT traffic resolves to a single tenant.
 - **Cognito.** A single user pool per environment is partitioned per tenant by a tenant attribute on the user record. A user from one tenant cannot enumerate, view, or act on resources in another tenant.
 - **Agilent-internal roles.** A dedicated internal role exists for Agilent support staff. Agilent users have **view-only** access across tenants, **cannot register CIDs or servers on a customer's behalf**, and **cannot approve remote-access requests**.
@@ -73,7 +73,7 @@ The CID's network reach is constrained to these endpoints by the firewall allow-
 
 - **Data in transit.** All CID ⇄ Hub traffic is TLS-encrypted: HTTPS for REST and file transfer, MQTT-over-TLS for the IoT control plane, TLS for IoT Secure Tunneling.
 - **Data at rest.** The PostgreSQL RDS instance is encrypted at rest. S3 buckets behind CloudFront use server-side encryption. Cognito stores its credential material under AWS-managed encryption.
-- **Sensitive fields.** Hub-managed sensitive values (OpenLab Server passwords, rotated device credentials) are encrypted end-to-end: at rest, in the AWS IoT shadow, and in transit. They are masked (`****`) in management-API responses and audit-log views.
+- **Sensitive fields.** Hub-managed sensitive values (OpenLab Server passwords, rotated device credentials) are encrypted end-to-end: at rest, in the AWS IoT shadow, and in transit. They are masked (`****`) in management-API responses and activity-log views.
 
 ## Operational boundary
 

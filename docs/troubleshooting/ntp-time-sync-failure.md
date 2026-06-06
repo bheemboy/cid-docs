@@ -37,7 +37,7 @@ Accurate system time is a hard dependency for several CID functions:
 
 - **TLS certificate validation.** Certificates carry validity periods. A clock skewed by more than a few minutes can cause valid certificates to be rejected as expired or not-yet-valid.
 - **AWS request signing.** AWS API and AWS IoT requests include a timestamp that must fall within a defined tolerance of actual time. Requests outside this window are rejected by AWS.
-- **Log correlation.** Inaccurate timestamps complicate troubleshooting, audit reconstruction, and incident review.
+- **Log correlation.** Inaccurate timestamps complicate troubleshooting, event reconstruction, and incident review.
 
 ---
 

@@ -123,4 +123,4 @@ Every approval, decline, and session-close action is recorded in the CID's [acti
 - [View activity logs](../monitoring/view-activity-logs): review the history of restarts, recoveries, deletions, and remote access approvals on a CID.
 - [Apply updates](../updates/apply-updates): install pending software changes after a recovery.
 - [Activate a CID](../onboarding/activate-a-cid): register the CID with CID Hub again after a factory reset.
-- [Remote access and support tunnels](../../security/remote-access): trust model, approval flow, session termination, and audit surface for the Agilent support tunnel.
+- [Remote access and support tunnels](../../security/remote-access): trust model, approval flow, session termination, and traceability surface for the Agilent support tunnel.

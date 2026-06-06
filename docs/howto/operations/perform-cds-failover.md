@@ -88,4 +88,4 @@ From this point on you are inside OpenLab CDS, not the CID. The **Acquisition Fa
 
 - [Administer a CID](./cid-administration): retrieve credentials, restart services, and run recovery actions from the Administration tab.
 - [View activity logs](../monitoring/view-activity-logs): review the CID's recent activity around the outage.
-- [Remote access and support tunnels](../../security/remote-access): how the tunneled **Remote** option to the Windows VM console is brokered and audited.
+- [Remote access and support tunnels](../../security/remote-access): how the tunneled **Remote** option to the Windows VM console is brokered and logged.
