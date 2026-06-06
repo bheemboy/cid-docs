@@ -9,7 +9,7 @@ slug: /
 
 The Agilent Connected Instrument Device (CID) is a pre-configured instrument controller for OpenLab CDS. Each CID ships ready to configure for your lab; the OpenLab Instrument Controller, instrument drivers, and add-ons for your specific instrument are deployed through CID Hub. Your CDS clients connect to the CID over the corporate network to operate the attached instrument, and you manage every CID centrally from CID Hub. Each CID controls one instrument; the 1:1 pairing keeps the tested factory configuration intact for the life of the deployment.
 
-![CID deployment layout showing CDS clients on the corporate LAN connecting to the CID, the CID's outbound link to CID Hub, and the CID's Instrument NIC connecting to the attached instrument.](./img/layout-1.jpg)
+![CID deployment layout linking CDS clients, the CID, CID Hub, and the attached instrument.](./img/layout-1.jpg)
 
 CID Hub is an invitation-only web application. When your organization purchases CIDs, Agilent creates your account and registers the initial administrators. Those administrators receive an email invitation from CID Hub \<no-reply@hub.cid.agilent.com\> to activate their accounts and set their passwords; from there they can invite additional administrators and users who need access.
 
