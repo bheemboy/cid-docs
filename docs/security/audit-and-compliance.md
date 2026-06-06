@@ -77,7 +77,7 @@ Privileges to import Windows updates into the Hub's update library and to push t
 
 The contractual service level for the CID Hub is **99% annual System Availability**, defined in the CID Hub end-user licence agreement. Patch delivery follows the published release cadence: Linux host updates, Windows VM updates, driver updates, and CDS upgrades are released multiple times per year through the Hub.
 
-The CID's exposure-reduction posture is structural: the device has no inbound internet exposure (see [Security Model → Attack surface](./security-model#attack-surface)), the embedded Windows VM is an appliance OS with daily-rotated administrative credentials, and AWS IoT Secure Tunneling sessions require per-session approval (see [Remote Access → Agilent support approval flow](./remote-access#agilent-support-approval-flow)). Vulnerability reports for the CID or the CID Hub should be sent through standard **Agilent support channels**.
+The CID's exposure-reduction posture is structural: the device has no inbound internet exposure (see the [Attack surface](./security-model#attack-surface) section of Security model), the embedded Windows VM is an appliance OS with daily-rotated administrative credentials, and Agilent-support tunnel sessions require per-session approval (see the [AWS IoT Secure Tunneling](./remote-access#aws-iot-secure-tunneling) section of Remote access). Vulnerability reports for the CID or the CID Hub should be sent through standard **Agilent support channels**.
 
 ## Compliance posture
 

@@ -3,129 +3,84 @@ sidebar_position: 5
 title: "Remote access"
 ---
 
-# <mark>Remote access</mark>
+# Remote access
 
-The CID has three remote-access surfaces: the **Windows VM console**, the **Linux Cockpit**, and the **CID Hub Web UI**. Day-to-day CDS work does not use the Windows console or Cockpit. Operators run OpenLab CDS from their own CDS-client workstations against the CID over the customer LAN.
+This page explains how remote access to a CID works and how it is controlled. It is for IT and security reviewers assessing session boundaries, approvals, and traceability, and for the CID Hub administrators and Agilent support users who operate within them.
 
-The Windows console is a break-glass desktop reserved for CDS-failover scenarios. The Linux Cockpit is a host-OS troubleshooting surface for Agilent support or customer IT. The CID Hub Web UI is the SaaS control plane that activates, configures, and patches every CID.
+The CID exposes three remote-access surfaces: the CID Hub Web UI, the Windows VM console, and Linux Cockpit. None is used for day-to-day analytical work. CDS users work from their own CDS-client systems over the corporate network.
 
-All three surfaces require authentication. The two on-CID surfaces (Windows console, Linux Cockpit) are further protected by daily-rotated credentials issued from the Hub. Any session that reaches a CID from outside the customer LAN flows through AWS IoT Secure Tunneling, is on-demand, and requires customer approval for every session.
-
-The trust model that governs these surfaces is in [Security Model — Trust boundaries](./security-model#trust-boundaries) and [Security Model — Attack surface](./security-model#attack-surface). The AWS services they rely on are catalogued in [CID Hub Architecture — AWS service inventory](./cid-hub-architecture#aws-service-inventory).
+This page is organized by access path, because the network boundary a session crosses determines the controls that apply to it. Sessions that originate inside your corporate network are handled differently from sessions that cross the public internet. The trust model behind these boundaries is in the [Trust boundaries](./security-model#trust-boundaries) and [Attack surface](./security-model#attack-surface) sections of Security model.
 
 ## Remote-access surfaces
 
-### Windows VM console
-
-The embedded Windows 11 IoT Enterprise LTSC VM hosts OpenLab CDS on the CID. In normal operation, CDS operators connect to the CID from their own CDS-client workstations over the customer LAN. They do not use the Windows console as their daily working surface.
-
-The Windows console is a break-glass surface for CDS-failover scenarios. Specifically, when a network outage interrupts the path between a CDS client and the CID, or between the CID and the OpenLab Server, an authorized user opens the browser-based console directly on the CID and continues acquisition until normal connectivity is restored. The customer-facing procedure is in [How-to — Perform CDS failover](../howto/operations/perform-cds-failover).
-
-Because it is a break-glass surface, the console is protected by the same controls that bound the rest of the CID's administrative attack surface:
-
-- It is reached as a browser-based remote desktop, served only through the CID's local reverse proxy. The console has no public-internet listener.
-- Login uses the daily-rotated `agilentac` Windows password, retrieved by an authorized customer user from the CID Hub **Administration** tab. The password is regenerated every day; a stale credential captured during one failover cannot be reused the next day.
-- Use of the console is recorded in the Hub Activity Log (who launched the console, against which CID, and when), so failover use is auditable after the fact.
-
-Session-level rules for the console:
-
-- **From inside the customer LAN.** Authorized customer users open the CID Hub Web UI, select the CID, and launch the Windows console. The session is brokered to the CID over the customer LAN and opens directly at the Windows login screen.
-- **From outside the customer LAN (Agilent support).** A support tunnel must be established first; see [Agilent support approval flow](#agilent-support-approval-flow).
-- **Concurrency.** One Windows console session per CID. A second connection displaces the first.
-- **Session liveness.** A 30-second keep-alive heartbeat runs while the tab is open. If the browser tab is closed without an explicit logout, the session auto-terminates within 60 seconds.
-
-### Linux Cockpit
-
-Cockpit is the host-OS administration UI for the Linux side of the CID. It exists exclusively as a troubleshooting surface for Agilent support or customer IT staff. It is not used for day-to-day CDS work and is not a configuration surface.
-
-- **Listener.** Cockpit is exposed only through the CID's local reverse proxy with a strict allowed-origins policy. It has no public-internet listener.
-- **Credentials for an activated CID.** The `agilentac` Cockpit password is rotated daily and retrieved from the CID Hub **Administration** tab.
-- **Credentials for an unactivated CID.** Pre-activation access uses the factory-default password issued via Agilent support. On activation, the credential is replaced and rotated.
-- **Configuration changes are not supported through Cockpit.** Any CID configuration change must go through the CID Hub so it is captured in the audit trail. Cockpit is a diagnostic and observation surface only.
+The CID Hub Web UI is a public endpoint reached over HTTPS from any network. The Windows VM console and Linux Cockpit run on the CID itself and are reached by one of the two access paths described later on this page. Each is defined once below.
 
 ### CID Hub Web UI
 
-The Hub Web UI is the SaaS control plane, reached at `hub.cid.agilent.com` from any browser over HTTPS. It is not tunneled; it is a public TLS endpoint authenticated by AWS Cognito. Authentication, session, and token-lifetime details are in [Security Model — CID Hub user identity](./security-model#cid-hub-user-identity).
+The CID Hub Web UI is the Software-as-a-Service (SaaS) control plane. It is used to activate, configure, and update CIDs, and it is the launchpad from which an authorized user opens a session to a CID's Windows VM console or Linux Cockpit. It is reached at `hub.cid.agilent.com` over HTTPS from any browser and is authenticated by AWS Cognito. It is a public Transport Layer Security (TLS) endpoint and is not tunneled. Authentication, session, and token-lifetime details are in the [CID Hub user identity](./security-model#cid-hub-user-identity) section of Security model.
 
-The Hub Web UI is also the launchpad for sessions to the Windows console and Linux Cockpit on every CID you have access to. You log in to the Hub, select a CID, retrieve the rotated `agilentac` credential, and open the corresponding console.
+### Windows VM console
 
-## AWS IoT Secure Tunneling
+The embedded Windows 11 IoT Enterprise LTSC VM hosts OpenLab CDS on the CID. The Windows VM console is reserved for CDS-failover situations: a network outage that interrupts the path between a CDS client and the CID, or between the CID and the OpenLab Server. Samples already running or queued on the CID run to completion regardless of server connectivity, and their data transfers to the OpenLab Server once the connection is restored. During such an outage, the console is needed only to submit or queue new samples. An authorized user opens the browser-based console directly on the CID and runs OpenLab CDS in failover mode. See [Run OpenLab CDS in failover mode](../howto/operations/perform-cds-failover) for the procedure.
 
-When a remote-access session must traverse the public internet, it is carried over AWS IoT Secure Tunneling rather than an inbound port opened on the CID's firewall. Every Agilent-support session uses this mechanism. The relevant properties:
+The console is served only through the CID's local reverse proxy and is not exposed to the public internet. One console session is active per CID at a time; a second connection displaces the first. You are expected to log out of Windows when you finish a session. If you instead close the browser tab, the console's keep-alive heartbeat stops and you are logged out automatically.
 
-- **On-demand, not persistent.** A tunnel exists only while an approved session is active. It is created at the start of the session and torn down at the end.
-- **Outbound-initiated.** The CID joins the tunnel by an outbound TLS connection to the AWS IoT tunneling endpoint. No inbound ports are opened on the CID's firewall. The required endpoint is listed in [System Requirements — Internet requirements](../reference/system-requirements#internet-requirements).
-- **Approval-gated.** A tunnel is created only after a customer user explicitly approves the access request in the Hub UI. Agilent users cannot approve their own requests.
-- **Brokered.** A companion service mediates the Agilent-side join to Cockpit or the Windows console. See [CID Hub Architecture — AWS service inventory](./cid-hub-architecture#aws-service-inventory).
-- **Concurrency cap.** A maximum of 10 concurrent tunnel sessions are permitted per environment across all CIDs.
+### Linux Cockpit
 
-Because the tunnel is on-demand, outbound-initiated, and approval-gated, the CID's attack surface from the public internet remains zero between sessions. See [Security Model — Attack surface](./security-model#attack-surface).
+Cockpit is the host-OS administration UI for the Linux side of the CID, the standard Linux web console. It is a troubleshooting surface for Agilent support or your IT staff, used to inspect host health and investigate activation or connectivity issues. It is not a day-to-day working surface and not a routine configuration surface once the CID is operational. It is served only through the CID's local reverse proxy under a strict allowed-origins policy and is not exposed to the public internet. All CID configuration changes are made through the CID Hub instead; Cockpit is used for diagnosis and observation only.
 
-## Agilent support approval flow
+SSH is not a remote-access surface in the model described on this page. It is addressed in the attack-surface model: see the [Attack surface](./security-model#attack-surface) section of Security model.
 
-Agilent CID support personnel have view-only access to your CIDs by default. To open the Windows console or Linux Cockpit on a specific CID, an Agilent user must request a session, and that request must be approved by an authorized customer user.
+## Access from inside your corporate network
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant A as Agilent support
-    participant H as CID Hub
-    participant C as Customer admin
-    participant T as Tunnel Server and IoT Tunneling
-    participant D as CID
+When a user's workstation is on the same corporate network as the CID, the Windows VM console and Linux Cockpit are reached directly, without crossing the public internet.
 
-    A->>H: Request remote access to CID X
-    H->>C: Pending approval notification
-    C->>H: Approve (or reject)
-    Note over C,H: Agilent cannot approve — customer approval is mandatory
-    H->>T: Open tunnel session
-    D-->>T: CID joins tunnel (outbound TLS)
-    A->>T: Launch Cockpit / Windows console
-    T->>D: Brokered session (Hub-login auth)
-    Note over A,D: Either side can terminate at any time
-    A->>H: Close session
-    H->>T: Tear down tunnel
-    H->>H: Authorization expires — next access needs new approval
-```
+- **Launched from the Hub**. An authorized user opens the CID Hub Web UI, selects the CID, and launches the console. The session is brokered to the CID over your corporate network and opens at the console's own sign-in screen.
+- **Direct connection**. The console is served over HTTPS by the CID's local reverse proxy. No inbound port is opened to the internet for LAN access.
+- **Rotated credentials**. Sign-in uses the daily-rotated local credential (shown in CID Hub as the **CDS Desktop user** and **Cockpit user**), retrieved from the CID Hub **Administration** tab. A credential captured during one session cannot be reused the next day.
+- **Authentication survives a Hub outage**. If the Hub is unreachable during an outage, the console remains reachable on the LAN at the CID's address, but it still requires the current rotated credential. The credential is obtained from CID Hub through another internet-connected device. Loss of the Hub does not remove authentication.
+- **Logged**. A console login is recorded in the CID's own operating-system logs, the same way any Windows or Linux computer records a sign-in. Sessions launched from the CID Hub **Administration** tab are additionally captured in the centralized CID Hub Activity Log.
 
-The rules behind this flow:
+## Access from outside your corporate network
 
-- **Customer approval is mandatory for every session.** There is no standing grant of access to Agilent. Each new session requires a new approval.
-- **Either side can terminate.** You can terminate an in-progress Agilent session at any time from the Hub. The Agilent user can also close their own session.
-- **Closure expires authorization.** When a session closes, the authorization to access that CID is automatically expired. Re-access requires a fresh approval cycle.
-- **Tunnel authentication uses Hub login.** The session opened over the tunnel is authenticated with the Agilent user's CID Hub login, not a local credential.
-- **Agilent users cannot approve.** An Agilent user cannot approve their own remote-access request, and cannot approve another Agilent user's request. The approval must come from a customer-side user with the appropriate role.
+When a session must reach a CID from outside your corporate network, it does not require any inbound port to be opened in your corporate firewall. It is carried over AWS IoT Secure Tunneling.
 
-The procedure for approving or rejecting these requests is in [How-to — CID administration](../howto/operations/cid-administration).
+![Browser and CID each connect outbound to AWS IoT Secure Tunneling, which relays the console session between them.](../img/remote-access-tunneling.svg)
 
-## Session controls summary
+In the diagram, thick blue lines trace the tunnel data path through the Tunnel load balancer and EC2 Tunnel Server, and dotted lines trace the control flow that opens the tunnel through API Gateway, Lambda, and IoT Core. Each arrowhead points away from the side that initiates the connection.
 
-| Control | Value |
-|---|---|
-| Tunnel persistence | On-demand only; closed when session ends |
-| Concurrent tunnel sessions | 10 per environment, across all CIDs |
-| Windows console concurrency | 1 active session per CID |
-| Windows console auto-logout | Within 60 seconds of tab close (30-second keep-alive) |
-| Approval expiry | Authorization expires on session close |
-| Credential rotation | `agilentac` Windows and Linux passwords rotated daily |
+### AWS IoT Secure Tunneling
 
-## Audit trail
+AWS IoT Secure Tunneling is the AWS service that carries an outside-the-network session to the CID over the CID's own outbound connection. The same path serves authorized users on your account and Agilent support. The controls below apply to every session; Agilent sessions carry one extra requirement: your approval.
 
-Every step of an Agilent support session is recorded in the CID Hub Activity Log:
+- **No inbound exposure**. The CID joins the tunnel by an outbound TLS connection to the AWS IoT tunneling endpoint, so no inbound port or firewall rule is required, and the CID has no inbound internet exposure between sessions. The endpoint is listed in the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements; the broader model is in the [Attack surface](./security-model#attack-surface) section of Security model.
+- **On-demand**. A tunnel exists only while a session is active. It is created at the start of the session and torn down at the end.
+- **Authenticated**. A tunnel session can only be requested by an authorized user signed in to CID Hub, and the session opened over the tunnel is authenticated with that Hub login, not a local credential.
+- **Approved (Agilent support only)**. Agilent support has view-only access to your CIDs by default. Opening a Windows VM console or Cockpit session on a CID requires an Agilent request and approval from an authorized user on your account; authorized users on your account need no approval.
+  - There is no standing grant: each session requires a new approval, scoped to the one selected CID.
+  - An Agilent user cannot approve any request, including their own; approval comes only from your account.
+  - You can end an in-progress Agilent session at any time from the Hub, and the Agilent user can close their own.
+  - Closing a session expires the authorization; re-access requires a fresh approval.
+- **Recorded**. Every request, approval, session, and termination is recorded in the CID Hub Activity Log, scoped per tenant. See [Audit and compliance](./audit-and-compliance) for retention, export, and entry-integrity details.
+- **Brokered**. The browser never connects to the CID directly. An Agilent-operated service in the Hub joins the tunnel on the browser's behalf and relays the session to the Windows VM console or Cockpit. That service runs in a private subnet and is described in the [AWS service inventory](./cid-hub-architecture#aws-service-inventory) section of CID Hub architecture.
 
-- Remote-access request created (by which Agilent user, targeting which CID).
-- Approval or rejection (by which customer user, with timestamp).
-- Session start and the surface accessed (Windows console or Linux Cockpit).
-- Session termination, and which side terminated it.
-- Authorization expiry.
+The steps for approving or ending a session are in the [Approve or end an Agilent support session](../howto/operations/cid-administration#approve-or-end-an-agilent-support-session) section of Administer a CID.
 
-The Activity Log is scoped per tenant. Customer users see their own tenant's entries. Retention, export, and entry-integrity details are in [Audit and compliance](./audit-and-compliance).
+## If the remote-access path is blocked
+
+If your firewall blocks AWS IoT Secure Tunneling, or the service is temporarily unavailable, remote console access stops cleanly. It does not fail silently, and there is no fallback that opens an inbound path into your network. The effects are contained:
+
+- **Console sessions stop**. A Windows VM console or Cockpit session launched from CID Hub either fails to open or, if one is already running, drops. There is no alternate route in.
+- **Hub management continues**. Remote console access and Hub management use different endpoints. As long as AWS IoT Core stays reachable, the CID remains connected in CID Hub even while console access is blocked.
+- **Local access is unaffected**. Acquisition and local CDS operation continue on your corporate network, and the failover console reached directly on the CID over the LAN keeps working, because neither path uses the tunnel.
+
+For the symptoms of blocking each endpoint, see the [Behavior when an endpoint is blocked](../reference/system-requirements#behavior-when-an-endpoint-is-blocked) section of System requirements.
 
 ## See also
 
-- [Security Model](./security-model) — trust boundaries, attack surface, device and user identity.
-- [CID Hub Architecture](./cid-hub-architecture) — Tunnel Server and AWS IoT Secure Tunneling in the broader Hub topology.
-- [Audit and compliance](./audit-and-compliance) — Activity Log retention and export.
-- [Data flow and privacy](./data-flow-and-privacy) — what does and does not cross the CID-to-Hub boundary outside support sessions.
-- [System Requirements — Internet requirements](../reference/system-requirements#internet-requirements) — the firewall allow-list that includes the IoT tunneling endpoint.
-- [How-to — CID administration](../howto/operations/cid-administration) — procedure for approving and revoking Agilent sessions.
+- [Security model](./security-model): trust boundaries, attack surface, device and user identity.
+- [CID Hub architecture](./cid-hub-architecture): Tunnel Server and AWS IoT Secure Tunneling in the broader Hub topology.
+- [Audit and compliance](./audit-and-compliance): Activity Log retention and export.
+- [Data flow and privacy](./data-flow-and-privacy): what does and does not cross the CID-to-Hub boundary outside support sessions.
+- [Internet requirements](../reference/system-requirements#internet-requirements): the firewall allow-list that includes the IoT tunneling endpoint.
+- [Administer a CID](../howto/operations/cid-administration): procedure for approving and ending Agilent sessions.
