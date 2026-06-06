@@ -13,25 +13,25 @@ CID Hub keeps a single account-wide log. You can read it in two ways: a **Global
 
 - You must be signed in to CID Hub.
 
-## Open the global activity log
+## Open the Global Activity Log
 
 The Global Activity Log shows every event from your account in a single list.
 
 1. In CID Hub, click **Activity Log** in the top navigation bar.
 
-   ![Global Activity Log](../../img/global-activity-log.jpg)
+   ![CID Hub Global Activity Log listing account-wide events, newest first](../../img/global-activity-log.jpg)
 
 The log opens sorted by **Date/Time**, newest first. CID Hub loads 100 entries at a time and fetches more as you scroll.
 
-## Open the activity log for one CID
+## Open the Activity Log for one CID
 
 When you only need history for a single CID, open its filtered view from the **CIDs** list.
 
 1. In CID Hub, click **CIDs** in the top navigation bar.
 2. Click the name of the CID you want to inspect.
-3. Click the **Activity Log** tab in the left-hand navigation.
+3. Select the **Activity Log** tab in the left-hand navigation.
 
-   ![CID-specific Activity Log](../../img/cid-activity-log.jpg)
+   ![Activity Log tab for a single CID, listing only events affecting that device](../../img/cid-activity-log.jpg)
 
 This view shows only the events that act on the CID you opened.
 
@@ -44,11 +44,11 @@ Both views use the same column controls.
 
 The available filters are:
 
-- **Date/Time:** Filter by a start and end date. Dates use your local timezone.
-- **User:** Case-insensitive text search. The literal value `SYSTEM` matches entries written by CID Hub itself rather than by a user.
-- **Description:** Case-insensitive text search. The text you type must appear in the description exactly, including punctuation. For example, `created tom` does not match `Created new CID: tom-cid-1` because of the colon; `created` does.
-- **Reason:** Case-insensitive text search over the reason a user typed when making a change. Entries written automatically by CID Hub show `System generated entry` in this column.
-- **Category:** Select one or more categories to display.
+- **Date/Time**. Filter by a start and end date. Dates use your local timezone.
+- **User**. Case-insensitive text search. The literal value `SYSTEM` matches entries written by CID Hub itself rather than by a user.
+- **Description**. Case-insensitive text search. The text you type must appear in the description exactly, including punctuation. For example, `created tom` does not match `Created new CID: tom-cid-1` because of the colon; `created` does.
+- **Reason**. Case-insensitive text search over the reason a user typed when making a change. Entries written automatically by CID Hub show `System generated entry` in this column.
+- **Category**. Select one or more categories to display.
   - `Additional Hubs`
   - `Authentication` (sign-in, sign-out, session expiry, role assignment)
   - `CID Activation`
@@ -61,7 +61,7 @@ The available filters are:
   - `OpenLab Server Software`
   - `OpenLab Server Summary`
   - `Software Library`
-- **Level:** Filter by severity.
+- **Level**. Filter by severity.
   - `INFO` for successful operations and user requests.
   - `WARNING` is reserved; no events currently use this level.
   - `ERROR` for failed downloads, installs, uninstalls, and commands.
@@ -81,6 +81,6 @@ Activity Log entries persist after a CID is deleted, so the history for a remove
 
 - [View CIDs](view-cids): use the CIDs list to find the CID you want to inspect.
 - [Configure software exceptions](../setup/configure-software-exceptions): a typical source of `CID Software` entries.
-- [Audit and compliance](../../security/audit-and-compliance): what is captured in the Activity Log, retention, tamper protection, and forwarding to an external SIEM.
+- [Audit and compliance](../../security/audit-and-compliance): what is captured in the Activity Log, retention, and tamper protection.
 
 
