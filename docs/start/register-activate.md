@@ -4,7 +4,7 @@ sidebar_label: "Register and activate CIDs"
 title: "Register and activate CIDs"
 ---
 
-# <mark>Register and activate CIDs</mark>
+# Register and activate CIDs
 
 Use this page to register your OpenLab Server, define its software template, add the CID to CID Hub, and configure the instrument so the CID is ready for use. This page is for the lab administrator or IT operator completing the first CID setup workflow.
 

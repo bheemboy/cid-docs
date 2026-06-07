@@ -12,7 +12,9 @@ This tutorial walks you through preparing your network environment and physicall
 The following steps must be completed before installing CIDs and connecting them to OpenLab CDS.
 :::
 
-<mark>**Prerequisites**</mark>
+## Prerequisites
+
+Before you start, make sure you have the access, hardware, and background information required for this setup.
 
 - You must have administrative access to your corporate network, firewall, DHCP, and DNS systems.
 - You need the CID hardware and power cables.
@@ -23,9 +25,9 @@ The following steps must be completed before installing CIDs and connecting them
 
 Before a CID can activate and receive updates, it needs outbound internet access to specific Agilent and cloud service endpoints.
 
-1. Make sure that each CID has an internet connection for activation, security updates, monitoring, and other maintenance activities.
+1. Confirm that each CID has an internet connection for activation, security updates, monitoring, and other maintenance activities.
 2. Configure the network and firewalls to allow connections from the CIDs to the required internet sites (see the complete list in the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements).
-3. Review the applicable [SSL certificate requirements for HTTPS](../reference/system-requirements#ssl-certificate-requirements-for-https) before proceeding.
+3. Review the [SSL certificate requirements for HTTPS](../reference/system-requirements#ssl-certificate-requirements-for-https) section of System requirements before you proceed.
 
 ## Enable CID network readiness
 
@@ -35,33 +37,36 @@ When first connected, the CID automatically obtains its network settings using D
 2. Otherwise, register the desired CID hostnames in DHCP and DNS using the device MAC address (found on the QR code label).
 3. Verify that CDS clients can resolve the CID hostnames.
 
-See [DHCP and DNS requirements](../reference/system-requirements#dhcp-and-dns-requirements) for more detail.
+See the [DHCP and DNS requirements](../reference/system-requirements#dhcp-and-dns-requirements) section of System requirements for more detail.
 
-## <mark>Connect the CID to your network</mark>
+## Connect the CID to your network
 
 With the network configured, you can now physically place and cable the CID.
 
-1. Make sure that the number and location of electrical outlets for your CIDs and instruments are planned.
-2. Place the CID next to the instrument and make sure that the device has proper ventilation during operation. Do not place CIDs on top of one another, in a sealed enclosure, or near any heat sources.
+1. Plan the number and location of electrical outlets for your CIDs and instruments.
+2. Place the CID next to the instrument.
+   Make sure that the device has proper ventilation during operation. Do not place CIDs on top of one another, in a sealed enclosure, or near heat sources.
 3. Connect the CID LAN ports:
-   a. **Corporate NIC**. Connects to the corporate LAN and provides access to the OpenLab Server and the internet.
-   b. **Instrument NIC**. Connects to the analytical instruments, either directly or through an instrument-dedicated LAN or VLAN.
+   - **Corporate NIC**. Connect this port to the corporate LAN for access to the OpenLab Server and the internet.
+   - **Instrument NIC**. Connect this port to the analytical instruments, either directly or through an instrument-dedicated LAN or VLAN.
 4. Connect the power cable and turn on the CID.
-   On startup, the CID connects to the CID Hub via the internet. If successful, it beeps three times every 30 seconds until you [add the CID to the CID Hub](register-activate#add-the-cid-to-the-cid-hub). See [Beep codes on startup](/troubleshooting/beep-codes-on-startup) for the meaning of other beep patterns.
+   On startup, the CID connects to CID Hub over the internet. If successful, it beeps 3 times every 30 seconds until you complete [Add the CID to CID Hub](register-activate#add-the-cid-to-cid-hub). See [Beep codes on startup](/troubleshooting/beep-codes-on-startup) for the meaning of other beep patterns.
 
-![Deployment layout: CDS clients and CID Hub reach the CID via the Corporate NIC; the instrument via the Instrument NIC.](../img/layout-1.jpg)
+![CID deployment layout showing the Corporate NIC on the corporate LAN and the Instrument NIC on the instrument network.](../img/layout-1.jpg)
+
+In this layout, CDS clients and CID Hub reach the CID through the Corporate NIC, while the instrument connects through the Instrument NIC.
 
 ## Register and activate your CIDs
 
-Your lab is now ready for your CIDs. Continue to [Register and activate your CIDs](register-activate).
+Your lab is now ready for CID activation. Continue to [Register and activate CIDs](register-activate).
 
 :::note
 For technical assistance, contact [Agilent Technical Support](https://www.agilent.com/en/support).
 :::
 
-## <mark>See also</mark>
+## See also
 
 - [System requirements](../reference/system-requirements): network, SSL, and DHCP/DNS requirements to confirm before installation.
 - [Configure network cards](../howto/onboarding/configure-network-cards): set up the Corporate NIC and Instrument NIC on the CID.
-- [Register and activate your CIDs](register-activate): activate each CID and add it to CID Hub.
+- [Register and activate CIDs](register-activate): activate each CID and add it to CID Hub.
 - [Beep codes on startup](/troubleshooting/beep-codes-on-startup): interpret the startup beep patterns.
