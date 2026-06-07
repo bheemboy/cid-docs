@@ -70,9 +70,7 @@ Activation typically takes 1–2 hours, depending on network speed and the size 
 
 If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Beep codes on startup](/troubleshooting/beep-codes-on-startup) for beep-pattern diagnosis, or the [Troubleshooting](/troubleshooting) index to route by symptom.
 
-:::note[<mark>Image placeholder</mark> — `cid-summary-ready.jpg`]
-CID Summary page after a successful activation, with the **Ready** status badge highlighted.
-:::
+![CID Summary page after a successful activation, with the **Ready** status badge highlighted](../../img/cid-summary-ready.png)
 
 ## See also
 
