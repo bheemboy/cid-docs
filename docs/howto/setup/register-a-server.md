@@ -13,14 +13,16 @@ You can register a server in CID Hub before the physical server is online.
 CID Hub and the OpenLab Server are independent systems and do not communicate with each other. The values you enter here, including the software template you later assign, are read by the CID itself when it registers with OpenLab Shared Services (OLSS) as an instrument controller. The server is not modified in any way.
 :::
 
-## Prerequisites
+## <mark>Prerequisites</mark>
+
+Before you register an OpenLab Server, confirm these prerequisites.
 
 - You must have an administrator role to register an OpenLab Server.
 - You need the fully qualified domain name (FQDN) of the OpenLab Server.
-- You need an OpenLab admin username and password for the CID to present to OLSS during registration. (These are reused when running **Register CID** or **Reset OpenLab CDS**.)
-- *(Optional)* You need the SMB path and credentials for a network share used to cache OpenLab CDS KVM images.
+- You need an OpenLab administrator username and password for the CID to present to OLSS during registration. (These are reused when running **Register CID** or **Reset OpenLab CDS**.)
+- *(Optional)* You need the Server Message Block (SMB) path and credentials for a network share used to cache OpenLab CDS KVM images.
 
-## Register a server
+## <mark>Register a server</mark>
 
 To add an OpenLab Server to CID Hub:
 
@@ -32,19 +34,19 @@ To add an OpenLab Server to CID Hub:
 
 3. In the **Register Server** dialog, enter the following fields:
 
-   - **Server Name (FQDN):** the fully qualified domain name of the OpenLab Server, for example `olserver.prod.example.com`. Use lowercase letters for best compatibility with DNS resolvers.
-   - **Connect to:** whether CIDs address the server by **Hostname** or by **FQDN**. In most environments the server is reachable either way, but every CDS Client, AIC, and CID that connects to this server must use the same convention. Mixed conventions cause functional issues, particularly with the OpenLab CDS failover workflow.
-   - **Username** and **Password:** OpenLab admin credentials. A CID uses these to register itself with OLSS during activation, and CID Hub passes them to the CID again when an administrator runs **Register CID** or **Reset OpenLab CDS**. Some driver installers also use them to register with OLSS. CID Hub itself never authenticates to the server with these values. Once every CID is registered, the stored value only matters the next time one of those administrative actions runs.
-   - **CID Network Share** *(optional, recommended):* an SMB path where CIDs cache OpenLab CDS KVM images. Each image is about 25 GB; caching it on a share lets later CIDs copy it from the share instead of re-downloading from CID Hub. You can also place KVM images in the share manually after downloading them from the **Software Library** in CID Hub.
-   - **Network Share Username** and **Network Share Password:** credentials for the share. Use the `user@domain.com` or `user` format. Anonymous SMB access is not recommended. The `DOMAIN\user` format fails on the Linux subsystem of the CID and is not supported.
+   - **Server Name (FQDN)**. The fully qualified domain name of the OpenLab Server, for example `olserver.prod.example.com`. Use lowercase letters for best compatibility with DNS resolvers.
+   - **Connect to**. Whether CIDs address the server by **Hostname** or by **FQDN**. In most environments, the server is reachable either way. Every CDS Client, Analytical Instrument Controller (AIC), and CID that connects to this server must use the same convention. Mixed conventions cause functional issues, particularly with the OpenLab CDS failover workflow.
+   - **Username and Password**. OpenLab administrator credentials. A CID uses them to register itself with OLSS during activation, and CID Hub passes them to the CID again when an administrator runs **Register CID** or **Reset OpenLab CDS**. Some driver installers also use them to register with OLSS. CID Hub itself never authenticates to the server with these values. Once every CID is registered, the stored value only matters the next time one of those administrative actions runs.
+   - **CID Network Share**. An optional Server Message Block (SMB) path where CIDs cache OpenLab CDS KVM images. Each image is about 25 GB. Caching it on a share lets later CIDs copy it from the share instead of re-downloading from CID Hub. You can also place KVM images in the share manually after downloading them from the **Software Library** in CID Hub.
+   - **Network Share Username and Network Share Password**. Credentials for the share. Use the `user@domain.com` or `user` format. Anonymous SMB access is not recommended. The `DOMAIN\user` format fails on the Linux subsystem of the CID and is not supported.
 
 4. Click **Register**.
 
    The server appears in the OpenLab Servers list and is immediately available to assign to a CID.
 
-## Edit a registered server
+## <mark>Edit a registered server</mark>
 
-To edit a server:
+Use this procedure to update the saved connection details or credentials for a registered server.
 
 1. On the **OpenLab Servers** page, click the **Edit** (pencil) icon in the **Actions** column for the server.
 
@@ -63,11 +65,9 @@ An edit changes only the record in CID Hub. The connected CIDs still hold the pr
 - Changes to credentials, **Connect to**, or share details take effect on each CID the next time it is rebooted.
 :::
 
-## Remove a registered server
+## <mark>Remove a registered server</mark>
 
 A server can be removed only after every CID that uses it has been removed first.
-
-To remove a server:
 
 1. On the **OpenLab Servers** page, click the **Delete** (trash) icon in the **Actions** column.
 

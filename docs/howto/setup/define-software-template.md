@@ -11,7 +11,9 @@ A software template is the default set of software versions that every CID conne
 A software template is not a server-side configuration. It lives in CID Hub and is read by each CID. The OpenLab Server does not use it, does not install or hold any of the software listed in it, and is not aware that the template exists.
 :::
 
-## Prerequisites
+## <mark>Prerequisites</mark>
+
+Before you define a software template, confirm these prerequisites.
 
 - You must have an administrator role to define a software template.
 - You need a [registered OpenLab Server](./register-a-server).
@@ -32,7 +34,7 @@ To open the template:
 
 When a server is first registered, the template starts with the latest available OpenLab CDS version and its compatible default OS updates and drivers. You only need to edit the template if you want different versions.
 
-## Select the OpenLab CDS version
+## <mark>Select the OpenLab CDS version</mark>
 
 The OpenLab CDS version is the anchor of the template. It sets the default Windows update, Linux update, and driver versions for the rest of the template.
 
@@ -42,9 +44,13 @@ To change the CDS version:
 
    ![OpenLab CDS version selection dialog showing available versions and release notes links](../../img/select-cds.jpg)
 
-2. Select a version and click **Save**.
+   The CDS version dialog lists the selectable versions for the server template.
 
-   A warning is shown before the change is committed. Confirm to apply it.
+2. Select a version.
+
+3. Click **Save**.
+
+   A warning appears before CID Hub commits the change. Confirm to apply it.
 
 :::important
 Changing the CDS version resets the rest of the template. The Windows update and Linux update reset to the latest available updates for the new CDS version, and the driver and add-on versions reset to the defaults that ship with that CDS version. Reselect any specific versions you need after changing CDS.
@@ -53,23 +59,31 @@ Changing the CDS version resets the rest of the template. The Windows update and
 Beyond the cascade within the template, the chosen CDS version also has to align with the rest of the OpenLab CDS environment.
 
 :::caution
-The CDS version you select here will be installed on every inheriting CID on this server, and it must match the CDS version installed on the CDS Client systems that connect to those CIDs. Mismatched versions between a Client and the AIC or CID it talks to cause functional issues. The OpenLab Server's own CDS version must also be equal to or higher than the version you select. Coordinate any CDS version change with the rest of the OpenLab CDS environment before applying it.
+Do not select a CDS version that does not match the CDS version installed on the CDS Client systems that connect to these CIDs. If you do, functional issues can occur between a CDS Client and the Analytical Instrument Controller (AIC) or CID it connects to. Do not select a version that is higher than the OpenLab Server version. Coordinate any CDS version change with the rest of the OpenLab CDS environment before applying it.
 :::
 
 If only one CDS version is available, the **Change** button is disabled.
 
-## OS updates
+## <mark>Operating system updates</mark>
 
-OS update selection is largely automatic and rarely needs your attention. CID Hub only keeps the latest active Windows update and the latest active Linux update selectable. Most of the time only one of each is available, so the **Change** button for **Windows Update** and **Linux Update** is disabled and the latest active version is shown as selected. CID Hub also re-selects the latest active update for you when the CDS version changes or when the currently selected update is retired.
+Operating system update selection is largely automatic and rarely needs your attention. CID Hub only keeps the latest active Windows update and the latest active Linux update selectable. Most of the time only one of each is available, so the **Change** button for **Windows Update** and **Linux Update** is disabled and the latest active version is shown as selected. CID Hub also re-selects the latest active update when the CDS version changes or when the currently selected update is retired.
 
-If more than one selectable version is present, click **Change**, select a version, and click **Save**.
+If more than one selectable version is present, you can change the selected update.
 
-## Select drivers and add-on software
+To change a Windows or Linux update:
+
+1. Next to **Windows Update** or **Linux Update**, click **Change**.
+
+2. Select a version.
+
+3. Click **Save**.
+
+## <mark>Select drivers and add-on software</mark>
 
 The driver list shows only the instrument drivers and add-ons that are compatible with the selected CDS version. Each row shows the version that will be applied to CIDs.
 
-- Mandatory drivers are preselected with the default version that ships with the chosen CDS version. They cannot be deselected.
-- Optional drivers and add-ons are not installed by default and show **Not Installed**. The version picker for an optional driver or add-on includes **Not Installed** as a selectable option alongside the available versions; selecting it leaves the component uninstalled, or removes it from CIDs that already have it.
+- **Mandatory drivers**. These are preselected with the default version that ships with the chosen CDS version. They cannot be deselected.
+- **Optional drivers and add-ons**. These are not installed by default and show **Not Installed**. The version picker for an optional driver or add-on includes **Not Installed** as a selectable option alongside the available versions. Selecting it leaves the component uninstalled, or removes it from CIDs that already have it.
 
 To change a driver or add-on version, or to remove an optional one:
 
@@ -77,12 +91,16 @@ To change a driver or add-on version, or to remove an optional one:
 
    ![Driver selection dialog showing compatible versions for the selected CDS](../../img/select-drivers.jpg)
 
-2. Select a version, or select **Not Installed** for an optional driver or add-on, and click **Save**.
+   The driver selection dialog shows only versions that are compatible with the selected CDS version.
+
+2. Select a version, or select **Not Installed** for an optional driver or add-on.
+
+3. Click **Save**.
 
 An **Update Available** badge appears next to a component when a newer compatible version is available in CID Hub. For OpenLab CDS, only newer versions within the same release train are flagged this way; a jump across major versions is treated as a deliberate CDS change, not as an available update.
 
 :::caution
-The driver and add-on versions you select here must match the versions installed on the CDS Client systems that connect to these CIDs. A mismatch prevents OpenLab CDS from functioning correctly. Coordinate any change with the rest of the OpenLab CDS environment before applying it.
+Do not select driver or add-on versions that do not match the versions installed on the CDS Client systems that connect to these CIDs. If you do, OpenLab CDS does not function correctly. Coordinate any change with the rest of the OpenLab CDS environment before applying it.
 :::
 
 ## What happens next
