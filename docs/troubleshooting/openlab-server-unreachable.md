@@ -169,7 +169,7 @@ If you want to verify the OLSS server's running version independently, run the f
 curl -sk https://<openlab-server>/openlab/olss/v1/serverinfo
 ```
 
-The response includes a `version` object (`majorVersion.minorVersion.buildVersion`) for the OLSS server. The CID-side OLSS version is determined by the CDS version installed on the CID — the simplest source is the Recent Activity message above, which prints both numbers when the failure occurs. The CDS version can also be looked up in **OpenLab Control Panel** on any CDS client or AIC running the same version of CDS.
+The response includes a `version` object (`majorVersion.minorVersion.buildVersion`) for the OLSS server. The CID-side OLSS version is determined by the CDS version installed on the CID — the simplest source is the Recent Activity message above, which prints both numbers when the failure occurs. The CDS version can also be looked up in **Control Panel** on any CDS client or AIC running the same version of CDS.
 
 ---
 

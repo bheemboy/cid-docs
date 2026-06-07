@@ -6,26 +6,28 @@ description: "Access the Administration tab, retrieve device credentials, restar
 toc_max_heading_level: 2
 ---
 
-# Administer a CID
+# <mark>Administer a CID</mark>
 
 The Administration tab on a CID is where you retrieve the credentials needed to open the CDS Desktop or Linux Cockpit, restart the agent or the embedded CDS VM, and run the heavier recovery actions when something is wrong. This page is for the lab administrator or IT operator responsible for keeping a CID healthy.
 
 The CID itself is a Linux host that runs an embedded Windows virtual machine. OpenLab CDS lives inside that VM; the CID agent, networking, and recovery tooling live on the Linux host. Most administrative actions target one or the other, so it helps to keep that split in mind when choosing an action below.
 
-:::warning
+:::caution
 Everything on this tab is for maintenance and troubleshooting. Do not use the CDS Desktop or Linux Cockpit access to install software, change system settings, or otherwise modify the Windows VM or the Linux host. Manual changes can put the CID into an unsupportable state, and any change made this way is wiped by a Reset OpenLab CDS, a CDS upgrade, or a factory reset. Use the Linux Cockpit only when explicitly directed by CID Hub Support.
 :::
 
 ## Prerequisites
 
-- You must have an administrator role on the customer account that owns the CID.
+- You must have an administrator role on the account that owns the CID.
 - The CID must be **Connected**. Restart and recovery buttons are disabled while the CID is **Disconnected** or **Not Installed**.
 - **Allow Changes** must be on for the CID. While Allow Changes is off, every action on this tab is read-only.
 
 ## Open the Administration tab
 
+To open the Administration tab:
+
 1. From the main header, click **CIDs** and select the CID you want to manage.
-2. In the left sidebar, click **Administration**.
+2. In the sidebar, click **Administration**.
 
 ![CID Administration tab with credentials, restart buttons, and recovery actions](../../img/cid-administration.jpg)
 
@@ -35,10 +37,10 @@ The credential blocks at the top are populated only while the CID is online. The
 
 Two credentials are surfaced on this tab. They grant access to the CID itself, not to CID Hub.
 
-- **CDS Desktop user.** Use this to sign in to the Windows VM console that hosts OpenLab CDS. Required when you launch the CDS Desktop from CID Hub.
-- **Cockpit user.** Use this to sign in to the Linux Cockpit web console on the CID host.
+- **CDS Desktop user**. Use this to sign in to the Windows VM console that hosts OpenLab CDS. Required when you launch the CDS Desktop from CID Hub.
+- **Cockpit user**. Use this to sign in to the Linux Cockpit web console on the CID host.
 
-Both passwords rotate automatically every 24 hours. The CDS Desktop password is also regenerated when the Windows VM is rebuilt by **Reset OpenLab CDS**, and both passwords reset during a **Factory Reset**. Copy the current password from this tab each time you need it; do not store it locally.
+Both passwords rotate automatically every 24 hours. The CDS Desktop password is also regenerated when the Windows VM is rebuilt by **Reset OpenLab CDS**, and both passwords reset during a factory reset. Copy the current password from this tab each time you need it; do not store it locally.
 
 ## Restart a service or the host
 
@@ -65,13 +67,13 @@ To run the reset:
 1. On the Administration tab, click **Reset OpenLab CDS**.
 2. Confirm the action in the dialog.
 
-:::warning
+:::important
 The new VM starts fresh for the current CDS version. Use [Apply updates](../updates/apply-updates) afterward to reinstall your drivers, add-ons, and OS updates.
 :::
 
 ## Factory reset the CID
 
-A factory reset clears the CID's identity and configuration and returns the device to a state where it must be registered with CID Hub again before it can be used. Reach for it when the CID's host configuration has become corrupted, or when you are taking the device out of service for reassignment.
+A factory reset clears the CID's identity and configuration and returns the device to a state where it must be registered with CID Hub again before it can be used. Use a factory reset when the CID's host configuration has become corrupted, or when you are taking the device out of service for reassignment.
 
 A factory reset:
 
@@ -90,7 +92,7 @@ A factory reset:
 ### Run the factory reset
 
 1. Open the CID's **Summary** tab.
-2. Click **Delete CID** and enter a reason when prompted. CID Hub records the deletion in the activity log. The CID keeps running normally until it reboots, so anyone using the device can finish what they are doing.
+2. Click **Delete CID** and enter a reason when prompted. CID Hub records the deletion in the Activity Log. The CID keeps running normally until it reboots, so anyone using the device can finish what they are doing.
 3. Power-cycle the CID at the chassis.
 
 On the next boot the CID detects the deletion, runs the factory reset, and waits for a CID Hub record to register against. Create a new CID record in CID Hub and register the device using its PIN to bring it back into service. See [Activate a CID](../onboarding/activate-a-cid) for the registration steps.
@@ -101,12 +103,12 @@ The deleted CID's history stays in CID Hub for reference, and its original name 
 
 ## Approve or end an Agilent support session
 
-Agilent support cannot connect to a CID without explicit approval from a CID Hub user on the customer account. Pending requests and active sessions both appear as banners at the top of the CID's detail page and are visible from any sub-tab.
+Agilent support cannot connect to a CID without explicit approval from a CID Hub user on the account that owns the CID. Pending requests and active sessions both appear as banners at the top of the CID's detail page and are visible from any sub-tab.
 
 To approve or decline a pending request:
 
 1. Open the CID's detail page by clicking the CID name on the **CIDs** list.
-2. Read the red banner at the top of the page. It identifies the Agilent requester by name and email, for example "Jane Doe (jane.doe@agilent.com) is requesting access to this CID."
+2. Read the banner at the top of the page. It identifies the Agilent requester by name and email, for example "Jane Doe (jane.doe@agilent.com) is requesting access to this CID."
 3. Click **Accept** to grant the session, or **Decline** to reject the request.
 
 To end an active support session:
@@ -116,7 +118,7 @@ To end an active support session:
 
 The Agilent user can also close the session from their end. If the banner disappears before you act, the session has already been ended.
 
-Every approval, decline, and session-close action is recorded in the CID's [activity log](../monitoring/view-activity-logs).
+Every approval, decline, and session-close action is recorded in the CID's [Activity Log](../monitoring/view-activity-logs).
 
 ## See also
 

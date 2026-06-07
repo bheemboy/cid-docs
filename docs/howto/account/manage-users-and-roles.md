@@ -7,7 +7,7 @@ toc_max_heading_level: 2
 
 # <mark>Manage users and roles</mark>
 
-Use the **Users** page in CID Hub to invite people to your account, assign them a role, reset their password, and remove their access when they no longer need it. Roles, and what each one can do, are described in [Role privileges](#role-privileges) below.
+Use the **Users** page in CID Hub to invite people to your account, assign them a role, reset their password, and remove their access when they no longer need it. Roles, and what each one can do, are described in [Role privileges](#role-privileges).
 
 Your account's first Administrator is created by Agilent when the account is provisioned. From that point on, Administrators in your account manage everyone else.
 
@@ -17,17 +17,19 @@ Welcome emails are sent from `no-reply@hub.cid.agilent.com` with subject **Conne
 
 ## Prerequisites
 
-- You must sign in as an **Administrator** to invite, edit, reset, or remove other users.
+- You must have the **Administrator** role to invite, edit, reset, or remove other users.
 - You need each new user's full name and email address before you invite them.
 
 ## Open the Users page
+
+The Users page lists everyone in your account.
 
 1. Click the **Settings** (gear) icon in the top-right corner of the top navigation bar.
 2. Select **Users**.
 
    The Users list opens. From here you can add, edit, reset, or remove users.
 
-   ![Users List](../../img/view-users.jpg)
+   ![Users list with each user's name, email, assigned roles, and row actions.](../../img/view-users.jpg)
 
 ## Role privileges
 
@@ -55,16 +57,18 @@ The **User** role suits lab staff who operate CIDs day-to-day but should not cha
 - Grant or revoke remote access for support.
 - Restart or shut down a CID.
 
-Users **cannot** change software, modify networking, add or remove CIDs or servers, or manage other users.
+Users cannot change software, modify networking, add or remove CIDs or servers, or manage other users.
 
 ## Invite a user
+
+Invite a new user by email and assign their initial roles.
 
 1. On the Users page, click **+ Create User**.
 2. In the **Create User** dialog, enter the user's **Full Name** and **Email**.
 3. Select one or both roles: **Administrator**, **User**.
 4. Click **Save**.
 
-   ![Create User Dialog](../../img/create-user.jpg)
+   ![Create User dialog with Full Name, Email, and role selection fields.](../../img/create-user.jpg)
 
    The new user receives a welcome email at the address you entered, with a temporary password and a link to sign in.
 

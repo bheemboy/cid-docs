@@ -58,12 +58,12 @@ Add a record for the CID so that CID Hub recognizes the device on its next conne
 
 For the complete activation procedure, see [Activate a CID](../howto/onboarding/activate-a-cid).
 
-## Configure the instrument in OpenLab Control Panel
+## Configure the instrument in Control Panel
 
-With the CID activated, configure the instrument in OpenLab Control Panel.
+With the CID activated, configure the instrument in Control Panel.
 
 :::caution
-Do not configure multiple instruments on one CID. The second instrument configuration is not supported and can fail.
+Do not configure multiple instruments on one CID. The second instrument configuration can cause failures and is not supported.
 :::
 
 1. Complete the steps in [Configure an instrument](../howto/onboarding/configure-instrument).
@@ -74,4 +74,4 @@ Do not configure multiple instruments on one CID. The second instrument configur
 - [Register an OpenLab Server](../howto/setup/register-a-server): Enter the server details that CIDs use during activation.
 - [Define a software template](../howto/setup/define-software-template): Set the OpenLab CDS, driver, and add-on versions for each server.
 - [Activate a CID](../howto/onboarding/activate-a-cid): Create the CID record and monitor the activation process.
-- [Configure an instrument](../howto/onboarding/configure-instrument): Attach the instrument to the CID in OpenLab Control Panel.
+- [Configure an instrument](../howto/onboarding/configure-instrument): Attach the instrument to the CID in Control Panel.

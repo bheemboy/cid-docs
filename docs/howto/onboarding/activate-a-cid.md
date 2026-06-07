@@ -23,7 +23,7 @@ Creating a CID record in CID Hub links the physical device to the configuration 
 
    ![Location of the Add CID button on the CIDs list page](../../img/add-cid-btn.jpg)
 
-2. In the **Add CID** dialog, enter the fields described below.
+2. In the **Add CID** dialog, enter the fields described in [Field descriptions](#field-descriptions).
 
    ![Add CID dialog with Name, FQDN, OpenLab Server, and PIN Code fields](../../img/add-cid-dlg.jpg)
 
@@ -33,10 +33,10 @@ Creating a CID record in CID Hub links the physical device to the configuration 
 
 ### Field descriptions
 
-- **Name:** the machine name (hostname) for the CID. Use at most 15 lowercase alphanumeric characters for compatibility with all DNS servers. A naming pattern that distinguishes CIDs from AICs is recommended, for example `cid-1290lc-53`.
-- **FQDN** *(optional):* set only if short-hostname resolution fails in your network. When set, the CID resolves this fully qualified domain name through DNS instead of the short hostname.
-- **OpenLab Server:** the server this CID registers with. The server's software template provides the default CDS version, drivers, and OS update levels for the CID.
-- **PIN Code:** the 8-character code printed on the QR sticker attached to the physical CID. The PIN links this record to the hardware. PIN codes use the characters A–Z (excluding I and O) and digits 2–9 to avoid transcription errors.
+- **Name**. The machine name (hostname) for the CID. Use at most 15 lowercase alphanumeric characters for compatibility with all DNS servers. Agilent recommends a naming pattern that distinguishes CIDs from Analytical Instrument Controllers (AICs), for example `cid-1290lc-53`.
+- **FQDN** *(optional)*. Set only if short-hostname resolution fails in your network. When set, the CID resolves this fully qualified domain name through DNS instead of the short hostname.
+- **OpenLab Server**. The server this CID registers with. The server's software template provides the default CDS version, drivers, and OS update levels for the CID.
+- **PIN Code**. The 8-character code printed on the QR sticker attached to the physical CID. The PIN links this record to the hardware. PIN codes use the characters A–Z (excluding I and O) and digits 2–9 to avoid transcription errors.
 
 ![QR code sticker on the CID chassis showing the Corporate NIC MAC address and the 8-character activation PIN.](../../img/qr-code.jpg)
 
@@ -59,18 +59,18 @@ After the CID finds its record in CID Hub, it runs through the following steps. 
 7. Confirms connectivity to the OpenLab Server.
 8. Installs the latest Linux update and antivirus definitions.
 9. Downloads, installs, and starts the OpenLab CDS Windows VM.
-10. Installs ECM 3.x APIs in the Windows VM if the OpenLab Server uses Enterprise Content Manager (ECM) as its backend.
-11. Configures and registers the Windows VM as an Analytical Instrument Controller (AIC) with the OpenLab Server.
+10. Installs Enterprise Content Manager (ECM) 3.x APIs in the Windows VM if the OpenLab Server uses ECM 3.x as its backend.
+11. Configures and registers the Windows VM as an AIC with the OpenLab Server.
 12. Installs Windows updates in the Windows VM.
 13. Installs the selected drivers and add-ons.
 14. Schedules antivirus scans.
 15. Rotates the default passwords for the CID Linux subsystem and the Windows VM.
 
-Activation typically takes 1–2 hours, depending on network speed and the size of the CDS download. The CID's status in CID Hub transitions from **New** to **Ready** when activation completes.
+Activation typically takes 30–120 minutes, depending on network speed and the size of necessary downloads. The CID's status in CID Hub transitions from **New** to **Ready** when activation completes.
 
-If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, see [Beep codes on startup](/troubleshooting/beep-codes-on-startup) for beep-pattern diagnosis, or the [Troubleshooting](/troubleshooting) index to route by symptom.
+![CID Summary page after a successful activation, with the Ready status badge highlighted](../../img/cid-summary-ready.png)
 
-![CID Summary page after a successful activation, with the **Ready** status badge highlighted](../../img/cid-summary-ready.png)
+If the **Recent activity** panel shows an error, the CID beeps repeatedly, or the status remains **New** after 2 hours, the activation has likely stalled. Use the [Troubleshooting](/troubleshooting) index to route by symptom.
 
 ## See also
 
@@ -80,4 +80,3 @@ If the **Recent activity** panel shows an error, the CID beeps repeatedly, or th
 - [View CIDs](../monitoring/view-cids): monitor CID status after activation completes.
 - [View activity logs](../monitoring/view-activity-logs): review activation events for traceability and troubleshooting.
 - [CID administration](../operations/cid-administration): reboot, factory reset, and other post-activation operations.
-- [Troubleshooting](/troubleshooting): symptom-first index to beep codes, network failure modes, and recovery steps for stalled activations.

@@ -7,11 +7,11 @@ title: View activity logs
 
 The **Activity Log** is the historical record of actions taken in CID Hub. It captures who did what and when, across user management, CID configuration, software changes, server changes, remote access, and authentication events. Use it to trace a configuration change, gather evidence for a compliance review, or get context for a support investigation.
 
-CID Hub keeps a single account-wide log. You can read it in two ways: a **Global Activity Log** that shows every event in your account, or a **CID-specific Activity Log** that filters the same data down to one device.
+CID Hub keeps a single account-wide log. <mark>You can read it in two ways: a *Global Activity Log* that shows every event in your account, or a *CID-specific Activity Log* that filters the same data down to one device.</mark>
 
-## Prerequisites
+## <mark>Prerequisites</mark>
 
-- You must be signed in to CID Hub.
+- You must have a CID Hub account and be signed in.
 
 ## Open the Global Activity Log
 
@@ -66,12 +66,12 @@ The available filters are:
   - `WARNING` is reserved; no events currently use this level.
   - `ERROR` for failed downloads, installs, uninstalls, and commands.
 
-## Activity Log compared to Recent Activity
+## <mark>Activity Log compared to Recent Activity</mark>
 
 CID Hub has two separate event feeds. They look similar but answer different questions.
 
 - The **Activity Log**, described on this page, is for traceability. It records high-level user and system actions such as `Requested install driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid` or `Installed driver Agilent Quadrupole LC/MS 3.2.725 for CID: sr-demo-cid`.
-- The **Recent activity** feed on a CID's **Summary** page is for troubleshooting. It shows low-level steps taken by the CID agent on the device itself, such as `Resolving 'hostname' to its IP address...`. See [Activate a CID](../onboarding/activate-a-cid) for an example of this feed in use during activation.
+- The **Recent Activity** feed on a CID's **Summary** page is for troubleshooting. It shows low-level steps taken by the CID agent on the device itself, such as `Resolving 'hostname' to its IP address...`. See [Activate a CID](../onboarding/activate-a-cid) for an example of this feed in use during activation.
 
   ![Recent Activity feed on the CID Summary page](../../img/recent-activity.jpg)
 
