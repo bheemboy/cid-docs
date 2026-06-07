@@ -33,6 +33,8 @@ To attach an instrument to a CID:
 
 4. Configure the instrument's modules and settings. Follow the [Configure an Instrument](https://openlab.help.agilent.com/en/index.htm#t=mergedProjects/ControlPanel/Configure_instrument.htm) guide.
 
+![OpenLab Control Panel instrument configuration view showing the instrument modules and settings](../../img/olcp-config-instrument.png)
+
 ## How instrument status affects the CID
 
 The CID's status in CID Hub reflects the state of the instrument you just configured:
