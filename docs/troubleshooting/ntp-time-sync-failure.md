@@ -8,36 +8,36 @@ toc_max_heading_level: 3
 
 # NTP time synchronization failure
 
-**Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/network administrators
-**Support reference:** Network / firewall configuration
+**Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
+**Audience**: Agilent Support, IT/network administrators
+**Support reference**: Network / firewall configuration
 
-:::warning[For IT administrators only]
+:::caution
 The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 
 ---
 
-## Symptom
+## <mark>Symptom</mark>
 
 The CID system clock has drifted from real time, breaking time-sensitive operations. This may manifest as:
 
 - TLS certificate validation failures on HTTPS connections, even when the network path appears healthy.
 - AWS API or AWS IoT requests rejected due to request-timestamp mismatch.
-- **CID Hub** communication errors that correlate with clock drift.
+- CID Hub communication errors that correlate with clock drift.
 - File and log timestamps on the CID drift from real time in a sustained way (not a brief skew at boot).
 
 ---
 
-## Root cause
+## <mark>Root cause</mark>
 
 The CID uses `pool.ntp.org` as its NTP time source and synchronizes via the `chrony` service. Time synchronization requires outbound **UDP traffic on port 123** to be permitted by the network. Because UDP/123 is separate from TCP/443, it is frequently omitted from firewall rules that otherwise permit HTTPS.
 
 Accurate system time is a hard dependency for several CID functions:
 
-- **TLS certificate validation.** Certificates carry validity periods. A clock skewed by more than a few minutes can cause valid certificates to be rejected as expired or not-yet-valid.
-- **AWS request signing.** AWS API and AWS IoT requests include a timestamp that must fall within a defined tolerance of actual time. Requests outside this window are rejected by AWS.
-- **Log correlation.** Inaccurate timestamps complicate troubleshooting, event reconstruction, and incident review.
+- **TLS certificate validation**. Certificates carry validity periods. A clock skewed by more than a few minutes can cause valid certificates to be rejected as expired or not-yet-valid.
+- **AWS request signing**. AWS API and AWS IoT requests include a timestamp that must fall within a defined tolerance of actual time. Requests outside this window are rejected by AWS.
+- **Log correlation**. Inaccurate timestamps complicate troubleshooting, event reconstruction, and incident review.
 
 ---
 
@@ -58,9 +58,9 @@ You can also arrive here from [Verify CID internet connectivity](/troubleshootin
 
 ---
 
-## Affected services
+## <mark>Affected services</mark>
 
-Sustained clock drift cascades into TLS certificate validation, AWS request signing, and **CID Hub** telemetry — every cloud-facing CID service is eventually affected. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
+Sustained clock drift cascades into TLS certificate validation, AWS request signing, and CID Hub telemetry. Every cloud-facing CID service is eventually affected. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 

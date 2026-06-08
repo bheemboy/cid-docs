@@ -6,13 +6,13 @@ description: Diagnose and resolve TLS handshake failures when TCP port 443 is re
 toc_max_heading_level: 3
 ---
 
-# TLS handshake failure
+# <mark>TLS handshake failure</mark>
 
-**Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/network administrators
-**Support reference:** Network / firewall configuration
+**Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
+**Audience**: Agilent Support, IT/network administrators
+**Support reference**: Network / firewall configuration
 
-:::warning[For IT administrators only]
+:::caution
 The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 
@@ -23,8 +23,8 @@ The diagnostic procedures on this page are intended for IT administrators famili
 The CID can establish a TCP connection to an external endpoint on port 443, but the HTTPS session fails immediately during the TLS handshake. The connection is terminated by a network device before any encrypted data is exchanged. This may manifest as:
 
 - TLS / SSL errors appear in CID agent logs against external CID endpoints (for example, `SSL_ERROR_SYSCALL` or a connection reset during the TLS handshake).
-- The CID emits **2 beeps** every 5 minutes during or after boot, but [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) has been ruled out and TCP/443 is confirmed reachable.
-- In **CID Hub**, the **Recent Activity** view shows entries such as *"Unable to connect to AWS IoT endpoint. Restarting network services and agent."* when the TLS handshake to AWS IoT is being terminated by a firewall.
+- The CID emits 2 beeps every 5 minutes during or after boot, but [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked) has been ruled out and TCP/443 is confirmed reachable.
+- In CID Hub, the Recent Activity view shows entries such as `Unable to connect to AWS IoT endpoint. Restarting network services and agent.` when the TLS handshake to AWS IoT is being terminated by a firewall.
 
 ---
 
@@ -32,15 +32,17 @@ The CID can establish a TCP connection to an external endpoint on port 443, but 
 
 When TCP connectivity is confirmed but the TLS handshake fails, the most common causes are:
 
-- **Domain or SNI-based blocking.** The firewall reads the Server Name Indication (SNI) field in the TLS Client Hello and drops connections to disallowed domains (for example `*.amazonaws.com`).
-- **TLS version filtering.** The firewall is configured to block specific TLS versions, preventing the handshake from completing.
-- **Firewall policy resetting TLS traffic.** A security rule resets the connection upon detection of TLS negotiation to certain destinations.
+- **Domain or SNI-based blocking**. The firewall reads the Server Name Indication (SNI) field in the TLS Client Hello and drops connections to disallowed domains (for example `*.amazonaws.com`).
+- **TLS version filtering**. The firewall is configured to block specific TLS versions, preventing the handshake from completing.
+- **Firewall policy resetting TLS traffic**. A security rule resets the connection upon detection of TLS negotiation to certain destinations.
 
 A separate condition, **SSL inspection**, also produces a TLS-layer failure but presents differently: the handshake completes, and the server certificate returned to the CID has a corporate or internal issuer rather than the expected public CA. SSL inspection requires a different resolution path. See [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection).
 
 ---
 
 ## Confirm this is the right document
+
+Use the following table to confirm that the TLS handshake is the failing layer.
 
 | Where you came from | Next step |
 |---|---|
@@ -55,14 +57,14 @@ A separate condition, **SSL inspection**, also produces a TLS-layer failure but 
 
 ## Affected services
 
-A TLS handshake failure affects every CID service that communicates over HTTPS: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
+A TLS handshake failure affects every CID service that communicates over HTTPS: activation and registration, telemetry to CID Hub, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
 ## Prerequisites
 
 - Command-line access to the CID via SSH or direct console connection.
-- The connectivity tester results, or the failing endpoint hostname from logs or **CID Hub** Recent Activity.
+- The connectivity tester results, or the failing endpoint hostname from logs or CID Hub Recent Activity.
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -81,9 +83,9 @@ Initiate a full TLS negotiation and capture detailed output to identify exactly 
 openssl s_client -connect <hostname>:443 -debug 2>&1 | head -40
 ```
 
-**Healthy output:** the server returns a full certificate chain, followed by session details.
+**Healthy output**: the server returns a full certificate chain, followed by session details.
 
-**Output confirming this failure mode:** the connection terminates immediately after the Client Hello with no response from the server, for example:
+**Output confirming this failure mode**: the connection terminates immediately after the Client Hello with no response from the server, for example:
 
 ```
 * TLSv1.3 (OUT), TLS handshake, Client hello (1):

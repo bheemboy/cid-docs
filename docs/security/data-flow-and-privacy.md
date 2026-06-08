@@ -77,7 +77,7 @@ The Visible in Hub UI column indicates whether you, subject to your assigned rol
 | Configuration Data   | Bidirectional | Partial (IP addresses, hostnames) | HTTPS or MQTT / TLS     | Yes               |
 | User Actions         | Browser → Hub | No                                | HTTPS / TLS             | Yes               |
 
-### Field-level inventory
+### <mark>Field-level inventory</mark>
 
 The fields below are the complete set the CID Agent reports to the Hub. Every field travels CID to Hub only. Only customer-friendly identifiers are surfaced; low-level instrument-network metadata is not sent. Most fields are operational identifiers classified Low; the fields touching network or service-account identity are classified Medium.
 
@@ -108,14 +108,14 @@ The fields below are the complete set the CID Agent reports to the Hub. Every fi
 | `reported_date` | ISO 8601 timestamp of the report | Low |
 | `version` | Incrementing state-version number | Low |
 
-**Sanitized before transmission or storage.** Secrets such as account passwords, private keys, and service credentials are stripped on the device before any state is reported. They are never transmitted to the Hub or stored there.
+**Sanitized before transmission or storage**. Secrets such as account passwords, private keys, and service credentials are stripped on the device before any state is reported. They are never transmitted to the Hub or stored there.
 
-## What the CID fetches from external services
+## <mark>What the CID fetches from external services</mark>
 
 Beyond the Hub, the CID reaches two kinds of external service directly (lines 3 and 4). Software and time come in; no customer or device data goes out.
 
-- **Microsoft (line 3).** Windows and PowerShell updates for the CDS AIC VM.
-- **NTP (line 4).** Time synchronization.
+- **Microsoft (line 3)**. Windows and PowerShell updates for the CDS AIC VM.
+- **NTP (line 4)**. Time synchronization.
 
 See [Internet requirements](../reference/system-requirements#internet-requirements) for the corresponding firewall allow-list.
 
@@ -125,15 +125,15 @@ Administrators reach the Hub only through its web UI in a browser (line 2); the 
 
 Remote access (lines 9 and 10) is the one path where the browser reaches into a CID, relayed through the Hub. See [Remote access](./remote-access).
 
-## What the Hub stores and for how long
+## <mark>What the Hub stores and for how long</mark>
 
 All CID to Hub traffic lands in AWS `us-east-1`. This includes the Registration API, the Management API, AWS IoT Core, AWS IoT Secure Tunneling, Cognito, and content delivery. Image delivery is fronted by Amazon CloudFront (`files.cid.agilent.com`); the origin remains `us-east-1`.
 
-- **Activity Logs and action history** (the Activity Logs row, plus the recorded history of User Actions and Hub Commands) are retained online for at least 7 years. There is no user-accessible export path to a customer Security Information and Event Management (SIEM) system at this time.
-- **Agent-reported state.** The AWS IoT device shadow holds only the latest reported document per device. On the Hub side the reported state is also persisted to the database in two forms: a most-recent snapshot that is overwritten on each update, and a versioned history that keeps prior reported-state versions for at least 7 years.
-- **Device registration records** (Device Registration, IoT Credentials, Configuration Data) persist for the life of the CID's enrollment in the tenant.
-- **Removal on device deletion.** When a CID is removed from the tenant, its registration record, reported-state history, and activity-log entries are deleted together.
-- **Software-download artifacts** are immutable, version-tagged objects; the CID retains only the version currently installed and the prior version available for rollback.
+- **Activity Logs and action history**. The Activity Logs row, plus the recorded history of User Actions and Hub Commands, is retained online for at least 7 years. There is no user-accessible export path to a customer Security Information and Event Management (SIEM) system at this time.
+- **Agent-reported state**. The AWS IoT device shadow holds only the latest reported document per device. On the Hub side the reported state is also persisted to the database in two forms: a most-recent snapshot that is overwritten on each update, and a versioned history that keeps prior reported-state versions for at least 7 years.
+- **Device registration records**. Device Registration, IoT Credentials, and Configuration Data persist for the life of the CID's enrollment in the tenant.
+- **Removal on device deletion**. When a CID is removed from the tenant, its registration record, reported-state history, and Activity Log entries are deleted together.
+- **Software-download artifacts**. These are immutable, version-tagged objects; the CID retains only the version currently installed and the prior version available for rollback.
 
 ## See also
 

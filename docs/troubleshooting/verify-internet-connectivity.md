@@ -6,13 +6,13 @@ description: First-pass triage tool for any suspected CID connectivity issue. Ru
 toc_max_heading_level: 3
 ---
 
-# Verify CID internet connectivity
+# <mark>Verify CID internet connectivity</mark>
 
-**Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/network administrators
-**Support reference:** Network / connectivity triage
+**Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
+**Audience**: Agilent Support, IT/network administrators
+**Support reference**: Network / connectivity triage
 
-:::warning[For IT administrators only]
+:::caution
 The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 
@@ -24,16 +24,18 @@ You suspect a network or connectivity problem is preventing the CID from reachin
 
 - Activation of a brand-new CID is stalling or failing with no clear error string.
 - Activation, monitoring, or software updates began failing after a network change (for example, a new firewall rule, NIC swap, VLAN move, or proxy change).
-- The CID appears offline in **CID Hub** and you need to confirm whether the cause is at the network layer before opening a support ticket.
+- The CID appears offline in CID Hub and you need to confirm whether the cause is at the network layer before opening a support ticket.
 
 ---
 
 ## Confirm this is the right document
 
+Use the following table to confirm that this triage page is the right starting point.
+
 | You observe | Go to |
 |---|---|
 | One or more beeps on startup | [Beep codes on startup](/troubleshooting/beep-codes-on-startup) |
-| A specific TCP, TLS, certificate, NTP, or DNS error in logs or the UI | The matching page in [Related documents](#related-documents) below |
+| A specific TCP, TLS, certificate, NTP, or DNS error in logs or the UI | The matching page in [Related documents](#related-documents) |
 | No specific error, but connectivity is suspect | Continue with this page |
 
 ---
@@ -42,10 +44,10 @@ You suspect a network or connectivity problem is preventing the CID from reachin
 
 A connectivity failure detected on this page can affect any CID service that depends on outbound access, including:
 
-- Activation and registration with **CID Hub**
+- Activation and registration with CID Hub
 - Telemetry and health reporting
 - Software update delivery
-- Communication with the OpenLab server
+- Communication with the OpenLab Server
 
 For the canonical list of endpoints the CID must reach, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
@@ -61,16 +63,16 @@ nmap -v --script=resolveall --traceroute -p 443 <URL>
 
 Interpret the result with the right level of confidence:
 
-- A **failed** test is reliable evidence that connectivity is broken at the DNS, routing, firewall, or TCP layer. If the tester cannot reach an endpoint, the CID cannot either.
-- A **passed** test means TCP port 443 is reachable. It does **not** guarantee the CID will activate successfully. TLS inspection, certificate substitution, NTP skew, and application-layer rejections can still block activation even when the tester passes. Treat a clean run as "the network layer is not the problem" rather than "everything is fine."
+- A failed test is reliable evidence that connectivity is broken at the DNS, routing, firewall, or TCP layer. If the tester cannot reach an endpoint, the CID cannot either.
+- A passed test means TCP port 443 is reachable. It does not guarantee the CID will activate successfully. TLS inspection, certificate substitution, NTP skew, and application-layer rejections can still block activation even when the tester passes. Treat a clean run as "the network layer is not the problem" rather than "everything is fine."
 
-This is why the tester is the first tool to use for a suspected network issue, and why a clean run still routes you on to the TLS, certificate, NTP, and OpenLab server pages.
+This is why the tester is the first tool to use for a suspected network issue, and why a clean run still routes you on to the TLS, certificate, NTP, and OpenLab Server pages.
 
 ---
 
 ## Prerequisites
 
-- Access to the Linux Cockpit interface of the CID. See [Access the connectivity tester](#access-the-connectivity-tester) below for the three available paths.
+- Access to the Linux Cockpit interface of the CID. See [Access the connectivity tester](#access-the-connectivity-tester) for the three available paths.
 - Familiarity with reading `nmap` output: DNS resolution, port state (`open` / `filtered` / `closed`), and traceroute hops.
 
 ### Access the connectivity tester
@@ -79,19 +81,19 @@ The connectivity tester is a diagnostic application inside the Linux Cockpit int
 
 #### Activated CID
 
-1. In **CID Hub**, navigate to the **Administration** tab for the device.
+1. In CID Hub, navigate to the **Administration** tab for the device.
 2. Click **Launch Cockpit**.
 3. Log in with:
-   - **Username:** `agilentac`
-   - **Password:** the complex, 10-character password shown on the **Administration** tab. This password is rotated every 24 hours.
+   - **Username**: `agilentac`
+   - **Password**: the complex, 10-character password shown on the **Administration** tab. This password is rotated every 24 hours.
 
 #### Unactivated CID
 
 1. Find the CID's IP address on your network.
 2. Open a browser to `https://<CID-IP>/ac-cockpit/`.
 3. Log in with:
-   - **Username:** `agilentac`
-   - **Password:** the factory default password provided by Agilent support or services personnel.
+   - **Username**: `agilentac`
+   - **Password**: the factory default password provided by Agilent support or services personnel.
 
 #### No network access (direct console)
 
@@ -105,7 +107,7 @@ If the CID cannot be reached over the network, for example because of a misconfi
 
 In the Cockpit left-hand navigation, open the **CID Connectivity** page.
 
-![CID Connectivity Tester](../img/connectivity-app.jpg)
+![The CID Connectivity page in Linux Cockpit.](../img/connectivity-app.jpg)
 
 ### Step 2. Run the general connectivity test
 
@@ -131,14 +133,14 @@ Each failed result includes DNS, port-state, and traceroute information. Use the
 
 ### Step 4. Rule out the false-positive cases
 
-A passing tester does not exclude every cause. If activation or sync continues to fail despite a clean run, work through the matching page below.
+A passing tester does not exclude every cause. If activation or sync continues to fail despite a clean run, work through the matching page from the following table.
 
 | Symptom alongside a passing tester | Next step |
 |---|---|
 | Certificate or TLS errors in logs | [TLS handshake failure](/troubleshooting/tls-handshake-failure) |
 | Corporate CA shown in place of the expected issuer | [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection) |
 | NTP errors, time-sync warnings, or clock-skew messages during activation | [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure) |
-| OpenLab server cannot be reached or fails validation | [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable) |
+| OpenLab Server cannot be reached or fails validation | [OpenLab Server unreachable](/troubleshooting/openlab-server-unreachable) |
 
 ### Step 5. Test a specific endpoint (optional)
 
@@ -161,6 +163,6 @@ If every test passes and no downstream failure-mode page applies, the failure is
 - [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection)
 - [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure)
 - [DNS resolution failure](/troubleshooting/dns-resolution-failure)
-- [OpenLab server unreachable](/troubleshooting/openlab-server-unreachable)
+- [OpenLab Server unreachable](/troubleshooting/openlab-server-unreachable)
 - [Beep codes on startup](/troubleshooting/beep-codes-on-startup)
 - [Internet requirements](/reference/system-requirements#internet-requirements) in System requirements

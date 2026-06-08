@@ -6,13 +6,13 @@ description: Diagnose and resolve HTTPS certificate validation failures caused b
 toc_max_heading_level: 3
 ---
 
-# SSL inspection and certificate substitution
+# <mark>SSL inspection and certificate substitution</mark>
 
-**Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/network administrators
-**Support reference:** Network / firewall configuration
+**Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
+**Audience**: Agilent Support, IT/network administrators
+**Support reference**: Network / firewall configuration
 
-:::warning[For IT administrators only]
+:::caution
 The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 
@@ -22,8 +22,8 @@ The diagnostic procedures on this page are intended for IT administrators famili
 
 The CID can establish a TCP connection to an external endpoint on port 443 and the TLS handshake completes, but HTTPS requests fail with certificate validation errors. The server certificate returned to the CID is signed by a corporate or internal certificate authority rather than the expected public CA. This may manifest as:
 
-- Certificate validation errors appear in CID agent logs against external CID endpoints (for example, *"unable to get local issuer certificate"* or *"certificate verify failed"*).
-- In **CID Hub**, the **Recent Activity** view shows entries such as *"Error validating IoT device certificate: `<error-info>`"* when the AWS IoT connection cannot validate the certificate the firewall is presenting.
+- Certificate validation errors appear in CID agent logs against external CID endpoints (for example, `unable to get local issuer certificate` or `certificate verify failed`).
+- In CID Hub, the Recent Activity view shows entries such as `Error validating IoT device certificate: <error-info>` when the AWS IoT connection cannot validate the certificate the firewall is presenting.
 - An earlier diagnosis through [TLS handshake failure](/troubleshooting/tls-handshake-failure) revealed a corporate or internal issuer in the certificate chain.
 
 ---
@@ -38,16 +38,18 @@ SSL inspection (also called TLS inspection or HTTPS deep packet inspection) is a
 
 This allows the appliance to inspect encrypted traffic. The CID does not trust the corporate CA presented by the inspection appliance for external cloud service endpoints, so it rejects the connection.
 
-The supported resolution is an **SSL inspection bypass** for the affected endpoints.
+The supported resolution is an SSL inspection bypass for the affected endpoints.
 
 ---
 
 ## Confirm this is the right document
 
+Use the following table to confirm that SSL inspection is the failing layer.
+
 | Where you came from | Next step |
 |---|---|
 | You arrived from [TLS handshake failure](/troubleshooting/tls-handshake-failure) Step 1 after observing a corporate or internal issuer in the certificate chain | This is the correct document. Continue below. |
-| Logs or **CID Hub** Recent Activity show certificate-validation errors against a CID cloud endpoint | This is the correct document. Continue below. |
+| Logs or CID Hub Recent Activity show certificate-validation errors against a CID cloud endpoint | This is the correct document. Continue below. |
 | You ran [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) and TCP/443 was reachable, but the CID still fails with certificate-validation errors | This is the correct document. Continue below. |
 | The TLS handshake terminates with no server response | The issue is a hard block, not inspection. See [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
 | You have not yet identified that certificate validation is the failing layer | Run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) first. |
@@ -56,14 +58,14 @@ The supported resolution is an **SSL inspection bypass** for the affected endpoi
 
 ## Affected services
 
-SSL inspection affects every CID service that communicates over HTTPS to external cloud endpoints: activation and registration, telemetry to **CID Hub**, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
+SSL inspection affects every CID service that communicates over HTTPS to external cloud endpoints: activation and registration, telemetry to CID Hub, AWS IoT messaging, software downloads, and Microsoft CDN access. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
 ---
 
 ## Prerequisites
 
 - Command-line access to the CID via SSH or direct console connection.
-- The failing endpoint hostname, identified from the connectivity tester results, **CID Hub** Recent Activity, or an earlier TLS handshake failure Step 1 capture.
+- The failing endpoint hostname, identified from the connectivity tester results, CID Hub Recent Activity, or an earlier TLS handshake failure Step 1 capture.
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -82,7 +84,7 @@ Retrieve the issuer, subject, and validity dates from the certificate the firewa
 openssl s_client -connect <hostname>:443 2>/dev/null | openssl x509 -noout -issuer -subject -dates
 ```
 
-Run this command for each affected endpoint and collect the output. A corporate or internal CA in the **issuer** field confirms SSL inspection is active for that destination.
+Run this command for each affected endpoint and collect the output. A corporate or internal CA in the `issuer` field confirms SSL inspection is active for that destination.
 
 ---
 
@@ -130,7 +132,7 @@ curl -v --insecure https://<hostname>
 
 ## Resolution
 
-The supported resolution is an **SSL inspection bypass** for every CID internet endpoint affected by inspection. Provide the diagnostic output from the diagnostic steps to your network security team and request the bypass scope identified in Step 2.
+The supported resolution is an SSL inspection bypass for every CID internet endpoint affected by inspection. Provide the diagnostic output from the diagnostic steps to your network security team and request the bypass scope identified in Step 2.
 
 Bypassing inspection does not weaken security for these connections: the traffic remains end-to-end encrypted using the destination server's legitimate certificate. The bypass instructs the appliance not to act as a TLS intermediary for verified Agilent and cloud service endpoints.
 

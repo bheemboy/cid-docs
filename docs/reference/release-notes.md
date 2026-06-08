@@ -14,12 +14,12 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
 
 > **Action required:** the new OpenLab Server connectivity check uses TCP/HTTPS (port 443) and requires the latest Linux update to be installed before it takes effect.
 
-### Added
+### <mark>Added</mark>
 
 - Added integrated online help in the CID Hub console.
 - Added support for GPC add-on v1.7.
-  - The GPC v1.7 package is available in the add-on section of the software library.
-  - GPC v1.7 can be installed on compatible CDS versions (CDS 2.8 FP2 and earlier, excluding CDS 2.8 FP1).
+  - The GPC v1.7 package is available in the add-on section of the Software Library.
+  - GPC v1.7 can be installed on compatible OpenLab CDS versions (CDS 2.8 FP2 and earlier, excluding CDS 2.8 FP1).
 - Added automatic selection of latest operating system updates:
   - The latest Windows Update and Linux OS are selected automatically and downloaded to CIDs in the background.
   - Installation is initiated by an administrator when CIDs are not in use.
@@ -30,18 +30,18 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
 - Improved loading performance for the CIDs list page.
 - Moved CDS, drivers, and add-ons to AWS CloudFront to improve worldwide download performance.
 
-### Fixed
+### <mark>Fixed</mark>
 
-- Fixed CDS Registration fails when renaming NICs failed. (#1336029)
-- Fixed Checksum validation did not fail on a failed download. (#1336030)
-- Fixed CID Registration fails when ECM 3.6 uses corporate (self-generated) SSL certificates. (#1260513)
-- Fixed CID network share doesn't work if sharepath and/or password contain special characters or spaces. (#1330232)
-- Fixed On re-adding a CID after a factory reset, it did not append CID's subdomain to DNS list. (#1259034)
-- Fixed Components Software installation failing on CID due to AWS IOT json document limit. (#1311421)
-- Fixed CID summary page incorrectly shows disconnected. (#1319277)
-- Fixed "CDS Uptime" in hub is not updated if CID is powercycled. (#1215600)
-- Fixed Download progress bar is not moving even though the driver is downloaded in CID software page. (#1299011)
-- Fixed User cannot remove network share and password info from the openlab server page. (#1362844)
+- Fixed CDS registration failing when a network interface is renamed. (#1336029)
+- Fixed checksum validation not failing on a failed download. (#1336030)
+- Fixed CID registration failing when OpenLab ECM 3.6 uses corporate (self-generated) SSL certificates. (#1260513)
+- Fixed the CID network share failing when the share path or password contains special characters or spaces. (#1330232)
+- Fixed the CID's subdomain not being appended to the DNS list when a CID is re-added after a factory reset. (#1259034)
+- Fixed component software installation failing on the CID because of the AWS IoT Core JSON document limit. (#1311421)
+- Fixed the CID summary page incorrectly showing a disconnected status. (#1319277)
+- Fixed the CDS uptime not updating in the CID Hub when a CID is power-cycled. (#1215600)
+- Fixed the download progress bar not advancing after a driver finished downloading on the CID software page. (#1299011)
+- Fixed the inability to remove network share and password details from the OpenLab Server page. (#1362844)
 
 ## 1.2.0 — September 2025
 
@@ -66,19 +66,19 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
   - OpenLab CDS 2.8.0.1515 Update 7 with Feature Pack 01 [1021H2].
   - OpenLab CDS 2.8.0.1515 Update 8 with Feature Pack 02 [1124H2] (Windows 11 based).
 
-### Fixed
+### <mark>Fixed</mark>
 
-- Fixed Download progress bar not matching between CID's Summary & Software pages. (#978001)
-- Fixed Test Services cannot be loaded on CDS 2.7. (#1091199)
-- Fixed On some CIDs, INFO logs in RA are missing after some time. (#1092355)
-- Fixed Registering CID logs missing in RA. (#1138942)
-- Fixed Cockpit doesn't launch using IP address in URL. (#1197295)
-- Fixed Missing category filters in 'Activity Logs'. (#1192764)
-- Fixed IoT Connection failures are not being logged in RA. (#1191392)
-- Fixed Reverting to older agent failing. (#1202245)
-- Fixed Unable to uninstall optional drivers in QA. (#1216780)
-- Fixed DNS suffix comparison is case-sensitive, resulting in duplicate subdomains being added to the DNS search list. (#1225185)
-- Fixed Hub portal and CID's Recent Activity logs inaccessible if CID contains huge number of log records. (#1245281)
+- Fixed the download progress bar not matching between the CID's Summary and Software pages. (#978001)
+- Fixed Test Services failing to load on OpenLab CDS 2.7. (#1091199)
+- Fixed INFO logs going missing in Recent Activity on some CIDs after a period of time. (#1092355)
+- Fixed CID registration logs missing in Recent Activity. (#1138942)
+- Fixed Linux Cockpit failing to launch when an IP address is used in the URL. (#1197295)
+- Fixed missing category filters in the Activity Log. (#1192764)
+- Fixed IoT connection failures not being logged in Recent Activity. (#1191392)
+- Fixed reverting to an older agent version failing. (#1202245)
+- Fixed the inability to uninstall optional drivers. (#1216780)
+- Fixed case-sensitive DNS suffix comparison that added duplicate subdomains to the DNS search list. (#1225185)
+- Fixed the CID Hub portal and a CID's Recent Activity logs becoming inaccessible when a CID holds a large number of log records. (#1245281)
 
 ## 1.1.0 — December 2024
 
@@ -96,8 +96,8 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
   - Agilent Micro GC v2.5.5.0.
   - Agilent PAL3 Sampler v2.9.8.0.
 
-### Fixed
+### <mark>Fixed</mark>
 
-- Fixed Login to Linux cockpit fails using tunnel. (#1057510)
-- Fixed Mobile Devices- CIDs name overlaps with three horizontal lines. (#1084227)
-- Fixed CID status changing from "connected" to "not installed". (#1138503)
+- Fixed the failure to log in to Linux Cockpit over the tunnel. (#1057510)
+- Fixed the CID name overlapping the three-line navigation menu icon on mobile devices. (#1084227)
+- Fixed the CID status incorrectly changing from connected to not installed. (#1138503)

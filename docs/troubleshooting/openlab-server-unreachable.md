@@ -1,18 +1,18 @@
 ---
 sidebar_position: 8
 slug: /troubleshooting/openlab-server-unreachable
-title: "OpenLab server unreachable"
+title: "OpenLab Server unreachable"
 description: Diagnose and resolve failures when the CID cannot reach, validate, or register with the OpenLab CDS Server (OLSS).
 toc_max_heading_level: 3
 ---
 
-# OpenLab server unreachable
+# <mark>OpenLab Server unreachable</mark>
 
-**Product:** Agilent Connected Instrument Device (CID) for OpenLab CDS
-**Audience:** Agilent Support, IT/network administrators
-**Support reference:** Network / firewall configuration
+**Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
+**Audience**: Agilent Support, IT/network administrators
+**Support reference**: Network / firewall configuration
 
-:::warning[For IT administrators only]
+:::caution
 The diagnostic procedures on this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 
@@ -20,17 +20,17 @@ The diagnostic procedures on this page are intended for IT administrators famili
 
 ## Symptom
 
-The CID cannot reach, validate, or register with the OpenLab CDS Server (OLSS) configured on the CID's record in **CID Hub**. This is distinct from connectivity to the Agilent and AWS cloud endpoints covered by the other troubleshooting pages. This may manifest as:
+The CID cannot reach, validate, or register with the OpenLab CDS Server (OLSS) configured on the CID's record in CID Hub. This is distinct from connectivity to the Agilent and AWS cloud endpoints covered by the other troubleshooting pages. This may manifest as:
 
 - A brand-new CID completes Hub-side activation but stalls on CDS registration, never reaching the **Connected** state.
-- For an already-registered CID, the status in **CID Hub** shows **Server disconnected**. This status is triggered specifically by OLSS being unreachable or down; credential issues alone do not trigger it.
-- In **CID Hub**, the **Recent Activity** view shows one of these error messages against the configured OLSS server:
-  - *"Could not resolve '`<hostname>`'."*
-  - *"Server '`<hostname>`' (`<IP>`) is unreachable."*
-  - *"FQDN provided '`<hostname>`' is not a valid OLSS."*
-  - *"Could not validate OpenLab server. 'https://`<hostname>`/openlab/olss/v1/health' is not responding."*
-  - *"Could not validate OpenLab server. 'https://`<hostname>`/openlab/olss/v1/health' returned an error."*
-  - During activation, these messages are appended with *"Retrying in 60 seconds."*
+- For an already-registered CID, the status in CID Hub shows **Server disconnected**. This status is triggered specifically by OLSS being unreachable or down; credential issues alone do not trigger it.
+- In CID Hub, the Recent Activity view shows one of these error messages against the configured OLSS server:
+  - `Could not resolve '<hostname>'.`
+  - `Server '<hostname>' (<IP>) is unreachable.`
+  - `FQDN provided '<hostname>' is not a valid OLSS.`
+  - `Could not validate OpenLab server. 'https://<hostname>/openlab/olss/v1/health' is not responding.`
+  - `Could not validate OpenLab server. 'https://<hostname>/openlab/olss/v1/health' returned an error.`
+  - During activation, these messages are appended with `Retrying in 60 seconds.`
 - Instruments connected to the CID cannot route data to OpenLab CDS.
 - After an OLSS upgrade or relocation, an already-registered CID stops syncing with the server while local CDS acquisition continues.
 
@@ -57,9 +57,11 @@ A failure at any stage prevents fresh CDS registration; for a registered CID, it
 
 ## Confirm this is the right document
 
+Use the following table to confirm that the OpenLab Server is the failing endpoint.
+
 | Where you came from | Next step |
 |---|---|
-| **CID Hub** Recent Activity shows one of the OLSS error messages listed in Symptom | This is the correct document. Continue below. |
+| CID Hub Recent Activity shows one of the OLSS error messages listed in Symptom | This is the correct document. Continue below. |
 | A brand-new CID stalls on CDS registration after Hub-side activation completes | This is the correct document. Continue below. |
 | You ran [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) but the failing endpoint is the customer OLSS server, not an Agilent or AWS endpoint | This is the correct document. The connectivity tester does not test OLSS; continue below. |
 | Cloud service endpoints (Agilent, AWS, Microsoft) are also unreachable | Resolve the cloud-side failure first; see [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked). Return here once cloud connectivity is restored. |
@@ -71,17 +73,17 @@ A failure at any stage prevents fresh CDS registration; for a registered CID, it
 
 Impact depends on whether the CID has previously completed CDS registration.
 
-- **Brand-new CID (CDS registration not yet completed).** CDS registration cannot proceed during activation, so the CDS application stack on the CID remains uninitialized and no CDS acquisition workflows can be started against it. The physical instrument-to-CID link over the Instrument NIC is not affected.
-- **Already-registered CID (CDS Failover mode).** Local data acquisition continues using cached configuration and project state, and the instrument-to-CID link is unaffected. Results are cached locally and uploaded to OLSS once connectivity is restored. Operations that require OLSS at request time fail until OLSS is reachable; this includes method downloads, user authentication against OLSS, project sync, and license checks.
+- **Brand-new CID (CDS registration not yet completed)**. CDS registration cannot proceed during activation, so the CDS application stack on the CID remains uninitialized and no CDS acquisition workflows can be started against it. The physical instrument-to-CID link over the Instrument NIC is not affected.
+- **Already-registered CID (CDS Failover mode)**. Local data acquisition continues using cached configuration and project state, and the instrument-to-CID link is unaffected. Results are cached locally and uploaded to OLSS once connectivity is restored. Operations that require OLSS at request time fail until OLSS is reachable; this includes method downloads, user authentication against OLSS, project sync, and license checks.
 
-Cloud-facing CID services (activation against **CID Hub**, AWS IoT telemetry, software updates) are unaffected by an OLSS outage.
+Cloud-facing CID services (activation against CID Hub, AWS IoT telemetry, software updates) are unaffected by an OLSS outage.
 
 ---
 
 ## Prerequisites
 
 - Command-line access to the CID via Cockpit (see [Access the connectivity tester](/troubleshooting/verify-internet-connectivity#access-the-connectivity-tester)), SSH, or direct console connection.
-- The OLSS hostname or FQDN as registered in **CID Hub** (visible under the server's **Connect using** field).
+- The OLSS hostname or FQDN as registered in CID Hub (visible under the server's **Connect using** field).
 - Authorization from your IT or network security team to execute network diagnostic commands, if applicable.
 
 ---
@@ -126,8 +128,8 @@ nmap -Pn -sT -p 443 --host-timeout 5s -n <openlab-server>
 | nmap result | Next step |
 |---|---|
 | Port `443/tcp open` | TCP reachability is confirmed. Continue to Step 3. |
-| Port `443/tcp filtered` | A firewall on the path is silently dropping traffic on TCP/443. See [Firewall between CID and OLSS](#firewall-between-cid-and-olss) below. |
-| Port `443/tcp closed` | The OLSS host is reachable but actively refusing TCP/443. The OLSS services may be stopped. See [OLSS services not running](#olss-services-not-running) below. |
+| Port `443/tcp filtered` | A firewall on the path is silently dropping traffic on TCP/443. See [Firewall between CID and OLSS](#firewall-between-cid-and-olss). |
+| Port `443/tcp closed` | The OLSS host is reachable but actively refusing TCP/443. The OLSS services may be stopped. See [OLSS services not running](#olss-services-not-running). |
 | Host did not respond / timeout | The OLSS host is unreachable. Continue to Step 5 to characterize the network path. |
 
 ---
@@ -147,17 +149,17 @@ curl -sk https://<openlab-server>/openlab/olss/v1/health
 | Result | Next step |
 |---|---|
 | HTTP 200 response | OLSS is healthy. Continue to Step 4 to verify type and version compatibility. |
-| Connection refused or timeout | The OLSS services are not running on the server, or not installed. See [OLSS services not running](#olss-services-not-running) below. |
-| HTTP 4xx or 5xx error | OLSS is responding but returning an error. See [OLSS health endpoint error](#olss-health-endpoint-error) below. |
+| Connection refused or timeout | The OLSS services are not running on the server, or not installed. See [OLSS services not running](#olss-services-not-running). |
+| HTTP 4xx or 5xx error | OLSS is responding but returning an error. See [OLSS health endpoint error](#olss-health-endpoint-error). |
 
 ---
 
 ### Step 4. Check the OLSS type and version compatibility messages
 
-If Steps 1–3 all succeed but activation still fails, the cause is usually an OLSS type or version compatibility mismatch. Both surface explicitly in **CID Hub** Recent Activity:
+If Steps 1–3 all succeed but activation still fails, the cause is usually an OLSS type or version compatibility mismatch. Both surface explicitly in CID Hub Recent Activity:
 
-- **Incorrect installation type.** The CID requires the OpenLab installation type to be **Server**; Workstation and Client installations are not compatible. A type mismatch is surfaced by the agent during configuration. See [Incorrect server installation type](#incorrect-server-installation-type) below.
-- **OLSS server version too old.** The OLSS server must be at a version equal to or newer than the OLSS tier included with the CID's CDS installation. A version mismatch surfaces in Recent Activity as *"Error: Server's version '`<X>`' is older than CID version '`<Y>`'"*, where `<X>` is the external OLSS version and `<Y>` is the OLSS version included with the CDS install in the CID's Windows VM. Both numbers are printed for you. See [Version compatibility failure](#version-compatibility-failure) below.
+- **Incorrect installation type**. The CID requires the OpenLab installation type to be **Server**; Workstation and Client installations are not compatible. A type mismatch is surfaced by the agent during configuration. See [Incorrect server installation type](#incorrect-server-installation-type).
+- **OLSS server version too old**. The OLSS server must be at a version equal to or newer than the OLSS tier included with the CID's CDS installation. A version mismatch surfaces in Recent Activity as `Error: Server's version '<X>' is older than CID version '<Y>'`, where `<X>` is the external OLSS version and `<Y>` is the OLSS version included with the CDS install in the CID's Windows VM. Both numbers are printed for you. See [Version compatibility failure](#version-compatibility-failure).
 
 If you want to verify the OLSS server's running version independently, run the following from any host with network access to the OLSS server:
 
@@ -169,7 +171,7 @@ If you want to verify the OLSS server's running version independently, run the f
 curl -sk https://<openlab-server>/openlab/olss/v1/serverinfo
 ```
 
-The response includes a `version` object (`majorVersion.minorVersion.buildVersion`) for the OLSS server. The CID-side OLSS version is determined by the CDS version installed on the CID — the simplest source is the Recent Activity message above, which prints both numbers when the failure occurs. The CDS version can also be looked up in **Control Panel** on any CDS client or AIC running the same version of CDS.
+The response includes a `version` object (`majorVersion.minorVersion.buildVersion`) for the OLSS server. The CID-side OLSS version is determined by the CDS version installed on the CID; the simplest source is the Recent Activity message described earlier, which prints both numbers when the failure occurs. The CDS version can also be looked up in Control Panel on any CDS client or AIC running the same version of CDS.
 
 ---
 
@@ -205,7 +207,7 @@ If Step 2 showed `filtered` state, or Step 5 showed packets being lost at an int
 
 If TCP/443 is `closed` (Step 2) or the health endpoint refuses or times out (Step 3):
 
-- Verify the OpenLab server is powered on and fully booted.
+- Verify the OpenLab Server is powered on and fully booted.
 - On the OLSS server, confirm the OpenLab Shared Services stack is running (the OLSS web tier and its dependent Windows services). If any are stopped, start them and wait for the health endpoint to respond.
 - If a service fails to start, review the OpenLab application logs on the server.
 
@@ -220,14 +222,14 @@ If the health endpoint (Step 3) returns HTTP 4xx or 5xx:
 
 ### Incorrect server installation type
 
-If **Recent Activity** reports a type-mismatch failure against the configured OLSS server, or activation fails after Steps 1–3 succeed and the OLSS server is known to be a Workstation or Client installation:
+If Recent Activity reports a type-mismatch failure against the configured OLSS server, or activation fails after Steps 1–3 succeed and the OLSS server is known to be a Workstation or Client installation:
 
 - The CID cannot register with Workstation or Client installations; only the **Server** installation type is supported.
-- Either install OpenLab CDS using the Server installation type on the destination host, or update the CID's record in **CID Hub** to point at a different OpenLab Server.
+- Either install OpenLab CDS using the Server installation type on the destination host, or update the CID's record in CID Hub to point at a different OpenLab Server.
 
 ### Version compatibility failure
 
-If Recent Activity reported *"Server's version '`<X>`' is older than CID version '`<Y>`'"*:
+If Recent Activity reported `Server's version '<X>' is older than CID version '<Y>'`:
 
 - Upgrade the external OpenLab CDS Server to a version equal to or newer than `<Y>` (the OLSS tier included with the CID's CDS installation).
 - Alternatively, contact Agilent Support to discuss an agent exception that allows the older OLSS server version.
