@@ -6,7 +6,7 @@ description: Diagnose and resolve TLS handshake failures when TCP port 443 is re
 toc_max_heading_level: 3
 ---
 
-# <mark>TLS handshake failure</mark>
+# TLS handshake failure
 
 **Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience**: Agilent Support, IT/network administrators

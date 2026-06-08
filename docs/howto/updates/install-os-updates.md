@@ -3,7 +3,7 @@ sidebar_position: 3
 title: "Install OS updates"
 ---
 
-# <mark>Install OS updates</mark>
+# Install OS updates
 
 The CID runs two operating systems: Oracle Linux on the host and Windows IoT inside the embedded OpenLab CDS virtual machine (VM). Microsoft and Oracle security patches are published to CID Hub shortly after Microsoft and Oracle release them. This page is for the lab administrator or IT operator who confirms the selected updates and starts the install.
 

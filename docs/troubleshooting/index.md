@@ -13,7 +13,7 @@ These pages help you diagnose and recover from common CID boot, network, and reg
 The diagnostic procedures linked from this page are intended for IT administrators familiar with Linux commands. Incorrect use of the underlying tools can misconfigure the CID and render it inoperable. Proceed only if you are comfortable working in a Linux environment.
 :::
 
-## <mark>Where to start</mark>
+## Where to start
 
 | What you observed | Start with |
 |---|---|
@@ -25,7 +25,7 @@ The diagnostic procedures linked from this page are intended for IT administrato
 | The CID record in CID Hub has the wrong MAC, or the Corporate NIC was replaced | See [Resolve a 3-beep pattern](/troubleshooting/beep-codes-on-startup#step-3-resolve-a-3-beep-pattern-no-matching-cid-record) in Beep codes on startup; then [Factory reset the CID](/howto/operations/cid-administration#factory-reset-the-cid) if the record must be re-added |
 | You need to register a brand-new CID for the first time | [Activate a CID](/howto/onboarding/activate-a-cid) (a how-to, not a troubleshooting flow) |
 
-## <mark>All pages</mark>
+## All pages
 
 Pages are listed in the order they tend to apply when reading top-down: boot-time symptoms first, then a triage tool, then specific failure modes from the most foundational network layer to the application layer.
 

@@ -53,7 +53,7 @@ In the diagram, thick blue lines trace the tunnel data path through the Tunnel l
 
 AWS IoT Secure Tunneling is the AWS service that carries an outside-the-network session to the CID over the CID's own outbound connection. The same path serves authorized users on your account and Agilent support. The controls below apply to every session; Agilent sessions carry one extra requirement: your approval.
 
-- **No inbound exposure**. The CID joins the tunnel by an outbound TLS connection to the <mark>AWS IoT Secure Tunneling</mark> endpoint, so no inbound port or firewall rule is required, and the CID has no inbound internet exposure between sessions. The endpoint is listed in the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements; the broader model is in the [Attack surface](./security-model#attack-surface) section of Security model.
+- **No inbound exposure**. The CID joins the tunnel by an outbound TLS connection to the AWS IoT Secure Tunneling endpoint, so no inbound port or firewall rule is required, and the CID has no inbound internet exposure between sessions. The endpoint is listed in the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements; the broader model is in the [Attack surface](./security-model#attack-surface) section of Security model.
 - **On-demand**. A tunnel exists only while a session is active. It is created at the start of the session and torn down at the end.
 - **Authenticated**. A tunnel session can only be requested by an authorized user signed in to CID Hub, and the session opened over the tunnel is authenticated with that Hub login, not a local credential.
 - **Approved (Agilent support only)**. Agilent support has view-only access to your CIDs by default. Opening a Windows VM console or Cockpit session on a CID requires an Agilent request and approval from an authorized user on your account; authorized users on your account need no approval.
@@ -82,5 +82,5 @@ For the symptoms of blocking each endpoint, see the [Behavior when an endpoint i
 - [CID Hub architecture](./cid-hub-architecture): Tunnel Server and AWS IoT Secure Tunneling in the broader Hub topology.
 - [Traceability and compliance](./traceability-and-compliance): Activity Log retention and export.
 - [Data flow and privacy](./data-flow-and-privacy): what does and does not cross the CID-to-Hub boundary outside support sessions.
-- [Internet requirements](../reference/system-requirements#internet-requirements): the firewall allow-list that includes the <mark>AWS IoT Secure Tunneling</mark> endpoint.
+- [Internet requirements](../reference/system-requirements#internet-requirements): the firewall allow-list that includes the AWS IoT Secure Tunneling endpoint.
 - [Administer a CID](../howto/operations/cid-administration): procedure for approving and ending Agilent sessions.

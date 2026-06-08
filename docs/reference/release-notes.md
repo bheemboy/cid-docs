@@ -14,7 +14,7 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
 
 > **Action required:** the new OpenLab Server connectivity check uses TCP/HTTPS (port 443) and requires the latest Linux update to be installed before it takes effect.
 
-### <mark>Added</mark>
+### Added
 
 - Added integrated online help in the CID Hub console.
 - Added support for GPC add-on v1.7.
@@ -30,7 +30,7 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
 - Improved loading performance for the CIDs list page.
 - Moved CDS, drivers, and add-ons to AWS CloudFront to improve worldwide download performance.
 
-### <mark>Fixed</mark>
+### Fixed
 
 - Fixed CDS registration failing when a network interface is renamed. (#1336029)
 - Fixed checksum validation not failing on a failed download. (#1336030)
@@ -66,7 +66,7 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
   - OpenLab CDS 2.8.0.1515 Update 7 with Feature Pack 01 [1021H2].
   - OpenLab CDS 2.8.0.1515 Update 8 with Feature Pack 02 [1124H2] (Windows 11 based).
 
-### <mark>Fixed</mark>
+### Fixed
 
 - Fixed the download progress bar not matching between the CID's Summary and Software pages. (#978001)
 - Fixed Test Services failing to load on OpenLab CDS 2.7. (#1091199)
@@ -96,7 +96,7 @@ Release notes for the Agilent Connected Instrument Device (CID) and CID Hub.
   - Agilent Micro GC v2.5.5.0.
   - Agilent PAL3 Sampler v2.9.8.0.
 
-### <mark>Fixed</mark>
+### Fixed
 
 - Fixed the failure to log in to Linux Cockpit over the tunnel. (#1057510)
 - Fixed the CID name overlapping the three-line navigation menu icon on mobile devices. (#1084227)

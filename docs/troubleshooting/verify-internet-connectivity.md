@@ -6,7 +6,7 @@ description: First-pass triage tool for any suspected CID connectivity issue. Ru
 toc_max_heading_level: 3
 ---
 
-# <mark>Verify CID internet connectivity</mark>
+# Verify CID internet connectivity
 
 **Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience**: Agilent Support, IT/network administrators

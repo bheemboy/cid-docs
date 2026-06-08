@@ -77,7 +77,7 @@ The Visible in Hub UI column indicates whether you, subject to your assigned rol
 | Configuration Data   | Bidirectional | Partial (IP addresses, hostnames) | HTTPS or MQTT / TLS     | Yes               |
 | User Actions         | Browser → Hub | No                                | HTTPS / TLS             | Yes               |
 
-### <mark>Field-level inventory</mark>
+### Field-level inventory
 
 The fields below are the complete set the CID Agent reports to the Hub. Every field travels CID to Hub only. Only customer-friendly identifiers are surfaced; low-level instrument-network metadata is not sent. Most fields are operational identifiers classified Low; the fields touching network or service-account identity are classified Medium.
 
@@ -110,7 +110,7 @@ The fields below are the complete set the CID Agent reports to the Hub. Every fi
 
 **Sanitized before transmission or storage**. Secrets such as account passwords, private keys, and service credentials are stripped on the device before any state is reported. They are never transmitted to the Hub or stored there.
 
-## <mark>What the CID fetches from external services</mark>
+## What the CID fetches from external services
 
 Beyond the Hub, the CID reaches two kinds of external service directly (lines 3 and 4). Software and time come in; no customer or device data goes out.
 
@@ -125,7 +125,7 @@ Administrators reach the Hub only through its web UI in a browser (line 2); the 
 
 Remote access (lines 9 and 10) is the one path where the browser reaches into a CID, relayed through the Hub. See [Remote access](./remote-access).
 
-## <mark>What the Hub stores and for how long</mark>
+## What the Hub stores and for how long
 
 All CID to Hub traffic lands in AWS `us-east-1`. This includes the Registration API, the Management API, AWS IoT Core, AWS IoT Secure Tunneling, Cognito, and content delivery. Image delivery is fronted by Amazon CloudFront (`files.cid.agilent.com`); the origin remains `us-east-1`.
 

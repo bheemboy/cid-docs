@@ -13,7 +13,7 @@ You can register a server in CID Hub before the physical server is online.
 CID Hub and the OpenLab Server are independent systems and do not communicate with each other. The values you enter here, including the software template you later assign, are read by the CID itself when it registers with OpenLab Shared Services (OLSS) as an instrument controller. The server is not modified in any way.
 :::
 
-## <mark>Prerequisites</mark>
+## Prerequisites
 
 Before you register an OpenLab Server, confirm these prerequisites.
 
@@ -22,7 +22,7 @@ Before you register an OpenLab Server, confirm these prerequisites.
 - You need an OpenLab administrator username and password for the CID to present to OLSS during registration. (These are reused when running **Register CID** or **Reset OpenLab CDS**.)
 - *(Optional)* You need the Server Message Block (SMB) path and credentials for a network share used to cache OpenLab CDS KVM images.
 
-## <mark>Register a server</mark>
+## Register a server
 
 To add an OpenLab Server to CID Hub:
 
@@ -44,7 +44,7 @@ To add an OpenLab Server to CID Hub:
 
    The server appears in the OpenLab Servers list and is immediately available to assign to a CID.
 
-## <mark>Edit a registered server</mark>
+## Edit a registered server
 
 Use this procedure to update the saved connection details or credentials for a registered server.
 
@@ -65,7 +65,7 @@ An edit changes only the record in CID Hub. The connected CIDs still hold the pr
 - Changes to credentials, **Connect to**, or share details take effect on each CID the next time it is rebooted.
 :::
 
-## <mark>Remove a registered server</mark>
+## Remove a registered server
 
 A server can be removed only after every CID that uses it has been removed first.
 

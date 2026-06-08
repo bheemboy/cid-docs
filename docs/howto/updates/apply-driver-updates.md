@@ -9,15 +9,15 @@ Each OpenLab CDS version ships with a set of instrument drivers and add-ons. CID
 
 CID Hub distinguishes two categories on the **Software** tab:
 
-- <mark>**Drivers**.</mark> Instrument drivers for the CDS version currently selected on the CID. Some drivers are mandatory and cannot be deselected; the rest are optional and only install when explicitly selected. The **Update Available** label appears next to a driver when a newer compatible version is published.
+- **Drivers**. Instrument drivers for the CDS version currently selected on the CID. Some drivers are mandatory and cannot be deselected; the rest are optional and only install when explicitly selected. The **Update Available** label appears next to a driver when a newer compatible version is published.
 
   ![Software tab with the Update Available label visible on a driver row](../../img/driver-update-available.jpg)
 
-- <mark>**Add-ons**.</mark> Supplementary CDS components in the **Add-ons** category on the **Software** tab, such as **OpenLab Sample Scheduler** and **GPC (Agilent GPC/SEC Software for OpenLab CDS)**. Some add-ons ship with a pre-installed base version (Sample Scheduler), while others must be explicitly selected before they are installed (GPC). The **Update Available** label appears for an add-on only if the add-on is installed.
+- **Add-ons**. Supplementary CDS components in the **Add-ons** category on the **Software** tab, such as **OpenLab Sample Scheduler** and **GPC (Agilent GPC/SEC Software for OpenLab CDS)**. Some add-ons ship with a pre-installed base version (Sample Scheduler), while others must be explicitly selected before they are installed (GPC). The **Update Available** label appears for an add-on only if the add-on is installed.
 
 The selection mechanism is the same in both cases. The difference is which row you change on the **Software** tab and what compatibility constraints apply.
 
-## <mark>**Prerequisites**</mark>
+## **Prerequisites**
 
 Before you change a driver or add-on selection, confirm these prerequisites.
 
@@ -26,7 +26,7 @@ Before you change a driver or add-on selection, confirm these prerequisites.
 - You need to change the selection on that CID's [Software exceptions](../setup/configure-software-exceptions) if the CID does not inherit from the server.
 - The driver or add-on version you want must be compatible with the CDS version currently selected for the CID. Incompatible versions are not offered in the picker.
 
-## <mark>Select a driver or add-on version</mark>
+## Select a driver or add-on version
 
 Selection happens on the **Software** tab of either the server (for inheriting CIDs) or a specific CID (for non-inheriting CIDs).
 
@@ -66,7 +66,7 @@ When the **Updates** column shows **Ready** for the CID, install the change usin
 - Apply all pending changes to a single CID from its **Software** tab.
 - Install a single driver or add-on from the **Software** tab when you want to stagger the rollout.
 
-## <mark>What to expect during the install</mark>
+## What to expect during the install
 
 Drivers and add-ons install one at a time, in the [installation order](./apply-updates#installation-order) shown on the Apply updates page. Mandatory drivers install before optional drivers and add-ons, and optional items install in the order shown on the **Software** tab.
 

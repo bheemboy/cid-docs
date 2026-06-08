@@ -11,7 +11,7 @@ A software template is the default set of software versions that every CID conne
 A software template is not a server-side configuration. It lives in CID Hub and is read by each CID. The OpenLab Server does not use it, does not install or hold any of the software listed in it, and is not aware that the template exists.
 :::
 
-## <mark>Prerequisites</mark>
+## Prerequisites
 
 Before you define a software template, confirm these prerequisites.
 
@@ -34,7 +34,7 @@ To open the template:
 
 When a server is first registered, the template starts with the latest available OpenLab CDS version and its compatible default OS updates and drivers. You only need to edit the template if you want different versions.
 
-## <mark>Select the OpenLab CDS version</mark>
+## Select the OpenLab CDS version
 
 The OpenLab CDS version is the anchor of the template. It sets the default Windows update, Linux update, and driver versions for the rest of the template.
 
@@ -64,7 +64,7 @@ Do not select a CDS version that does not match the CDS version installed on the
 
 If only one CDS version is available, the **Change** button is disabled.
 
-## <mark>Operating system updates</mark>
+## Operating system updates
 
 Operating system update selection is largely automatic and rarely needs your attention. CID Hub only keeps the latest active Windows update and the latest active Linux update selectable. Most of the time only one of each is available, so the **Change** button for **Windows Update** and **Linux Update** is disabled and the latest active version is shown as selected. CID Hub also re-selects the latest active update when the CDS version changes or when the currently selected update is retired.
 
@@ -78,7 +78,7 @@ To change a Windows or Linux update:
 
 3. Click **Save**.
 
-## <mark>Select drivers and add-on software</mark>
+## Select drivers and add-on software
 
 The driver list shows only the instrument drivers and add-ons that are compatible with the selected CDS version. Each row shows the version that will be applied to CIDs.
 

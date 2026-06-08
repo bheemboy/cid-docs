@@ -3,7 +3,7 @@ sidebar_position: 3
 title: "Compatibility"
 ---
 
-# <mark>Compatibility</mark>
+# Compatibility
 
 The following matrices list the OpenLab CDS, server, driver, add-on, and integration combinations supported on the CID as of CID Hub release 1.3.0 (April 2026).
 

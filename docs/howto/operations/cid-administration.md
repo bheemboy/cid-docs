@@ -6,7 +6,7 @@ description: "Access the Administration tab, retrieve device credentials, restar
 toc_max_heading_level: 2
 ---
 
-# <mark>Administer a CID</mark>
+# Administer a CID
 
 The Administration tab on a CID is where you retrieve the credentials needed to open the CDS Desktop or Linux Cockpit, restart the agent or the embedded CDS VM, and run the heavier recovery actions when something is wrong. This page is for the lab administrator or IT operator responsible for keeping a CID healthy.
 

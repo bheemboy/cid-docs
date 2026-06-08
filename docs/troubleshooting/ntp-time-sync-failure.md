@@ -18,7 +18,7 @@ The diagnostic procedures on this page are intended for IT administrators famili
 
 ---
 
-## <mark>Symptom</mark>
+## Symptom
 
 The CID system clock has drifted from real time, breaking time-sensitive operations. This may manifest as:
 
@@ -29,7 +29,7 @@ The CID system clock has drifted from real time, breaking time-sensitive operati
 
 ---
 
-## <mark>Root cause</mark>
+## Root cause
 
 The CID uses `pool.ntp.org` as its NTP time source and synchronizes via the `chrony` service. Time synchronization requires outbound **UDP traffic on port 123** to be permitted by the network. Because UDP/123 is separate from TCP/443, it is frequently omitted from firewall rules that otherwise permit HTTPS.
 
@@ -58,7 +58,7 @@ You can also arrive here from [Verify CID internet connectivity](/troubleshootin
 
 ---
 
-## <mark>Affected services</mark>
+## Affected services
 
 Sustained clock drift cascades into TLS certificate validation, AWS request signing, and CID Hub telemetry. Every cloud-facing CID service is eventually affected. For the complete list of internet endpoints the CID requires, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 

@@ -86,5 +86,5 @@ As with any AIC, validating your deployed analytical system remains your organiz
 - [Security model](./security-model): trust boundaries, attack surface, device and user identity.
 - [CID Hub architecture](./cid-hub-architecture): where the Activity Log lives, encryption posture, region.
 - [Data flow and privacy](./data-flow-and-privacy): what crosses between the CID and the Hub, including the activity-event stream.
-- [Remote access](./remote-access): Agilent support session approval, termination, and <mark>Activity Log</mark> surface.
+- [Remote access](./remote-access): Agilent support session approval, termination, and Activity Log surface.
 - [Shared responsibility](./security-model#shared-responsibility): what stays your responsibility (CDS-side records, OpenLab Server, instrument LAN).

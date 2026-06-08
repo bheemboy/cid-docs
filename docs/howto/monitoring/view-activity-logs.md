@@ -7,9 +7,9 @@ title: View activity logs
 
 The **Activity Log** is the historical record of actions taken in CID Hub. It captures who did what and when, across user management, CID configuration, software changes, server changes, remote access, and authentication events. Use it to trace a configuration change, gather evidence for a compliance review, or get context for a support investigation.
 
-CID Hub keeps a single account-wide log. <mark>You can read it in two ways: a *Global Activity Log* that shows every event in your account, or a *CID-specific Activity Log* that filters the same data down to one device.</mark>
+CID Hub keeps a single account-wide log. You can read it in two ways: a *Global Activity Log* that shows every event in your account, or a *CID-specific Activity Log* that filters the same data down to one device.
 
-## <mark>Prerequisites</mark>
+## Prerequisites
 
 - You must have a CID Hub account and be signed in.
 
@@ -66,7 +66,7 @@ The available filters are:
   - `WARNING` is reserved; no events currently use this level.
   - `ERROR` for failed downloads, installs, uninstalls, and commands.
 
-## <mark>Activity Log compared to Recent Activity</mark>
+## Activity Log compared to Recent Activity
 
 CID Hub has two separate event feeds. They look similar but answer different questions.
 

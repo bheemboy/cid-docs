@@ -5,7 +5,7 @@ description: "View your organization's CID Hub account and update the address, c
 toc_max_heading_level: 2
 ---
 
-# <mark>Manage account settings</mark>
+# Manage account settings
 
 Use the **Account** page in CID Hub to review your organization's account details and keep the address, phone number, and contacts current. Administrators in your account can edit; other users can view.
 

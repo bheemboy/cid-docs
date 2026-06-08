@@ -6,7 +6,7 @@ description: Identify and resolve the 1-, 2-, 3-, or 4-beep activation pattern e
 toc_max_heading_level: 3
 ---
 
-# <mark>Beep codes on startup</mark>
+# Beep codes on startup
 
 **Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience**: Agilent Support, IT/network administrators

@@ -6,7 +6,7 @@ description: Diagnose and resolve outbound TCP port 443 blocking that prevents t
 toc_max_heading_level: 3
 ---
 
-# <mark>TCP port 443 blocked</mark>
+# TCP port 443 blocked
 
 **Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience**: Agilent Support, IT/network administrators

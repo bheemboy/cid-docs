@@ -9,15 +9,15 @@ CID Hub publishes new versions of OpenLab CDS as Agilent releases them. This pag
 
 CID Hub distinguishes two kinds of version change:
 
-- <mark>**Update**.</mark> A move within the same release train, for example **CDS 2.8** to **CDS 2.8 Update 1**. The **Update Available** label appears next to the component on the **Software** tab when a newer version in the same train is published.
+- **Update**. A move within the same release train, for example **CDS 2.8** to **CDS 2.8 Update 1**. The **Update Available** label appears next to the component on the **Software** tab when a newer version in the same train is published.
 
   ![OpenLab CDS row on the Software tab with the Update Available label visible](../../img/cds-update-available.jpg)
 
-- <mark>**Upgrade**.</mark> A move across major or minor versions, for example **CDS 2.7** to **CDS 2.8**. Upgrades are never flagged by the **Update Available** label; they require deliberate selection through the **Change** button so that the version change is intentional.
+- **Upgrade**. A move across major or minor versions, for example **CDS 2.7** to **CDS 2.8**. Upgrades are never flagged by the **Update Available** label; they require deliberate selection through the **Change** button so that the version change is intentional.
 
 The selection mechanism is the same in both cases. The difference is which version you choose and what compatibility checks apply.
 
-## <mark>Prerequisites</mark>
+## Prerequisites
 
 Before you change the CDS version selection, confirm these prerequisites.
 
@@ -28,7 +28,7 @@ Before you change the CDS version selection, confirm these prerequisites.
 - The OpenLab Server must run a CDS version that is equal to or higher than the version you select for the CIDs. Confirm the server version with your OpenLab administrator before changing the selection.
 - Every OpenLab CDS Client that connects to the affected CIDs must run a CDS version that matches the selection. A client/CID mismatch prevents OpenLab CDS from functioning correctly. Coordinate the change with your OpenLab CDS Client administrators before applying it.
 
-## <mark>Select a CDS version</mark>
+## Select a CDS version
 
 Selection happens on the **Software** tab of either the server (for inheriting CIDs) or a specific CID (for non-inheriting CIDs).
 

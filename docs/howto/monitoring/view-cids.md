@@ -11,7 +11,7 @@ Use the **CIDs** page to monitor CID readiness, identify devices that need atten
 
 - *(Optional)* You need at least one CID added to your account to work with live data.
 
-## <mark>Open the CIDs list</mark>
+## Open the CIDs list
 
 Open the list to see the CIDs in your account and their current operational state.
 
@@ -21,7 +21,7 @@ To open the CIDs list:
 
    The list opens at `/cids`.
 
-## <mark>Columns on the CIDs list</mark>
+## Columns on the CIDs list
 
 The columns show whether each CID is connected, whether software changes are pending, and whether the CID is following its server template.
 
@@ -58,7 +58,7 @@ To sort or filter the list:
 
 By default, CID Hub sorts the list by **Name** in ascending order.
 
-## <mark>Use bulk actions</mark>
+## Use bulk actions
 
 After you identify the CIDs you want to work with, you can run list-level actions from the toolbar above the table.
 

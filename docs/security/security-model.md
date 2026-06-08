@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Security model"
 ---
 
-# <mark>Security model</mark>
+# Security model
 
 This page describes the Connected Instrument Device (CID) trust boundaries, attack surface, device identity, and user identity. It provides the answers an IT reviewer needs to evaluate a CID against a domain-controlled lab PC. Procedures live in the [How-to guides](/howto). Authoritative network details live in [System requirements](../reference/system-requirements). This page explains the relevant mechanisms and the current security posture of the Connected Instrument Device.
 

@@ -6,7 +6,7 @@ description: Diagnose and resolve failures when the CID cannot reach, validate, 
 toc_max_heading_level: 3
 ---
 
-# <mark>OpenLab Server unreachable</mark>
+# OpenLab Server unreachable
 
 **Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience**: Agilent Support, IT/network administrators

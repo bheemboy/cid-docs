@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "System requirements"
 ---
 
-# <mark>System requirements</mark>
+# System requirements
 
 This page lists the network, internet, DNS, certificate, and security requirements for a CID deployment. Each CID controls one instrument; the requirements below apply per device. Sections follow the deployment flow: rack and cable, identify the device, address it on the network, choose a topology. Optional services and firewall rules follow, with customer security obligations summarized at the end.
 

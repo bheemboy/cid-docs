@@ -30,7 +30,7 @@ To view and change a CID's NIC configuration:
 
 3. Click **Configure** on a NIC to open its configuration dialog.
 
-## <mark>Configure the Corporate NIC</mark>
+## Configure the Corporate NIC
 
 The Corporate NIC is the only network path between the CID and CID Hub. An incorrect change here can disconnect the CID from CID Hub.
 
@@ -68,7 +68,7 @@ To configure the Corporate NIC:
 
    The CID applies the new configuration, then verifies it can still reach CID Hub. If the verification fails after 5 retries, the previous configuration is restored automatically and the failure is recorded in the Activity Log.
 
-## <mark>Configure the Instrument NIC</mark>
+## Configure the Instrument NIC
 
 The Instrument NIC connects the CID to your instruments. Most lab setups connect instruments directly to this NIC and assign the CID and the instruments static IP addresses in the same subnet so they can communicate. Changes to this NIC do not affect the CID's connection to CID Hub.
 

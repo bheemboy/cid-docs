@@ -3,7 +3,7 @@ sidebar_position: 3
 title: View software library
 ---
 
-# <mark>View software library</mark>
+# View software library
 
 The Software Library is the catalog of every software package available to CIDs in CID Hub: OpenLab CDS versions, Windows and Linux updates, instrument drivers, and add-ons. This page is for the lab administrator or IT operator who needs to look up which versions are available before assigning them. You can also use it to download a CDS KVM image for caching on a [registered server's network share](../setup/register-a-server).
 

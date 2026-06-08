@@ -10,8 +10,8 @@ All software on a CID, including the Linux host, the embedded Windows VM, the in
 
 Updates reach a CID in two phases:
 
-1. <mark>**Download**.</mark> When new versions are assigned to a CID, the CID downloads them in the background. No action is needed during this phase.
-2. <mark>**Installation**.</mark> Downloads do not install on their own. An administrator must start the installation from CID Hub. This lets you choose a convenient time, such as outside of production hours, so that ongoing work is not interrupted.
+1. **Download**. When new versions are assigned to a CID, the CID downloads them in the background. No action is needed during this phase.
+2. **Installation**. Downloads do not install on their own. An administrator must start the installation from CID Hub. This lets you choose a convenient time, such as outside of production hours, so that ongoing work is not interrupted.
 
 For procedures that walk through *selecting* a version before applying it, see the sibling pages:
 
@@ -23,7 +23,7 @@ For procedures that walk through *selecting* a version before applying it, see t
 Once an installation starts, do not power off or reboot the CID until **Recent activity** reports the operation as finished or restored. An interrupted installation may leave the component in a state that requires support to recover.
 :::
 
-## <mark>Prerequisites</mark>
+## Prerequisites
 
 Confirm these prerequisites before you apply updates.
 
@@ -31,7 +31,7 @@ Confirm these prerequisites before you apply updates.
 - The CID must have **Allow Changes** on. (Bulk updates skip any CID with **Allow Changes** off.)
 - The updates you want to install must already be downloaded. On the CIDs list, the **Updates** column shows **Ready** when a CID has changes ready to install.
 
-## <mark>Recommended CID state</mark>
+## Recommended CID state
 
 Updates can be applied whenever changes are downloaded, but it is best to apply them when no instruments are running on the CID.
 
@@ -52,7 +52,7 @@ When several components are applied together (through **Apply Updates** or **App
 
 This order is enforced so that each step has its prerequisites in place. Drivers, for example, can only install after the CDS version they target is present.
 
-## <mark>Apply updates to several CIDs at once</mark>
+## Apply updates to several CIDs at once
 
 Use this method to update a group of CIDs from the main list.
 
@@ -74,7 +74,7 @@ Use this method to update a group of CIDs from the main list.
 CIDs with **Allow Changes** off, with no pending changes, or that are disconnected are skipped. The list of skipped CIDs is shown in the result message.
 :::
 
-## <mark>Apply all pending updates to one CID</mark>
+## Apply all pending updates to one CID
 
 Use this method when you want to update one specific CID, without affecting others. All pending changes for that CID are installed in one action.
 
@@ -90,7 +90,7 @@ Use this method when you want to update one specific CID, without affecting othe
 
    The CID installs every pending component in the [installation order](#installation-order). The status of each component updates live in the **Status** column.
 
-## <mark>Apply a single update to one CID</mark>
+## Apply a single update to one CID
 
 Use this method when you want to install one specific component on a specific CID, for example to stagger a large update or to retry a single failed item.
 
@@ -108,7 +108,7 @@ Use this method when you want to install one specific component on a specific CI
 
    The component installs by itself. Other pending components stay queued and are not affected.
 
-## <mark>What happens on failure</mark>
+## What happens on failure
 
 If something goes wrong during installation, the CID is designed to stay usable. Components that already installed successfully in the same run keep working, and the **Recent Activity** section on the CID's **Summary** page plus the [Activity Log](../monitoring/view-activity-logs) record both the failure and any recovery action.
 
@@ -125,7 +125,7 @@ To recover:
 3. Reapply the update using one of these methods: [Apply updates to several CIDs at once](#apply-updates-to-several-cids-at-once), [Apply all pending updates to one CID](#apply-all-pending-updates-to-one-cid), or [Apply a single update to one CID](#apply-a-single-update-to-one-cid). You only need to retry the components that failed.
 4. If reapplying the update does not recover the CID, or if a CDS restore cannot complete, run **Reset OpenLab CDS** from the [CID administration](../operations/cid-administration) page. This installs a fresh CDS VM from the baseline. Use this recovery option only after the other steps fail. Contact Agilent support if the reset does not return the CID to **Ready**.
 
-## <mark>See also</mark>
+## See also
 
 See these related pages for choosing versions, checking readiness, and recovering from failures.
 

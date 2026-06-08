@@ -6,7 +6,7 @@ description: Diagnose and resolve DNS resolution failures that prevent the CID f
 toc_max_heading_level: 3
 ---
 
-# <mark>DNS resolution failure</mark>
+# DNS resolution failure
 
 **Product**: Agilent Connected Instrument Device (CID) for OpenLab CDS
 **Audience**: Agilent Support, IT/network administrators

@@ -5,7 +5,7 @@ description: "Invite users to CID Hub, assign Administrator or User roles, reset
 toc_max_heading_level: 2
 ---
 
-# <mark>Manage users and roles</mark>
+# Manage users and roles
 
 Use the **Users** page in CID Hub to invite people to your account, assign them a role, reset their password, and remove their access when they no longer need it. Roles, and what each one can do, are described in [Role privileges](#role-privileges).
 

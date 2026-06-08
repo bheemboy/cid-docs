@@ -3,7 +3,7 @@ sidebar_position: 3
 title: "Configure an instrument"
 ---
 
-# <mark>Configure an instrument</mark>
+# Configure an instrument
 
 After a CID has activated and registered with your OpenLab Server, it appears in Control Panel as an Analytical Instrument Controller (AIC). This page is for the lab technician who is attaching a physical instrument to the CID and configuring it through Control Panel. The procedure is identical to configuring an instrument on a conventional AIC; the work happens in Control Panel, not in CID Hub.
 

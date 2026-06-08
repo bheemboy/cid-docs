@@ -6,7 +6,7 @@ description: "Access the Windows VM console on a CID to submit and run new sampl
 toc_max_heading_level: 2
 ---
 
-# <mark>Run OpenLab CDS in Failover mode</mark>
+# Run OpenLab CDS in Failover mode
 
 When a CID cannot reach its OpenLab Server, samples already running or queued on the CID continue to completion. Their data transfers to the Server once the connection is restored, and you do not need to do anything to keep that work running.
 

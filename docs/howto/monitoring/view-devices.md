@@ -5,13 +5,13 @@ title: View devices
 
 # View devices
 
-The Devices page provides a comprehensive list of all physical CID devices registered to your account. <mark>Use this view for administrative and support purposes to track a device from its initial registration to its active state. It helps you confirm that a device connects to CID Hub and becomes active after it is registered.</mark>
+The Devices page provides a comprehensive list of all physical CID devices registered to your account. Use this view for administrative and support purposes to track a device from its initial registration to its active state. It helps you confirm that a device connects to CID Hub and becomes active after it is registered.
 
 ## Prerequisites
 
 - You must have an administrator role to view the **Devices** page.
 
-## <mark>Open the Devices page</mark>
+## Open the Devices page
 
 Open the page to see the physical devices registered to your account and their current states.
 
@@ -24,7 +24,7 @@ To open the Devices page:
 
 ![Devices list with status, MAC address, code, CID name, serial number, model, and timestamp columns](../../img/devices-list.jpg)
 
-## <mark>Columns on the Devices list</mark>
+## Columns on the Devices list
 
 The columns show hardware details, connection status, and tracking information.
 
@@ -42,7 +42,7 @@ The columns show hardware details, connection status, and tracking information.
 - **Created by / Date Created**. Shows which user created the device record and when.
 - **Modified by / Date Modified**. Shows which user last modified the device record and when.
 
-## <mark>Sort and filter</mark>
+## Sort and filter
 
 Sort and filter the list to narrow it to the devices you need to review.
 
@@ -53,7 +53,7 @@ To sort or filter the list:
 
 The filter options work the same way as those on the [View CIDs](view-cids) page.
 
-## <mark>See also</mark>
+## See also
 
 - [View CIDs](view-cids): monitor CID readiness and run list-level actions such as software updates and export.
 - [Activate a CID](../onboarding/activate-a-cid): create a CID record and bring a physical CID into service.

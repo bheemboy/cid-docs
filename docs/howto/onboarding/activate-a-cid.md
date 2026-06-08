@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Activate a CID"
 ---
 
-# <mark>Activate a CID</mark>
+# Activate a CID
 
 Each physical CID must have a matching record in CID Hub before it can be used. This page is for the lab administrator or IT operator who creates that record and monitors the device through activation. Activation is largely automatic: once you create the record with a valid PIN code, the CID detects it on the next contact attempt and begins installing OpenLab CDS.
 
