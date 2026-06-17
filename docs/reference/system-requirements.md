@@ -104,7 +104,7 @@ After making changes to server settings, CIDs must be rebooted for the changes t
 
 ## SSL certificate requirements
 
-A CID validates the SSL certificate of every OpenLab server it connects to over HTTPS. The accepted certificate types depend on the server type.
+A CID validates the SSL certificate of every OpenLab server it connects to over HTTPS.
 
 ### OpenLab ECM 3.x
 
