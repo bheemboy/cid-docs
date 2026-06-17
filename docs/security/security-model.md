@@ -102,7 +102,7 @@ The procedure side of this flow lives in [Activate a CID](../howto/onboarding/ac
 
 ### Decommissioning and offline devices
 
-When an administrator deletes a CID from the Hub, the Hub deletes the device's record and signals the physical appliance to perform a factory reset on its next reboot. The reset wipes all local data, including the AWS IoT certificate and private key.
+When an administrator deletes a CID from the Hub, the Hub deletes the device's record and signals the physical appliance to perform a factory reset on its next reboot. The reset wipes the device's local configuration and identity data, including the AWS IoT certificate and private key.
 
 If a device is permanently offline before the reset signal arrives (for example, due to hardware failure, a return, or network isolation), its IoT certificate remains technically valid on the physical hardware. However, once the device's record is deleted in the Hub, the Hub rejects all API calls and management requests using that certificate.
 

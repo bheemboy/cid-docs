@@ -19,7 +19,7 @@ Logging spans every class of administrative and operational event:
 
 - **Authentication**. Logins, logouts, inactivity logouts, and session-expiry logouts.
 - **User and account administration**. User add, remove, edit, password reset, and account edits.
-- **CID activation and lifecycle**. Activation, registration, deletion, factory reset, and CID summary changes.
+- **CID activation and lifecycle**. Activation, registration, deletion, and CID summary changes.
 - **CID administration**. **Allow Changes** toggling, software-inheritance changes, and other administrative actions on a CID.
 - **CID networking**. NIC settings (IP, gateway, DNS, subnet) changes.
 - **Certificate authorities**. Certificate Authority operations (adding, updating, and removing trusted certificate authorities).

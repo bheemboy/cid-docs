@@ -38,7 +38,7 @@ The columns show hardware details, connection status, and tracking information.
 - **Model #**. The model of the IoT hardware.
 - **Last Connected**. The timestamp of the last communication from the device to CID Hub.
   - For a device that has not yet activated (such as a **New** or **Linked** device), this timestamp is updated regularly while the device is powered on and connected to the internet.
-  - Once a device becomes **Active** by completing the activation process, this timestamp is no longer updated. Time tracking resumes only after a factory reset.
+  - Once a device becomes **Active** by completing the activation process, this timestamp is no longer updated. Time tracking resumes only after a factory reset, so a **Last Connected** time that has started updating again is how you confirm a reset device is back on the network and waiting to be registered.
 - **Created by / Date Created**. Shows which user created the device record and when.
 - **Modified by / Date Modified**. Shows which user last modified the device record and when.
 

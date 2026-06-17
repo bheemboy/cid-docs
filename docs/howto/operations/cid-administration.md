@@ -95,7 +95,9 @@ A factory reset:
 2. Click **Delete CID** and enter a reason when prompted. CID Hub records the deletion in the Activity Log. The CID keeps running normally until it reboots, so anyone using the device can finish what they are doing.
 3. Power-cycle the CID at the chassis.
 
-On the next boot the CID detects the deletion, runs the factory reset, and waits for a CID Hub record to register against. Create a new CID record in CID Hub and register the device using its PIN to bring it back into service. See [Activate a CID](../onboarding/activate-a-cid) for the registration steps.
+On the next boot the CID detects the deletion and performs the factory reset on the device itself, without needing a connection to CID Hub. The reset completes on its own, even if the device is offline at the time, and the CID then waits for a CID Hub record to register against. Create a new CID record in CID Hub and register the device using its PIN to bring it back into service. See [Activate a CID](../onboarding/activate-a-cid) for the registration steps.
+
+To confirm the reset has finished, find the device by its PIN in the Devices list and check that its **Last Connected** time has started updating again. See [View devices](../monitoring/view-devices).
 
 :::note
 The deleted CID's history stays in CID Hub for reference, and its original name is free to reuse on the new CID record.
