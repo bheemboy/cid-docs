@@ -44,6 +44,7 @@ Administrators have full control of the account:
 - Add, edit, and remove CIDs.
 - Configure CID network settings.
 - Perform administrative actions on CIDs (for example, **Reset OpenLab CDS**, **Reboot System**).
+- View, import, edit, and remove trusted certificate authorities (CAs).
 - Manage other users (invite, change roles, remove).
 - Edit account details.
 
@@ -57,7 +58,7 @@ The **User** role suits lab staff who operate CIDs day-to-day but should not cha
 - Grant or revoke remote access for support.
 - Restart or shut down a CID.
 
-Users cannot change software, modify networking, add or remove CIDs or servers, or manage other users.
+Users cannot change software, modify networking, add or remove CIDs or servers, manage certificate authorities, or manage other users.
 
 ## Invite a user
 

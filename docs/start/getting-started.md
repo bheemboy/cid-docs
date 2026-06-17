@@ -27,7 +27,8 @@ Before a CID can activate and receive updates, it needs outbound internet access
 
 1. Confirm that each CID has an internet connection for activation, security updates, monitoring, and other maintenance activities.
 2. Configure the network and firewalls to allow connections from the CIDs to the required internet sites (see the complete list in the [Internet requirements](../reference/system-requirements#internet-requirements) section of System requirements).
-3. Review the [SSL certificate requirements for HTTPS](../reference/system-requirements#ssl-certificate-requirements-for-https) section of System requirements before you proceed.
+3. Review the [SSL certificate requirements](../reference/system-requirements#ssl-certificate-requirements) section of System requirements before you proceed.
+4. If your OpenLab Server or OpenLab ECM 3.x server uses a corporate or self-signed certificate, import the issuing certificate authority (CA) into CID Hub so that CIDs trust it. See [Manage certificate authorities](../howto/setup/manage-certificate-authorities).
 
 ## Enable CID network readiness
 

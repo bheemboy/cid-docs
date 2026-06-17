@@ -51,6 +51,7 @@ The available filters are:
 - **Category**. Select one or more categories to display.
   - `Additional Hubs`
   - `Authentication` (sign-in, sign-out, session expiry, role assignment)
+  - `Certificate Authorities` (import, edit, and removal of trusted CAs)
   - `CID Activation`
   - `CID Administration`
   - `CID Device`

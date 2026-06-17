@@ -66,6 +66,10 @@ After the CID finds its record in CID Hub, it runs through the following steps. 
 14. Schedules antivirus scans.
 15. Rotates the default passwords for the CID Linux subsystem and the Windows VM.
 
+:::important
+If the OpenLab Server or OpenLab ECM 3.x server uses a corporate or self-signed certificate, import the issuing certificate authority into CID Hub before you activate the CID. Otherwise the CID cannot trust the server at steps 10 and 11, and registration fails. See [Manage certificate authorities](../setup/manage-certificate-authorities).
+:::
+
 Activation typically takes 30–120 minutes, depending on network speed and the size of necessary downloads. The CID's status in CID Hub transitions from **New** to **Ready** when activation completes.
 
 ![CID Summary page after a successful activation, with the Ready status badge highlighted](../../img/cid-summary-ready.png)

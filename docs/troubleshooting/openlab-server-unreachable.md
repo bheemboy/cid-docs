@@ -23,6 +23,7 @@ The diagnostic procedures on this page are intended for IT administrators famili
 The CID cannot reach, validate, or register with the OpenLab CDS Server (OLSS) configured on the CID's record in CID Hub. This is distinct from connectivity to the Agilent and AWS cloud endpoints covered by the other troubleshooting pages. This may manifest as:
 
 - A brand-new CID completes Hub-side activation but stalls on CDS registration, never reaching the **Connected** state.
+- A brand-new CID reaches the OLSS server, but CDS registration fails when the OLSS or OpenLab ECM 3.x server presents a corporate or self-signed certificate that the CID does not trust.
 - For an already-registered CID, the status in CID Hub shows **Server disconnected**. This status is triggered specifically by OLSS being unreachable or down; credential issues alone do not trigger it.
 - In CID Hub, the Recent Activity view shows one of these error messages against the configured OLSS server:
   - `Could not resolve '<hostname>'.`
@@ -63,6 +64,7 @@ Use the following table to confirm that the OpenLab Server is the failing endpoi
 |---|---|
 | CID Hub Recent Activity shows one of the OLSS error messages listed in Symptom | This is the correct document. Continue below. |
 | A brand-new CID stalls on CDS registration after Hub-side activation completes | This is the correct document. Continue below. |
+| The CID reaches the server but registration fails, and the OLSS or ECM 3.x server uses a corporate or self-signed certificate | This is the correct document. See [Untrusted OpenLab or ECM server certificate](#untrusted-openlab-or-ecm-server-certificate) in Resolution. |
 | You ran [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) but the failing endpoint is the customer OLSS server, not an Agilent or AWS endpoint | This is the correct document. The connectivity tester does not test OLSS; continue below. |
 | Cloud service endpoints (Agilent, AWS, Microsoft) are also unreachable | Resolve the cloud-side failure first; see [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked). Return here once cloud connectivity is restored. |
 | DNS resolution for the OLSS hostname fails | See [DNS resolution failure](/troubleshooting/dns-resolution-failure). |
@@ -233,6 +235,14 @@ If Recent Activity reported `Server's version '<X>' is older than CID version '<
 
 - Upgrade the external OpenLab CDS Server to a version equal to or newer than `<Y>` (the OLSS tier included with the CID's CDS installation).
 - Alternatively, contact Agilent Support to discuss an agent exception that allows the older OLSS server version.
+
+### Untrusted OpenLab or ECM server certificate
+
+If Steps 1–3 succeed but CDS registration fails because the OLSS or OpenLab ECM 3.x server presents a corporate or self-signed certificate, the CID does not trust the certificate's issuing CA. The Step 3 health check uses `curl -sk`, which skips certificate validation, so it succeeds even when the certificate is untrusted; the trust failure surfaces later, during AIC configuration and CDS registration.
+
+- Import the issuing CA (the root and any intermediate certificates) into CID Hub. See [Manage certificate authorities](/howto/setup/manage-certificate-authorities).
+- Reboot the CID, or wait for the next certificate authority synchronization, then retry registration.
+- For which servers require a CA import, see the [SSL certificate requirements](/reference/system-requirements#ssl-certificate-requirements) section of System requirements.
 
 ---
 

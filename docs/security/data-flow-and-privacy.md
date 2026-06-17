@@ -63,7 +63,7 @@ Lines 1 and 2 carry everything that crosses the CID to Hub boundary. The table b
 
 ### Data categories
 
-The Visible in Hub UI column indicates whether you, subject to your assigned role, can inspect that data category in the CID Hub portal. Security material such as certificates is never displayed.
+The Visible in Hub UI column indicates whether you, subject to your assigned role, can inspect that data category in the CID Hub portal. Security material such as device-identity certificates and private keys is never displayed. Trusted CAs that you import are public certificates and are visible on the [Certificate Authorities page](../howto/setup/manage-certificate-authorities).
 
 | Data category        | Direction     | Contains sensitive data           | Transport               | Visible in Hub UI |
 | -------------------- | ------------- | --------------------------------- | ----------------------- | ----------------- |

@@ -102,25 +102,18 @@ After making changes to server settings, CIDs must be rebooted for the changes t
 
 ---
 
-## SSL certificate requirements for HTTPS
+## SSL certificate requirements
 
-CIDs validate the server certificate of every HTTPS endpoint they connect to. Which certificate authorities are accepted depends on the server type.
+A CID validates the SSL certificate of every OpenLab server it connects to over HTTPS. The accepted certificate types depend on the server type.
 
 ### OpenLab ECM 3.x
 
-To successfully run an OpenLab ECM 3.x server over HTTPS in an environment with CIDs, you must use a publicly trusted SSL certificate. Certificates issued by internal, corporate, or self-signed certificate authorities (CAs) are not recognized by CIDs.
+To run an ECM 3.x server over HTTPS with CIDs, use either a publicly trusted certificate or a certificate issued by an internal, corporate, or self-signed certificate authority (CA). When using a certificate from an internal, corporate, or self-signed CA, import the corresponding CA into CID Hub so that CIDs trust it. See [Manage certificate authorities](../howto/setup/manage-certificate-authorities).
 
 ### OpenLab ECM XT / OpenLab Server
 
-Certificates issued by internal, corporate, or self-signed certificate authorities (CAs), as well as publicly trusted certificates, may be used for running OpenLab ECM XT / OpenLab Servers over HTTPS in an environment with CIDs.
+OpenLab ECM XT and OpenLab Server always use HTTPS. You can use a publicly trusted certificate or a certificate issued by an internal, corporate, or self-signed CA. As with ECM 3.x, import any internal, corporate, or self-signed CA into CID Hub. See [Manage certificate authorities](../howto/setup/manage-certificate-authorities).
 
-:::note
-Self-generated certificates (internal/corporate CAs and self-signed) must include the Authority Information Access (AIA) extension with URLs that provide access to the root and any intermediate certificates. Self-generated certificates without proper AIA configuration may not function correctly.
-
-Enterprise public key infrastructure (PKI) such as Microsoft AD CS, commercial PKI management platforms (for example, Venafi or DigiCert), or cloud-based solutions (for example, AWS ACM Private CA) can be configured to include AIA extensions automatically.
-
-Publicly trusted certificates do not require AIA, because their roots are pre-installed in the CID's trust stores.
-:::
 
 ---
 
