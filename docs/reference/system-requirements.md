@@ -112,7 +112,7 @@ To run an ECM 3.x server over HTTPS with CIDs, use either a publicly trusted cer
 
 ### OpenLab ECM XT / OpenLab Server
 
-OpenLab ECM XT and OpenLab Server always use HTTPS. You can use a publicly trusted certificate or a certificate issued by an internal, corporate, or self-signed CA. As with ECM 3.x, import any internal, corporate, or self-signed CA into CID Hub. See [Manage certificate authorities](../howto/setup/manage-certificate-authorities).
+OpenLab ECM XT and OpenLab Server, by default, use an OpenLab internal SSL certificate and run over HTTPS. You can use a publicly trusted certificate or a certificate issued by an internal, corporate, or self-signed CA. As with ECM 3.x, import any internal, corporate, or self-signed CA into CID Hub. See [Manage certificate authorities](../howto/setup/manage-certificate-authorities).
 
 
 ---
