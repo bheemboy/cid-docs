@@ -1,9 +1,11 @@
 {
-  "label": "How to...",
-  "position": 5,
+  "label": "How-to guides",
+  "position": 3,
   "collapsed": true,
   "collapsible": true,
   "link": {
-    "slug": "/howto"
+    "type": "generated-index",
+    "slug": "/howto",
+    "description": "Task-oriented procedures for setting up OpenLab Servers, activating CIDs, monitoring them, applying updates, running day-to-day operations, and managing your CID Hub account."
   }
 }

@@ -1,0 +1,11 @@
+{
+  "label": "Reference",
+  "position": 4,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/reference",
+    "description": "Specification-style information: system and network requirements, supported software combinations, and release notes."
+  }
+}

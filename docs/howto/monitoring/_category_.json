@@ -1,0 +1,11 @@
+{
+  "label": "Monitoring",
+  "position": 3,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/monitoring",
+    "description": "Read-only views in CID Hub: CIDs, devices, the Software Library, and activity logs."
+  }
+}

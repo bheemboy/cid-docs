@@ -1,0 +1,11 @@
+{
+  "label": "Onboarding",
+  "position": 2,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/onboarding",
+    "description": "Bring a new CID online: activate it in CID Hub, configure its network cards, and configure the attached instrument."
+  }
+}

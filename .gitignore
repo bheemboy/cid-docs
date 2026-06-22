@@ -22,3 +22,7 @@ yarn-error.log
 coverage/
 .cache/
 dist/
+
+# Obsidian
+.obsidian/
+.trash/

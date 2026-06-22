@@ -1,0 +1,11 @@
+{
+  "label": "Operations",
+  "position": 5,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/operations",
+    "description": "Run a CID through outages and routine administrative actions: administer a CID from CID Hub, and run OpenLab CDS in failover when the OpenLab Server is unreachable."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "label": "Updates",
+  "position": 4,
+  "collapsed": true,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/howto/updates",
+    "description": "Apply OpenLab CDS, Windows, Linux, and driver updates to one or more CIDs."
+  }
+}

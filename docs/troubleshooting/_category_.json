@@ -1,9 +1,10 @@
 {
-  "label": "Troubleshooting...",
+  "label": "Troubleshooting",
   "position": 6,
   "collapsed": true,
   "collapsible": true,
   "link": {
-    "slug": "/troubleshooting"
+    "type": "doc",
+    "id": "troubleshooting/index"
   }
 }
