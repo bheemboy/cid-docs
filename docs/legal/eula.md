@@ -30,7 +30,7 @@ These CID Hub Terms of Use ("**Terms of Use**") and the Agilent Technologies Sof
 
 (I) "**Personal Data**" means any information owned or provided by or on behalf of Customer, in any form (including paper, electronic and other media), that Agilent Processes in connection with the performance of Agilent's rights and obligations under these Terms of Use that either directly or indirectly relates to an identified or identifiable natural person, such as Customer's employees, customers, subcontractors, partners or any other third party (including third parties' employees).
 
-(J) "**Process**" or "**Processing**" any operation or set of operations which is performed on Personal Data or on sets of Personal Data, whether or not by automated means, such as collection, recording, organization, structuring, storage, adaptation or alteration, retrieval, consultation, use, dis-closure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction.
+(J) "**Process**" or "**Processing**" any operation or set of operations which is performed on Personal Data or on sets of Personal Data, whether or not by automated means, such as collection, recording, organization, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction.
 
 (K) "**Services**" means the CID Hub Software developed and owned by Agilent, made available through a URL in a hosted environment, together with any associated products and services. The Services are licensed, not sold. These Terms of Use grant the Customer limited rights to use the Software. The Services are provided to Customer's Authorized Users only.
 
@@ -112,7 +112,7 @@ System Availability is validated at least every **5 minutes**. If the system is 
 
 ### (L) Calculation of Service Credits and Payment Procedures {#service-credits-calculation}
 
-Agilent shall use commercially reasonable efforts to monitor System Availability to determine, on an annual basis, if Customer is entitled to Service Credits. If Customer believes that it is entitled to Service Credits, Customer may submit a credit request by sending an e-mail to Agilent. If Agilent determines that Customer is entitled to Service Credits, then Agilent will issue Service Credits to Customer on the next payment due.
+Agilent shall use commercially reasonable efforts to monitor System Availability to determine, on an annual basis, if Customer is entitled to Service Credits. If Customer believes that it is entitled to Service Credits, Customer may submit a credit request by sending an email to Agilent. If Agilent determines that Customer is entitled to Service Credits, then Agilent will issue Service Credits to Customer on the next payment due.
 
 ### (M) Service Credit Exclusions {#service-credit-exclusions}
 
@@ -196,7 +196,7 @@ Customer acknowledges and agrees that Agilent will own all right, title and inte
 
 ### (C) Third Party Data {#third-party-data}
 
-To the extent that Customer uploads third party data from external sources such as public or private databases, Customer warrants that it has all appropriate rights and licenses from such external sources to access, copy, up-load, and use such data.
+To the extent that Customer uploads third party data from external sources such as public or private databases, Customer warrants that it has all appropriate rights and licenses from such external sources to access, copy, upload, and use such data.
 
 ---
 
@@ -236,7 +236,7 @@ Customer acknowledges and agrees to each of the following:
 
 (i) Agilent may **Process** non-sensitive Personal Data such as contact details relating to Customer and its employees, agents, and contractors to enable Customer to order products or services, make requests, register for customized communications programs and enhance Customer's experience on Agilent's websites in accordance with Agilent's privacy policy at [https://www.agilent.com/home/privacy-policy](https://www.agilent.com/home/privacy-policy). Customer shall ensure that Agilent's privacy policy is provided or made available to its employees, agents, and subcontractors.
 
-(ii) In the event that any Customer Data input in the Software contains Personal Data, Agilent shall Process such Personal Data on behalf of Customer in accordance with the terms of the Agilent Data Processing  Agreement, available at [https://www.agilent.com/en/contracting-with-agilent/data-processing-agreement](https://www.agilent.com/en/contracting-with-agilent/data-processing-agreement), which includes, where applicable, the EU Standard Contractual Clauses (controller to non-EU processor per Decision 2010/87/EU).
+(ii) In the event that any Customer Data input in the Software contains Personal Data, Agilent shall Process such Personal Data on behalf of Customer in accordance with the terms of the Agilent Data Processing Agreement, available at [https://www.agilent.com/en/contracting-with-agilent/data-processing-agreement](https://www.agilent.com/en/contracting-with-agilent/data-processing-agreement), which includes, where applicable, the EU Standard Contractual Clauses (controller to non-EU processor per Decision 2010/87/EU).
 
 (iii) At Customer's request, the parties shall negotiate in good faith and execute additional appropriate **data processing agreements** required under applicable law.
 

@@ -6,13 +6,13 @@ toc_max_heading_level: 2
 
 # Agilent Acceptable Use Policy
 
-Agilent Technologies, Inc.’s (and its affiliate(s)) (referenced herein as “**Agilent**”) Acceptable Use Policy (referenced herein collectively as the “**AUP Guidelines**”) together with Terms of Use (“**Terms of Use**”) cover and govern each individual end user’s (referenced herein with “you” or with “your”) use and access to Agilent’s services (referenced herein as the “Service”). Agilent’s Privacy Policy [https://www.agilent.com/home/privacy-policy](https://www.agilent.com/home/privacy-policy) explains how or whether Agilent (referenced herein with “we” “our” and “us”) collects and uses your personally identifiable information. BY USING OUR SERVICE, YOU’RE AGREEING TO USE THE SERVICE IN ACCORDANCE WITH THESE AUP GUIDELINES, AND TO REVIEW AGILENT’S PRIVACY POLICY. PLEASE ALSO NOTE THAT THESE AUP GUIDELINES AND THE PRIVACY POLICY ARE SUBJECT TO CHANGE. IF YOU DO NOT AGREE TO BE BOUND BY THESE AUP GUIDELINES OR DISAGREE WITH THE PERSONALLY IDENTIFIABLE INFORMATION COLLECTION AND USE PRACTICES, YOU SHOULD NOT ACCESS OR USE THE SERVICE. If there is a valid, signed written agreement (“Agreement”) between you and Agilent concerning the Service, the Agreement shall take precedence in the event of a conflict between the AUP Guidelines and the Agreement.
+Agilent Technologies, Inc.’s (and its affiliate(s)) (referenced herein as “**Agilent**”) Acceptable Use Policy (referenced herein collectively as the “**AUP Guidelines**”) together with Terms of Use (“**Terms of Use**”) cover and govern each individual end user’s (referenced herein with “you” or with “your”) use and access to Agilent’s services (referenced herein as the “Service”). Agilent’s Privacy Policy [https://www.agilent.com/home/privacy-policy](https://www.agilent.com/home/privacy-policy) explains how or whether Agilent (referenced herein with “we” “our” and “us”) collects and uses your personally identifiable information. BY USING OUR SERVICE, YOU ARE AGREEING TO USE THE SERVICE IN ACCORDANCE WITH THESE AUP GUIDELINES, AND TO REVIEW AGILENT’S PRIVACY POLICY. PLEASE ALSO NOTE THAT THESE AUP GUIDELINES AND THE PRIVACY POLICY ARE SUBJECT TO CHANGE. IF YOU DO NOT AGREE TO BE BOUND BY THESE AUP GUIDELINES OR DISAGREE WITH THE PERSONALLY IDENTIFIABLE INFORMATION COLLECTION AND USE PRACTICES, YOU SHOULD NOT ACCESS OR USE THE SERVICE. If there is a valid, signed written agreement (“Agreement”) between you and Agilent concerning the Service, the Agreement shall take precedence in the event of a conflict between the AUP Guidelines and the Agreement.
 
 ---
 
 ## 1. Your Content & Your Permissions
 
-When you use our Service, you provide us with things like your files, content, messages, etc. (“Your Content”). Your Content is yours. You represent that you have all necessary right, power, and authority to use the Service and share Your Content and will comply with all applicable laws when doing so. These AUP Guidelines don’t give us any rights to Your Content except for the limited rights that enable us to offer the Service as stated in the Terms of Use. Our right to use the Aggregated Data derived from use of the Services and Content which does not identify You is defined in the Terms of Use. We need your permission to do things like host Your Content, back it up, or share it when you ask us to. This permission extends to our trusted third parties we work with. You therefore give us, and third parties (with whom we work) permission to use, display, host, share, and back up Your Content. By submitting Your Content, you also permit us to identify you by your username and as the contributor of Your Content.
+When you use our Service, you provide us with things like your files, content, messages, etc. (“Your Content”). Your Content is yours. You represent that you have all necessary right, power, and authority to use the Service and share Your Content and will comply with all applicable laws when doing so. These AUP Guidelines do not give us any rights to Your Content except for the limited rights that enable us to offer the Service as stated in the Terms of Use. Our right to use the Aggregated Data derived from use of the Services and Content which does not identify You is defined in the Terms of Use. We need your permission to do things like host Your Content, back it up, or share it when you ask us to. This permission extends to our trusted third parties we work with. You therefore give us, and third parties (with whom we work) permission to use, display, host, share, and back up Your Content. By submitting Your Content, you also permit us to identify you by your username and as the contributor of Your Content.
 
 ---
 
@@ -36,7 +36,7 @@ Our Service may have functionality that permits You to share Your Content with o
 
 (H) breach or otherwise circumvent any security or authentication measures;
 
-(I) access, tamper with, or use non-public areas or parts of the Service, or shared areas of the Service you haven't been invited to;
+(I) access, tamper with, or use non-public areas or parts of the Service, or shared areas of the Service you have not been invited to;
 
 (J) access, search, or create accounts for the Service by any means other than our publicly supported interfaces (for example, "scraping" or creating accounts in bulk);
 
@@ -60,7 +60,7 @@ Our Service may have functionality that permits You to share Your Content with o
 
 ## 3. Your Responsibilities
 
-You are responsible for your conduct and Your Content and your compliance with these AUP Guidelines. Content in the Service may be protected by others’ intellectual property rights. You therefore agree that you won’t copy, reproduce, create derivative works of, decompile, upload, download, share, or otherwise exploit third party content unless you have the right to do so. We may review your conduct and content for compliance with these AUP Guidelines but have no obligation to do so. We aren’t responsible for the content people post and share via the Service. You agree also to safeguard your password to the Service, make sure that others don’t have access to it, and keep your account information current.
+You are responsible for your conduct and Your Content and your compliance with these AUP Guidelines. Content in the Service may be protected by others’ intellectual property rights. You therefore agree that you will not copy, reproduce, create derivative works of, decompile, upload, download, share, or otherwise exploit third party content unless you have the right to do so. We may review your conduct and content for compliance with these AUP Guidelines but have no obligation to do so. We are not responsible for the content people post and share via the Service. You agree also to safeguard your password to the Service, make sure that others do not have access to it, and keep your account information current.
 
 ---
 
@@ -80,7 +80,7 @@ We respect the intellectual property of others and ask that you do too. We respo
 
 (C) a description or link to the location of the material claim is infringing;
 
-(D) your physical address, telephone number and e-mail address;
+(D) your physical address, telephone number and email address;
 
 (E) a statement that you have a good faith belief that the content is not authorized by the rights owner, its agent or the law;
 
@@ -90,7 +90,7 @@ We respect the intellectual property of others and ask that you do too. We respo
 
 ## 6. Termination & Right To Suspend
 
-You’re free to stop using our Service at any time. We also reserve the right to suspend or end the Service at any time at our discretion and without notice. For example, we may suspend or terminate your use of the Service and remove Your Content if you’re not complying with these AUP Guidelines, or using the Service in a manner that may cause us legal liability, disrupt the Service, disrupt others’ use of the Service or, in our sole opinion, reason, cause harm. All provisions of these AUP Guidelines, which by their nature should survive, will survive termination of the Service.
+You are free to stop using our Service at any time. We also reserve the right to suspend or end the Service at any time at our discretion and without notice. For example, we may suspend or terminate your use of the Service and remove Your Content if you are not complying with these AUP Guidelines, or using the Service in a manner that may cause us legal liability, disrupt the Service, disrupt others’ use of the Service or, in our sole opinion, reason, cause harm. All provisions of these AUP Guidelines, which by their nature should survive, will survive termination of the Service.
 
 ---
 
