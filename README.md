@@ -30,22 +30,6 @@ For alternate hosting targets, you can override the Docusaurus site URL and base
 DOCS_URL=https://example.pages.dev DOCS_BASE_URL=/ npm run build
 ```
 
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<ghp_tokem> npm run deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
-
 ## Cloudflare Pages
 
 For a Cloudflare Pages project that builds the `security` branch, use:

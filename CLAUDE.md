@@ -17,7 +17,7 @@ npm run typecheck      # tsc (config files only; not part of the build)
 npm run clear          # clear the .docusaurus cache if the dev server misbehaves
 ```
 
-There is no test suite. **`npm run build` is the validation gate** — `onBrokenLinks: 'throw'` in `docusaurus.config.ts` makes the build fail on any broken internal link or cross-reference, so a clean build is the definition of "passing." The GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `npm run build` on every push/PR to `main`.
+There is no test suite. **`npm run build` is the validation gate** — `onBrokenLinks: 'throw'` in `docusaurus.config.ts` makes the build fail on any broken internal link or cross-reference, so a clean build is the definition of "passing." There is no CI; run the build locally before pushing.
 
 ## Authoring documentation
 
@@ -48,9 +48,8 @@ The `support/` directory (e.g. `factory-reset-runbook.md`) holds internal suppor
 
 ## Deployment
 
-- **`main`** → pushing triggers the GitHub Actions workflow, which builds and deploys `./build` to the `gh-pages` branch (GitHub Pages at `https://bheemboy.github.io/cid-docs/`). This is the default base path/URL in `docusaurus.config.ts`.
-- **`security`** branch → built by Cloudflare Pages. For alternate hosts, override URL and base path at build time: `DOCS_URL=https://example.pages.dev DOCS_BASE_URL=/ npm run build`.
-- A `Dockerfile` + `nginx.conf` produce a self-hosted nginx image serving the build under `/cid-docs/`.
+- **Cloudflare Pages** builds the `security` branch — build command `npm run build`, output dir `build`. Set the production URL and base path at build time via env vars: `DOCS_URL=https://<project>.pages.dev DOCS_BASE_URL=/ npm run build`. These default to `/` when unset (see `docusaurus.config.ts`).
+- There is no CI and no other deploy target; Cloudflare is the only place the site is published.
 
 ## Documentation Domain Context
 
