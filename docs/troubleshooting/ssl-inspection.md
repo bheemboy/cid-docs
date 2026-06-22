@@ -86,6 +86,12 @@ openssl s_client -connect <hostname>:443 2>/dev/null | openssl x509 -noout -issu
 
 Run this command for each affected endpoint and collect the output. A corporate or internal CA in the `issuer` field confirms SSL inspection is active for that destination.
 
+| Result | Next step |
+|---|---|
+| The `issuer` field shows a corporate or internal CA | SSL inspection is active for that destination. Continue to [Step 2](#step-2-determine-the-scope-of-inspection) to scope the bypass rule. |
+| The `issuer` field shows a public CA (Amazon, DigiCert, Microsoft) for every affected endpoint | This endpoint is not being inspected. See [TLS handshake failure](/troubleshooting/tls-handshake-failure) for other certificate-chain causes. |
+| `openssl s_client` returns no certificate or the connection terminates with no server response | The issue is a hard block, not inspection. See [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
+
 ---
 
 ### Step 2. Determine the scope of inspection
@@ -99,13 +105,13 @@ openssl s_client -connect agilent-aws-prd-51-ac-images.s3.amazonaws.com:443 2>/d
 openssl s_client -connect microsoft.com:443 2>/dev/null | openssl x509 -noout -issuer
 ```
 
-| Pattern in the results | Interpretation |
+| Result | Next step |
 |---|---|
-| All four return a corporate CA | Inspection is applied broadly to outbound HTTPS. |
-| Only `*.amazonaws.com` endpoints return a corporate CA | Inspection is scoped to AWS endpoints. |
-| Only `*.agilent.com` endpoints return a corporate CA | Inspection is scoped to Agilent endpoints. |
-| Only one endpoint returns a corporate CA | Inspection is scoped to a specific destination. |
-| One or more return a public CA (Amazon, DigiCert, Microsoft) | Those endpoints are not being inspected; the issue may be scoped to specific service groups. |
+| All four return a corporate CA | Inspection is applied broadly to outbound HTTPS. Continue to [Step 3](#step-3-confirm-certificate-validation-is-the-direct-cause), then request a bypass for all CID internet endpoints in the [Resolution](#resolution) section. |
+| Only `*.amazonaws.com` endpoints return a corporate CA | Inspection is scoped to AWS endpoints. Continue to [Step 3](#step-3-confirm-certificate-validation-is-the-direct-cause), then request the `*.amazonaws.com` bypass in the [Resolution](#resolution) section. |
+| Only `*.agilent.com` endpoints return a corporate CA | Inspection is scoped to Agilent endpoints. Continue to [Step 3](#step-3-confirm-certificate-validation-is-the-direct-cause), then request the `*.agilent.com` bypass in the [Resolution](#resolution) section. |
+| Only one endpoint returns a corporate CA | Inspection is scoped to a specific destination. Continue to [Step 3](#step-3-confirm-certificate-validation-is-the-direct-cause), then request a bypass for that destination in the [Resolution](#resolution) section. |
+| One or more return a public CA (Amazon, DigiCert, Microsoft) | Those endpoints are not being inspected. Continue to [Step 3](#step-3-confirm-certificate-validation-is-the-direct-cause) to confirm certificate validation is the cause for the inspected endpoints. |
 
 Share the per-endpoint issuer output with your network security team.
 
@@ -123,9 +129,9 @@ Verify that the certificate substitution is what's blocking the HTTPS request by
 curl -v --insecure https://<hostname>
 ```
 
-| Result | Interpretation |
+| Result | Next step |
 |---|---|
-| Succeeds while the normal request fails | Certificate validation is the direct cause. The corporate CA presented by the inspection appliance is not trusted by the CID. |
+| Succeeds while the normal request fails | Certificate validation is the direct cause. The corporate CA presented by the inspection appliance is not trusted by the CID. Proceed to the [Resolution](#resolution) section to request the SSL inspection bypass scoped in [Step 2](#step-2-determine-the-scope-of-inspection). |
 | Also fails | An additional issue is present. Review the `curl` output and see [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
 
 ---

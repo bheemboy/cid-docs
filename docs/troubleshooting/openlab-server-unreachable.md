@@ -175,6 +175,12 @@ curl -sk https://<openlab-server>/openlab/olss/v1/serverinfo
 
 The response includes a `version` object (`majorVersion.minorVersion.buildVersion`) for the OLSS server. The CID-side OLSS version is determined by the CDS version installed on the CID; the simplest source is the Recent Activity message described earlier, which prints both numbers when the failure occurs. The CDS version can also be looked up in Control Panel on any CDS client or AIC running the same version of CDS.
 
+| Result | Next step |
+|---|---|
+| Recent Activity reports `Server's version '<X>' is older than CID version '<Y>'`, or the `serverinfo` `version` is older than the CID-side OLSS version | The external OLSS server is too old. See [Version compatibility failure](#version-compatibility-failure). |
+| Recent Activity reports a type-mismatch failure, or the OLSS host is known to be a Workstation or Client installation | The installation type is not supported. See [Incorrect server installation type](#incorrect-server-installation-type). |
+| Type and version both match, but CDS registration still fails and the OLSS or OpenLab ECM 3.x server presents a corporate or self-signed certificate | The certificate is untrusted. See [Untrusted OpenLab or ECM server certificate](#untrusted-openlab-or-ecm-server-certificate). |
+
 ---
 
 ### Step 5. Characterize the network path
@@ -190,6 +196,12 @@ mtr --report --tcp --port 443 <openlab-server>
 ```
 
 Provide the full output to your network team. A path that loses packets at an intermediate hop indicates the block sits on the network path rather than on the OLSS host itself.
+
+| Result | Next step |
+|---|---|
+| Packets are lost at an intermediate hop before reaching the OLSS host | A firewall or routing boundary on the path is dropping TCP/443. See [Firewall between CID and OLSS](#firewall-between-cid-and-olss). |
+| The path completes to the OLSS host but the final hop refuses or drops TCP/443 | The OLSS host is reachable but not accepting TCP/443. See [OLSS services not running](#olss-services-not-running). |
+| The path completes and TCP/443 reaches the OLSS host | The network path is clear; re-run Step 3 to check the OLSS health endpoint. |
 
 ---
 

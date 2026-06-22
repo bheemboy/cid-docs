@@ -146,6 +146,11 @@ A passing tester does not exclude every cause. If activation or sync continues t
 
 Use the **Choose or type an endpoint** field to select a predefined endpoint or to enter a custom URL such as `www.agilent.com`. This is useful for isolating one service or for confirming general internet reachability when the general test passes but a downstream service still fails.
 
+| Result | Next step |
+|---|---|
+| The endpoint passes | The endpoint is reachable at the network layer. If activation or sync is still failing, work through the false-positive cases in Step 4. |
+| The endpoint fails | Read its DNS, port-state, and traceroute output, then route on the result indicator using Step 3. |
+
 ---
 
 ## Resolution

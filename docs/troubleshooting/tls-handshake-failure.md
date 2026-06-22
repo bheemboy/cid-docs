@@ -135,12 +135,13 @@ curl -v https://agilent-aws-prd-51-ac-images.s3.amazonaws.com
 curl -v https://microsoft.com
 ```
 
-| Pattern in the results | Interpretation |
+| Result | Next step |
 |---|---|
-| All four fail at TLS | SNI-based or TLS-version filtering is applied broadly to outbound HTTPS. |
-| Only `*.amazonaws.com` endpoints fail | The firewall is targeting AWS endpoints by SNI. |
-| Only `*.agilent.com` endpoints fail | The firewall is targeting Agilent endpoints by SNI. |
-| Only one endpoint fails | A domain-specific SNI rule is in effect. The affected domain must be added to the allowlist individually. |
+| All four fail at TLS | SNI-based or broad outbound HTTPS filtering is in effect. Add SNI / domain allowlist rules for the affected service group; see [Resolution](#resolution). |
+| Only `*.amazonaws.com` endpoints fail | The firewall is targeting AWS endpoints by SNI. Add SNI / domain allowlist rules for the AWS service group; see [Resolution](#resolution). |
+| Only `*.agilent.com` endpoints fail | The firewall is targeting Agilent endpoints by SNI. Add SNI / domain allowlist rules for the Agilent service group; see [Resolution](#resolution). |
+| Only one endpoint fails | A domain-specific SNI rule is in effect. Add that domain to the allowlist individually; see [Resolution](#resolution). |
+| A server returns a certificate with a corporate or internal issuer | This is SSL inspection, not a hard TLS block. See [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection). |
 
 Share the results with your network security team. For the complete list of required hostnames, see the [Internet requirements](/reference/system-requirements#internet-requirements) section of System requirements.
 
@@ -159,6 +160,12 @@ mtr --report --tcp --port 443 <hostname>
 ```
 
 Provide the output to your network security team along with the Step 1 capture. A path that loses packets at an internal hop indicates the TLS reset originates from a corporate appliance rather than the destination.
+
+| Result | Next step |
+|---|---|
+| Packet loss begins at an internal hop before the destination | The TLS reset originates from a corporate appliance. Investigate the dropping hop with your network team; see [Resolution](#resolution). |
+| No loss until the destination, and the destination resets the handshake | The reset is not from an intermediate appliance. Recheck the SNI / domain scope in Step 3. |
+| A server certificate with a corporate or internal issuer was seen in Step 1 | This is SSL inspection rather than a path-level reset. See [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection). |
 
 ---
 

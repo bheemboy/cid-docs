@@ -81,19 +81,19 @@ Use the failed-endpoint list from [Verify CID internet connectivity](/troublesho
 
 Identify the scope of the block:
 
-| Pattern in the connectivity tester results | Interpretation |
+| Pattern in the connectivity tester results | Next step |
 |---|---|
 | All or most endpoints fail | Port 443 is broadly blocked for the CID. Continue to Step 2 to confirm whether the CID has any internet path. |
-| Only AWS endpoints fail | A firewall rule is targeting `*.amazonaws.com`. Provide the connectivity tester results to your network team. |
-| Only Agilent endpoints fail | A rule is targeting `*.agilent.com`. Provide the connectivity tester results to your network team. |
-| Only one endpoint fails | A domain-specific rule is in effect. The affected domain must be added to the allowlist individually. |
+| Only AWS endpoints fail | A firewall rule is targeting `*.amazonaws.com`. Provide the connectivity tester results to your network team. See [Resolution](#resolution). |
+| Only Agilent endpoints fail | A rule is targeting `*.agilent.com`. Provide the connectivity tester results to your network team. See [Resolution](#resolution). |
+| Only one endpoint fails | A domain-specific rule is in effect. The affected domain must be added to the allowlist individually. See [Resolution](#resolution). |
 
 Identify the shape of the block from the per-endpoint port state in the connectivity tester output:
 
-| Port state in the connectivity tester output | Interpretation |
+| Port state in the connectivity tester output | Next step |
 |---|---|
-| `filtered` | The firewall is silently dropping packets. No reject message is sent back to the CID. |
-| `closed` | The destination is actively refusing the connection. |
+| `filtered` | The firewall is silently dropping packets. No reject message is sent back to the CID. See [Resolution](#resolution). |
+| `closed` | The destination is actively refusing the connection. See [Resolution](#resolution). |
 | Traceroute terminates at an internal IP | Traffic never leaves the corporate network. Continue to Step 4 to characterize the dropping hop. |
 
 
@@ -142,7 +142,10 @@ If Step 1 showed the traceroute terminating at an internal IP, use `mtr` to capt
 mtr --report --tcp --port 443 <hostname>
 ```
 
-Provide the full output to your network security team along with the connectivity tester results.
+| Result | Next step |
+|---|---|
+| The report shows packet loss starting at an internal hop | The block is inside the corporate network. Provide the full output and the connectivity tester results to your network team. See [Resolution](#resolution). |
+| The report reaches the destination with no loss, or loss begins beyond the corporate edge | TCP/443 is not blocked at the network layer. Re-check the per-endpoint port state in Step 1, then see [TLS handshake failure](/troubleshooting/tls-handshake-failure). |
 
 ---
 

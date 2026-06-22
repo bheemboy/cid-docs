@@ -17,7 +17,7 @@ CID Hub distinguishes two categories on the **Software** tab:
 
 The selection mechanism is the same in both cases. The difference is which row you change on the **Software** tab and what compatibility constraints apply.
 
-## **Prerequisites**
+## Prerequisites
 
 Before you change a driver or add-on selection, confirm these prerequisites.
 

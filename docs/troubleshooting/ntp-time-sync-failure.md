@@ -97,6 +97,11 @@ timedatectl status
 
 Confirm that `NTP service: active` and `System clock synchronized: yes` are both present.
 
+| Result | Next step |
+|---|---|
+| `Reference ID` is `7F7F0101`, `Leap status` is `Not synchronised`, or the offset is seconds or greater | Continue to Step 2. |
+| `Leap status` is `Normal` with a millisecond-scale offset, and `timedatectl` reports `System clock synchronized: yes` | NTP is functioning. No further action is required on this page. |
+
 ---
 
 ### Step 2. Test UDP port 123 connectivity
@@ -113,6 +118,11 @@ UDP connectivity testing with `nc` is inherently limited. A successful result me
 
 If the test fails or times out, UDP/123 is being blocked. Request that your network team permit outbound UDP/123 to `*.pool.ntp.org`.
 
+| Result | Next step |
+|---|---|
+| The probe fails or times out | UDP/123 is blocked. See [Resolution](#resolution) and request that your network team permit outbound UDP/123 to `*.pool.ntp.org`. |
+| The probe succeeds | UDP/123 is not confirmed blocked. Continue to Step 3. |
+
 ---
 
 ### Step 3. Attempt a manual NTP sync
@@ -125,6 +135,11 @@ sudo chronyc makestep
 
 Re-run `chronyc tracking` afterwards. If the offset remains large, NTP connectivity is not functioning and the cause lies upstream of the CID.
 
+| Result | Next step |
+|---|---|
+| The `System time` offset drops to milliseconds after the step | NTP is now synchronized. No further action is required on this page. |
+| The `System time` offset remains large (seconds or greater) | The cause lies upstream of the CID. Continue to Step 4. |
+
 ---
 
 ### Step 4. Verify NTP hostname resolution
@@ -136,6 +151,11 @@ nslookup pool.ntp.org
 ```
 
 If this fails, see [DNS resolution failure](/troubleshooting/dns-resolution-failure) before working further on NTP.
+
+| Result | Next step |
+|---|---|
+| `nslookup` returns an `Address` for `pool.ntp.org` | DNS is resolving. See [Resolution](#resolution) to investigate an upstream chrony or routing issue with Agilent Support. |
+| `nslookup` reports `server can't find` or times out | DNS resolution is failing. See [DNS resolution failure](/troubleshooting/dns-resolution-failure) before working further on NTP. |
 
 ---
 

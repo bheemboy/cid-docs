@@ -84,7 +84,7 @@ ip link show
 | Result | Next step |
 |---|---|
 | Corporate NIC interface shows `state DOWN` or `NO-CARRIER` | The cable is unplugged, faulty, or the switch port is disabled. Reseat the cable and verify the switch port is active. |
-| Corporate NIC interface shows `state UP` | Confirm the cables are in the correct ports. If the Corporate (HOUSE) and Instrument cables are swapped and the instrument network has no DHCP server, the CID still beeps once. Restore the correct cable assignment, then reboot. |
+| Corporate NIC interface shows `state UP` | Confirm the cables are in the correct ports. If the Corporate NIC and Instrument cables are swapped and the instrument network has no DHCP server, the CID still beeps once. Restore the correct cable assignment, then reboot. |
 | Pattern persists after both checks | Reboot the CID. If the 1-beep pattern continues, open a support ticket with Agilent Support and note the beep count and the steps already attempted. |
 
 ---
@@ -103,7 +103,7 @@ nc -zv hub-ac-registration-api.prd-51.aws.agilent.com 443
 | `nslookup` fails | DNS is misconfigured. See [DNS resolution failure](/troubleshooting/dns-resolution-failure). |
 | `nc` returns `Connection refused` or times out | TCP 443 to the Registration API is blocked. See [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked). |
 | Both succeed, but the CID continues to beep twice | The network layer is reachable; the registration call itself is being blocked or rejected. Work through [TLS handshake failure](/troubleshooting/tls-handshake-failure), [SSL inspection and certificate substitution](/troubleshooting/ssl-inspection), and [NTP time synchronization failure](/troubleshooting/ntp-time-sync-failure) in that order. |
-| Cables look correct from the front but the CID still beeps twice | Confirm the Corporate (HOUSE) cable is in the HOUSE port and the Instrument cable is in the INSTRUMENT port. A cable swap can produce two beeps when the instrument network has its own DHCP server. |
+| Cables look correct from the front but the CID still beeps twice | Confirm the Corporate NIC cable is in the Corporate NIC port and the Instrument cable is in the Instrument NIC port. A cable swap can produce two beeps when the instrument network has its own DHCP server. |
 
 For a broader first-pass triage across all network failure modes, run [Verify CID internet connectivity](/troubleshooting/verify-internet-connectivity) before working through the linked pages individually.
 

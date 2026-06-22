@@ -103,6 +103,12 @@ cat /etc/resolv.conf
 
 Note the `nameserver` entries and share them with your network team. Verify that the listed DNS servers are intended to service the CID's network segment and are capable of resolving public internet hostnames.
 
+| Result | Next step |
+|---|---|
+| One or more `nameserver` entries are listed and are the expected DNS servers for this network segment | Continue to [Step 3](#step-3-test-dns-server-reachability-over-udp53) to test reachability. |
+| The `nameserver` entries are incorrect, unexpected, or stale (for example, left over from a previous network) | See [Resolution](#resolution): reconfigure the DNS server assignment on the Corporate NIC. |
+| No `nameserver` entry is present | See [Resolution](#resolution): reconfigure the DNS server assignment on the Corporate NIC. |
+
 ---
 
 ### Step 3. Test DNS server reachability over UDP/53
@@ -117,7 +123,12 @@ Confirm the CID can reach its configured DNS servers on UDP/53.
 nc -uzv <dns-server-ip> 53
 ```
 
-If this fails, the CID cannot reach its DNS server. Escalate to your network team to verify that the CID's subnet has UDP/53 access to the DNS server.
+If this fails, the CID cannot reach its DNS server.
+
+| Result | Next step |
+|---|---|
+| `Connection to <dns-server-ip> 53 port [udp/domain] succeeded!` | UDP/53 is reachable. Continue to [Step 4](#step-4-query-a-public-dns-server-directly) to query a public DNS server directly. |
+| The command reports the connection failed or times out | See [Resolution](#resolution): permit UDP/53 and TCP/53 from the CID's subnet to its DNS servers. Then continue to [Step 5](#step-5-test-dns-over-tcp53) to check whether TCP/53 behaves differently. |
 
 ---
 
@@ -152,7 +163,13 @@ Some environments block UDP/53 but permit TCP/53, or vice versa. This isolates t
 nc -zv <dns-server-ip> 53
 ```
 
-If TCP/53 succeeds but UDP/53 (Step 3) failed, report this discrepancy to your network team; it indicates inconsistent DNS port filtering.
+If TCP/53 succeeds but UDP/53 (Step 3) failed, it indicates inconsistent DNS port filtering.
+
+| Result | Next step |
+|---|---|
+| `Connection to <dns-server-ip> 53 port [tcp/domain] succeeded!` but UDP/53 ([Step 3](#step-3-test-dns-server-reachability-over-udp53)) failed | See [Resolution](#resolution): permit UDP/53 and TCP/53 from the CID's subnet to its DNS servers. |
+| The command reports the connection failed or times out (TCP/53 also blocked) | See [Resolution](#resolution): permit UDP/53 and TCP/53 from the CID's subnet to its DNS servers. |
+| Both TCP/53 and UDP/53 ([Step 3](#step-3-test-dns-server-reachability-over-udp53)) succeed | DNS server reachability is not the problem. See [TCP port 443 blocked](/troubleshooting/tcp-port-443-blocked). |
 
 ---
 
