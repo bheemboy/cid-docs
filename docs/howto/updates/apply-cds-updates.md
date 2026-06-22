@@ -23,7 +23,7 @@ Before you change the CDS version selection, confirm these prerequisites.
 
 - You must have an administrator role to change CDS version selections.
 - You need to change the version on the [server's software template](../setup/define-software-template) if you want the new selection to apply to every CID that inherits from the server.
-- You need to change the version on that CID's [Software exceptions](../setup/configure-software-exceptions) if the CID does not inherit from the server.
+- You need to change the version for that CID in [Configure software exceptions](../setup/configure-software-exceptions) if the CID does not inherit from the server.
 - The CID must have a **Windows 11** license sticker on the chassis for an upgrade to **OpenLab CDS 2.8 Update 9** or later. Earlier CDS versions run on Windows 10 IoT; from CDS 2.8 Update 9 onward the CDS VM runs on Windows 11 IoT.
 - The OpenLab Server must run a CDS version that is equal to or higher than the version you select for the CIDs. Confirm the server version with your OpenLab administrator before changing the selection.
 - Every OpenLab CDS Client that connects to the affected CIDs must run a CDS version that matches the selection. A client/CID mismatch prevents OpenLab CDS from functioning correctly. Coordinate the change with your OpenLab CDS Client administrators before applying it.

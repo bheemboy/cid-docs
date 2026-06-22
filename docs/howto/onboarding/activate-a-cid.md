@@ -83,4 +83,4 @@ If the **Recent activity** panel shows an error, the CID beeps repeatedly, or th
 - [Configure network cards](./configure-network-cards): set up the Corporate NIC and Instrument NIC after activation.
 - [View CIDs](../monitoring/view-cids): monitor CID status after activation completes.
 - [View activity logs](../monitoring/view-activity-logs): review activation events for traceability and troubleshooting.
-- [CID administration](../operations/cid-administration): reboot, factory reset, and other post-activation operations.
+- [Administer a CID](../operations/cid-administration): reboot, factory reset, and other post-activation operations.

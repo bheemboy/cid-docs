@@ -97,5 +97,5 @@ To use a bulk action:
 - [Activate a CID](../onboarding/activate-a-cid): create a CID record and bring a physical CID into service.
 - [Configure software exceptions](../setup/configure-software-exceptions): identify and manage CIDs that do not inherit the server template.
 - [Apply updates](../updates/apply-updates): install downloaded software changes on one or more CIDs.
-- [CID administration](../operations/cid-administration): reboot a CID, restart services, reset OpenLab CDS, and manage access.
+- [Administer a CID](../operations/cid-administration): reboot a CID, restart services, reset OpenLab CDS, and manage access.
 - [View activity logs](./view-activity-logs): review the history of bulk actions and other CID events.

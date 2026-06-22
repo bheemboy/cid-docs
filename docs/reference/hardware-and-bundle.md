@@ -19,9 +19,9 @@ The Agilent CID Bundle for OpenLab CDS includes IoT hardware that has been fully
 | Memory                   | 16 GB DDR4 3200 SoDIMM                                                                                  |
 | Graphics                 | Integrated graphics                                                                                     |
 | Instrument configuration | 1:1 (one instrument per CID)                                                                            |
-| Operating temperature    | 0 to 50 °C                                                                                              |
+| Operating temperature    | 0–50 °C                                                                                              |
 | Power                    | 65 W (adapter included)                                                                                 |
-| Physical interfaces      | Dual Gigabit LAN ports (RJ45), 4x USB ports, DisplayPort, HDMI, Mic In, Audio Out, 2x Serial ports (DB9) |
+| Physical interfaces      | Dual Gigabit LAN ports (RJ-45), 4 USB ports, DisplayPort, HDMI, Mic In, Audio Out, 2 serial ports (DB9) |
 
 ## Manufacturing and provenance
 

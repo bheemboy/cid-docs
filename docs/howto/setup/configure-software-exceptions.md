@@ -72,6 +72,6 @@ You can return a CID to the server's software template at any time:
 
 - [Define a software template](./define-software-template): the server-level defaults that an inheriting CID receives.
 - [Apply updates](../updates/apply-updates): install software that the CID has downloaded.
-- [CID administration](../operations/cid-administration): turn **Allow Changes** on or off, reboot a CID, register the CID with the OpenLab Server, or reset OpenLab CDS.
+- [Administer a CID](../operations/cid-administration): turn **Allow Changes** on or off, reboot a CID, register the CID with the OpenLab Server, or reset OpenLab CDS.
 - [View CIDs](../monitoring/view-cids): use the **Inherit** column to locate non-inheriting CIDs.
 - [View activity logs](../monitoring/view-activity-logs): review the history of inheritance changes and software selections.

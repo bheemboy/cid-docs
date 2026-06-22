@@ -110,7 +110,7 @@ Use this method when you want to install one specific component on a specific CI
 
 ## What happens on failure
 
-If something goes wrong during installation, the CID is designed to stay usable. Components that already installed successfully in the same run keep working, and the **Recent Activity** section on the CID's **Summary** page plus the [Activity Log](../monitoring/view-activity-logs) record both the failure and any recovery action.
+If something goes wrong during installation, the CID is designed to stay usable. Components that already installed successfully in the same run keep working, and the **Recent activity** section on the CID's **Summary** page plus the [Activity Log](../monitoring/view-activity-logs) record both the failure and any recovery action.
 
 How the failed component itself is handled depends on what it is:
 
@@ -123,7 +123,7 @@ To recover:
 1. Review the failure message in **Recent activity** and the matching entries in the [Activity Log](../monitoring/view-activity-logs).
 2. Address the cause (for example, free disk space, restore network connectivity, or pick a compatible version).
 3. Reapply the update using one of these methods: [Apply updates to several CIDs at once](#apply-updates-to-several-cids-at-once), [Apply all pending updates to one CID](#apply-all-pending-updates-to-one-cid), or [Apply a single update to one CID](#apply-a-single-update-to-one-cid). You only need to retry the components that failed.
-4. If reapplying the update does not recover the CID, or if a CDS restore cannot complete, run **Reset OpenLab CDS** from the [CID administration](../operations/cid-administration) page. This installs a fresh CDS VM from the baseline. Use this recovery option only after the other steps fail. Contact Agilent support if the reset does not return the CID to **Ready**.
+4. If reapplying the update does not recover the CID, or if a CDS restore cannot complete, run **Reset OpenLab CDS** from the [Administer a CID](../operations/cid-administration) page. This installs a fresh CDS VM from the baseline. Use this recovery option only after the other steps fail. Contact Agilent support if the reset does not return the CID to **Ready**.
 
 ## See also
 
@@ -131,4 +131,4 @@ See these related pages for choosing versions, checking readiness, and recoverin
 
 - [View CIDs](../monitoring/view-cids): check **Status**, **Updates**, and **Allow Changes** before starting a bulk update.
 - [View activity logs](../monitoring/view-activity-logs): review the history of update installs and any automatic restores.
-- [CID administration](../operations/cid-administration): toggle **Allow Changes** or run **Reset OpenLab CDS** when recovery is needed.
+- [Administer a CID](../operations/cid-administration): toggle **Allow Changes** or run **Reset OpenLab CDS** when recovery is needed.

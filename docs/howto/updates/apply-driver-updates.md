@@ -23,7 +23,7 @@ Before you change a driver or add-on selection, confirm these prerequisites.
 
 - You must have an administrator role to change driver or add-on selections.
 - You need to change the selection on the [server's software template](../setup/define-software-template) if you want the new selection to apply to every CID that inherits from the server.
-- You need to change the selection on that CID's [Software exceptions](../setup/configure-software-exceptions) if the CID does not inherit from the server.
+- You need to change the selection for that CID in [Configure software exceptions](../setup/configure-software-exceptions) if the CID does not inherit from the server.
 - The driver or add-on version you want must be compatible with the CDS version currently selected for the CID. Incompatible versions are not offered in the picker.
 
 ## Select a driver or add-on version

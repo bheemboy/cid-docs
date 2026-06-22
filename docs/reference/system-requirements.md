@@ -178,7 +178,7 @@ For symptoms and connectivity tests, see [Verify CID internet connectivity](/tro
 
 ## Security requirements
 
-Security on a CID deployment is a shared responsibility between Agilent and the customer. The list below is the customer-facing half: the concrete security obligations a customer organization must satisfy for the deployment to be sound. For the full Agilent-owns / customer-owns split and the reasoning behind it, see the [Shared responsibility](../security/security-model#shared-responsibility) section of the Security model.
+Security on a CID deployment is a shared responsibility between Agilent and the customer. The list below is the customer-facing half: the concrete security obligations your organization must satisfy for the deployment to be sound. For the full Agilent-owns / customer-owns split and the reasoning behind it, see the [Shared responsibility](../security/security-model#shared-responsibility) section of the Security model.
 
 - **Network firewall and segmentation**. Configure the corporate firewall to permit the outbound domains under [Internet requirements](#internet-requirements), and isolate the Instrument NIC's LAN/VLAN from the corporate WAN and the internet.
 - **Physical security of the CID**. Restrict physical access to the device. Full-disk encryption is not applied on the CID, so physical and network controls are the primary at-rest protection on the device itself.
@@ -188,4 +188,4 @@ Security on a CID deployment is a shared responsibility between Agilent and the 
 - **CDS client PCs and traditional AICs**. OS patching, anti-malware, screen-lock policy, password-cache policy, accurate system clock, and physical access: CID Hub does not manage these systems.
 - **Sample-data retention and backup**. The true record of sample data lives on the OpenLab CDS Server, which is customer-operated and customer-backed-up. Agilent does not back up CID-local CDS data.
 - **Activity-log review**. Incorporate the CID Hub activity log into your own monitoring, review, or SIEM workflow.
-- **Approval of Agilent support requests**. When an Agilent engineer requests remote access to a CID for troubleshooting, a Hub user at the customer site must approve or decline the request and close the session when work is complete.
+- **Approval of Agilent support requests**. When an Agilent engineer requests remote access to a CID for troubleshooting, a Hub user at your site must approve or decline the request and close the session when work is complete.

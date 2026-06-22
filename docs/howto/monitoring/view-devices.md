@@ -57,4 +57,4 @@ The filter options work the same way as those on the [View CIDs](view-cids) page
 
 - [View CIDs](view-cids): monitor CID readiness and run list-level actions such as software updates and export.
 - [Activate a CID](../onboarding/activate-a-cid): create a CID record and bring a physical CID into service.
-- [CID administration](../operations/cid-administration): reboot a CID, restart services, reset OpenLab CDS, and manage access.
+- [Administer a CID](../operations/cid-administration): reboot a CID, restart services, reset OpenLab CDS, and manage access.

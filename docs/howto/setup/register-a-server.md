@@ -61,7 +61,7 @@ Use this procedure to update the saved connection details or credentials for a r
 :::important
 An edit changes only the record in CID Hub. The connected CIDs still hold the previous values until they pick up the new ones:
 
-- If you changed **Server Name (FQDN)**, run **Register CID** from the [CID administration](../operations/cid-administration) page for each CID that uses this server, so the CID re-registers against the new name.
+- If you changed **Server Name (FQDN)**, run **Register CID** from the [Administer a CID](../operations/cid-administration) page for each CID that uses this server, so the CID re-registers against the new name.
 - Changes to credentials, **Connect to**, or share details take effect on each CID the next time it is rebooted.
 :::
 
@@ -84,6 +84,6 @@ If the server still has CIDs associated with it, CID Hub blocks the deletion and
 - [Activate a CID](../onboarding/activate-a-cid): the activation flow that uses a registered OpenLab Server.
 - [Define a software template](./define-software-template): set the default OpenLab CDS, driver, and OS update versions a CID inherits from this server.
 - [Manage certificate authorities](./manage-certificate-authorities): import the CA a CID needs to trust a corporate or self-signed server certificate.
-- [CID administration](../operations/cid-administration): run **Register CID** or **Reset OpenLab CDS** after credential or FQDN changes.
+- [Administer a CID](../operations/cid-administration): run **Register CID** or **Reset OpenLab CDS** after credential or FQDN changes.
 - [View CIDs](../monitoring/view-cids): confirm CIDs reconnect after a server edit.
 - [View activity logs](../monitoring/view-activity-logs): review the history of server registration, edits, and removals.

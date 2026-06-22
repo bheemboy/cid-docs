@@ -47,7 +47,7 @@ The two-NIC design (a Corporate NIC on the corporate LAN and a separate Instrume
 
 ## Posture versus a domain-controlled lab PC
 
-The CID security model is materially different from a customer-managed Windows PC running an instrument-controller workload. Agilent owns the OS image, patching cadence, anti-malware, and remote-access posture on the CID itself. The customer remains in control of the corporate network it sits on and of the identities used to access the Hub.
+The CID security model is materially different from a customer-managed Windows PC running an instrument-controller workload. Agilent owns the OS image, patching cadence, anti-malware, and remote-access posture on the CID itself. Your organization remains in control of the corporate network it sits on and of the identities used to access the Hub.
 
 - **Smaller attack surface**. One Linux IP, ports 443 and 22 only. The Windows VM is unreachable from the corporate LAN except through the reverse proxy. Port 22 is used for Agilent support access and is protected by the daily-rotating administrative password; customers can block it at the VLAN level if desired.
 - **Appliance OS, not a productivity desktop**. The Windows VM runs Windows 11 IoT Enterprise LTSC, the edition Microsoft licenses specifically for fixed-purpose devices such as medical instruments, ATMs, and industrial controllers, not for general-purpose user PCs. The LTSC build ships without the Microsoft Store and the consumer in-box apps found on a standard Windows desktop. Microsoft holds its feature set static for a 10-year lifecycle and services it with security and quality fixes only, not feature updates. A smaller, unchanging software surface means fewer components to exploit and fewer update-driven regressions. Agilent delivers the VM as a single qualified gold image, building and testing the LTSC operating system, OpenLab CDS, and instrument drivers together before release. No Windows service or desktop interface is directly reachable from the corporate LAN; all access goes through the CID's nginx reverse proxy.
@@ -110,7 +110,7 @@ While the Hub safely ignores connections from a deleted device, the certificate 
 
 ## CDS user identity
 
-The CID does not add or change any identity used to run CDS workflows. The login a lab technician uses for OpenLab CDS, to run samples, analyze results, and sign records, stays with the customer: it is provided by OpenLab Server and can be backed by the customer's Active Directory. The CID holds no per-user CDS accounts and never sees a technician's CDS credentials.
+The CID does not add or change any identity used to run CDS workflows. The login a lab technician uses for OpenLab CDS, to run samples, analyze results, and sign records, stays with your organization: it is provided by OpenLab Server and can be backed by your Active Directory. The CID holds no per-user CDS accounts and never sees a technician's CDS credentials.
 
 ## CID Hub user identity
 
@@ -142,9 +142,9 @@ The deletion procedure lives in the [Remove a user](../howto/account/manage-user
 
 ## Shared responsibility
 
-Security on a CID deployment is split between Agilent and the customer organization that operates the CID. The split is not arbitrary. Agilent controls everything that lives on or inside the device: the OS image, the embedded Windows VM, the patching channel, the device identity, the on-device anti-malware, and the Hub-side SaaS infrastructure. This is because the CID is a sealed appliance with a single, verifiable software provenance. The customer controls everything that lives around the device: the corporate network it sits on, the identities that reach the Hub, and the CDS clients, traditional Analytical Instrument Controllers (AICs), and OpenLab Server that the CID interoperates with. Those systems are part of the customer's wider IT estate and the customer is the only party positioned to manage them.
+Security on a CID deployment is split between Agilent and your organization, which operates the CID. The split is not arbitrary. Agilent controls everything that lives on or inside the device: the OS image, the embedded Windows VM, the patching channel, the device identity, the on-device anti-malware, and the Hub-side SaaS infrastructure. This is because the CID is a sealed appliance with a single, verifiable software provenance. Your organization controls everything that lives around the device: the corporate network it sits on, the identities that reach the Hub, and the CDS clients, traditional Analytical Instrument Controllers (AICs), and OpenLab Server that the CID interoperates with. Those systems are part of your wider IT estate, and you are the only party positioned to manage them.
 
-The reference list of customer obligations lives in the [Security requirements](../reference/system-requirements#security-requirements) section of System requirements. The table below shows both sides of the split together, so an IT reviewer can see at a glance which surfaces are Agilent's responsibility and which are the customer's.
+The reference list of your organization's obligations lives in the [Security requirements](../reference/system-requirements#security-requirements) section of System requirements. The table below shows both sides of the split together, so an IT reviewer can see at a glance which surfaces are Agilent's responsibility and which are yours.
 
 | Area | Agilent owns | Customer owns |
 |---|---|---|

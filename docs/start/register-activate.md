@@ -53,7 +53,7 @@ Add a record for the CID so that CID Hub recognizes the device on its next conne
    - The PIN code is the 8-character alphanumeric code on the CID QR code sticker. Enter it without the hyphen.
 4. Click **Save**.
 5. Wait for the CID to recognize the linked record in CID Hub.
-   The CID stops beeping shortly afterward and begins the activation process. The **Recent Activity** section of the CID summary tab shows activity log entries.
+   The CID stops beeping shortly afterward and begins the activation process. The **Recent activity** section of the CID summary tab shows Activity Log entries.
 6. Confirm that the CID status shows **Ready** in the CIDs list.
 
 For the complete activation procedure, see [Activate a CID](../howto/onboarding/activate-a-cid).

@@ -10,7 +10,7 @@ The CID runs two operating systems: Oracle Linux on the host and Windows IoT ins
 CID Hub keeps each server template and CID pointed at a current Windows update and a current Linux update by default. If the selected update is later obsoleted or removed from CID Hub, CID Hub automatically switches the selection to the latest applicable release. The new update downloads in the background so it is ready for an administrator to install.
 
 :::important
-Operating system patches close known security vulnerabilities. Apply them promptly after they appear in the **Updates Ready** state. Delayed OS updates leave the CID and the connected instruments exposed.
+Operating system patches close known security vulnerabilities. Apply them promptly after the **Updates** column on the CIDs list shows **Ready**. Delayed OS updates leave the CID and the connected instruments exposed.
 :::
 
 ## Prerequisites
